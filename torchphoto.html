@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TorchPhoto - NAS/FTP Photo & Video Viewer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .screenshots-compact .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+            padding: 20px 0 0;
+            overflow: visible;
+            align-items: start;
+        }
+        .screenshots-compact .screenshot-gallery img {
+            width: 100%;
+            max-width: 220px;
+            margin: 0 auto;
+            aspect-ratio: 9 / 19.5;
+            object-fit: cover;
+            border-radius: 22px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .screenshots-compact .screenshot-gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .screenshots-compact .screenshot-gallery img {
+                max-width: 200px;
+            }
+        }
+        @media (max-width: 520px) {
+            .screenshots-compact .screenshot-gallery {
+                gap: 14px;
+            }
+            .screenshots-compact .screenshot-gallery img {
+                max-width: 160px;
+                border-radius: 18px;
+            }
+        }
+    </style>
+	<link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+    <nav>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="TorchPhoto Logo">
+            <span class="logo-text">TorchPhoto</span>
+        </div>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#screenshots">Screenshots</a></li>
+            <li><a href="#support">Support</a></li>
+            <li><a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-download-small">Download</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <header class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1><span class="hero-title-line">NAS/FTP <br>Photo & Video Viewer</span><span class="hero-title-brand">TorchPhoto</span></h1>
+                <p>Uploading is easy, but viewing again is often not. <br>TorchPhoto is designed to help you browse photos and videos stored on NAS and FTP servers like a gallery on iPhone and iPad.</p>
+                <div class="hero-btns">
+                    <a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-appstore">
+                        <i class="fab fa-apple"></i>
+                        <span>Download on the <strong>App Store</strong></span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="main.jpg" alt="TorchPhoto App Mockup" class="mockup">
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <div class="feature-grid">
+                <button class="feature-card feature-trigger" type="button" data-title="Optimized for Photos &amp; Videos" data-image="Features1.jpg" data-description="TorchPhoto focuses on browsing photos and videos comfortably instead of behaving like a generic file manager. It is designed around quick visual access, smoother previews, and a media-first experience on iPhone and iPad.">
+                    <i class="fas fa-image"></i>
+                    <h3>Optimized for Photos &amp; Videos</h3>
+                    <p>Browse media with a viewing experience focused on photos and videos instead of general file management.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="Fast Thumbnail Generation" data-image="Features2.jpg" data-description="Generate lightweight thumbnails for large folders so browsing feels faster and more natural. Once thumbnails are created, opening folders and revisiting media becomes much smoother.">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Thumbnail Generation</h3>
+                    <p>Generate lightweight thumbnails for large folders and scroll through them quickly with smooth previews.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="Offline Mode" data-image="Features3.jpg" data-description="Generated thumbnails can stay in cache, helping you browse even when the connection is unstable or unavailable. This makes it easier to revisit media without depending on a constant live server connection.">
+                    <i class="fas fa-box-archive"></i>
+                    <h3>Offline Mode</h3>
+                    <p>Keep generated thumbnails in cache so you can continue browsing even without internet or with an unstable server connection.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="Download &amp; Share" data-image="Features4.jpg" data-description="Download photos or videos from your server to your device and share them quickly when needed. It gives you a simple way to move from browsing to sending or saving in just a few taps.">
+                    <i class="fas fa-download"></i>
+                    <h3>Download &amp; Share</h3>
+                    <p>Save server photos and videos to your device or share them quickly when you need to send something fast.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="Upload &amp; Backup" data-image="Features5.jpg" data-description="Upload photos and videos from iPhone to your FTP server to build a lightweight personal backup flow. It is useful for keeping originals on your own storage while staying organized by folder.">
+                    <i class="fas fa-upload"></i>
+                    <h3>Upload &amp; Backup</h3>
+                    <p>Upload photos and videos from iPhone to your FTP server and build a simple personal-server backup workflow.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="Metadata Viewer" data-image="Features6.jpg" data-description="Check the original capture information more easily while viewing media. TorchPhoto helps surface useful metadata like date, time, and location so moments are easier to understand and revisit.">
+                    <i class="fas fa-circle-info"></i>
+                    <h3>Metadata Viewer</h3>
+                    <p>Check capture time, location, and metadata more easily so you can find the moment you want more accurately.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="Widgets &amp; Slideshow" data-image="Features7.jpg" data-description="Use server thumbnails in widgets and slideshows for a more enjoyable viewing experience. It helps your media collection feel more alive beyond simple folder browsing.">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Widgets &amp; Slideshow</h3>
+                    <p>Use server thumbnails in widgets and slideshows for a faster and more enjoyable viewing experience.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="Folder-Based Browsing" data-image="Features8.jpg" data-description="Keep your existing NAS and FTP folder structure exactly as it is while browsing it in a gallery-style layout. You do not need to reorganize everything just to make it viewable on your device.">
+                    <i class="fas fa-folder-open"></i>
+                    <h3>Folder-Based Browsing</h3>
+                    <p>Keep your existing NAS and FTP folder structure while browsing it in a fast gallery-style layout.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="For NAS, FTP, and More" data-image="Features9.jpg" data-description="TorchPhoto is designed for people who manage their own media and want a smoother way to browse it on iPhone and iPad. It fits NAS, FTP servers, and other self-managed storage workflows more comfortably.">
+                    <i class="fas fa-heart"></i>
+                    <h3>For NAS, FTP, and More</h3>
+                    <p>Made for people who want to browse self-managed media more comfortably from NAS, FTP servers, and similar storage on iPhone and iPad.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="QR Share" data-image="Features10.jpg" data-description="Share a server setup as a QR code so TorchPhoto users can register it faster without manually typing every field. It is useful when you want quick onboarding across your own devices or trusted people.">
+                    <i class="fas fa-qrcode"></i>
+                    <h3>QR Share</h3>
+                    <p>Share a QR code for faster server registration in TorchPhoto.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="Thumbnails Share" data-image="Features11.jpg" data-description="Share only generated thumbnails while preserving the original folder path structure. This is useful for sending lightweight sample images without transferring the original full-size media files.">
+                    <i class="fas fa-share-nodes"></i>
+                    <h3>Thumbnails Share</h3>
+                    <p>Share generated thumbnails with folder paths preserved to provide lightweight sample images.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button" data-title="Timemap Stamp" data-image="Features12.jpg" data-description="When viewing a photo or video, TorchPhoto can read original metadata and show the capture date, time, and location in a compact mini-map style. It helps turn each item into a clearer memory with context.">
+                    <i class="fas fa-map-location-dot"></i>
+                    <h3>Timemap Stamp</h3>
+                    <p>View capture date, time, and location from original metadata in a compact mini-map style.</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="workflow">
+        <div class="container">
+            <span class="section-eyebrow">Simple Workflow</span>
+            <h2 class="section-title">From Server Setup to Gallery Browsing</h2>
+            <p class="section-subtitle">Register your FTP server, generate thumbnails, and start exploring your media in a smoother gallery-style flow.</p>
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="workflow-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <span class="workflow-badge">Step 1</span>
+                    <h3>Add Your FTP Server</h3>
+                    <p>Connect your server once and keep your existing folder structure ready for browsing.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span class="workflow-badge">Step 2</span>
+                    <h3>Generate Thumbnails</h3>
+                    <p>Create lightweight thumbnails for folders so large photo and video collections feel faster to open.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <span class="workflow-badge">Step 3</span>
+                    <h3>Browse in the Viewer</h3>
+                    <p>Explore your media like a gallery with quick previews, smooth scrolling, and easier revisiting.</p>
+                </div>
+            </div>
+
+            <div class="privacy-inline">
+                <div class="privacy-inline-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="privacy-inline-copy">
+                    <span class="section-eyebrow section-eyebrow-left">Privacy</span>
+                    <h3>Your private data stays on your iOS device</h3>
+                    <p>Personal information and app data are stored only as local data on your device. TorchPhoto does not upload or share your private data anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshots" class="screenshots screenshots-compact">
+        <div class="container">
+            <h2 class="section-title">Screenshots</h2>
+            <div class="screenshot-gallery">
+                <img src="flow1.jpg" alt="TorchPhoto screenshot 1">
+                <img src="flow2.jpg" alt="TorchPhoto screenshot 2">
+                <img src="flow3.jpg" alt="TorchPhoto screenshot 3">
+                <img src="flow4.jpg" alt="TorchPhoto screenshot 4">
+            </div>
+        </div>
+    </section>
+
+    <footer id="support">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h1>Support</h1>
+                    <p>TorchPhoto - NAS/FTP Photo &amp; Video Viewer</p>
+                    <p>© 2026 PixelBrick. All rights reserved.</p>
+                </div>
+                <div class="footer-contact">
+                    <div class="footer-links">
+                        <a href="guide.html">Guide</a>
+                        <a href="update.html">Update</a>
+                        <a href="qa.html">Q&amp;A</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                    </div>
+                    <p class="footer-email">
+                        <a href="mailto:teamtorchphoto@gmail.com">teamtorchphoto@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="feature-modal" id="featureModal" aria-hidden="true">
+        <div class="feature-modal-backdrop" data-close-modal></div>
+        <div class="feature-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="featureModalTitle">
+            <button class="feature-modal-close" type="button" data-close-modal aria-label="Close">
+                <i class="fas fa-xmark"></i>
+            </button>
+            <div class="feature-modal-media">
+                <img id="featureModalImage" src="main.jpg" alt="Feature preview">
+            </div>
+            <div class="feature-modal-copy">
+                <span class="feature-modal-label">Feature</span>
+                <h3 id="featureModalTitle">Feature Title</h3>
+                <p id="featureModalDescription">Feature description.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinkItems = document.querySelectorAll('.nav-links a');
+
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        navLinkItems.forEach((link) => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!navToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    const featureModal = document.getElementById('featureModal');
+    const featureModalTitle = document.getElementById('featureModalTitle');
+    const featureModalDescription = document.getElementById('featureModalDescription');
+    const featureModalImage = document.getElementById('featureModalImage');
+    const featureTriggers = document.querySelectorAll('.feature-trigger');
+    const modalCloseTargets = document.querySelectorAll('[data-close-modal]');
+
+    function openFeatureModal(title, description, image) {
+        featureModalTitle.textContent = title;
+        featureModalDescription.textContent = description;
+        featureModalImage.src = image;
+        featureModalImage.alt = title;
+        featureModal.classList.add('is-open');
+        featureModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    }
+
+    function closeFeatureModal() {
+        featureModal.classList.remove('is-open');
+        featureModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+    }
+
+    featureTriggers.forEach((button) => {
+        button.addEventListener('click', () => {
+            openFeatureModal(
+                button.dataset.title,
+                button.dataset.description,
+                button.dataset.image
+            );
+        });
+    });
+
+    modalCloseTargets.forEach((target) => {
+        target.addEventListener('click', closeFeatureModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && featureModal.classList.contains('is-open')) {
+            closeFeatureModal();
+        }
+    });
+</script>
+</body>
+</html>
