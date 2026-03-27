@@ -46,19 +46,24 @@
 </head>
 <body>
     <nav>
-        <div class="container">
-            <div class="logo">
-                <img src="logo.png" alt="TorchPhoto Logo">
-                <span class="logo-text">TorchPhoto</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#screenshots">Screenshots</a></li>
-                <li><a href="#support">Support</a></li>
-                <li><a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-download-small">Download</a></li>
-            </ul>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="TorchPhoto Logo">
+            <span class="logo-text">TorchPhoto</span>
         </div>
-    </nav>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#screenshots">Screenshots</a></li>
+            <li><a href="#support">Support</a></li>
+            <li><a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-download-small">Download</a></li>
+        </ul>
+    </div>
+</nav>
 
     <header class="hero">
         <div class="container hero-grid">
@@ -244,48 +249,80 @@
     </div>
 
     <script>
-        const featureModal = document.getElementById('featureModal');
-        const featureModalTitle = document.getElementById('featureModalTitle');
-        const featureModalDescription = document.getElementById('featureModalDescription');
-        const featureModalImage = document.getElementById('featureModalImage');
-        const featureTriggers = document.querySelectorAll('.feature-trigger');
-        const modalCloseTargets = document.querySelectorAll('[data-close-modal]');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinkItems = document.querySelectorAll('.nav-links a');
 
-        function openFeatureModal(title, description, image) {
-            featureModalTitle.textContent = title;
-            featureModalDescription.textContent = description;
-            featureModalImage.src = image;
-            featureModalImage.alt = title;
-            featureModal.classList.add('is-open');
-            featureModal.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('modal-open');
-        }
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
 
-        function closeFeatureModal() {
-            featureModal.classList.remove('is-open');
-            featureModal.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('modal-open');
-        }
-
-        featureTriggers.forEach((button) => {
-            button.addEventListener('click', () => {
-                openFeatureModal(
-                    button.dataset.title,
-                    button.dataset.description,
-                    button.dataset.image
-                );
+        navLinkItems.forEach((link) => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
             });
         });
 
-        modalCloseTargets.forEach((target) => {
-            target.addEventListener('click', closeFeatureModal);
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && featureModal.classList.contains('is-open')) {
-                closeFeatureModal();
+        document.addEventListener('click', (event) => {
+            if (!navToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
             }
         });
-    </script>
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    const featureModal = document.getElementById('featureModal');
+    const featureModalTitle = document.getElementById('featureModalTitle');
+    const featureModalDescription = document.getElementById('featureModalDescription');
+    const featureModalImage = document.getElementById('featureModalImage');
+    const featureTriggers = document.querySelectorAll('.feature-trigger');
+    const modalCloseTargets = document.querySelectorAll('[data-close-modal]');
+
+    function openFeatureModal(title, description, image) {
+        featureModalTitle.textContent = title;
+        featureModalDescription.textContent = description;
+        featureModalImage.src = image;
+        featureModalImage.alt = title;
+        featureModal.classList.add('is-open');
+        featureModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    }
+
+    function closeFeatureModal() {
+        featureModal.classList.remove('is-open');
+        featureModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+    }
+
+    featureTriggers.forEach((button) => {
+        button.addEventListener('click', () => {
+            openFeatureModal(
+                button.dataset.title,
+                button.dataset.description,
+                button.dataset.image
+            );
+        });
+    });
+
+    modalCloseTargets.forEach((target) => {
+        target.addEventListener('click', closeFeatureModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && featureModal.classList.contains('is-open')) {
+            closeFeatureModal();
+        }
+    });
+</script>
 </body>
 </html>
