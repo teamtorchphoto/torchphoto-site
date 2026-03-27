@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Guide - TorchPhoto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .guide-body img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            border-radius: 18px;
+            background: #f7faff;
+        }
+
+        @media (max-width: 768px) {
+            .guide-body img {
+                max-height: 220px;
+            }
+        }
+    </style>
+</head>
+<body class="subpage-body">
+
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="TorchPhoto Logo">
+                <span class="logo-text">TorchPhoto Support</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="update.html">Update</a></li>
+                <li><a href="qa.html">Q&A</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-download-small">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="guide">
+        <div class="container narrow-container">
+            <div class="page-hero">
+                <span class="page-eyebrow">Support</span>
+                <h1>QR Guide</h1>
+                <p>Learn how to register a server using a shared QR image.</p>
+            </div>
+
+            <div class="guide-list">
+                <details class="guide-item" id="register-server-from-qr-image" open>
+                    <summary><span class="guide-number">1.</span> Register a Server from a Shared QR Image</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide2.jpg" alt="Register a Server from a Shared QR Image">
+                            <div class="guide-copy">
+                                <h3>How to Use a Shared QR Image</h3>
+                                <p>If someone shares a server QR as an image, you can scan that image in TorchPhoto and register the server without entering the details manually.</p>
+                                <ul>
+                                    <li>Save the shared QR image to your device first</li>
+                                    <li>Open TorchPhoto and go to the Add Server screen</li>
+                                    <li>Select the option to scan a QR image from your photo library</li>
+                                    <li>Choose the saved QR image</li>
+                                    <li>Check the imported server information and save it</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openGuideFromHash() {
+            const hash = window.location.hash;
+            if (!hash) return;
+
+            const target = document.querySelector(hash);
+            if (!target) return;
+
+            if (target.classList.contains('guide-item')) {
+                target.open = true;
+                requestAnimationFrame(() => {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+        }
+
+        window.addEventListener('load', openGuideFromHash);
+        window.addEventListener('hashchange', openGuideFromHash);
+    </script>
+
+</body>
+</html>
