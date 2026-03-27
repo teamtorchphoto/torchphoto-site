@@ -114,29 +114,29 @@ nav .container {
 
 .nav-toggle {
     display: none;
-    align-items: center;
-    justify-content: center;
     width: 44px;
     height: 44px;
-    border: 1px solid rgba(17, 24, 39, 0.08);
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #111827;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.96);
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+    color: #111827;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    padding: 0;
 }
 
 .nav-toggle:hover {
     background: #ffffff;
-    border-color: rgba(43, 92, 255, 0.16);
-}
-
-.nav-toggle:active {
-    transform: scale(0.97);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
 }
 
 .nav-toggle i {
     font-size: 1.1rem;
+    line-height: 1;
+    pointer-events: none;
 }
 
 /* Hero */
@@ -320,14 +320,20 @@ nav .container {
 .feature-modal-media {
     background: linear-gradient(180deg, #f5f8ff 0%, #eef4ff 100%);
     min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
 }
 
 .feature-modal-media img {
     width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: auto;
     max-height: 620px;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    margin: 0 auto;
 }
 
 .feature-modal-copy {
@@ -610,15 +616,201 @@ footer {
     font-size: 0.95rem;
 }
 
+
+
+.section-eyebrow {
+    display: block;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 40px;
+}
+
+.mockup {
+    transition: transform 0.45s ease;
+    transform-origin: center center;
+}
+
+.hero-image:hover .mockup {
+    transform: scale(1.15);
+}
+
+.workflow {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.workflow-steps {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 34px;
+    margin-top: 52px;
+}
+
+.workflow-steps::before {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 16.66%;
+    right: 16.66%;
+    border-top: 1px dashed #d7e3fb;
+    z-index: 0;
+}
+
+.workflow-step {
+    position: relative;
+    text-align: center;
+    padding: 0 18px;
+    z-index: 1;
+}
+
+.workflow-icon {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 18px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #dbe6ff;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.workflow-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #64748b;
+    font-size: 0.84rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.workflow-step h3 {
+    font-size: 1.7rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+.workflow-step p {
+    color: var(--text-sub);
+    font-size: 1rem;
+}
+
+.privacy-inline {
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40px;
+    border-top: 1px solid #dbe6ff;
+}
+
+.privacy-inline-icon {
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.privacy-inline-copy {
+    flex: 1;
+}
+
+.privacy-inline-copy .section-eyebrow {
+    text-align: left;
+}
+
+.privacy-inline-copy h3 {
+    font-size: 2rem;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+.privacy-inline-copy p {
+    color: var(--text-sub);
+    font-size: 1.02rem;
+}
+
+.privacy-copy h2 {
+    font-size: 2rem;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+.privacy-copy p {
+    color: var(--text-sub);
+    font-size: 1.02rem;
+}
+
+
 /* Responsive */
 @media (max-width: 900px) {
     .guide-body,
-    .feature-modal-dialog {
+    .feature-modal-dialog,
+    .privacy-highlight-card {
         grid-template-columns: 1fr;
     }
 
     .feature-modal-media img {
-        max-height: 300px;
+		max-height: 300px;
+		width: auto;
+		max-width: 100%;
+	}
+
+    .workflow-steps {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .workflow-steps::before {
+        display: none;
+    }
+
+    .workflow-step {
+        padding: 0;
+    }
+
+    .privacy-highlight-card {
+        text-align: center;
+    }
+
+    .privacy-icon {
+        margin: 0 auto;
+    }
+
+    .privacy-copy .section-eyebrow,
+    .privacy-copy h2,
+    .privacy-copy p {
+        text-align: center;
     }
 }
 
@@ -646,9 +838,9 @@ footer {
     }
 
     .nav-links {
-        display: flex;
+        display: none;
         position: absolute;
-        top: calc(100% + 12px);
+        top: 70px;
         left: 20px;
         right: 20px;
         background: rgba(255, 255, 255, 0.98);
@@ -660,18 +852,10 @@ footer {
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transform: translateY(-10px);
-        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
     }
 
     .nav-links.is-open {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transform: translateY(0);
+        display: flex;
     }
 
     .nav-links li {
@@ -717,6 +901,24 @@ footer {
 
     .feature-modal-copy h3 {
         font-size: 1.55rem;
+    }
+
+    .workflow,
+    .privacy-highlight {
+        padding: 80px 0;
+    }
+
+    .workflow-step h3 {
+        font-size: 1.5rem;
+    }
+
+    .privacy-highlight-card {
+        padding: 30px 24px;
+        border-radius: 24px;
+    }
+
+    .privacy-copy h2 {
+        font-size: 1.7rem;
     }
 
     .footer-content {
