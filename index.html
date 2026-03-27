@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TorchPhoto - NAS/FTP Photo & Video Viewer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .screenshots-compact .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+            padding: 20px 0 0;
+            overflow: visible;
+            align-items: start;
+        }
+        .screenshots-compact .screenshot-gallery img {
+            width: 100%;
+            max-width: 220px;
+            margin: 0 auto;
+            aspect-ratio: 9 / 19.5;
+            object-fit: cover;
+            border-radius: 22px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .screenshots-compact .screenshot-gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .screenshots-compact .screenshot-gallery img {
+                max-width: 200px;
+            }
+        }
+        @media (max-width: 520px) {
+            .screenshots-compact .screenshot-gallery {
+                gap: 14px;
+            }
+            .screenshots-compact .screenshot-gallery img {
+                max-width: 160px;
+                border-radius: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="TorchPhoto Logo">
+                <span class="logo-text">TorchPhoto</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-download-small">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1><span class="hero-title-line">NAS/FTP Photo & Video Viewer</span><span class="hero-title-brand">TorchPhoto</span></h1>
+                <p>Uploading is easy, but viewing again is often not. <br>TorchPhoto is designed to help you browse photos and videos stored on NAS and FTP servers like a gallery on iPhone and iPad.</p>
+                <div class="hero-btns">
+                    <a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-appstore">
+                        <i class="fab fa-apple"></i>
+                        <span>Download on the <strong>App Store</strong></span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="main.jpg" alt="TorchPhoto App Mockup" class="mockup">
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <div class="feature-grid">
+                <button class="feature-card feature-trigger" type="button">
+                    <i class="fas fa-image"></i>
+                    <h3>Optimized for Photos & Videos</h3>
+                    <p>Browse media with a viewing experience focused on photos and videos instead of general file management.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Thumbnail Generation</h3>
+                    <p>Generate lightweight thumbnails for large folders and scroll through them quickly with smooth previews.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button">
+                    <i class="fas fa-box-archive"></i>
+                    <h3>Offline Mode</h3>
+                    <p>Keep generated thumbnails in cache so you can continue browsing even without internet or with an unstable server connection.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button">
+                    <i class="fas fa-download"></i>
+                    <h3>Download & Share</h3>
+                    <p>Save server photos and videos to your device or share them quickly when you need to send something fast.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button">
+                    <i class="fas fa-upload"></i>
+                    <h3>Upload & Backup</h3>
+                    <p>Upload photos and videos from iPhone to your FTP server and build a simple personal-server backup workflow.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button">
+                    <i class="fas fa-circle-info"></i>
+                    <h3>Metadata Viewer</h3>
+                    <p>Check capture time, location, and metadata more easily so you can find the moment you want more accurately.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Widgets & Slideshow</h3>
+                    <p>Use server thumbnails in widgets and slideshows for a faster and more enjoyable viewing experience.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button">
+                    <i class="fas fa-folder-open"></i>
+                    <h3>Folder-Based Browsing</h3>
+                    <p>Keep your existing NAS and FTP folder structure while browsing it in a fast gallery-style layout.</p>
+                </button>
+                <button class="feature-card feature-trigger" type="button">
+                    <i class="fas fa-heart"></i>
+                    <h3>Built for Personal Servers</h3>
+                    <p>Designed for people who want to revisit photos and videos stored on NAS, home servers, and FTP storage more easily on iPhone and iPad.</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshots" class="screenshots screenshots-compact">
+        <div class="container">
+            <h2 class="section-title">Screenshots</h2>
+            <div class="screenshot-gallery">
+                <img src="flow1.jpg">
+                <img src="flow2.jpg">
+                <img src="flow3.jpg">
+                <img src="flow4.jpg">
+            </div>
+        </div>
+    </section>
+
+    <footer id="support">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>TorchPhoto</h3>
+                    <p>NAS/FTP Photo & Video Viewer</p>
+                    <p>© 2026 PixelBrick. All rights reserved.</p>
+                </div>
+                <div class="footer-contact">
+                    <div class="footer-links">
+                        <a href="guide.html">Guide</a>
+                        <a href="update.html">Update</a>
+                        <a href="qa.html">Q&amp;A</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                    </div>
+                    <p class="footer-email">
+                        <a href="mailto:teamtorchphoto@gmail.com">teamtorchphoto@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

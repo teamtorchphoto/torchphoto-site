@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide - TorchPhoto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .guide-body img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            border-radius: 18px;
+            background: #f7faff;
+        }
+
+        @media (max-width: 768px) {
+            .guide-body img {
+                max-height: 220px;
+            }
+        }
+    </style>
+</head>
+<body class="subpage-body">
+
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="TorchPhoto Logo">
+                <span class="logo-text">TorchPhoto Support</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="update.html">Update</a></li>
+                <li><a href="qa.html">Q&A</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-download-small">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="guide">
+        <div class="container narrow-container">
+            <div class="page-hero">
+                <span class="page-eyebrow">Support</span>
+                <h1>Guide</h1>
+                <p>Tap an item below to expand the guide with images and instructions.</p>
+            </div>
+
+            <div class="guide-list">
+                <details class="guide-item" id="add-a-server">
+                    <summary><span class="guide-number">1.</span> Add a Server</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide1.jpg" alt="Add a Server">
+                            <div class="guide-copy">
+                                <h3>How to Add a Server</h3>
+                                <p>Open the add server screen in the app, then enter the address, port, username, and password before saving.</p>
+                                <ul>
+                                    <li>Enter the server address and port</li>
+                                    <li>Enter login information</li>
+                                    <li>Save and test the connection</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="qr-code-share-scan">
+                    <summary><span class="guide-number">2.</span> QR Code Share</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide2.jpg" alt="QR Code Share & Scan">
+                            <div class="guide-copy">
+                                <h3>QR Code Sharing and Scanning</h3>
+                                <p>You can easily share and import server connection details with a QR code. This is useful when quickly registering the same server on multiple devices.</p>
+                                <ul>
+                                    <li>Long-press a server item and select Share QR</li>
+                                    <li>Scan instantly with the camera on another device</li>
+                                    <li>Share the QR image and scan it</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="generate-thumbnails">
+                    <summary><span class="guide-number">3.</span> Generate Thumbnails</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide3.jpg" alt="Generate Thumbnails">
+                            <div class="guide-copy">
+                                <h3>Generate Thumbnails</h3>
+                                <p>Generate thumbnails in the desired server folder to browse photos and videos quickly in a gallery-style layout.</p>
+                                <ul>
+                                    <li>Move to a folder containing photos or videos</li>
+                                    <li>Run thumbnail generation</li>
+                                    <li>Supports list mode or grid mode</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="share-thumbnails">
+                    <summary><span class="guide-number">4.</span> Share Thumbnails</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide4.jpg" alt="Share Thumbnails">
+                            <div class="guide-copy">
+                                <h3>Share Thumbnails</h3>
+                                <p>Share generated thumbnails to quickly send sample images. This is useful when reviewing only the needed scenes first.</p>
+                                <ul>
+                                    <li>Long-press a server item and select Share Thumbnails</li>
+                                    <li>Create a single zip file</li>
+                                    <li>Share while keeping the folder path structure</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="viewer-organization">
+                    <summary><span class="guide-number">5.</span> Folder Tag</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide5.jpg" alt="Viewer & Organization">
+                            <div class="guide-copy">
+                                <h3>Folder Tag Feature</h3>
+                                <p>In the viewer screen, long-pressing an item selects one item first, and holding longer selects all items. Tap the folder name to assign tags, separated by commas.</p>
+                                <ul>
+                                    <li>Tap the folder name to assign tags</li>
+                                    <li>Use commas for multiple tags</li>
+                                    <li>Search tags on the server list screen</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="upload-backup">
+                    <summary><span class="guide-number">6.</span> Upload / Backup</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide6.jpg" alt="Upload / Backup">
+                            <div class="guide-copy">
+                                <h3>Upload and Backup</h3>
+                                <p>Back up photos and videos to an FTP server. Long-press the server icon to automatically select items from a specified period.</p>
+                                <ul>
+                                    <li>Select photos and videos to upload</li>
+                                    <li>Choose the server folder</li>
+                                    <li>Use automatic date-based selection</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="play-slideshow">
+                    <summary><span class="guide-number">7.</span> Play Slideshow</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide7.jpg" alt="Play Slideshow">
+                            <div class="guide-copy">
+                                <h3>Play Slideshow</h3>
+                                <p>You can automatically play photos in the selected folder. This is ideal for browsing memories stored on the server like an album.</p>
+                                <ul>
+                                    <li>Long-press a server item to start the slideshow</li>
+                                    <li>Adjust playback interval</li>
+                                    <li>Play by server unit</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="offline-mode">
+                    <summary><span class="guide-number">8.</span> Offline Mode</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide8.jpg" alt="Offline Mode">
+                            <div class="guide-copy">
+                                <h3>Offline Mode</h3>
+                                <p>Use pre-generated thumbnails to keep browsing even without internet or with an unstable connection. This is especially useful while on the move.</p>
+                                <ul>
+                                    <li>Use cached thumbnails</li>
+                                    <li>Works well on unstable networks</li>
+                                    <li>Browse while preserving the server folder structure</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="thumbnails-widget">
+                    <summary><span class="guide-number">9.</span> Thumbnails Widget</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide9.jpg" alt="Thumbnails Widget">
+                            <div class="guide-copy">
+                                <h3>Thumbnail Widget</h3>
+                                <p>Use generated server photo thumbnails as widgets on the home screen. Thumbnail widgets also work without internet access.</p>
+                                <ul>
+                                    <li>Generate thumbnails, then go to the settings screen</li>
+                                    <li>Select a folder in widget settings at the bottom</li>
+                                    <li>Use thumbnails based on server photos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="save-video-frame">
+                    <summary><span class="guide-number">10.</span> Save Video Frame</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide10.jpg" alt="Save Video Frame">
+                            <div class="guide-copy">
+                                <h3>Save Video Frame</h3>
+                                <p>Save a desired moment from a video as an image. It is saved while preserving the original resolution.</p>
+                                <ul>
+                                    <li>Play a video from the server</li>
+                                    <li>Long-press the video to view metadata</li>
+                                    <li>Save a frame from the bottom section of the metadata view</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openGuideFromHash() {
+            const hash = window.location.hash;
+            if (!hash) return;
+
+            const target = document.querySelector(hash);
+            if (!target) return;
+
+            if (target.classList.contains('guide-item')) {
+                target.open = true;
+                requestAnimationFrame(() => {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+        }
+
+        window.addEventListener('load', openGuideFromHash);
+        window.addEventListener('hashchange', openGuideFromHash);
+    </script>
+
+</body>
+</html>
