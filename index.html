@@ -51,7 +51,10 @@
                 <img src="logo.png" alt="TorchPhoto Logo">
                 <span class="logo-text">TorchPhoto</span>
             </div>
-            <ul class="nav-links">
+            <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="site-menu">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#screenshots">Screenshots</a></li>
                 <li><a href="#support">Support</a></li>
@@ -165,5 +168,60 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navIcon = navToggle ? navToggle.querySelector('i') : null;
+
+        if (navToggle && navLinks) {
+            const closeMenu = () => {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Open menu');
+                if (navIcon) {
+                    navIcon.classList.remove('fa-xmark');
+                    navIcon.classList.add('fa-bars');
+                }
+            };
+
+            const openMenu = () => {
+                navLinks.classList.add('is-open');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navToggle.setAttribute('aria-label', 'Close menu');
+                if (navIcon) {
+                    navIcon.classList.remove('fa-bars');
+                    navIcon.classList.add('fa-xmark');
+                }
+            };
+
+            navToggle.addEventListener('click', () => {
+                if (navLinks.classList.contains('is-open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            navLinks.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (window.innerWidth > 768) return;
+                if (!navLinks.contains(event.target) && !navToggle.contains(event.target)) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
+    </script>
 </body>
 </html>
