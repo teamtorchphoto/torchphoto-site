@@ -636,13 +636,92 @@ footer {
     border-radius: 40px;
 }
 
+.hero-image-slider {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 40px;
+}
+
+.hero-image-slider::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+    animation: heroBlurOverlay 7s ease-in-out infinite;
+}
+
+.hero-image-slider .mockup {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
 .mockup {
     transition: transform 0.45s ease;
     transform-origin: center center;
 }
 
+.mockup-main {
+    position: relative;
+    z-index: 1;
+}
+
+.mockup-alt {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0;
+    filter: blur(18px);
+    transform: translateY(22px) scale(0.985);
+    will-change: transform, opacity, filter;
+    animation: heroMockupSwap 7s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
 .hero-image:hover .mockup {
     transform: scale(1.00);
+}
+
+@keyframes heroBlurOverlay {
+    0%,
+    40%,
+    100% {
+        opacity: 0;
+    }
+    46%,
+    53% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0;
+    }
+}
+
+@keyframes heroMockupSwap {
+    0%,
+    42% {
+        opacity: 0;
+        filter: blur(18px);
+        transform: translateY(22px) scale(0.985);
+    }
+    54%,
+    85% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(90px) scale(0.98);
+    }
 }
 
 .workflow {
