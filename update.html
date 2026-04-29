@@ -10,6 +10,8 @@
         .guide-item {
             position: relative;
             transform-origin: center center;
+            border-color: rgba(211, 224, 242, 0.98);
+            background-clip: padding-box;
             transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
         }
 
@@ -32,9 +34,9 @@
         }
 
         .guide-list > .guide-item:first-child {
-            overflow: visible;
+            overflow: hidden;
             background: #ffffff;
-            border-color: rgba(59, 130, 246, 0.36);
+            border-color: rgba(59, 130, 246, 0.64);
             box-shadow: none;
             isolation: isolate;
         }
@@ -42,13 +44,13 @@
         .guide-list > .guide-item:first-child::before {
             content: "";
             position: absolute;
-            inset: -7px;
-            border-radius: 29px;
-            background: linear-gradient(120deg, rgba(0, 122, 255, 0.04), rgba(96, 165, 250, 0.66), rgba(37, 99, 235, 0.16), rgba(0, 122, 255, 0.04));
+            inset: 6px;
+            border-radius: 17px;
+            background: linear-gradient(120deg, rgba(0, 122, 255, 0.02), rgba(96, 165, 250, 0.3), rgba(37, 99, 235, 0.08), rgba(0, 122, 255, 0.02));
             background-size: 260% 260%;
-            filter: blur(12px);
-            opacity: 0.58;
-            z-index: -1;
+            filter: blur(6px);
+            opacity: 0.34;
+            z-index: 0;
             animation: latestUpdateGlow 5.5s ease-in-out infinite;
             pointer-events: none;
         }
@@ -56,8 +58,8 @@
         .guide-list > .guide-item:first-child::after {
             content: "";
             position: absolute;
-            inset: -1px;
-            border-radius: 23px;
+            inset: 0;
+            border-radius: inherit;
             padding: 1px;
             background: linear-gradient(120deg, rgba(0, 122, 255, 0.14), rgba(96, 165, 250, 0.72), rgba(37, 99, 235, 0.24), rgba(0, 122, 255, 0.14));
             background-size: 260% 260%;
@@ -66,6 +68,13 @@
             mask-composite: exclude;
             animation: latestUpdateGlow 5.5s ease-in-out infinite;
             pointer-events: none;
+            z-index: 1;
+        }
+
+        .guide-list > .guide-item:first-child summary,
+        .guide-list > .guide-item:first-child .guide-content {
+            position: relative;
+            z-index: 2;
         }
 
         .guide-list > .guide-item:first-child summary {

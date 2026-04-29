@@ -708,6 +708,32 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            .plan-row .plan-value.limited::before,
+            .plan-row .plan-value.unlocked::before {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: auto;
+                height: auto;
+                margin-right: 8px;
+                padding: 3px 8px;
+                border-radius: 999px;
+                color: #ffffff;
+                font-size: 0.68rem;
+                font-weight: 900;
+                letter-spacing: 0.06em;
+            }
+
+            .plan-row .plan-value.limited::before {
+                content: "FREE";
+                background: #dc2626;
+            }
+
+            .plan-row .plan-value.unlocked::before {
+                content: "PRO";
+                background: #16a34a;
+            }
         }
 
         @media (max-width: 520px) {
