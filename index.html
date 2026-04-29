@@ -708,32 +708,6 @@
                 width: 100%;
                 justify-content: center;
             }
-
-            .plan-row .plan-value.limited::before,
-            .plan-row .plan-value.unlocked::before {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: auto;
-                height: auto;
-                margin-right: 8px;
-                padding: 3px 8px;
-                border-radius: 999px;
-                color: #ffffff;
-                font-size: 0.68rem;
-                font-weight: 900;
-                letter-spacing: 0.06em;
-            }
-
-            .plan-row .plan-value.limited::before {
-                content: "FREE";
-                background: #dc2626;
-            }
-
-            .plan-row .plan-value.unlocked::before {
-                content: "PRO";
-                background: #16a34a;
-            }
         }
 
         @media (max-width: 520px) {
@@ -778,6 +752,54 @@
                 animation: none;
             }
         }
+
+        .feature-modal-loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(248, 251, 255, 0.74);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s ease, visibility 0.18s ease;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .feature-modal.is-loading .feature-modal-loading {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .feature-modal-spinner {
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            border: 3px solid rgba(37, 99, 235, 0.14);
+            border-top-color: rgba(37, 99, 235, 0.86);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.16);
+            animation: featureModalSpin 0.72s linear infinite;
+        }
+
+        .feature-modal.is-loading .feature-modal-media,
+        .feature-modal.is-loading .feature-modal-copy {
+            opacity: 0.14;
+        }
+
+        .feature-modal-media,
+        .feature-modal-copy {
+            transition: opacity 0.18s ease;
+        }
+
+        @keyframes featureModalSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
     </style>
 	<link rel="icon" type="image/png" href="logo.png">
 </head>
@@ -1029,6 +1051,9 @@
             <button class="feature-modal-close" type="button" data-close-modal aria-label="Close">
                 <i class="fas fa-xmark"></i>
             </button>
+            <div class="feature-modal-loading" aria-hidden="true">
+                <div class="feature-modal-spinner"></div>
+            </div>
             <div class="feature-modal-media">
                 <img id="featureModalImage" src="main.jpg" alt="Feature preview">
             </div>
@@ -1158,20 +1183,52 @@
     const featureTriggers = document.querySelectorAll('.feature-trigger');
     const modalCloseTargets = document.querySelectorAll('[data-close-modal]');
 
+    let featureModalRequestId = 0;
+    let featureModalTimer = null;
+
     function openFeatureModal(title, description, image) {
-        featureModalTitle.textContent = title;
-        featureModalDescription.textContent = description;
-        featureModalImage.src = image;
-        featureModalImage.alt = title;
-        featureModal.classList.add('is-open');
+        const requestId = ++featureModalRequestId;
+        const startedAt = Date.now();
+        clearTimeout(featureModalTimer);
+
+        featureModal.classList.add('is-open', 'is-loading');
         featureModal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('modal-open');
+
+        featureModalTitle.textContent = title;
+        featureModalDescription.textContent = description;
+        featureModalImage.alt = title;
+
+        const finish = () => {
+            if (requestId !== featureModalRequestId) return;
+            const delay = Math.max(0, 160 - (Date.now() - startedAt));
+            clearTimeout(featureModalTimer);
+            featureModalTimer = setTimeout(() => {
+                if (requestId === featureModalRequestId) {
+                    featureModal.classList.remove('is-loading');
+                }
+            }, delay);
+        };
+
+        featureModalImage.onload = finish;
+        featureModalImage.onerror = finish;
+        featureModalImage.src = image;
+
+        if (featureModalImage.complete && featureModalImage.naturalWidth > 0) {
+            finish();
+        } else {
+            featureModalTimer = setTimeout(finish, 700);
+        }
     }
 
     function closeFeatureModal() {
-        featureModal.classList.remove('is-open');
+        featureModalRequestId++;
+        clearTimeout(featureModalTimer);
+        featureModal.classList.remove('is-open', 'is-loading');
         featureModal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('modal-open');
+        featureModalImage.onload = null;
+        featureModalImage.onerror = null;
     }
 
     featureTriggers.forEach((button) => {
