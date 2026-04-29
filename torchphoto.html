@@ -754,44 +754,6 @@
             }
         }
 
-
-
-        .plan-comparison .section-title .plan-title-free,
-        .plan-comparison .section-title .plan-title-pro {
-            display: inline-block;
-            color: transparent;
-            background-size: 260% 260%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: planTitleGradientMove 5.8s ease-in-out infinite;
-        }
-
-        .plan-comparison .section-title .plan-title-free {
-            background-image: linear-gradient(120deg, #7f1d1d 0%, #dc2626 32%, #f87171 58%, #991b1b 100%);
-            filter: drop-shadow(0 12px 24px rgba(220, 38, 38, 0.13));
-        }
-
-        .plan-comparison .section-title .plan-title-pro {
-            background-image: linear-gradient(120deg, #064e3b 0%, #059669 32%, #34d399 58%, #047857 100%);
-            filter: drop-shadow(0 12px 24px rgba(22, 163, 74, 0.14));
-        }
-
-        .plan-comparison .section-title .plan-title-vs {
-            color: #111827;
-        }
-
-        @keyframes planTitleGradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
         .hero::after,
         .hero-text::before {
             content: none;
@@ -990,7 +952,7 @@
     <section id="pro" class="plan-comparison">
         <div class="container">
             <span class="section-eyebrow">Plans</span>
-            <h2 class="section-title"><span class="plan-title-free">Free</span> <span class="plan-title-vs">vs</span> <span class="plan-title-pro">Pro</span></h2>
+            <h2 class="section-title">Free vs Pro</h2>
             <p class="section-subtitle">See the key differences at a glance and choose the experience that fits your workflow.</p>
             <div class="plan-matrix">
                 <div class="plan-matrix-head">
