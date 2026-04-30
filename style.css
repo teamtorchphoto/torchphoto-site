@@ -751,26 +751,6 @@ footer {
     border-radius: 40px;
 }
 
-.hero-image-slider::after {
-    content: "";
-    position: absolute;
-    top: -18%;
-    bottom: -18%;
-    left: -34%;
-    width: 38%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.52), transparent);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 4;
-    filter: blur(8px);
-    transform: translateX(-40%) rotate(14deg);
-}
-
-.hero-image-slider.is-transitioning::after {
-    animation: heroMockupSweep 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
 .hero-image-slider .mockup {
     width: 100%;
     max-width: none;
@@ -778,55 +758,41 @@ footer {
 }
 
 .mockup {
-    transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1), filter 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.94s cubic-bezier(0.16, 1, 0.3, 1), filter 0.94s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.94s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: center center;
 }
 
 .mockup-main {
     position: relative;
     z-index: 1;
+    will-change: transform, filter;
 }
 
 .hero-image-slider.is-transitioning .mockup-main {
-    transform: scale(0.985);
-    filter: saturate(0.92) brightness(0.96);
+    transform: translateY(3px) scale(0.992);
+    filter: blur(1.4px) saturate(0.96) brightness(0.98);
 }
 
 .mockup-alt {
     position: absolute;
     inset: 0;
     z-index: 2;
-    opacity: 1;
-    clip-path: inset(0 0 0 100% round 40px);
-    filter: saturate(1.08) brightness(1.02);
-    transform: scale(1.018);
-    will-change: clip-path, transform, filter;
+    opacity: 0;
+    filter: blur(12px) saturate(1.04) brightness(1.02);
+    transform: translateY(18px) scale(1.035);
+    will-change: opacity, transform, filter;
     pointer-events: none;
-    transition: clip-path 0.72s cubic-bezier(0.22, 1, 0.36, 1), transform 0.72s cubic-bezier(0.22, 1, 0.36, 1), filter 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.94s cubic-bezier(0.16, 1, 0.3, 1), transform 0.94s cubic-bezier(0.16, 1, 0.3, 1), filter 0.94s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mockup-alt.is-visible {
-    clip-path: inset(0 0 0 0 round 40px);
-    filter: saturate(1.02) brightness(1);
-    transform: scale(1);
+    opacity: 1;
+    filter: blur(0) saturate(1) brightness(1);
+    transform: translateY(0) scale(1);
 }
 
 .hero-image:hover .mockup {
     transform: scale(1.00);
-}
-
-@keyframes heroMockupSweep {
-    0% {
-        opacity: 0;
-        transform: translateX(-40%) rotate(14deg);
-    }
-    22% {
-        opacity: 0.9;
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(420%) rotate(14deg);
-    }
 }
 
 .workflow {

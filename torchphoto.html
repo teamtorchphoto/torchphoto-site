@@ -1154,8 +1154,8 @@
     const heroMockupBase = document.querySelector('.mockup-main');
     const heroMockupOverlay = document.querySelector('.mockup-alt');
     const heroMockupImages = ['main.jpg', 'main2.jpg', 'main3.jpg', 'main4.jpg', 'main5.jpg'];
-    const heroMockupInterval = 2400;
-    const heroMockupTransition = 720;
+    const heroMockupInterval = 3000;
+    const heroMockupTransition = 940;
     let heroMockupIndex = 0;
     let heroMockupBusy = false;
 
@@ -1169,8 +1169,10 @@
         const revealOverlay = () => {
             heroMockupOverlay.onload = null;
             requestAnimationFrame(() => {
-                heroSlider.classList.add('is-transitioning');
-                heroMockupOverlay.classList.add('is-visible');
+                requestAnimationFrame(() => {
+                    heroSlider.classList.add('is-transitioning');
+                    heroMockupOverlay.classList.add('is-visible');
+                });
             });
         };
 
