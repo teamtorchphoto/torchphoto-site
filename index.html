@@ -872,6 +872,7 @@
         </div>
     </header>
 
+
     <section id="features" class="features">
         <div class="container">
             <h2 class="section-title">Features</h2>
@@ -936,6 +937,20 @@
                     <h3>Timemap Stamp</h3>
                     <p>View capture date, time, and location from original metadata in a compact mini-map style.</p>
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="offline" class="offline-section">
+        <div class="container offline-grid">
+            <div class="offline-media">
+                <img src="offline.jpg" alt="TorchPhoto Offline Mode">
+            </div>
+            <div class="offline-copy">
+                <span class="offline-pill"><i class="fas fa-wifi-slash"></i> Offline Mode</span>
+                <h2>Keep browsing, even when the connection stops.</h2>
+                <p>When your iOS device loses internet access or your server connection becomes unstable, TorchPhoto can still let you explore compressed cached images that were already prepared.</p>
+                <p>It also remembers the folder path you were browsing, so offline mode feels less like starting over and more like returning to the same place in your private gallery.</p>
             </div>
         </div>
     </section>
@@ -1134,7 +1149,58 @@
     updateNavShadow();
     window.addEventListener('scroll', updateNavShadow, { passive: true });
 
-    const revealTargets = document.querySelectorAll('.hero-text, .hero-image, .section-eyebrow, .section-title, .section-subtitle, .feature-card, .workflow-step, .privacy-inline, .screenshot-gallery img, .plan-card, .footer-info, .footer-contact');
+
+    const heroSlider = document.querySelector('.hero-image-slider');
+    const heroMockupBase = document.querySelector('.mockup-main');
+    const heroMockupOverlay = document.querySelector('.mockup-alt');
+    const heroMockupImages = ['main.jpg', 'main2.jpg', 'main3.jpg', 'main4.jpg', 'main5.jpg'];
+    const heroMockupInterval = 2400;
+    const heroMockupTransition = 720;
+    let heroMockupIndex = 0;
+    let heroMockupBusy = false;
+
+    function showNextHeroMockup() {
+        if (!heroSlider || !heroMockupBase || !heroMockupOverlay || heroMockupBusy) return;
+
+        heroMockupBusy = true;
+        const nextIndex = (heroMockupIndex + 1) % heroMockupImages.length;
+        const nextSrc = heroMockupImages[nextIndex];
+
+        const revealOverlay = () => {
+            heroMockupOverlay.onload = null;
+            requestAnimationFrame(() => {
+                heroSlider.classList.add('is-transitioning');
+                heroMockupOverlay.classList.add('is-visible');
+            });
+        };
+
+        heroMockupOverlay.classList.remove('is-visible');
+        heroMockupOverlay.onload = revealOverlay;
+        heroMockupOverlay.src = nextSrc;
+
+        if (heroMockupOverlay.complete) {
+            revealOverlay();
+        }
+
+        window.setTimeout(() => {
+            heroMockupBase.src = nextSrc;
+            heroMockupOverlay.classList.remove('is-visible');
+            heroSlider.classList.remove('is-transitioning');
+            heroMockupIndex = nextIndex;
+            heroMockupBusy = false;
+        }, heroMockupTransition);
+    }
+
+    if (heroSlider && heroMockupBase && heroMockupOverlay) {
+        heroMockupImages.forEach((src) => {
+            const preloadImage = new Image();
+            preloadImage.src = src;
+        });
+
+        window.setInterval(showNextHeroMockup, heroMockupInterval);
+    }
+
+    const revealTargets = document.querySelectorAll('.hero-text, .hero-image, .offline-section, .offline-media, .offline-copy, .section-eyebrow, .section-title, .section-subtitle, .feature-card, .workflow, .workflow-step, .privacy-inline, .screenshot-gallery img, .plan-card, .footer-info, .footer-contact');
 
     revealTargets.forEach((element, index) => {
         element.classList.add('scroll-reveal');
