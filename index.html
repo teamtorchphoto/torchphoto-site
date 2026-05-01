@@ -947,10 +947,28 @@
                 <img src="offline.jpg" alt="TorchPhoto Offline Mode">
             </div>
             <div class="offline-copy">
-                <span class="offline-pill"><i class="fas fa-wifi-slash"></i> Offline Mode</span>
+                <span class="offline-pill"><i class="fas fa-ban"></i> Offline Mode</span>
                 <h2>Keep browsing, even when the connection stops.</h2>
                 <p>When your iOS device loses internet access or your server connection becomes unstable, TorchPhoto can still let you explore compressed cached images that were already prepared.</p>
                 <p>It also remembers the folder path you were browsing, so offline mode feels less like starting over and more like returning to the same place in your private gallery.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="live-photo" class="live-photo-section">
+        <div class="container live-photo-grid">
+            <div class="live-photo-copy">
+                <span class="live-photo-pill"><i class="fas fa-circle-play"></i> Live Photo</span>
+                <h2>Two backup files, shown like one Live Photo.</h2>
+                <p>TorchPhoto can treat one photo file and one video file as a single Live Photo style item, so backed up pairs feel more natural to browse.</p>
+                <p>Even though the original backup is stored as two separate files, the viewer presents them together like one Live Photo for a cleaner and more familiar viewing experience.</p>
+            </div>
+            <div class="live-photo-media">
+                <div class="live-photo-visual">
+                    <img class="live-photo-source" src="live1.jpg" alt="Separate photo and video backup files">
+                    <span class="live-photo-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+                    <img class="live-photo-result" src="live2.jpg" alt="Displayed as a single Live Photo style item">
+                </div>
             </div>
         </div>
     </section>
@@ -1202,7 +1220,7 @@
         window.setInterval(showNextHeroMockup, heroMockupInterval);
     }
 
-    const revealTargets = document.querySelectorAll('.hero-text, .hero-image, .offline-section, .offline-media, .offline-copy, .section-eyebrow, .section-title, .section-subtitle, .feature-card, .workflow, .workflow-step, .privacy-inline, .screenshot-gallery img, .plan-card, .footer-info, .footer-contact');
+    const revealTargets = document.querySelectorAll('.hero-text, .hero-image, .offline-section, .offline-media, .offline-copy, .live-photo-section, .live-photo-media, .live-photo-copy, .section-eyebrow, .section-title, .section-subtitle, .feature-card, .workflow, .workflow-step, .privacy-inline, .screenshot-gallery img, .plan-card, .footer-info, .footer-contact');
 
     revealTargets.forEach((element, index) => {
         element.classList.add('scroll-reveal');
