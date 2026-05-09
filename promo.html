@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Month Free - TorchPhoto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <style>
+        .promo-page {
+            padding: 96px 0 80px;
+        }
+
+        .promo-card {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 42px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(220, 228, 238, 0.9);
+            box-shadow: 0 22px 60px rgba(26, 63, 118, 0.10);
+            text-align: center;
+        }
+
+        .promo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.10);
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .promo-card h1 {
+            margin: 0;
+            font-size: clamp(36px, 7vw, 64px);
+            line-height: 1.02;
+            letter-spacing: -0.06em;
+            color: #111827;
+        }
+
+        .promo-card p {
+            margin: 18px auto 0;
+            max-width: 540px;
+            color: #64748b;
+            font-size: 17px;
+            line-height: 1.7;
+            letter-spacing: -0.02em;
+        }
+
+        .promo-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+            min-height: 56px;
+            padding: 0 24px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #3b82f6, #7c3aed);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            box-shadow: 0 16px 36px rgba(59, 130, 246, 0.26);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .promo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 46px rgba(59, 130, 246, 0.34);
+        }
+
+        .promo-code {
+            margin-top: 18px;
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .promo-qr {
+            max-width: 760px;
+            margin: 22px auto 0;
+            padding: 32px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(220, 228, 238, 0.9);
+            box-shadow: 0 18px 48px rgba(26, 63, 118, 0.08);
+            text-align: center;
+        }
+
+        .promo-qr h2 {
+            margin: 0 0 8px;
+            color: #111827;
+            font-size: 22px;
+            letter-spacing: -0.04em;
+        }
+
+        .promo-qr p {
+            margin: 0 0 22px;
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .promo-qr img {
+            display: block;
+            width: min(260px, 78vw);
+            height: auto;
+            margin: 0 auto;
+            padding: 14px;
+            border-radius: 24px;
+            background: #ffffff;
+            box-shadow: 0 12px 34px rgba(15, 23, 42, 0.10);
+        }
+
+        .promo-note {
+            max-width: 760px;
+            margin: 18px auto 0;
+            color: #94a3b8;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .promo-page {
+                padding: 72px 0 56px;
+            }
+
+            .promo-card,
+            .promo-qr {
+                padding: 28px 22px;
+                border-radius: 24px;
+            }
+
+            .promo-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="subpage-body update-page-body">
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="TorchPhoto Logo">
+                <span class="logo-text">TorchPhoto Support</span>
+            </div>
+            <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="site-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="update.html">Update</a></li>
+                <li><a href="qa.html">Q&A</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-download-small">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="qa-page promo-page">
+        <div class="container narrow-container">
+            <section class="promo-card">
+                <div class="promo-badge">
+                    <i class="fas fa-gift"></i>
+                    Limited Offer
+                </div>
+
+                <h2>TorchPhoto 1 month Free</h2>
+                <p>Please open the link below on your iOS device.</p>
+
+                <a class="promo-button" href="https://apps.apple.com/redeem?ctx=offercodes&id=6757838041&code=TORCHFREE1M">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                    Redeem 1 Month Free
+                </a>
+
+                <div class="promo-code">CODE : TORCHFREE1M</div>
+            </section>
+
+            <section class="promo-qr">
+                <h2>Scan QR Code</h2>
+                <p>Scan this QR code with your iOS device camera to open the promotion code page.</p>
+                <img src="torch1mcode.png" alt="TorchPhoto 1 Month Free QR Code">
+            </section>
+
+            <div class="promo-note">
+                Valid until May 31, 2026. <br>
+                After the promotional period, the subscription may renew automatically unless canceled.
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navIcon = navToggle ? navToggle.querySelector('i') : null;
+
+        if (navToggle && navLinks) {
+            const closeMenu = () => {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Open menu');
+                if (navIcon) {
+                    navIcon.classList.remove('fa-xmark');
+                    navIcon.classList.add('fa-bars');
+                }
+            };
+
+            const openMenu = () => {
+                navLinks.classList.add('is-open');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navToggle.setAttribute('aria-label', 'Close menu');
+                if (navIcon) {
+                    navIcon.classList.remove('fa-bars');
+                    navIcon.classList.add('fa-xmark');
+                }
+            };
+
+            navToggle.addEventListener('click', () => {
+                if (navLinks.classList.contains('is-open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            navLinks.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (window.innerWidth > 768) return;
+                if (!navLinks.contains(event.target) && !navToggle.contains(event.target)) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
