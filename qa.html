@@ -51,7 +51,14 @@
                         <p>TorchPhoto is an iOS app designed to help you browse photos and videos stored on FTP or NAS servers quickly like an album on iPhone and iPad. It focuses more on photo and video viewing than a typical file explorer.</p>
                     </div>
                 </details>
-				
+
+                <details class="guide-item">
+                    <summary>Why does it only support FTP? Why doesn’t it support SFTP, WebDAV, SMB, and other protocols?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto currently focuses on FTP because its core features are deeply built around FTP-based photo and video browsing, while <b>SFTP, WebDAV, and SMB</b> require separate implementations and testing; for safer external access, <b>using a VPN such as WireGuard with a local network FTP address is recommended.</b></p>
+                    </div>
+                </details>
+
                 <details class="guide-item">
                     <summary>What file extensions are supported?</summary>
                     <div class="guide-content">
@@ -84,13 +91,6 @@
                     <summary>Is it a cloud storage service?</summary>
                     <div class="guide-content">
                         <p>No. TorchPhoto is not a separate cloud storage service. It connects directly to your FTP or NAS storage so you can view photos and videos there.</p>
-                    </div>
-                </details>
-
-                <details class="guide-item">
-                    <summary>Why does it only support FTP?</summary>
-                    <div class="guide-content">
-                        <p>FTP is widely supported across many servers and NAS environments. TorchPhoto is designed around a simple flow where you first generate thumbnails at home or on local Wi-Fi, then browse more comfortably afterward.</p>
                     </div>
                 </details>
 
