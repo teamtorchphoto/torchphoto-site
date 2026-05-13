@@ -2491,3 +2491,114 @@ footer {
                 animation: none;
             }
         }
+
+/* Guide page image and VPN security section */
+.guide-body img {
+    width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    border-radius: 18px;
+    background: #f7faff;
+}
+
+#vpn-ftp-security {
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.22), transparent 28%),
+        linear-gradient(135deg, #0457ff 0%, #1688ff 48%, #5d7cff 100%);
+    border: 0;
+    border-radius: 28px;
+    box-shadow: 0 22px 60px rgba(18, 113, 255, 0.34);
+}
+
+#vpn-ftp-security summary {
+    justify-content: center;
+    gap: 12px;
+    padding: 24px 26px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.08rem;
+    letter-spacing: -0.01em;
+}
+
+#vpn-ftp-security summary::marker {
+    color: transparent;
+}
+
+#vpn-ftp-security summary::-webkit-details-marker {
+    display: none;
+}
+
+#vpn-ftp-security summary::after {
+    color: #ffffff !important;
+}
+
+#vpn-ftp-security .guide-number {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+#vpn-ftp-security .guide-content {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#vpn-ftp-security .guide-body {
+    display: block;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 30px 26px 34px;
+    background: transparent;
+    border: 0;
+    text-align: center;
+}
+
+#vpn-ftp-security .guide-copy {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+#vpn-ftp-security .guide-copy h3 {
+    margin-bottom: 14px;
+    color: #ffffff;
+    font-size: 1.45rem;
+    letter-spacing: -0.03em;
+}
+
+#vpn-ftp-security .guide-copy p {
+    margin: 0 auto 22px;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.75;
+}
+
+#vpn-ftp-security .guide-copy ul {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#vpn-ftp-security .guide-copy li {
+    padding: 13px 16px;
+    color: rgba(255, 255, 255, 0.94);
+    line-height: 1.55;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+}
+
+#vpn-ftp-security .guide-copy b {
+    color: #ffffff;
+    font-weight: 800;
+}
+
+@media (max-width: 768px) {
+    .guide-body img {
+        max-height: 220px;
+    }
+}

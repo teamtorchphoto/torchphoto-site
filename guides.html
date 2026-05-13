@@ -6,23 +6,6 @@
     <title>Guide - TorchPhoto</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .guide-body img {
-            width: 100%;
-            max-height: 320px;
-            object-fit: contain;
-            object-position: center;
-            display: block;
-            border-radius: 18px;
-            background: #f7faff;
-        }
-
-        @media (max-width: 768px) {
-            .guide-body img {
-                max-height: 220px;
-            }
-        }
-    </style>
 	<link rel="icon" type="image/png" href="logo.png">
 </head>
 <body class="subpage-body">
@@ -58,6 +41,24 @@
             </div>
 
             <div class="guide-list">
+                <details class="guide-item" id="vpn-ftp-security">
+                    <summary>Secure FTP Access with VPN</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <div class="guide-copy">
+                                <h3>A Safer Way to Use FTP Remotely</h3>
+                                <p>For remote access, using <b>VPN + FTP</b> is generally safer than exposing your FTP server directly with DDNS and port forwarding. Connect to your home or NAS network through a VPN first, then use FTP with the local network address.</p>
+                                <ul>
+                                    <li><b>Recommended setup:</b> VPN + FTP</li>
+                                    <li><b>Better security:</b> avoid opening FTP directly to the public internet</li>
+                                    <li><b>Modern VPN option:</b> WireGuard is simple, fast, and widely recommended</li>
+                                    <li><b>After VPN connection:</b> add the FTP server using its internal LAN address</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
                 <details class="guide-item" id="add-a-server">
                     <summary><span class="guide-number">1.</span> Add a Server</summary>
                     <div class="guide-content">
