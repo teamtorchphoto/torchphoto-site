@@ -483,6 +483,154 @@ nav .container {
     80% { transform: scale(1); }
 }
 
+
+.wifi-gallery-section {
+    position: relative;
+    overflow: hidden;
+    padding: 118px 0;
+    background:
+        radial-gradient(circle at 18% 18%, rgba(96, 165, 250, 0.34), transparent 34%),
+        radial-gradient(circle at 86% 72%, rgba(14, 165, 233, 0.2), transparent 38%),
+        linear-gradient(135deg, #eaf4ff 0%, #dbeafe 46%, #eff6ff 100%);
+}
+
+.wifi-gallery-grid {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 46px;
+}
+
+.wifi-gallery-media,
+.wifi-gallery-copy {
+    opacity: 0;
+    filter: blur(16px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wifi-gallery-copy,
+.wifi-gallery-copy.scroll-reveal {
+    transform: translateX(-54px) scale(0.98);
+}
+
+.wifi-gallery-media,
+.wifi-gallery-media.scroll-reveal {
+    transform: translateX(54px) scale(0.96);
+}
+
+.wifi-gallery-section.is-visible .wifi-gallery-media,
+.wifi-gallery-media.is-visible,
+.wifi-gallery-section.is-visible .wifi-gallery-copy,
+.wifi-gallery-copy.is-visible {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+}
+
+.wifi-gallery-copy {
+    padding: 12px 0 0;
+    text-align: center;
+}
+
+.wifi-gallery-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(37, 99, 235, 0.18);
+    color: #1d4ed8;
+    box-shadow: 0 12px 28px rgba(30, 64, 175, 0.1);
+    font-size: 0.82rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.wifi-gallery-copy h2 {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 18px;
+    font-size: clamp(2.1rem, 5vw, 4.1rem);
+    line-height: 1.02;
+    letter-spacing: -0.065em;
+    color: #0f172a;
+}
+
+.wifi-gallery-copy p {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(51, 65, 85, 0.82);
+    font-size: 1.08rem;
+    line-height: 1.82;
+}
+
+.wifi-gallery-copy p + p {
+    margin-top: 14px;
+}
+
+.wifi-gallery-media {
+    justify-self: center;
+    width: 100%;
+}
+
+.wifi-gallery-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+}
+
+.wifi-gallery-visual img {
+    display: block;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 24px 56px rgba(30, 64, 175, 0.16), 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.wifi-gallery-phone {
+    width: 100%;
+    max-width: 176px;
+    aspect-ratio: 9 / 19.5;
+    border-radius: 30px;
+}
+
+.wifi-gallery-browser {
+    width: 100%;
+    max-width: 430px;
+    aspect-ratio: 16 / 10;
+    border-radius: 28px;
+}
+
+.wifi-gallery-signal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(37, 99, 235, 0.16);
+    color: #1d4ed8;
+    box-shadow: 0 14px 34px rgba(30, 64, 175, 0.12);
+    flex: 0 0 auto;
+    font-size: 1.42rem;
+    animation: wifiGallerySignalPulse 3.8s ease-in-out infinite;
+}
+
+@keyframes wifiGallerySignalPulse {
+    0%, 100% { transform: scale(1); }
+    45% { transform: scale(1.12); }
+    70% { transform: scale(1); }
+}
+
 .section-title {
     text-align: center;
     font-size: 2.5rem;
@@ -1139,22 +1287,26 @@ footer {
     .feature-modal-dialog,
     .privacy-highlight-card,
     .offline-grid,
-    .live-photo-grid {
+    .live-photo-grid,
+    .wifi-gallery-grid {
         grid-template-columns: 1fr;
     }
 
     .offline-section,
-    .live-photo-section {
+    .live-photo-section,
+    .wifi-gallery-section {
         padding: 92px 0;
     }
 
     .offline-grid,
-    .live-photo-grid {
+    .live-photo-grid,
+    .wifi-gallery-grid {
         gap: 28px;
     }
 
     .offline-copy,
-    .live-photo-copy {
+    .live-photo-copy,
+    .wifi-gallery-copy {
         text-align: center;
         padding: 0;
     }
@@ -1162,16 +1314,20 @@ footer {
     .offline-copy h2,
     .offline-copy p,
     .live-photo-copy h2,
-    .live-photo-copy p {
+    .live-photo-copy p,
+    .wifi-gallery-copy h2,
+    .wifi-gallery-copy p {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .live-photo-media {
+    .live-photo-media,
+    .wifi-gallery-media {
         justify-self: center;
     }
 
-    .live-photo-visual {
+    .live-photo-visual,
+    .wifi-gallery-visual {
         justify-content: center;
     }
 
@@ -1304,7 +1460,8 @@ footer {
     }
 
     .offline-section,
-    .live-photo-section {
+    .live-photo-section,
+    .wifi-gallery-section {
         padding: 78px 0;
     }
 
@@ -1313,7 +1470,8 @@ footer {
         border-radius: 28px;
     }
 
-    .live-photo-visual {
+    .live-photo-visual,
+    .wifi-gallery-visual {
         gap: 12px;
     }
 
@@ -1322,13 +1480,25 @@ footer {
         border-radius: 24px;
     }
 
-    .live-photo-arrow {
+    .wifi-gallery-phone {
+        max-width: 128px;
+        border-radius: 24px;
+    }
+
+    .wifi-gallery-browser {
+        max-width: 280px;
+        border-radius: 22px;
+    }
+
+    .live-photo-arrow,
+    .wifi-gallery-signal {
         width: 42px;
         height: 42px;
     }
 
     .offline-copy p,
-    .live-photo-copy p {
+    .live-photo-copy p,
+    .wifi-gallery-copy p {
         font-size: 1rem;
     }
 
@@ -1476,7 +1646,8 @@ footer {
 
 
 @media (max-width: 560px) {
-    .live-photo-visual {
+    .live-photo-visual,
+    .wifi-gallery-visual {
         gap: 10px;
     }
 
@@ -1484,7 +1655,16 @@ footer {
         max-width: 118px;
     }
 
-    .live-photo-arrow {
+    .wifi-gallery-phone {
+        max-width: 92px;
+    }
+
+    .wifi-gallery-browser {
+        max-width: 184px;
+    }
+
+    .live-photo-arrow,
+    .wifi-gallery-signal {
         width: 38px;
         height: 38px;
     }

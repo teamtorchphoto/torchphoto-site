@@ -153,6 +153,24 @@
         </div>
     </section>
 
+    <section id="wifi-gallery" class="wifi-gallery-section">
+        <div class="container wifi-gallery-grid">
+            <div class="wifi-gallery-copy">
+                <span class="wifi-gallery-pill"><i class="fas fa-wifi"></i> Wi-Fi Gallery</span>
+                <h2>Share your server gallery in a browser.</h2>
+                <p>With Wi-Fi Gallery Share, devices on the same Wi-Fi network can open your TorchPhoto gallery through a browser such as Safari or Chrome.</p>
+                <p>It loads thumbnails generated on your iOS device first, then naturally switches to the original image for clearer viewing.</p>
+            </div>
+            <div class="wifi-gallery-media">
+                <div class="wifi-gallery-visual">
+                    <img class="wifi-gallery-phone" src="wifigallery1.jpg" alt="TorchPhoto Wi-Fi Gallery on iPhone">
+                    <span class="wifi-gallery-signal" aria-hidden="true"><i class="fas fa-wifi"></i></span>
+                    <img class="wifi-gallery-browser" src="wifigallery2.jpg" alt="TorchPhoto Wi-Fi Gallery in a web browser">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="workflow">
         <div class="container">
             <span class="section-eyebrow">Simple Workflow</span>
@@ -405,7 +423,7 @@
         window.setInterval(showNextHeroMockup, heroMockupInterval);
     }
 
-    const revealTargets = document.querySelectorAll('.hero-text, .hero-image, .offline-section, .offline-media, .offline-copy, .live-photo-section, .live-photo-media, .live-photo-copy, .section-eyebrow, .section-title, .section-subtitle, .feature-card, .workflow, .workflow-step, .privacy-inline, .screenshot-gallery img, .plan-card, .footer-info, .footer-contact');
+    const revealTargets = document.querySelectorAll('.hero-text, .hero-image, .offline-section, .offline-media, .offline-copy, .live-photo-section, .live-photo-media, .live-photo-copy, .wifi-gallery-section, .wifi-gallery-media, .wifi-gallery-copy, .section-eyebrow, .section-title, .section-subtitle, .feature-card, .workflow, .workflow-step, .privacy-inline, .screenshot-gallery img, .plan-card, .footer-info, .footer-contact');
 
     revealTargets.forEach((element, index) => {
         element.classList.add('scroll-reveal');
