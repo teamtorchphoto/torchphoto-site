@@ -91,7 +91,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can user-generated thumbnail cache be deleted automatically?</summary>
                     <div class="guide-content">
-                        <p>User-generated thumbnails are stored locally on the iOS device as cache files. However, <b>if the device is running low on storage space, iOS may automatically remove app cache files to free up space.</b> In this process, TorchPhoto’s generated thumbnail cache may also be deleted. This is not something the app deletes on its own, but rather a result of iOS storage management policies. In such cases, you can use the Backup & Restore feature in Settings to restore your thumbnail cache. To reduce the chance of this happening, it is recommended to keep sufficient free storage space available on the device.</p>
+                        <p>User-generated thumbnails are now stored locally on the iOS device as app data instead of temporary cache files. <b>This prevents TorchPhoto thumbnails from being automatically removed by iOS storage cleanup.</b> When launching the latest version, TorchPhoto will automatically migrate existing thumbnail data from the previous cache location to the new app data location. You can still use the Backup & Restore feature in Settings to move or recover thumbnail data when needed.</p>
                     </div>
                 </details>
 
