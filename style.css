@@ -1033,7 +1033,8 @@ nav .container {
 .shortcut-version-note {
     margin-top: 8px;
     font-size: 0.92rem !important;
-    color: #7b8797 !important;
+    color: #0b63ce !important;
+    font-weight: 800;
 }
 
 .shortcut-download {
@@ -1108,7 +1109,7 @@ nav .container {
 }
 
 .shortcut-download-notes {
-    max-width: 560px;
+    max-width: min(760px, 100%);
     margin: 14px auto 0;
     padding: 0;
     list-style: none;
@@ -1117,17 +1118,16 @@ nav .container {
     line-height: 1.62;
 }
 
+.shortcut-download-notes li {
+    white-space: nowrap;
+}
+
 .shortcut-download-notes li + li {
     margin-top: 3px;
 }
 
 .shortcut-download-notes li::before {
     content: "* ";
-}
-
-.shortcut-note-break {
-    display: block;
-    margin-top: 1.62em;
 }
 
 .policy-card {
@@ -1649,6 +1649,16 @@ footer {
 
     .shortcuts-feature-card p {
         font-size: 1rem;
+    }
+
+    .shortcut-download-notes {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100vw - 12px);
+        max-width: calc(100vw - 12px);
+        font-size: clamp(0.35rem, 2.1vw, 0.82rem);
+        line-height: 1.5;
     }
 
     .feature-modal {
