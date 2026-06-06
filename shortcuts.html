@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shortcuts - TorchPhoto</title>
-    <link rel="stylesheet" href="style.css?v=shortcuts-copy-v55pro">
+    <link rel="stylesheet" href="style.css?v=shortcuts-responsive-notes-v2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="logo.png">
 </head>
@@ -37,16 +37,16 @@
                 <span class="page-eyebrow">Support</span>
                 <h1>Shortcuts</h1>
                 <p>Use iOS Shortcuts with TorchPhoto to create a smoother automatic upload and backup routine.</p>
-                <p class="shortcut-version-note">Shortcut features work in TorchPhoto v5.5 PRO or later.</p>
+                <p class="shortcut-version-note" style="color: #0b63ce !important; font-weight: 800;">Shortcut features work in TorchPhoto v5.5 PRO or later.</p>
                 <div class="shortcut-download">
                     <a class="shortcut-download-button" href="https://www.icloud.com/shortcuts/236b3ad55fa24d49901bd9576dab411c">
                         <i class="fas fa-cloud-arrow-down"></i>
                         <span>TorchPhoto Backup</span>
                     </a>
                     <ul class="shortcut-download-notes">
-                        <li>This shortcut is an example that backs up photos and videos taken today.</li>
-                        <li>An FTP server must be added in TorchPhoto for it to work correctly.</li>
-                        <li>This shortcut does not include the video part of Live Photos.</li>
+                        <li><span class="shortcut-note-line">This shortcut is an example that backs up photos and videos taken today.</span></li>
+                        <li><span class="shortcut-note-line">An FTP server must be added in TorchPhoto for it to work correctly.</span></li>
+                        <li><span class="shortcut-note-line">This shortcut does not include the video part of Live Photos.</span></li>
                     </ul>
                 </div>
             </div>
@@ -199,6 +199,37 @@
 
         window.addEventListener('load', openGuideFromHash);
         window.addEventListener('hashchange', openGuideFromHash);
+
+        function fitShortcutNoteLines() {
+            const noteList = document.querySelector('.shortcut-download-notes');
+            if (!noteList) return;
+
+            const availableWidth = Math.max(1, Math.floor(noteList.clientWidth));
+            const baseFontSize = 13;
+
+            noteList.querySelectorAll('.shortcut-note-line').forEach((line) => {
+                line.style.display = 'inline-block';
+                line.style.whiteSpace = 'nowrap';
+                line.style.fontSize = `${baseFontSize}px`;
+                line.style.transform = '';
+
+                const naturalWidth = Math.max(1, line.scrollWidth);
+                const fittedSize = Math.min(baseFontSize, (availableWidth / naturalWidth) * baseFontSize);
+                line.style.fontSize = `${Math.max(5, fittedSize)}px`;
+
+                if (line.scrollWidth > availableWidth) {
+                    const scale = availableWidth / line.scrollWidth;
+                    line.style.transform = `scale(${Math.max(0.4, Math.min(1, scale))})`;
+                }
+            });
+        }
+
+        const fitShortcutNotesSoon = () => requestAnimationFrame(fitShortcutNoteLines);
+        window.addEventListener('load', fitShortcutNotesSoon);
+        window.addEventListener('resize', fitShortcutNotesSoon);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(fitShortcutNotesSoon);
+        }
     </script>
 
 </body>

@@ -1114,11 +1114,17 @@ nav .container {
     padding: 0;
     list-style: none;
     color: #8a94a6;
-    font-size: 0.82rem;
+    font-size: 13px;
     line-height: 1.62;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 .shortcut-download-notes li {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
     white-space: nowrap;
 }
 
@@ -1127,6 +1133,17 @@ nav .container {
 }
 
 .shortcut-download-notes li::before {
+    content: none;
+}
+
+.shortcut-note-line {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    transform-origin: center center;
+}
+
+.shortcut-note-line::before {
     content: "* ";
 }
 
@@ -1657,7 +1674,7 @@ footer {
         transform: translateX(-50%);
         width: calc(100vw - 12px);
         max-width: calc(100vw - 12px);
-        font-size: clamp(0.35rem, 2.1vw, 0.82rem);
+        font-size: 13px;
         line-height: 1.5;
     }
 
