@@ -57,13 +57,13 @@
                     <div class="guide-content">
                         <div class="guide-copy">
                             <h3>Automatic Backups Through iOS Shortcuts</h3>
-                            <p>By combining TorchPhoto with iOS Shortcuts and Personal Automation, you can create custom backup routines that fit your own environment. The examples below are just a few ways you can choose, filter, and upload photo items automatically.</p>
+                            <p>By combining TorchPhoto with <b>iOS Shortcuts</b> and <b>Personal Automation</b>, you can create custom backup routines that fit your own environment. The examples below are just a few ways you can <b>choose, filter, and upload photo items automatically</b>.</p>
                             <ul>
-                                <li>Back up to your server at a specific time of day</li>
-                                <li>Upload only photos, only videos, or a custom media selection</li>
-                                <li>Back up items captured during a specific date range</li>
-                                <li>Exclude screenshots before starting the upload</li>
-                                <li>Upload only items captured at a specific location</li>
+                                <li>Back up to your server at a <b>specific time of day</b></li>
+                                <li>Upload only photos, only videos, or a <b>custom media selection</b></li>
+                                <li>Back up items captured during a <b>specific date range</b></li>
+                                <li><b>Exclude screenshots</b> before starting the upload</li>
+                                <li>Upload only items captured at a <b>specific location</b></li>
                             </ul>
                         </div>
                     </div>
@@ -74,8 +74,8 @@
                     <div class="guide-content">
                         <div class="guide-copy">
                             <h3>Upload Passed Photo Items</h3>
-                            <p>In the Shortcuts app, add the <b>Upload to TorchPhoto</b> action to your workflow. Photo items passed into this action are uploaded to the folder path of the server selected by the user.</p>
-                            <p>Basic upload behavior follows the upload settings configured inside the TorchPhoto app first, so it is a good idea to review your TorchPhoto upload settings before running the shortcut regularly.</p>
+                            <p>In the Shortcuts app, add the <b>Upload to TorchPhoto</b> action to your workflow. Photo items passed into this action are uploaded to the <b>folder path of the server selected by the user</b>.</p>
+                            <p>Basic upload behavior follows the <b>upload settings configured inside the TorchPhoto app first</b>, so it is a good idea to review your TorchPhoto upload settings before running the shortcut regularly.</p>
                         </div>
                     </div>
                 </details>
@@ -84,9 +84,9 @@
                     <summary><span class="guide-number">3.</span> Live Photo Backup Tip</summary>
                     <div class="guide-content">
                         <div class="guide-copy">
-                            <h3>Back Up Live Photos as a Photo and MOV Pair</h3>
-                            <p>For the short video part of a Live Photo, you can use Shortcuts to encode it and upload it again as a <b>.mov</b> file with the same base name as the photo.</p>
-                            <p>When one image file and one matching MOV file are backed up together, TorchPhoto can show them like a single Live Photo by using the Video Pairing feature in Settings.</p>
+                            <h3>Back Up Live Photos as Matching Photo and MOV Files</h3>
+                            <p>In your shortcut, after selecting a Live Photo, add an <b>Encode Media</b> action for that selected photo. Encode the motion part as a MOV file and upload it with the <b>exact same base filename as the image</b>, changing only the extension to <b>.mov</b>, such as <b>FileName.mov</b>.</p>
+                            <p>When the <b>image file and the matching MOV file</b> are uploaded together, TorchPhoto can pair them as <b>one photo with one Live Photo video</b> by using the <b>Video Pairing</b> feature in Settings.</p>
                         </div>
                     </div>
                 </details>
@@ -96,8 +96,8 @@
                     <div class="guide-content">
                         <div class="guide-copy">
                             <h3>Duplicate Handling and Upload Logs</h3>
-                            <p>During a Shortcuts backup, TorchPhoto skips an item if a file with the same name and the same extension already exists on the server.</p>
-                            <p>You can review backup history from the TorchPhoto app. Open the Upload page, then tap the upload log button in the top-right corner to check the history of backups started through Shortcuts.</p>
+                            <p>During a Shortcuts backup, TorchPhoto skips an item if a file with the <b>same name and the same extension</b> already exists on the server.</p>
+                            <p>You can review backup history from the TorchPhoto app. Open the <b>Upload page</b>, then tap the <b>upload log button</b> in the top-right corner to check the history of <b>backups started through Shortcuts</b>.</p>
                         </div>
                     </div>
                 </details>
@@ -105,23 +105,23 @@
                 <details class="guide-item" id="automation-triggers">
                     <summary><span class="guide-number">5.</span> Recommended Automation Triggers</summary>
                     <div class="guide-content">
-                        <p>For everyday backups, time-based, charging-based, and Wi-Fi-based automations are usually the most practical. A charging trigger is useful for evening backups, while a Wi-Fi trigger is useful when uploads should only run on a trusted network.</p>
-                        <p>If iOS shows an option such as Ask Before Running, adjust it based on how much confirmation you want before the upload starts.</p>
+                        <p>For everyday backups, <b>time-based, charging-based, and Wi-Fi-based automations</b> are usually the most practical. A <b>charging trigger</b> is useful for evening backups, while a <b>Wi-Fi trigger</b> is useful when uploads should only run on a trusted network.</p>
+                        <p>If iOS shows an option such as <b>Ask Before Running</b>, adjust it based on how much confirmation you want before the upload starts.</p>
                     </div>
                 </details>
 
                 <details class="guide-item" id="reliability-tips">
                     <summary><span class="guide-number">6.</span> Reliability Tips</summary>
                     <div class="guide-content">
-                        <p>Automatic uploads work best when the device has enough battery, a stable network connection, and permission to access the selected photos or videos. If your FTP server is only available inside your home network, connect to the same Wi-Fi or connect through your VPN before the shortcut runs.</p>
-                        <p>For large libraries, start with a smaller upload range first. After confirming that the shortcut works reliably, expand the automation into your regular backup routine.</p>
+                        <p>Automatic uploads work best when the device has <b>enough battery</b>, a <b>stable network connection</b>, and <b>permission to access the selected photos or videos</b>. If your FTP server is only available inside your home network, connect to the <b>same Wi-Fi</b> or connect through your <b>VPN</b> before the shortcut runs.</p>
+                        <p>For large libraries, start with a <b>smaller upload range first</b>. After confirming that the shortcut works reliably, expand the automation into your regular backup routine.</p>
                     </div>
                 </details>
 
                 <details class="guide-item" id="privacy-note">
                     <summary><span class="guide-number">7.</span> Privacy Note</summary>
                     <div class="guide-content">
-                        <p>Shortcuts-based uploads use the server connection you configure in TorchPhoto. Your photos and videos are transferred directly from your iOS device to your own FTP server, and TorchPhoto does not upload them to a separate service provider server.</p>
+                        <p>Shortcuts-based uploads use the <b>server connection you configure in TorchPhoto</b>. Your photos and videos are transferred <b>directly from your iOS device to your own FTP server</b>, and TorchPhoto <b>does not upload them to a separate service provider server</b>.</p>
                     </div>
                 </details>
             </div>
