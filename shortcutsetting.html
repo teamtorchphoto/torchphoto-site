@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcuts - TorchPhoto</title>
+    <link rel="stylesheet" href="style.css?v=shortcuts-responsive-notes-v2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body class="subpage-body">
+
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="TorchPhoto Logo">
+                <span class="logo-text">TorchPhoto Support</span>
+            </div>
+            <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="site-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="shortcuts.html">Shortcuts</a></li>
+                <li><a href="update.html">Update</a></li>
+                <li><a href="qa.html">Q&amp;A</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-download-small">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="guide">
+        <div class="container narrow-container">
+            <div class="page-hero">
+                <span class="page-eyebrow">Support</span>
+                <h1>Shortcuts</h1>
+                <p>Use iOS Shortcuts with TorchPhoto to create a smoother automatic upload and backup routine.</p>
+                <p class="shortcut-version-note" style="color: #0b63ce !important; font-weight: 800;">Shortcut features work in TorchPhoto v5.5 PRO or later.</p>
+                <div class="shortcut-download">
+                    <a class="shortcut-download-button" href="https://www.icloud.com/shortcuts/10143d6d240d40fb9cb005649591c95d">
+                        <i class="fas fa-cloud-arrow-down"></i>
+                        <span>TorchPhoto Backup</span>
+                    </a>
+                    <ul class="shortcut-download-notes">
+                        <li><span class="shortcut-note-line">This shortcut is an example that backs up photos and videos taken today.</span></li>
+                        <li><span class="shortcut-note-line">An FTP server must be added in TorchPhoto for it to work correctly.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="guide-list">
+                <details class="guide-item" id="shortcuts-auto-upload">
+                    <summary><span class="guide-number">1.</span> What You Can Automate</summary>
+                    <div class="guide-content">
+                        <div class="guide-copy">
+                            <h3>Automatic Backups Through iOS Shortcuts</h3>
+                            <p>By combining TorchPhoto with <b>iOS Shortcuts</b> and <b>Personal Automation</b>, you can create custom backup routines that fit your own environment. The examples below are just a few ways you can <b>choose, filter, and upload photo items automatically</b>.</p>
+                            <ul>
+                                <li>Back up to your server at a <b>specific time of day</b></li>
+                                <li>Upload only photos, only videos, or a <b>custom media selection</b></li>
+                                <li>Back up items captured during a <b>specific date range</b></li>
+                                <li><b>Exclude screenshots</b> before starting the upload</li>
+                                <li>Upload only items captured at a <b>specific location</b></li>
+                                <li>Use the <b>Action Button</b> on supported iPhone models to start a backup instantly</li>
+                                <li>Start a backup automatically when your <b>charger is connected</b></li>
+                                <li>Run backups only when your device is connected to <b>Wi-Fi</b></li>
+                                <li>Automatically back up items from a <b>specific album</b></li>
+                                <li>Start a backup whenever the <b>Camera app is opened</b></li>
+                            </ul>
+                            <br><p>These are only examples. You can combine TorchPhoto with any available Shortcuts actions and automation triggers to build an upload routine that works exactly the way you want.</p>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="create-backup-shortcut">
+                    <summary><span class="guide-number">2.</span> Add the Upload to TorchPhoto Action</summary>
+                    <div class="guide-content">
+                        <div class="guide-copy">
+                            <h3>Upload Passed Photo Items</h3>
+                            <p>In the Shortcuts app, add the <b>Upload to TorchPhoto</b> action to your workflow. Photo items passed into this action are uploaded to the <b>folder path of the server selected by the user</b>.</p>
+                            <p>Basic upload behavior follows the <b>upload settings configured inside the TorchPhoto app first</b>, so it is a good idea to review your TorchPhoto upload settings before running the shortcut regularly.</p>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="live-photo-shortcut-backup">
+                    <summary><span class="guide-number">3.</span> Live Photo Backup Tip</summary>
+                    <div class="guide-content">
+                        <div class="guide-copy">
+                            <h3>Back Up Live Photos as Matching Photo and MOV Files</h3>
+                            <p>In your shortcut, after selecting a Live Photo, add an <b>Encode Media</b> action for that selected photo. Encode the motion part as a MOV file and upload it with the <b>exact same base filename as the image</b>, changing only the extension to <b>.mov</b>, such as <b>FileName.mov</b>.</p>
+                            <p>When the <b>image file and the matching MOV file</b> are uploaded together, TorchPhoto can pair them as <b>one photo with one Live Photo video</b> by using the <b>Video Pairing</b> feature in Settings.</p>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="shortcut-upload-history">
+                    <summary><span class="guide-number">4.</span> Skip Duplicates and Check Backup History</summary>
+                    <div class="guide-content">
+                        <div class="guide-copy">
+                            <h3>Duplicate Handling and Upload Logs</h3>
+                            <p>During a Shortcuts backup, TorchPhoto skips an item if a file with the <b>same name and the same extension</b> already exists on the server.</p>
+                            <p>You can review backup history from the TorchPhoto app. Open the <b>Upload page</b>, then tap the <b>upload log button</b> in the top-right corner to check the history of <b>backups started through Shortcuts</b>.</p>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="automation-triggers">
+                    <summary><span class="guide-number">5.</span> Recommended Automation Triggers</summary>
+                    <div class="guide-content">
+                        <p>For everyday backups, <b>time-based, charging-based, and Wi-Fi-based automations</b> are usually the most practical. A <b>charging trigger</b> is useful for evening backups, while a <b>Wi-Fi trigger</b> is useful when uploads should only run on a trusted network.</p>
+                        <p>If iOS shows an option such as <b>Ask Before Running</b>, adjust it based on how much confirmation you want before the upload starts.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="reliability-tips">
+                    <summary><span class="guide-number">6.</span> Reliability Tips</summary>
+                    <div class="guide-content">
+                        <p>Automatic uploads work best when the device has <b>enough battery</b>, a <b>stable network connection</b>, and <b>permission to access the selected photos or videos</b>. If your FTP server is only available inside your home network, connect to the <b>same Wi-Fi</b> or connect through your <b>VPN</b> before the shortcut runs.</p>
+                        <p>For large libraries, start with a <b>smaller upload range first</b>. After confirming that the shortcut works reliably, expand the automation into your regular backup routine.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="privacy-note">
+                    <summary><span class="guide-number">7.</span> Privacy Note</summary>
+                    <div class="guide-content">
+                        <p>Shortcuts-based uploads use the <b>server connection you configure in TorchPhoto</b>. Your photos and videos are transferred <b>directly from your iOS device to your own FTP server</b>, and TorchPhoto <b>does not upload them to a separate service provider server</b>.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navIcon = navToggle ? navToggle.querySelector('i') : null;
+
+        if (navToggle && navLinks) {
+            const closeMenu = () => {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Open menu');
+                if (navIcon) {
+                    navIcon.classList.remove('fa-xmark');
+                    navIcon.classList.add('fa-bars');
+                }
+            };
+
+            const openMenu = () => {
+                navLinks.classList.add('is-open');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navToggle.setAttribute('aria-label', 'Close menu');
+                if (navIcon) {
+                    navIcon.classList.remove('fa-bars');
+                    navIcon.classList.add('fa-xmark');
+                }
+            };
+
+            navToggle.addEventListener('click', () => {
+                if (navLinks.classList.contains('is-open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            navLinks.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (window.innerWidth > 768) return;
+                if (!navLinks.contains(event.target) && !navToggle.contains(event.target)) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
+
+        function openGuideFromHash() {
+            const hash = window.location.hash;
+            if (!hash) return;
+
+            const target = document.querySelector(hash);
+            if (!target) return;
+
+            if (target.classList.contains('guide-item')) {
+                target.open = true;
+                requestAnimationFrame(() => {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+        }
+
+        window.addEventListener('load', openGuideFromHash);
+        window.addEventListener('hashchange', openGuideFromHash);
+
+        function fitShortcutNoteLines() {
+            const noteList = document.querySelector('.shortcut-download-notes');
+            if (!noteList) return;
+
+            const availableWidth = Math.max(1, Math.floor(noteList.clientWidth));
+            const baseFontSize = 13;
+
+            noteList.querySelectorAll('.shortcut-note-line').forEach((line) => {
+                line.style.display = 'inline-block';
+                line.style.whiteSpace = 'nowrap';
+                line.style.fontSize = `${baseFontSize}px`;
+                line.style.transform = '';
+
+                const naturalWidth = Math.max(1, line.scrollWidth);
+                const fittedSize = Math.min(baseFontSize, (availableWidth / naturalWidth) * baseFontSize);
+                line.style.fontSize = `${Math.max(5, fittedSize)}px`;
+
+                if (line.scrollWidth > availableWidth) {
+                    const scale = availableWidth / line.scrollWidth;
+                    line.style.transform = `scale(${Math.max(0.4, Math.min(1, scale))})`;
+                }
+            });
+        }
+
+        const fitShortcutNotesSoon = () => requestAnimationFrame(fitShortcutNoteLines);
+        window.addEventListener('load', fitShortcutNotesSoon);
+        window.addEventListener('resize', fitShortcutNotesSoon);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(fitShortcutNotesSoon);
+        }
+    </script>
+
+</body>
+</html>
