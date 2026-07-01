@@ -2928,7 +2928,7 @@ footer {
 
         .update-page-body .guide-list > .guide-item:first-child {
             overflow: hidden;
-            background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(251, 253, 255, 0.92) 100%);
             border-color: rgba(37, 99, 235, 0.34);
             box-shadow: 0 18px 46px rgba(37, 99, 235, 0.10), 0 1px 0 rgba(255, 255, 255, 0.86) inset;
             isolation: isolate;
@@ -2937,15 +2937,22 @@ footer {
         .update-page-body .guide-list > .guide-item:first-child::before {
             content: "";
             position: absolute;
-            inset: 6px;
-            border-radius: 17px;
-            background: linear-gradient(120deg, rgba(0, 122, 255, 0.02), rgba(96, 165, 250, 0.3), rgba(37, 99, 235, 0.08), rgba(0, 122, 255, 0.02));
-            background-size: 260% 260%;
-            filter: blur(6px);
-            opacity: 0.34;
+            inset: -42px;
+            border-radius: 999px;
+            background:
+                radial-gradient(circle at 22% 28%, rgba(255, 119, 148, 0.18) 0 16%, transparent 34%),
+                radial-gradient(circle at 74% 30%, rgba(255, 207, 102, 0.16) 0 15%, transparent 33%),
+                radial-gradient(circle at 77% 72%, rgba(56, 189, 248, 0.16) 0 18%, transparent 36%),
+                radial-gradient(circle at 30% 76%, rgba(129, 140, 248, 0.15) 0 17%, transparent 36%),
+                radial-gradient(circle at 50% 52%, rgba(45, 212, 191, 0.12) 0 20%, transparent 42%);
+            filter: blur(24px) saturate(1.12);
+            opacity: 0.56;
             z-index: 0;
-            animation: latestUpdateGlow 5.5s ease-in-out infinite;
+            transform: rotate(0deg) scale(1.16);
+            transform-origin: 52% 48%;
+            animation: latestUpdateGlow 14s ease-in-out infinite;
             pointer-events: none;
+            will-change: transform, opacity;
         }
 
         .update-page-body .guide-list > .guide-item:first-child::after {
@@ -2994,13 +3001,16 @@ footer {
 
         @keyframes latestUpdateGlow {
             0% {
-                background-position: 0% 50%;
+                opacity: 0.48;
+                transform: rotate(0deg) scale(1.16);
             }
             50% {
-                background-position: 100% 50%;
+                opacity: 0.6;
+                transform: rotate(180deg) scale(1.2);
             }
             100% {
-                background-position: 0% 50%;
+                opacity: 0.48;
+                transform: rotate(360deg) scale(1.16);
             }
         }
 
@@ -3031,7 +3041,7 @@ footer {
     background: #f7faff;
 }
 
-#vpn-ftp-security {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) {
     overflow: hidden;
     background:
         radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.22), transparent 28%),
@@ -3041,7 +3051,7 @@ footer {
     box-shadow: 0 22px 60px rgba(18, 113, 255, 0.34);
 }
 
-#vpn-ftp-security summary {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) summary {
     justify-content: center;
     gap: 12px;
     padding: 24px 26px;
@@ -3051,30 +3061,30 @@ footer {
     letter-spacing: -0.01em;
 }
 
-#vpn-ftp-security summary::marker {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) summary::marker {
     color: transparent;
 }
 
-#vpn-ftp-security summary::-webkit-details-marker {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) summary::-webkit-details-marker {
     display: none;
 }
 
-#vpn-ftp-security summary::after {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) summary::after {
     color: #ffffff !important;
 }
 
-#vpn-ftp-security .guide-number {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) .guide-number {
     background: rgba(255, 255, 255, 0.2);
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.32);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
-#vpn-ftp-security .guide-content {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) .guide-content {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-#vpn-ftp-security .guide-body {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) .guide-body {
     display: block;
     max-width: 760px;
     margin: 0 auto;
@@ -3084,25 +3094,25 @@ footer {
     text-align: center;
 }
 
-#vpn-ftp-security .guide-copy {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) .guide-copy {
     max-width: 680px;
     margin: 0 auto;
 }
 
-#vpn-ftp-security .guide-copy h3 {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) .guide-copy h3 {
     margin-bottom: 14px;
     color: #ffffff;
     font-size: 1.45rem;
     letter-spacing: -0.03em;
 }
 
-#vpn-ftp-security .guide-copy p {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) .guide-copy p {
     margin: 0 auto 22px;
     color: rgba(255, 255, 255, 0.92);
     line-height: 1.75;
 }
 
-#vpn-ftp-security .guide-copy ul {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) .guide-copy ul {
     display: grid;
     gap: 10px;
     margin: 0;
@@ -3110,7 +3120,7 @@ footer {
     list-style: none;
 }
 
-#vpn-ftp-security .guide-copy li {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) .guide-copy li {
     padding: 13px 16px;
     color: rgba(255, 255, 255, 0.94);
     line-height: 1.55;
@@ -3120,7 +3130,7 @@ footer {
     backdrop-filter: blur(12px);
 }
 
-#vpn-ftp-security .guide-copy b {
+:is(#vpn-ftp-security, #instant-thumbnail-generation) .guide-copy b {
     color: #ffffff;
     font-weight: 800;
 }
