@@ -43,17 +43,39 @@
 
             <div class="guide-list">
                 <details class="guide-item" id="vpn-ftp-security">
-                    <summary>Secure FTP Access with VPN</summary>
+                    <summary>Remote FTP/SMB Access with VPN</summary>
                     <div class="guide-content">
                         <div class="guide-body">
                             <div class="guide-copy">
-                                <h3>A Safer Way to Use FTP Remotely</h3>
-                                <p>For remote access, using <b>VPN + FTP</b> is generally safer than exposing your FTP server directly with DDNS and port forwarding. Connect to your home or NAS network through a VPN first, then use FTP with the local network address.</p>
+                                <h3>Use a VPN for Remote FTP Access</h3>
+                                <p>FTP can send login information and file data without encryption, depending on the server configuration. If you need to use FTP from outside your home or office, avoid exposing the FTP port directly to the public internet. Connect to your home or NAS network through a <b>VPN</b> first, then add the FTP server in TorchPhoto using its internal LAN address.</p>
+                                <p>SMB is also usually best kept inside a local network. If your NAS supports SMB and your VPN allows access to devices on the home LAN, you can connect through the VPN first and then add the SMB server with its local address instead of opening SMB ports to the internet.</p>
                                 <ul>
-                                    <li><b>Recommended setup:</b> VPN + FTP</li>
-                                    <li><b>Better security:</b> avoid opening FTP directly to the public internet</li>
+                                    <li><b>FTP remote setup:</b> VPN + local FTP address</li>
+                                    <li><b>Why it helps:</b> the VPN places your device on the local network and reduces direct exposure of plain FTP traffic</li>
+                                    <li><b>SMB remote setup:</b> VPN + local SMB address, when your NAS and VPN routing support LAN access</li>
                                     <li><b>Modern VPN option:</b> WireGuard is simple, fast, and widely recommended</li>
-                                    <li><b>After VPN connection:</b> add the FTP server using its internal LAN address</li>
+                                    <li><b>Avoid when possible:</b> direct public FTP or SMB port forwarding for private photo storage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="instant-thumbnail-generation">
+                    <summary>Instant Thumbnail Generation</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <div class="guide-copy">
+                                <h3>How Instant Thumbnails Work</h3>
+                                <p>Instant thumbnail generation is designed for speed and storage efficiency. Instead of downloading the entire original photo or video first, TorchPhoto downloads only the part needed to create a quick preview. This makes large folders feel faster to prepare and can greatly reduce the amount of data and device storage used during thumbnail creation.</p>
+                                <p>Instant thumbnails are available in both Free and PRO. Because they are generated from partial original data, they are lower quality than TorchPhoto's standard high-quality thumbnails. They work well for fast browsing and quick selection, but they may look soft in places where thumbnail quality matters more, such as widgets.</p>
+                                <p>If you want clearer previews later, select the items you care about and run thumbnail improvement. TorchPhoto can replace those instant thumbnails with its standard high-quality thumbnails, so you can start quickly and upgrade only the items that need better detail.</p>
+                                <ul>
+                                    <li><b>First step:</b> create instant thumbnails quickly with partial downloads</li>
+                                    <li><b>Best for:</b> fast browsing, lower data use, and efficient cache storage</li>
+                                    <li><b>Optional upgrade:</b> improve selected instant thumbnails into high-quality TorchPhoto thumbnails</li>
+                                    <li><b>Widget tip:</b> improve the thumbnails you want to use in widgets for clearer display</li>
                                 </ul>
                             </div>
                         </div>
@@ -157,7 +179,7 @@
                             <img src="Guide6.jpg" alt="Upload / Backup">
                             <div class="guide-copy">
                                 <h3>Upload and Backup</h3>
-                                <p>Back up photos and videos to an FTP server. Long-press the server icon to automatically select items from a specified period.</p>
+                                <p>Back up photos and videos to a server you add with FTP, SFTP, SMB, or WebDAV. Long-press the server icon to automatically select items from a specified period.</p>
                                 <ul>
                                     <li>Select photos and videos to upload</li>
                                     <li>Choose the server folder</li>

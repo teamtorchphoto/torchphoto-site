@@ -49,14 +49,14 @@
                 <details class="guide-item">
                     <summary>What kind of app is TorchPhoto?</summary>
                     <div class="guide-content">
-                        <p>TorchPhoto is an iOS app designed to help you browse photos and videos stored on FTP or NAS servers quickly like an album on iPhone and iPad. It focuses more on photo and video viewing than a typical file explorer.</p>
+                        <p>TorchPhoto is an iOS app designed to help you browse photos and videos stored on servers you add with FTP, SFTP, SMB, or WebDAV, including NAS devices and personal servers. It focuses more on photo and video viewing than a typical file explorer.</p>
                     </div>
                 </details>
 
                 <details class="guide-item">
-                    <summary>Why does it only support FTP? Why doesn’t it support SFTP, WebDAV, SMB, and other protocols?</summary>
+                    <summary>Which server connection methods does TorchPhoto support?</summary>
                     <div class="guide-content">
-                        <p>TorchPhoto is designed so that <b>all core features work together around the FTP-based file access structure</b>, and FTP is widely supported across many personal servers and NAS environments while maintaining stable and comfortable browsing speed. For security, FTP can be used safely by connecting through <b>a VPN such as WireGuard</b> and accessing the server via <b>its local network FTP address.</b></p>
+                        <p>When you add a server in TorchPhoto, you can choose <b>FTP, SFTP, SMB, or WebDAV</b> as the connection method. Pick the method that matches your NAS or personal server, then browse, upload, and manage your photo and video library through that server connection.</p>
                     </div>
                 </details>
 				
@@ -71,14 +71,14 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>What file extensions are supported?</summary>
                     <div class="guide-content">
-                        <p>TorchPhoto mainly supports file extensions used when capturing or playing photos and videos on iPhone and iPad. <b>TorchPhoto is not a general-purpose media player designed to play every type of media file. Instead, it focuses on helping you upload iOS-supported photo and video files to a NAS/FTP server, then browse them quickly and conveniently.</b> For this reason, supported formats are based on file extensions commonly used in the iOS environment, so the app can run reliably, generate thumbnail caches with less storage, and provide an optimized browsing experience.</p>
+                        <p>TorchPhoto mainly supports file extensions used when capturing or playing photos and videos on iPhone and iPad. <b>TorchPhoto is not a general-purpose media player designed to play every type of media file. Instead, it focuses on helping you upload iOS-supported photo and video files to a server you add with FTP, SFTP, SMB, or WebDAV, then browse them quickly and conveniently.</b> For this reason, supported formats are based on file extensions commonly used in the iOS environment, so the app can run reliably, generate thumbnail caches with less storage, and provide an optimized browsing experience.</p>
                     </div>
                 </details>
 				
                 <details class="guide-item">
-                    <summary>How is it different from a typical FTP app?</summary>
+                    <summary>How is it different from a typical file transfer app?</summary>
                     <div class="guide-content">
-                        <p>While a typical FTP app focuses on file management, TorchPhoto focuses more on media browsing with features like photo and video viewing, thumbnail generation, offline thumbnail browsing, QR sharing, metadata viewing, and slideshow.</p>
+                        <p>While a typical file transfer app focuses on file management, TorchPhoto focuses more on media browsing with features like photo and video viewing, thumbnail generation, offline thumbnail browsing, QR sharing, metadata viewing, and slideshow.</p>
                     </div>
                 </details>
 
@@ -99,14 +99,14 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Is it a cloud storage service?</summary>
                     <div class="guide-content">
-                        <p>No. TorchPhoto is not a separate cloud storage service. It connects directly to your FTP or NAS storage so you can view photos and videos there.</p>
+                        <p>No. TorchPhoto is not a separate cloud storage service. It connects directly to servers you add with FTP, SFTP, SMB, or WebDAV, so you can view photos and videos stored on your own storage.</p>
                     </div>
                 </details>
 
                 <details class="guide-item">
                     <summary>Can I use it with NAS?</summary>
                     <div class="guide-content">
-                        <p>Yes. If your NAS supports FTP access, you can connect it to TorchPhoto and browse photos and videos. It works well with NAS devices such as Synology and QNAP that can enable FTP.</p>
+                        <p>Yes. If your NAS supports FTP, SFTP, SMB, or WebDAV access, choose that method when adding the server in TorchPhoto. It works well with NAS devices such as Synology and QNAP that can enable one of these connection methods.</p>
                     </div>
                 </details>
 
@@ -148,7 +148,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can I upload photos and videos from iPhone to the server?</summary>
                     <div class="guide-content">
-                        <p>Yes. You can select photos and videos and upload them to the folder you want on an FTP or NAS server, including multiple files at once.</p>
+                        <p>Yes. You can select photos and videos and upload them to the folder you want on a server added with FTP, SFTP, SMB, or WebDAV, including multiple files at once.</p>
                     </div>
                 </details>
 
@@ -183,7 +183,21 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>What is thumbnail generation?</summary>
                     <div class="guide-content">
-                        <p>Generating thumbnails in advance allows faster and lighter browsing even in large folders or on slow networks. It is for browsing thumbnails, not downloading full originals.</p>
+                        <p>Generating thumbnails in advance allows faster and lighter browsing even in large folders or on slow networks. With instant thumbnail generation, TorchPhoto can create quick previews by downloading only part of the original file first, which improves speed and storage efficiency without requiring full original downloads for every thumbnail.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How does two-step thumbnail generation work?</summary>
+                    <div class="guide-content">
+                        <p>If instant thumbnail generation is enabled, TorchPhoto first creates fast, efficient low-quality thumbnails from partial original data. Later, you can select the items you want and improve them into TorchPhoto's standard high-quality thumbnails. This lets both Free and PRO users save storage and data first, then upgrade only the thumbnails that need clearer detail.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why do instant thumbnails look low quality in widgets?</summary>
+                    <div class="guide-content">
+                        <p>Instant thumbnails are optimized for speed and capacity savings, so they can look much lower quality in widget-style views. If you want to use specific items in widgets or slideshow-style displays, improve those selected thumbnails to TorchPhoto high-quality thumbnails first.</p>
                     </div>
                 </details>
 
@@ -218,7 +232,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Is it convenient for files split like Live Photo?</summary>
                     <div class="guide-content">
-                        <p>Yes. Even when photo and video files are stored separately on NAS or FTP servers, TorchPhoto helps you browse them more naturally together.</p>
+                        <p>Yes. Even when photo and video files are stored separately on servers added with FTP, SFTP, SMB, or WebDAV, TorchPhoto helps you browse them more naturally together.</p>
                     </div>
                 </details>
 				
@@ -232,7 +246,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can multiple people browse the same server?</summary>
                     <div class="guide-content">
-                        <p>Yes. As long as each person has access permissions, they can browse the same FTP or NAS library on their own device.</p>
+                        <p>Yes. As long as each person has access permissions, they can browse the same server library on their own device, whether the server is added with FTP, SFTP, SMB, or WebDAV.</p>
                     </div>
                 </details>
 
@@ -267,7 +281,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>What is the difference between Free and PRO?</summary>
                     <div class="guide-content">
-                        <p>Free provides the core TorchPhoto experience, while PRO removes key limits for more comfortable browsing of larger libraries. For example, it includes unlimited thumbnail cache, video pairing, large video thumbnail generation, slideshow, and no time limit on thumbnail sharing.</p>
+                        <p>Free provides the core TorchPhoto experience, while PRO removes key limits for more comfortable browsing of larger libraries. Free can register 1 server and has up to 100MB of thumbnail cache, while PRO supports unlimited registered servers and unlimited thumbnail cache. PRO also includes video pairing, large video thumbnail generation, slideshow, and no time limit on thumbnail sharing.</p>
                     </div>
                 </details>
             </div>
