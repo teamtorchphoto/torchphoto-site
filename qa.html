@@ -36,13 +36,19 @@
                 <span class="page-eyebrow">Support</span>
                 <h1>Q&amp;A</h1>
                 <p>Frequently asked questions about TorchPhoto.</p>
+                <label class="qa-search" for="qa-search-input">
+                    <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="qa-search-input" type="search" placeholder="Search questions" autocomplete="off">
+                    <span class="qa-search-shortcut" aria-hidden="true">/</span>
+                </label>
+                <p class="qa-search-count" aria-live="polite"></p>
             </div>
 
             <div class="guide-list">
                 <details class="guide-item">
                     <summary>Where can I ask new questions or get in touch?</summary>
                     <div class="guide-content">
-                        <p>Please email us at <b>teamtorchphoto@gmail.com</b>, and we will review it and reply as soon as possible.</a></p>
+                        <p>Please email us at <a href="mailto:teamtorchphoto@gmail.com"><b>teamtorchphoto@gmail.com</b></a>, and we will review it and reply as soon as possible.</p>
                     </div>
                 </details>
 				
@@ -219,6 +225,21 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     <summary>What is the difference between Low and High for instant thumbnails?</summary>
                     <div class="guide-content">
                         <p>Low prioritizes speed, so thumbnails can be generated as quickly as possible, but a small number of thumbnails may fail. High is slower than Low, but it can slightly improve the success rate for files that need more data to create an instant thumbnail. If an instant thumbnail still fails, you can use TorchPhoto's high-quality thumbnail improvement feature to generate it reliably later.</p>
+                        <p>If some items fail while using Low, try generating them again with High. If thumbnails appear cropped or do not display correctly, turn off instant thumbnail generation and run thumbnail generation again to create TorchPhoto high-quality thumbnails. You can also keep instant thumbnail generation enabled and use the thumbnail improvement feature to replace selected instant thumbnails with high-quality thumbnails.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What should I do if thumbnails do not display correctly or look cropped?</summary>
+                    <div class="guide-content">
+                        <p>If the thumbnails were created with instant thumbnail generation, try generating failed items again with High instead of Low. If thumbnails still appear cropped or do not display correctly, turn off instant thumbnail generation and run thumbnail generation again. TorchPhoto will then create high-quality thumbnails. You can also keep instant thumbnail generation enabled and use the thumbnail improvement feature to replace selected instant thumbnails with high-quality thumbnails.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What should I do if there is a visible shift when a thumbnail switches to the original?</summary>
+                    <div class="guide-content">
+                        <p>Instant thumbnails are created from partial image data or the file's original embedded image information, which may not reflect later edits. As a result, the thumbnail's crop or aspect ratio can occasionally differ from the original and cause a visible shift when the full image appears. To avoid this, use Thumbnail Improvement after creating the instant thumbnail, or turn off Instant Thumbnail Generation and create a TorchPhoto high-quality thumbnail instead. Either option will generate a thumbnail that matches the original more closely.</p>
                     </div>
                 </details>
 
@@ -233,6 +254,14 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     <summary>How does two-step thumbnail generation work?</summary>
                     <div class="guide-content">
                         <p>If instant thumbnail generation is enabled, TorchPhoto first creates fast, efficient low-quality thumbnails from partial original data. Later, you can select the items you want and improve them into TorchPhoto's standard high-quality thumbnails. This lets both Free and PRO users save storage and data first, then upgrade only the thumbnails that need clearer detail.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What does Preview Quality Improvement do?</summary>
+                    <div class="guide-content">
+                        <p>Preview Quality Improvement applies only to thumbnails that have already been generated; it does not modify or enhance the original image. It improves how lower-resolution thumbnails are displayed and works with Instant Low, Instant High, and TorchPhoto high-quality thumbnails. Because generated thumbnails are much smaller than the original files, the improvement can be applied quickly.</p>
+                        <p>In the viewer, the thumbnail appears first and then transitions naturally to the improved preview. If the viewer is configured to load the original image, the original is shown afterward. This adds one step to the usual <b>thumbnail → original</b> flow: <b>thumbnail → improved thumbnail → original</b>. It is especially useful when the original cannot be downloaded or when you are browsing with thumbnails only.</p>
                     </div>
                 </details>
 
@@ -387,6 +416,38 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
                     closeMenu();
+                }
+            });
+        }
+
+        const qaSearch = document.getElementById('qa-search-input');
+        const qaItems = Array.from(document.querySelectorAll('.qa-page .guide-item'));
+        const qaSearchCount = document.querySelector('.qa-search-count');
+
+        if (qaSearch && qaItems.length) {
+            const updateQuestionResults = () => {
+                const query = qaSearch.value.trim().toLocaleLowerCase();
+                let visibleCount = 0;
+
+                qaItems.forEach((item) => {
+                    const matches = !query || item.textContent.toLocaleLowerCase().includes(query);
+                    item.hidden = !matches;
+                    if (matches) visibleCount += 1;
+                });
+
+                if (qaSearchCount) {
+                    qaSearchCount.textContent = query
+                        ? `${visibleCount} ${visibleCount === 1 ? 'answer' : 'answers'} found`
+                        : '';
+                }
+            };
+
+            qaSearch.addEventListener('input', updateQuestionResults);
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === '/' && document.activeElement !== qaSearch) {
+                    event.preventDefault();
+                    qaSearch.focus();
                 }
             });
         }

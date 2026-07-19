@@ -17,11 +17,11 @@
             <span class="logo-text">TorchPhoto</span>
         </div>
 
-        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
             <i class="fas fa-bars"></i>
         </button>
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="site-menu">
             <li><a href="#features">Features</a></li>
             <li><a href="#screenshots">Screenshots</a></li>
             <li><a href="#pro">PRO</a></li>
@@ -168,9 +168,9 @@
             </div>
             <div class="wifi-gallery-media">
                 <div class="wifi-gallery-visual">
-                    <img class="wifi-gallery-phone" src="wifigallery1.jpg" alt="TorchPhoto Wi-Fi Gallery on iPhone">
+                    <img class="wifi-gallery-phone" src="WiFiGallery1.jpg" alt="TorchPhoto Wi-Fi Gallery on iPhone">
                     <span class="wifi-gallery-signal" aria-hidden="true"><i class="fas fa-wifi"></i></span>
-                    <img class="wifi-gallery-browser" src="wifigallery2.jpg" alt="TorchPhoto Wi-Fi Gallery in a web browser">
+                    <img class="wifi-gallery-browser" src="WiFiGallery2.jpg" alt="TorchPhoto Wi-Fi Gallery in a web browser">
                 </div>
             </div>
         </div>
@@ -225,10 +225,18 @@
         <div class="container">
             <h2 class="section-title">Screenshots</h2>
             <div class="screenshot-gallery">
-                <img src="flow1.jpg" alt="TorchPhoto screenshot 1">
-                <img src="flow2.jpg" alt="TorchPhoto screenshot 2">
-                <img src="flow3.jpg" alt="TorchPhoto screenshot 3">
-                <img src="flow4.jpg" alt="TorchPhoto screenshot 4">
+                <button class="screenshot-card" type="button" data-screenshot-index="0" aria-label="Open Server Library screenshot">
+                    <img src="flow1.jpg" alt="TorchPhoto server library with folders, tags, and search">
+                </button>
+                <button class="screenshot-card" type="button" data-screenshot-index="1" aria-label="Open Gallery Browsing screenshot">
+                    <img src="flow2.jpg" alt="TorchPhoto photo gallery in a server folder">
+                </button>
+                <button class="screenshot-card" type="button" data-screenshot-index="2" aria-label="Open Photos and Videos screenshot">
+                    <img src="flow3.jpg" alt="TorchPhoto gallery containing photos and playable videos">
+                </button>
+                <button class="screenshot-card" type="button" data-screenshot-index="3" aria-label="Open Flexible Uploads screenshot">
+                    <img src="flow4.jpg" alt="TorchPhoto upload destination and media options">
+                </button>
             </div>
         </div>
     </section>
@@ -296,27 +304,63 @@
 
     <footer id="support">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h1>Support</h1>
-                    <p>TorchPhoto - NAS &amp; Server Gallery</p>
-                    <p>© 2026 PixelBrick. All rights reserved.</p>
-                </div>
-                <div class="footer-contact">
-                    <div class="footer-links">
-                        <a href="guide.html">Guide</a>
-                        <a href="shortcuts.html">Shortcuts</a>
-                        <a href="update.html">Update</a>
-                        <a href="qa.html">Q&amp;A</a>
-                        <a href="privacy-policy.html">Privacy Policy</a>
+            <div class="support-panel">
+                <div class="footer-content">
+                    <div class="footer-info">
+                        <span class="support-eyebrow"><i class="fas fa-life-ring" aria-hidden="true"></i> Support</span>
+                        <h2>Make every moment easier to find.</h2>
+                        <p>Browse the guides and answers, check what is new, or contact us directly whenever you need a hand with TorchPhoto.</p>
+                        <a class="support-email-card" href="mailto:teamtorchphoto@gmail.com">
+                            <span class="support-email-icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+                            <span class="support-email-copy">
+                                <strong>Contact support</strong>
+                                <small>teamtorchphoto@gmail.com</small>
+                            </span>
+                            <i class="fas fa-arrow-right support-email-arrow" aria-hidden="true"></i>
+                        </a>
                     </div>
-                    <p class="footer-email">
-                        <a href="mailto:teamtorchphoto@gmail.com">teamtorchphoto@gmail.com</a>
-                    </p>
+                    <div class="footer-contact">
+                        <p class="footer-links-label">Explore support</p>
+                        <div class="footer-links">
+                            <a href="guide.html"><i class="fas fa-book-open" aria-hidden="true"></i> Guide</a>
+                            <a href="shortcuts.html"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> Shortcuts</a>
+                            <a href="update.html"><i class="fas fa-clock-rotate-left" aria-hidden="true"></i> Update</a>
+                            <a href="qa.html"><i class="fas fa-circle-question" aria-hidden="true"></i> Q&amp;A</a>
+                            <a href="privacy-policy.html"><i class="fas fa-lock" aria-hidden="true"></i> Privacy</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <span>TorchPhoto · NAS &amp; Server Gallery</span>
+                    <span>&copy; 2026 PixelBrick. All rights reserved.</span>
                 </div>
             </div>
         </div>
     </footer>
+
+    <div class="screenshot-modal" id="screenshotModal" aria-hidden="true">
+        <div class="screenshot-modal-backdrop" data-close-screenshot></div>
+        <div class="screenshot-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="screenshotModalTitle" aria-describedby="screenshotModalDescription">
+            <button class="screenshot-modal-close" type="button" data-close-screenshot aria-label="Close screenshot viewer">
+                <i class="fas fa-xmark" aria-hidden="true"></i>
+            </button>
+            <button class="screenshot-modal-nav screenshot-modal-prev" type="button" data-screenshot-prev aria-label="Previous screenshot">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <div class="screenshot-modal-media">
+                <img id="screenshotModalImage" src="flow1.jpg" alt="">
+            </div>
+            <div class="screenshot-modal-copy">
+                <span class="screenshot-modal-count" id="screenshotModalCount">Screenshot 1 of 4</span>
+                <h3 id="screenshotModalTitle">Server Library</h3>
+                <p id="screenshotModalDescription">Keep multiple server folders organized with visual covers, searchable names, paths, tags, and quick upload access.</p>
+                <span class="screenshot-modal-hint"><i class="fas fa-arrow-left" aria-hidden="true"></i><i class="fas fa-arrow-right" aria-hidden="true"></i> Use arrow keys to explore</span>
+            </div>
+            <button class="screenshot-modal-nav screenshot-modal-next" type="button" data-screenshot-next aria-label="Next screenshot">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
 
     <div class="feature-modal" id="featureModal" aria-hidden="true">
         <div class="feature-modal-backdrop" data-close-modal></div>
@@ -425,7 +469,7 @@
         }, heroMockupTransition);
     }
 
-    if (heroSlider && heroMockupBase && heroMockupOverlay) {
+    if (heroSlider && heroMockupBase && heroMockupOverlay && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         heroMockupImages.forEach((src) => {
             const preloadImage = new Image();
             preloadImage.src = src;
@@ -434,7 +478,7 @@
         window.setInterval(showNextHeroMockup, heroMockupInterval);
     }
 
-    const revealTargets = document.querySelectorAll('.hero-text, .hero-image, .offline-section, .offline-media, .offline-copy, .live-photo-section, .live-photo-media, .live-photo-copy, .wifi-gallery-section, .wifi-gallery-media, .wifi-gallery-copy, .section-eyebrow, .section-title, .section-subtitle, .feature-card, .workflow, .workflow-step, .privacy-inline, .screenshot-gallery img, .plan-card, .footer-info, .footer-contact');
+    const revealTargets = document.querySelectorAll('.hero-text, .hero-image, .offline-section, .offline-media, .offline-copy, .live-photo-section, .live-photo-media, .live-photo-copy, .wifi-gallery-section, .wifi-gallery-media, .wifi-gallery-copy, .section-eyebrow, .section-title, .section-subtitle, .feature-card, .workflow, .workflow-step, .privacy-inline, .plan-card, .footer-info, .footer-contact');
 
     revealTargets.forEach((element, index) => {
         element.classList.add('scroll-reveal');
@@ -460,20 +504,124 @@
     }
 
 
-    const screenshotImages = document.querySelectorAll('.screenshots-compact .screenshot-gallery img');
+    const screenshotData = [
+        {
+            image: 'flow1.jpg',
+            title: 'Server Library',
+            description: 'Keep multiple server folders organized with visual covers, searchable names, paths, tags, and quick upload access.',
+            alt: 'TorchPhoto server library with folders, tags, and search'
+        },
+        {
+            image: 'flow2.jpg',
+            title: 'Gallery Browsing',
+            description: 'Move between folders and browse a large collection as a clean, fast thumbnail grid.',
+            alt: 'TorchPhoto photo gallery in a server folder'
+        },
+        {
+            image: 'flow3.jpg',
+            title: 'Photos & Videos Together',
+            description: 'View photos and playable video thumbnails side by side in the same server gallery.',
+            alt: 'TorchPhoto gallery containing photos and playable videos'
+        },
+        {
+            image: 'flow4.jpg',
+            title: 'Flexible Uploads',
+            description: 'Choose a server and destination folder, then control how Live Photos, HEIC, Portrait, RAW, Burst, and screenshots are uploaded.',
+            alt: 'TorchPhoto upload destination and media options'
+        }
+    ];
+    const screenshotModal = document.getElementById('screenshotModal');
+    const screenshotModalImage = document.getElementById('screenshotModalImage');
+    const screenshotModalTitle = document.getElementById('screenshotModalTitle');
+    const screenshotModalDescription = document.getElementById('screenshotModalDescription');
+    const screenshotModalCount = document.getElementById('screenshotModalCount');
+    const screenshotModalClose = screenshotModal?.querySelector('.screenshot-modal-close');
+    const screenshotTriggers = document.querySelectorAll('[data-screenshot-index]');
+    let activeScreenshotIndex = 0;
+    let screenshotPreviousFocus = null;
 
-    screenshotImages.forEach((image) => {
-        image.addEventListener('click', () => {
-            screenshotImages.forEach((item) => {
-                if (item !== image) item.classList.remove('is-selected');
-            });
-            image.classList.toggle('is-selected');
-        });
+    function renderScreenshot(index) {
+        activeScreenshotIndex = (index + screenshotData.length) % screenshotData.length;
+        const item = screenshotData[activeScreenshotIndex];
+        screenshotModalImage.src = item.image;
+        screenshotModalImage.alt = item.alt;
+        screenshotModalTitle.textContent = item.title;
+        screenshotModalDescription.textContent = item.description;
+        screenshotModalCount.textContent = `Screenshot ${activeScreenshotIndex + 1} of ${screenshotData.length}`;
+    }
+
+    function openScreenshot(index, trigger) {
+        screenshotPreviousFocus = trigger;
+        renderScreenshot(index);
+        screenshotModal.classList.add('is-open');
+        screenshotModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        window.setTimeout(() => screenshotModalClose?.focus(), 80);
+    }
+
+    function closeScreenshot() {
+        screenshotModal.classList.remove('is-open');
+        screenshotModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        screenshotPreviousFocus?.focus();
+    }
+
+    screenshotTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => openScreenshot(Number(trigger.dataset.screenshotIndex), trigger));
     });
 
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('.screenshots-compact .screenshot-gallery img')) {
-            screenshotImages.forEach((image) => image.classList.remove('is-selected'));
+    screenshotTriggers.forEach((card, index) => {
+        card.classList.add('screenshot-reveal');
+        card.style.setProperty('--screenshot-reveal-delay', `${index * 150}ms`);
+    });
+
+    const screenshotGallery = document.querySelector('.screenshots-compact .screenshot-gallery');
+
+    if ('IntersectionObserver' in window && screenshotGallery) {
+        const screenshotRevealObserver = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+
+            screenshotTriggers.forEach((card, index) => {
+                card.classList.add('is-visible');
+                window.setTimeout(() => {
+                    card.style.setProperty('--screenshot-reveal-delay', '0ms');
+                }, 900 + (index * 150));
+            });
+            screenshotRevealObserver.disconnect();
+        }, {
+            threshold: 0.18,
+            rootMargin: '0px 0px -6% 0px'
+        });
+
+        screenshotRevealObserver.observe(screenshotGallery);
+    } else {
+        screenshotTriggers.forEach((card) => card.classList.add('is-visible'));
+    }
+
+    screenshotModal?.querySelectorAll('[data-close-screenshot]').forEach((target) => {
+        target.addEventListener('click', closeScreenshot);
+    });
+    screenshotModal?.querySelector('[data-screenshot-prev]')?.addEventListener('click', () => renderScreenshot(activeScreenshotIndex - 1));
+    screenshotModal?.querySelector('[data-screenshot-next]')?.addEventListener('click', () => renderScreenshot(activeScreenshotIndex + 1));
+
+    document.addEventListener('keydown', (event) => {
+        if (!screenshotModal?.classList.contains('is-open')) return;
+
+        if (event.key === 'Escape') closeScreenshot();
+        if (event.key === 'ArrowLeft') renderScreenshot(activeScreenshotIndex - 1);
+        if (event.key === 'ArrowRight') renderScreenshot(activeScreenshotIndex + 1);
+
+        if (event.key === 'Tab') {
+            const focusableItems = Array.from(screenshotModal.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])'));
+            const firstItem = focusableItems[0];
+            const lastItem = focusableItems[focusableItems.length - 1];
+            if (event.shiftKey && document.activeElement === firstItem) {
+                event.preventDefault();
+                lastItem.focus();
+            } else if (!event.shiftKey && document.activeElement === lastItem) {
+                event.preventDefault();
+                firstItem.focus();
+            }
         }
     });
 
@@ -508,14 +656,17 @@
     const featureModalImage = document.getElementById('featureModalImage');
     const featureTriggers = document.querySelectorAll('.feature-trigger');
     const modalCloseTargets = document.querySelectorAll('[data-close-modal]');
+    const featureModalClose = featureModal ? featureModal.querySelector('.feature-modal-close') : null;
 
     let featureModalRequestId = 0;
     let featureModalTimer = null;
+    let featureModalPreviousFocus = null;
 
     function openFeatureModal(title, description, image) {
         const requestId = ++featureModalRequestId;
         const startedAt = Date.now();
         clearTimeout(featureModalTimer);
+        featureModalPreviousFocus = document.activeElement;
 
         featureModal.classList.add('is-open', 'is-loading');
         featureModal.setAttribute('aria-hidden', 'false');
@@ -545,6 +696,8 @@
         } else {
             featureModalTimer = setTimeout(finish, 700);
         }
+
+        window.setTimeout(() => featureModalClose?.focus(), 80);
     }
 
     function closeFeatureModal() {
@@ -555,6 +708,7 @@
         document.body.classList.remove('modal-open');
         featureModalImage.onload = null;
         featureModalImage.onerror = null;
+        featureModalPreviousFocus?.focus();
     }
 
     featureTriggers.forEach((button) => {
@@ -574,6 +728,21 @@
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && featureModal.classList.contains('is-open')) {
             closeFeatureModal();
+        }
+
+        if (event.key === 'Tab' && featureModal.classList.contains('is-open')) {
+            const focusableItems = Array.from(featureModal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])'));
+            if (!focusableItems.length) return;
+            const firstItem = focusableItems[0];
+            const lastItem = focusableItems[focusableItems.length - 1];
+
+            if (event.shiftKey && document.activeElement === firstItem) {
+                event.preventDefault();
+                lastItem.focus();
+            } else if (!event.shiftKey && document.activeElement === lastItem) {
+                event.preventDefault();
+                firstItem.focus();
+            }
         }
     });
 </script>
