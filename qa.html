@@ -362,6 +362,720 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                         <p>First, cancel your monthly subscription. While your PRO access is still active, back up all generated thumbnails using the Backup feature in Settings. After your monthly subscription ends and TorchPhoto switches back to the Free version, purchase PRO lifetime. Then restore your thumbnail backup from Settings.</p>
                     </div>
                 </details>
+
+                <details class="guide-item">
+                    <summary>What information do I need to add a server?</summary>
+                    <div class="guide-content">
+                        <p>Select the correct protocol and enter the server address, port, username, password or supported authentication information, and root path. The values must match the settings on your FTP, SFTP, SMB, or WebDAV server.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I register the same server with more than one protocol?</summary>
+                    <div class="guide-content">
+                        <p>Yes. For example, the same NAS can be registered once with SMB and again with WebDAV. TorchPhoto treats each protocol and port combination as a separate connection, so its browsing data and thumbnail cache remain separate.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I connect to my server from outside my home network?</summary>
+                    <div class="guide-content">
+                        <p>Yes, if the server is already reachable from the internet or through a VPN and the selected protocol is configured correctly. TorchPhoto does not itself make a private server publicly accessible, so remote-access and firewall settings must be prepared on the server or network side.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why does iOS ask for Local Network permission?</summary>
+                    <div class="guide-content">
+                        <p>This permission is needed when TorchPhoto connects to a NAS, computer, or other server on the same local network. If access was denied, enable Local Network for TorchPhoto in the iOS Settings app and try again.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Are FTP and SFTP interchangeable?</summary>
+                    <div class="guide-content">
+                        <p>No. SFTP is a different protocol that runs over SSH; it is not simply an encrypted switch for a normal FTP connection. Choose the protocol and port actually enabled by your server.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What should I check when adding a WebDAV server?</summary>
+                    <div class="guide-content">
+                        <p>Check whether the server uses HTTP or HTTPS, confirm its port, and enter the correct WebDAV root path. A web page opening in a browser does not always mean that the same address is the WebDAV endpoint.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What should I enter as the SMB root path?</summary>
+                    <div class="guide-content">
+                        <p>The SMB path normally starts with the share name, followed by an optional subfolder. If the root is left at the server level, TorchPhoto can show available shares first, depending on the account's permissions.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does SMB support anonymous access?</summary>
+                    <div class="guide-content">
+                        <p>It can, when the SMB server itself permits guest or anonymous access. If the share requires an account, enter the correct username and password instead.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why can I connect to a server but see no files?</summary>
+                    <div class="guide-content">
+                        <p>Check the registered root path, the account's folder permissions, and Media-Only Mode. A successful login only confirms the connection; an incorrect root, restricted account, or active media filter can still leave the folder looking empty.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What happens if the server IP address or port changes?</summary>
+                    <div class="guide-content">
+                        <p>Edit the saved server with the new address or port. Because the server identity has changed, previously generated cache may be treated separately even if the physical storage is the same.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why are the same files cached again after changing the protocol or port?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto separates cache by connection identity to prevent files from different servers from being mixed. Changing FTP to SFTP, SMB to WebDAV, or changing the port creates a separate cache context.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How are saved server passwords protected?</summary>
+                    <div class="guide-content">
+                        <p>Server passwords and supported SFTP key information are stored using the device's secure credential storage rather than being written into the thumbnail files.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I organize a long server list?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Server search, color tags, ordering, and saved server management help separate personal, work, local, and remote connections.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What happens when I return to TorchPhoto after a long time in the background?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto checks the current network and reloads the server path when needed. A brief offline or retry state can appear while iOS restores the network connection, but cached thumbnails and folder information can remain available during that check.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does an offline message mean my server files were deleted?</summary>
+                    <div class="guide-content">
+                        <p>No. It means the current connection could not be used. TorchPhoto may show a saved folder snapshot and cached thumbnails until the server becomes reachable again.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What is Media-Only Mode?</summary>
+                    <div class="guide-content">
+                        <p>Media-Only Mode shows compatible photos and videos while hiding unrelated files. If a file exists on the server but is not visible, temporarily check this setting and the current photo/video filter.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Are folders hidden when Media-Only Mode is enabled?</summary>
+                    <div class="guide-content">
+                        <p>No. Folders remain available so you can continue navigating, while unsupported or unrelated files inside them are filtered from the media list.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does search look through the entire server?</summary>
+                    <div class="guide-content">
+                        <p>Directory search is intended for the currently loaded browsing context. If the file is in another folder, move to that folder or use the server's folder navigation first.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I show only photos or only videos?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Use the media filters to narrow the current folder to the type you want. Filters affect what is shown; they do not delete or move the hidden files.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why does a folder show a four-image preview?</summary>
+                    <div class="guide-content">
+                        <p>When suitable child thumbnails are available, TorchPhoto can combine them into a compact folder preview. The preview is only a visual guide and does not change the contents of the folder.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why does a folder not have a preview image yet?</summary>
+                    <div class="guide-content">
+                        <p>The folder may not contain supported media, its child thumbnails may not have been generated, or the server may currently be offline. Open the folder or generate thumbnails, then refresh after the required previews are available.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I favorite an entire folder?</summary>
+                    <div class="guide-content">
+                        <p>No. TorchPhoto favorites are designed for individual media items with thumbnails, not whole folders.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does adding a favorite copy the original file?</summary>
+                    <div class="guide-content">
+                        <p>Not necessarily. A favorite is mainly a quick way to return to the selected media item. Whether the original can be opened offline still depends on whether an appropriate local copy is available; the remote original may still require the server.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How can I select many items efficiently?</summary>
+                    <div class="guide-content">
+                        <p>Enter selection with a long press, then use drag selection where available. In large lists, the selection gestures are designed to help extend the range without opening every item individually.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What do the gestures in the image preview do?</summary>
+                    <div class="guide-content">
+                        <p>Horizontal movement changes the media item, a downward swipe closes the preview, and an upward swipe opens sharing when the current zoom and preview state allow it. Pinch and pan are used for image enlargement and movement.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why is horizontal swiping briefly unavailable while an image is loading?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto may temporarily hold horizontal navigation while the thumbnail, improved preview, or automatically loaded original is being prepared. This prevents an unfinished result from being applied to the next photo.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I close the image preview while the original is downloading?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Swipe down to close it normally. TorchPhoto cancels or discards work that belongs to the closed preview so the directory can remain usable.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does pinch zoom follow the point under my fingers?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Zooming is centered around the pinch location, and movement is limited so the enlarged image does not drift unnecessarily beyond its visible bounds.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does TorchPhoto respect Reduce Motion?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Optional visual transitions are reduced or skipped when the system's Reduce Motion setting is enabled, while the underlying browsing and loading behavior remains the same.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Are thumbnails copies of my original photos?</summary>
+                    <div class="guide-content">
+                        <p>No. They are smaller preview images used for fast browsing. The original remains on the server unless you explicitly save, share, upload, move, or delete it through an available action.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Will clearing thumbnail cache delete files from my server?</summary>
+                    <div class="guide-content">
+                        <p>No. Clearing cache removes TorchPhoto's generated previews, not the original server files. The thumbnails can be generated again later.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Should I generate thumbnails for one folder or the entire server?</summary>
+                    <div class="guide-content">
+                        <p>Use current-folder generation when you need one area quickly. Use server-wide generation when you want broader offline visual browsing and have enough time, network capacity, and local cache space.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why can thumbnail generation pause when I open a preview?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto gives the active preview priority and temporarily reduces competing thumbnail work. Generation can continue after the preview closes.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does thumbnail generation always download the entire original?</summary>
+                    <div class="guide-content">
+                        <p>Not always. TorchPhoto first tries efficient partial methods for supported images and videos. If a safe thumbnail cannot be produced that way, it can fall back to downloading more data or the full file.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why did thumbnail generation use more data than expected?</summary>
+                    <div class="guide-content">
+                        <p>The file may not contain a usable embedded preview, the server may not support the required partial reads, or the media format may need the complete file. In those cases, the normal full-download thumbnail path is used.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why does a large video show a placeholder instead of a frame?</summary>
+                    <div class="guide-content">
+                        <p>If the configured large-video thumbnail limit is reached, TorchPhoto can mark the item with a placeholder instead of downloading a very large file just to extract one frame. This is a completed skip state, not necessarily an error.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What happens to thumbnails when a server file is renamed or moved?</summary>
+                    <div class="guide-content">
+                        <p>Thumbnail identity includes the file path. A renamed or moved item can therefore appear as a new item and may need a new thumbnail, while old cache data can later be cleaned up.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why can an instant thumbnail have a slightly different crop from the original?</summary>
+                    <div class="guide-content">
+                        <p>Some cameras and editing apps store an embedded preview with a different aspect ratio or crop. Instant Thumbnail Low prioritizes that lightweight preview, so the final original can reveal a slightly different composition.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What should I choose if Instant Thumbnail Low misses some files?</summary>
+                    <div class="guide-content">
+                        <p>Try Instant Thumbnail High for a higher success rate, or use Thumbnail Improvement to replace selected instant previews with TorchPhoto high-quality thumbnails. Files that cannot be handled safely by the instant path can also use the normal generator.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does Preview Quality Improvement overwrite the thumbnail cache?</summary>
+                    <div class="guide-content">
+                        <p>No. The improved result is used for the current preview experience and does not replace the remote original or permanently rewrite the saved thumbnail cache.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How do I improve a zoomed area of an original photo?</summary>
+                    <div class="guide-content">
+                        <p>Enable Preview Quality Improvement, open the original, zoom to at least about 1.5×, and hold the same visible area for about one second. When processing finishes, TorchPhoto briefly indicates that the visible area was improved.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>If Thumbnail Quality Improvement is off, can zoomed originals still be improved?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Preview Quality Improvement is the main switch. Its thumbnail option controls the thumbnail stage, while visible-area improvement for a sufficiently enlarged original remains available when the main switch is on.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Which thumbnails can appear in the widget?</summary>
+                    <div class="guide-content">
+                        <p>Only generated thumbnails that match the server and folder selected in widget settings are used. Large-video skip placeholders and thumbnails from unrelated folders are excluded.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why is a photo missing from the widget?</summary>
+                    <div class="guide-content">
+                        <p>Confirm that its thumbnail has been generated and that the correct server and folder are selected for the widget. If the media was moved, deleted, or skipped as a large video, it may no longer be eligible.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What is included in a thumbnail backup?</summary>
+                    <div class="guide-content">
+                        <p>The backup is for generated TorchPhoto thumbnail data. It is not a backup of the original photos, videos, NAS contents, or the server itself.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>When is thumbnail backup especially useful?</summary>
+                    <div class="guide-content">
+                        <p>Use it before changing devices, reinstalling the app, or making a subscription change that could affect the available cache limit. Keep the original server identity and paths consistent for the restored previews to match correctly.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Will thumbnails survive if I delete and reinstall TorchPhoto?</summary>
+                    <div class="guide-content">
+                        <p>Do not rely on app deletion to preserve local cache. Create a thumbnail backup first if you want to restore generated previews after reinstalling.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What happens when a thumbnail cache limit is reached?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto manages cached previews according to the active Free or PRO cache policy and the selected limit. Older or less-needed previews may be removed, but the original server files are not affected.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can the original load automatically after the thumbnail?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Original auto-loading can replace the preview after the full image is ready. The Wi-Fi and cellular options let you control when this network-heavy step is allowed.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why does the thumbnail remain visible instead of the original?</summary>
+                    <div class="guide-content">
+                        <p>The server may be offline, original auto-loading may be disabled for the current network, or the download may have failed. The thumbnail can still be viewed because it is stored separately on the device.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I prevent large original downloads over cellular data?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Keep automatic original loading restricted to Wi-Fi and do not enable cellular original auto-load. You can still browse cached thumbnails and decide when to request an original.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Are originals available offline just because thumbnails are cached?</summary>
+                    <div class="guide-content">
+                        <p>No. A cached thumbnail is only a preview. Opening, saving, or sharing the full-quality original still requires the server unless a local copy has already been saved through another supported action.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What is TimeMapStamp?</summary>
+                    <div class="guide-content">
+                        <p>TimeMapStamp is the preview information card that can show the media's capture time and available location details. Optional Sunrise &amp; Sunset and Moon Phase information can be added beneath it.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How do the TimeMapStamp switches work together?</summary>
+                    <div class="guide-content">
+                        <p>TimeMapStamp is the main switch. Sunrise &amp; Sunset and Moon Phase are independent options underneath it. If the main switch is off, neither optional section runs or appears; if it is on, either option can be used alone or both can be enabled together.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What are the default TimeMapStamp settings on a new installation?</summary>
+                    <div class="guide-content">
+                        <p>TimeMapStamp is on, Sunrise &amp; Sunset is on, and Moon Phase is off by default. Changing these switches later keeps your chosen settings.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What information is required for Sunrise &amp; Sunset?</summary>
+                    <div class="guide-content">
+                        <p>The media must contain a usable capture date and valid GPS coordinates. If either is missing, the sunlight section is simply omitted while the rest of the available TimeMapStamp information can still appear.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What information is required for Moon Phase?</summary>
+                    <div class="guide-content">
+                        <p>A usable capture date is enough. GPS is not required for the moon phase row, so it can appear even when the photo has no location metadata.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does Sunrise &amp; Sunset request my current location?</summary>
+                    <div class="guide-content">
+                        <p>No. It uses the capture time and GPS coordinates already stored in the media metadata. It does not need to use the phone's current location to calculate the photographed moment.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What does the horizontal sunlight bar represent?</summary>
+                    <div class="guide-content">
+                        <p>It is a compact 24-hour timeline for the photographed date and place. Sunrise, sunset, and the capture-time marker are positioned according to where they fall within that day.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What does the vertical marker on the sunlight bar mean?</summary>
+                    <div class="guide-content">
+                        <p>It marks the photo or video's recorded capture time. This makes it easy to see whether the media was created before sunrise, during the day, near sunset, or at night.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What do Civil, Nautical, and Astronomical Twilight mean?</summary>
+                    <div class="guide-content">
+                        <p>They are progressively darker stages between daylight and full night. Civil twilight is the brightest, nautical twilight is darker, and astronomical twilight is the final faint-light stage before night.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What are Golden Hour and Blue Hour?</summary>
+                    <div class="guide-content">
+                        <p>Golden Hour is the low-sun period that often produces warm, soft light. Blue Hour is the cooler, dimmer period around twilight. The displayed phase describes the photographed time and location, not a filter applied to the image.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What does Sun Altitude mean?</summary>
+                    <div class="guide-content">
+                        <p>Sun Altitude is the sun's angle above or below the horizon at the capture time. A positive value places it above the horizon; a negative value places it below the horizon.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What do N, NE, E, SE, S, SW, W, and NW mean in TimeMapStamp?</summary>
+                    <div class="guide-content">
+                        <p>They are compass directions for the sun's azimuth at the photographed moment. They describe where the sun was positioned around the horizon, not the direction the camera was pointing.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What does Daylight Duration mean?</summary>
+                    <div class="guide-content">
+                        <p>It is the length of time between sunrise and sunset for the photo's date and location. It naturally changes with season and latitude.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Which time zone is used for the displayed sunlight times?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto uses the photographed location's time zone when it can be determined from the existing metadata lookup. If that is unavailable, it falls back to the device's current time zone.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What happens in a place with Midnight Sun or Polar Night?</summary>
+                    <div class="guide-content">
+                        <p>If there is no normal sunrise or sunset on that date, TorchPhoto does not invent marker times. It identifies the polar-day or polar-night state and shows an appropriate daylight duration.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What does the Moon Phase row show?</summary>
+                    <div class="guide-content">
+                        <p>It shows the moon-phase name, a matching moon icon, approximate illumination, and moon age for the recorded capture moment.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why is TimeMapStamp or one of its astronomy rows missing?</summary>
+                    <div class="guide-content">
+                        <p>Check the relevant setting and the media metadata. A missing or invalid capture date prevents time-based information, while missing GPS prevents Sunrise &amp; Sunset and map-based details. Moon Phase can still work from a valid date alone.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does viewing TimeMapStamp change the photo metadata?</summary>
+                    <div class="guide-content">
+                        <p>No. TimeMapStamp reads available information for display and does not rewrite the capture date, GPS coordinates, or original media file.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Which protocols support direct remote video streaming?</summary>
+                    <div class="guide-content">
+                        <p>SFTP, SMB, and compatible WebDAV servers can use range-based remote streaming. TorchPhoto requests only the portions needed by the player and can fall back to a temporary download when streaming is not usable.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How does video playback work over FTP?</summary>
+                    <div class="guide-content">
+                        <p>FTP video playback uses a download-based path rather than the direct remote streaming session used by SFTP, SMB, and compatible WebDAV connections. A large FTP video can therefore take longer before playback begins.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Is a video over 3GB automatically too large to play?</summary>
+                    <div class="guide-content">
+                        <p>No. File size alone is not a fixed playback limit. Large-file success also depends on the protocol, server range-read performance, network stability, available device storage for fallback, and whether the media format can be played by the device.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why can seeking far ahead in a large remote video take time?</summary>
+                    <div class="guide-content">
+                        <p>Moving the playhead far away requires new byte ranges from a different part of the file. A slow server, high latency, weak Wi-Fi, or media whose indexing information is difficult to access can delay playback at the new position.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What happens if remote video streaming stalls?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto can rebuild the streaming session around the current playback position. If the remote stream still cannot recover, it falls back to temporary-download playback instead of waiting indefinitely.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why does a WebDAV video download instead of stream?</summary>
+                    <div class="guide-content">
+                        <p>Direct WebDAV streaming requires correct HTTP byte-range support. If the server does not return partial content reliably, TorchPhoto uses the safer download fallback.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does streaming remove the need for free device storage?</summary>
+                    <div class="guide-content">
+                        <p>Not completely. Streaming uses temporary buffers, and a failed or unsupported stream may switch to a temporary full-file download. Very large videos therefore still benefit from adequate free space.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can a supported file extension still fail to play?</summary>
+                    <div class="guide-content">
+                        <p>Yes. A file extension is only the container name. The video or audio codec inside it must also be compatible with the device, and the file itself must not be damaged or incomplete.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does closing the video player stop remote requests?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Closing or changing the video cancels the old streaming, monitoring, and download work so it is not applied to a different media item.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why does sharing or saving a streaming video take longer than watching it?</summary>
+                    <div class="guide-content">
+                        <p>Playback can request only the ranges it needs, but saving or sharing normally requires a complete temporary copy of the original video. The transfer time therefore depends on the full file size.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Is a video thumbnail the same as video streaming?</summary>
+                    <div class="guide-content">
+                        <p>No. A video thumbnail is one small preview frame. Streaming supplies media data continuously for playback, so a generated thumbnail does not guarantee that the current server and network can stream the full video smoothly.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How does photo and video pairing recognize a pair?</summary>
+                    <div class="guide-content">
+                        <p>When pairing is enabled, an image and video in the same folder with the same base filename can be treated as one related pair. The video is then opened from the image's pairing viewer instead of appearing as an unrelated item.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why did a video disappear after I enabled pairing?</summary>
+                    <div class="guide-content">
+                        <p>If it has the same base filename as an image in the same folder, TorchPhoto may be intentionally treating it as the image's paired video. Open the image and use its pairing control to access the video.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I create a new destination folder while uploading?</summary>
+                    <div class="guide-content">
+                        <p>Yes. The upload folder picker can create a folder when the connected server, account permissions, and selected protocol allow it.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can an upload browse outside the server's registered root folder?</summary>
+                    <div class="guide-content">
+                        <p>No. Upload destinations are kept within the root path registered for that server. This prevents an accidental folder selection from escaping the intended browsing area.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can thumbnails be generated automatically after upload?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Enable the upload option to create thumbnails for successfully uploaded media and refresh the related directory afterward.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Is there a fast way to select recent photos for upload?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Long-press the upload button in the server list to choose media from Today, Yesterday, This Week, This Month, or a custom date range.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does a custom upload date range include the final day?</summary>
+                    <div class="guide-content">
+                        <p>Yes. The selected end date is included in the custom range.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What can I learn from the upload log?</summary>
+                    <div class="guide-content">
+                        <p>The log helps confirm which items completed and which failed. If an upload is missing, check the log before repeating the entire selection.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I upload with Apple Shortcuts?</summary>
+                    <div class="guide-content">
+                        <p>Yes. PRO users can use TorchPhoto's Shortcuts actions with a registered server and destination folder, subject to Photos access, server availability, and iOS background limits.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Should I keep TorchPhoto open during a very large upload or backup?</summary>
+                    <div class="guide-content">
+                        <p>For the most reliable result, keep the app in the foreground until a long transfer finishes. iOS can limit background execution, especially during large uploads, full-file video fallbacks, and thumbnail backup or restore.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does a browser need TorchPhoto installed to view Local Wi-Fi Gallery Share?</summary>
+                    <div class="guide-content">
+                        <p>No. A device on the same reachable local network can open the provided gallery address in a normal web browser.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why can another device not open my Local Wi-Fi Gallery?</summary>
+                    <div class="guide-content">
+                        <p>Confirm that both devices are on the same network, Local Network access is allowed, the displayed address and port are correct, and the router is not isolating wireless clients from one another.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does Local Wi-Fi Gallery Share upload my library to a cloud service?</summary>
+                    <div class="guide-content">
+                        <p>No. It serves the gallery from the device over the local network for the active sharing session.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Should I keep the gallery sharing screen active?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Keep TorchPhoto running while others browse the local gallery. If iOS suspends the app, the temporary local web session can become unavailable.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why would I change the Local Wi-Fi Gallery port?</summary>
+                    <div class="guide-content">
+                        <p>Change it if the default port is already in use or blocked on the local network. After changing it, share the newly displayed URL or QR code because the old address will no longer match.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does TorchPhoto modify originals when browsing, creating thumbnails, or showing metadata?</summary>
+                    <div class="guide-content">
+                        <p>No. These are read-only viewing operations. Original server files change only when you explicitly use an action such as upload, delete, or another available file operation.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What should I check if thumbnails work but originals do not open?</summary>
+                    <div class="guide-content">
+                        <p>Cached thumbnails can work offline even when the server cannot deliver the original. Check the current connection, credentials, file permissions, remote path, Wi-Fi or cellular original-loading setting, and available storage for large temporary downloads.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why can a file appear in list view but not open in the preview?</summary>
+                    <div class="guide-content">
+                        <p>The server may identify it as media by name or extension even though its internal format is unsupported, damaged, or incomplete. Try downloading the file and checking whether the device can open it locally.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why do dates or locations sometimes differ from what I expect?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto displays the metadata available in the file. Exporting, editing, messaging, or copying media can remove or replace capture dates, GPS data, and time-zone clues, so the shown result may reflect the exported file rather than the original camera record.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What should I do before deleting remote media in TorchPhoto?</summary>
+                    <div class="guide-content">
+                        <p>Confirm the selected files, server, and folder carefully. A remote delete affects the server copy and may not be recoverable through TorchPhoto; recovery depends on the server's own recycle-bin or backup policy.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What are the main default settings on a new installation?</summary>
+                    <div class="guide-content">
+                        <p>Media-Only Mode, Instant Thumbnail, Wi-Fi-only original auto-load, TimeMapStamp, and Sunrise &amp; Sunset start enabled. Instant Thumbnail starts at Low quality. Preview quality options and Moon Phase start disabled. Existing user choices are not replaced by new-install defaults.</p>
+                    </div>
+                </details>
             </div>
         </div>
     </main>
