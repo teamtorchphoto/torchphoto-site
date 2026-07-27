@@ -159,6 +159,27 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 </details>
 
                 <details class="guide-item">
+                    <summary>Can TorchPhoto display HDR photos and videos?</summary>
+                    <div class="guide-content">
+                        <p>Yes. TorchPhoto can display HDR media when the original file, its HDR metadata or codec, the iOS version, and the device display all support HDR playback. The most accurate HDR result appears after the compatible original has loaded; a lightweight thumbnail may not reproduce the same brightness or dynamic range.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why can an HDR original look different from its thumbnail or an SDR display?</summary>
+                    <div class="guide-content">
+                        <p>Thumbnail caches and some display or sharing paths can use an SDR-compatible preview, while the loaded HDR original can show brighter highlights and a wider range between light and dark areas. On a display or output path that does not support the original HDR format, iOS may present a tone-mapped SDR-compatible result instead.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does viewing HDR or SDR media change the original file?</summary>
+                    <div class="guide-content">
+                        <p>No. HDR and SDR preview behavior affects only how compatible media is displayed. TorchPhoto does not rewrite the original server file while browsing, and any SDR-compatible presentation performed for the current device or display does not replace the stored original.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
                     <summary>Are search, sort, and filter available?</summary>
                     <div class="guide-content">
                         <p>Yes. Search and sorting are supported, making it easier to focus on photos only or videos only when needed.</p>
@@ -183,6 +204,20 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     <summary>Can I upload directly to the folder I am viewing?</summary>
                     <div class="guide-content">
                         <p>Yes. Inside a folder, tap the menu button in the top-right corner and choose Upload. The photo selection screen opens for the current server and current folder, so the selected photos and videos can be uploaded immediately to that exact location.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I select upload files from the Files app or an external storage device?</summary>
+                    <div class="guide-content">
+                        <p>Yes. On the upload page, a normal tap on <b>Photo Selection</b> opens the photo picker. Press and hold the same button to open the iOS file picker instead. From there, you can browse locations available in the Files app, including supported external storage devices and removable drives, then select media for upload to the current server destination.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Will every file selected from external storage be uploaded?</summary>
+                    <div class="guide-content">
+                        <p>No. File selection through the Files app is limited to photo and video extensions supported by TorchPhoto. Unsupported extensions are ignored so they do not enter the upload flow. A supported extension still needs to contain valid, accessible media data; damaged, incomplete, unavailable, or incompatible files may fail safely and can be checked in the Upload Log.</p>
                     </div>
                 </details>
 
@@ -296,7 +331,42 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Does it support widgets and slideshows?</summary>
                     <div class="guide-content">
-                        <p>Yes. Generated thumbnails can be displayed in iOS widgets, and slideshow playback is supported for digital-frame style use.</p>
+                        <p>Yes. Generated thumbnails can be displayed in iOS widgets, and slideshow playback is supported for digital-frame style use. The slideshow includes playback controls, configurable timing and transitions, optional on-screen information, and background music from the device's Music library.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Which slideshow settings can I customize?</summary>
+                    <div class="guide-content">
+                        <p>You can adjust the interval between photos, transition speed, sequential or shuffled order, screen-fill behavior, clock display, photo-name display, background music, and starting music volume. During playback, you can pause or resume, move to the previous or next photo, check the current slide count, and save the current photo when available.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Are slideshow settings shared by every server?</summary>
+                    <div class="guide-content">
+                        <p>No. Slideshow settings are remembered separately for each registered server. For example, one server can use a five-second interval and one music selection while another uses a three-second interval and a different playlist. Opening the slideshow again restores the settings saved for that server.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I use multiple songs as slideshow background music?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Choose background music from the iOS Music library and select one or more available songs. Multiple selections are played in order, and after the final song finishes, playback returns to the first song and continues. Music-library permission is required, and a song that was removed or is not currently playable may be unavailable to the slideshow.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How does slideshow starting volume work?</summary>
+                    <div class="guide-content">
+                        <p>The configured starting volume is stored with that server's slideshow settings and is applied once when slideshow music begins. After playback starts, the iPhone or iPad volume buttons can adjust the actual listening volume normally. Those temporary hardware-button adjustments do not move or overwrite the saved starting-volume setting.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What happens if I pause or leave the slideshow?</summary>
+                    <div class="guide-content">
+                        <p>Pausing the slideshow pauses both photo advancement and background music. Resuming continues the slideshow, while closing it stops the slideshow timer, image-loading work, and its music playback so the session does not continue after the viewer has been dismissed.</p>
                     </div>
                 </details>
 
