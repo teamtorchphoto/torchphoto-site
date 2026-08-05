@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q&A - TorchPhoto</title>
+    <title>Q&amp;A - TorchPhoto</title>
+    <meta name="description" content="Find answers about TorchPhoto server connections, thumbnails, offline browsing, uploads, Live Photos, Wi-Fi Gallery, PRO, privacy, and troubleshooting.">
+    <link rel="canonical" href="https://torchphoto.com/qa.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TorchPhoto Q&amp;A">
+    <meta property="og:description" content="Answers about server connections, thumbnails, offline browsing, uploads, Live Photos, Wi-Fi Gallery, PRO, and troubleshooting.">
+    <meta property="og:image" content="https://torchphoto.com/main.jpg">
+    <meta property="og:url" content="https://torchphoto.com/qa.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TorchPhoto Q&amp;A">
+    <meta name="twitter:description" content="Find answers to common TorchPhoto questions.">
+    <meta name="twitter:image" content="https://torchphoto.com/main.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<link rel="icon" type="image/png" href="logo.png">
@@ -259,10 +270,10 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 </details>
 
                 <details class="guide-item">
-                    <summary>What does Preview Quality Improvement do?</summary>
+                    <summary>What does Enhance Thumbnail Quality do?</summary>
                     <div class="guide-content">
-                        <p>Preview Quality Improvement applies only to thumbnails that have already been generated; it does not modify or enhance the original image. It improves how lower-resolution thumbnails are displayed and works with Instant Low, Instant High, and TorchPhoto high-quality thumbnails. Because generated thumbnails are much smaller than the original files, the improvement can be applied quickly.</p>
-                        <p>In the viewer, the thumbnail appears first and then transitions naturally to the improved preview. If the viewer is configured to load the original image, the original is shown afterward. This adds one step to the usual <b>thumbnail → original</b> flow: <b>thumbnail → improved thumbnail → original</b>. It is especially useful when the original cannot be downloaded or when you are browsing with thumbnails only.</p>
+                        <p>Enhance Thumbnail Quality improves how generated thumbnails are displayed during preview. It works with Instant Low, Instant High, and TorchPhoto high-quality thumbnails, but it does not modify the original media file or overwrite the saved thumbnail cache.</p>
+                        <p>This setting is independent of SDR Quality Enhancement. Its offline option applies only to thumbnail enhancement while browsing offline.</p>
                     </div>
                 </details>
 
@@ -638,23 +649,23 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 </details>
 
                 <details class="guide-item">
-                    <summary>Does Preview Quality Improvement overwrite the thumbnail cache?</summary>
+                    <summary>Does Enhance Thumbnail Quality overwrite the thumbnail cache?</summary>
                     <div class="guide-content">
                         <p>No. The improved result is used for the current preview experience and does not replace the remote original or permanently rewrite the saved thumbnail cache.</p>
                     </div>
                 </details>
 
                 <details class="guide-item">
-                    <summary>How do I improve a zoomed area of an original photo?</summary>
+                    <summary>What does SDR Quality Enhancement do?</summary>
                     <div class="guide-content">
-                        <p>Enable Preview Quality Improvement, open the original, zoom to at least about 1.5×, and hold the same visible area for about one second. When processing finishes, TorchPhoto briefly indicates that the visible area was improved.</p>
+                        <p>When an SDR original is enlarged to at least about 1.5×, TorchPhoto can enhance the visible area on device. Hold the same visible area briefly while processing finishes. This does not modify the original file or overwrite the thumbnail cache.</p>
                     </div>
                 </details>
 
                 <details class="guide-item">
-                    <summary>If Thumbnail Quality Improvement is off, can zoomed originals still be improved?</summary>
+                    <summary>If Enhance Thumbnail Quality is off, can zoomed originals still be improved?</summary>
                     <div class="guide-content">
-                        <p>Yes. Preview Quality Improvement is the main switch. Its thumbnail option controls the thumbnail stage, while visible-area improvement for a sufficiently enlarged original remains available when the main switch is on.</p>
+                        <p>Yes. SDR Quality Enhancement and Enhance Thumbnail Quality are independent settings. Turning off thumbnail enhancement does not disable visible-area enhancement for a sufficiently enlarged SDR original.</p>
                     </div>
                 </details>
 
