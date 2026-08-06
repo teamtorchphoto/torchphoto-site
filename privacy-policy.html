@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - TorchPhoto</title>
-    <meta name="description" content="Learn how TorchPhoto handles server credentials, media transfers, thumbnails, cache data, captions, and support information.">
+    <meta name="description" content="Learn how TorchPhoto handles server credentials, media transfers, local diagnostics, thumbnails, cache data, captions, and support information.">
     <link rel="canonical" href="https://torchphoto.com/privacy-policy.html">
     <meta property="og:type" content="article">
     <meta property="og:title" content="TorchPhoto Privacy Policy">
-    <meta property="og:description" content="Learn how TorchPhoto handles server credentials, direct media transfers, thumbnails, cache data, and support information.">
+    <meta property="og:description" content="Learn how TorchPhoto handles server credentials, direct media transfers, local diagnostics, thumbnails, cache data, and support information.">
     <meta property="og:image" content="https://torchphoto.com/main.jpg">
     <meta property="og:url" content="https://torchphoto.com/privacy-policy.html">
     <meta name="twitter:card" content="summary_large_image">
@@ -46,7 +46,7 @@
             <div class="page-hero">
                 <span class="page-eyebrow">Support</span>
                 <h1>Privacy Policy</h1>
-                <p>Last updated: 2026-06-24</p>
+                <p>Last updated: 2026-08-06</p>
             </div>
 
             <div class="policy-card">
@@ -55,14 +55,28 @@
                 <h2>Information Collection and Use</h2>
                 <p>TorchPhoto is designed to browse photos and videos from servers configured by the user through FTP, SFTP, SMB, or WebDAV. The Application does not upload, transmit, or store your photos or videos on the Service Provider’s servers.</p>
                 <p>Your media files are accessed directly between your mobile device and the server that you configure. The Service Provider does not have access to your server, connection credentials, photos, videos, folders, or file contents.</p>
-                <p>The Application may store server connection information provided by the user, such as connection method, server address, port, username, password, and selected directory paths, locally on the user’s device for the purpose of connecting to the user’s own server.</p>
+                <p>The Application may store server connection information provided by the user, such as connection method, server address, port, username, authentication method, and selected directory paths, locally on the user’s device for the purpose of connecting to the user’s own server. Passwords and supported SFTP private-key credentials are stored using the device’s protected credential storage.</p>
                 <p>The Application may create and store thumbnails, cache files, favorites data, and related metadata locally on the user’s device to provide the Application’s core browsing features and improve performance. This data remains on the user’s device unless the user deletes it, clears the cache, or removes the Application.</p>
                 <p>The Application does not collect precise location information about your mobile device (such as GPS-level location).</p>
                 <p>The Application does not collect or use your device’s location for geolocation services.</p>
                 <p>For a better experience, while using the Application, the Service Provider may ask you to provide certain information, such as information included in support emails. Any information you voluntarily provide will be used only for the purpose it was provided and handled as described in this privacy policy.</p>
 
+                <h2>Device Permissions and User-Directed Features</h2>
+                <p>TorchPhoto accesses the photo library only when the user chooses photos or videos to upload, saves downloaded media to the photo library, or chooses an image to check for a TorchPhoto server QR code. TorchPhoto uses the camera only when the user opens the QR scanner for adding a server.</p>
+                <p>The Application uses local-network access to connect to servers selected by the user. When the user explicitly starts Wi-Fi Gallery Share, TorchPhoto can temporarily make the selected gallery available to other devices on the same local network. This local sharing is initiated and stopped by the user and does not route the gallery through the Service Provider’s servers.</p>
+                <p>TorchPhoto does not request or use the device’s current location. If a media file already contains capture-location metadata, the Application may use that embedded information to display a map, address, time-zone, elevation, sunrise and sunset, or related capture details. Apple Maps or geocoding services may process coordinates when those features are used, subject to the user’s Apple settings and Apple’s privacy terms.</p>
+                <p>The Application accesses the user’s music library only when the user chooses background music for a slideshow. In-app purchases and subscription status are processed through Apple StoreKit. These Apple platform services are governed by the user’s Apple account settings and Apple’s applicable terms.</p>
+
+                <h2>On-Device Diagnostics</h2>
+                <p>TorchPhoto includes an on-device diagnostic feature to help identify crashes, abnormal terminations, performance and resource issues, and failures in app features. The diagnostics are used to support app operation, updates, optimization, stability, and feature improvements.</p>
+                <p>Diagnostic records may include technical error details, app lifecycle and runtime states, app version and build, operating system version, device family, non-identifying feature setting states, and aggregate cache usage amounts. They do not include server addresses, account credentials, passwords, folder names, filenames or paths, user-entered text, photo or video contents, EXIF or GPS data, or media metadata contents.</p>
+                <p>Diagnostic records are stored locally on the user’s device and are not automatically transmitted to the Service Provider or any external server. A diagnostic JSON file is prepared only when the user chooses a feedback or error-reporting action, and nothing is sent unless the user completes sending the email. The Application does not use an external analytics SDK or an automatic diagnostic upload service for these records.</p>
+                <p>Apple may separately collect or provide system-level crash and analytics information according to the user’s device analytics settings and Apple’s privacy terms. Apple’s system analytics are separate from TorchPhoto’s locally stored diagnostic JSON and are not an automatic upload performed by TorchPhoto.</p>
+                <p>Routine diagnostic activity records are deleted automatically after 72 hours. Abnormal records are grouped by cause and may be retained without time-based expiration so recurring issues can be identified. Local diagnostic storage is limited to 512 KB, and the user can delete the diagnostic history at any time with the in-app reset control.</p>
+
                 <h2>Third Party Access</h2>
                 <p>The Service Provider does not sell, rent, or share user photos, videos, connection credentials, server information, thumbnails, cache files, favorites data, or folder information with third parties.</p>
+                <p>If the user voluntarily sends a feedback email, the message and its diagnostic attachment are transmitted through the email service configured by the user and delivered to the Service Provider. The Service Provider receives this information only after the user chooses to send it.</p>
                 <p>The Service Provider may disclose User Provided information:</p>
                 <ul>
                     <li>as required by law, such as to comply with a subpoena, or similar legal process;</li>
@@ -74,7 +88,7 @@
                 <p>You can stop use of the Application and remove locally stored Application data by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.</p>
 
                 <h2>Data Retention Policy</h2>
-                <p>Server connection information, thumbnails, cache files, favorites data, and related metadata are stored locally on the user’s device and are not retained on the Service Provider’s servers. If you voluntarily provide information to the Service Provider, such as by contacting support, the Service Provider will retain it only for as long as necessary to respond to your request and for a reasonable time thereafter. If you’d like the Service Provider to delete User Provided Data that you have provided via the Application or support contact, please contact the Service Provider at teamtorchphoto@gmail.com and they will respond in a reasonable time.</p>
+                <p>Server connection information, thumbnails, cache files, favorites data, related metadata, and unsent diagnostic records are stored locally on the user’s device and are not retained on the Service Provider’s servers. Local diagnostic retention is described in the On-Device Diagnostics section above. If you voluntarily provide information to the Service Provider, such as by sending a support email and diagnostic attachment, the Service Provider will retain it only for as long as necessary to respond to your request and for a reasonable time thereafter. If you’d like the Service Provider to delete User Provided Data that you have provided via the Application or support contact, please contact the Service Provider at teamtorchphoto@gmail.com and they will respond in a reasonable time.</p>
 
                 <h2>Children</h2>
                 <p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.</p>
@@ -85,7 +99,7 @@
 
                 <h2>Changes</h2>
                 <p>This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</p>
-                <p>This privacy policy is effective as of 2026-06-24.</p>
+                <p>This privacy policy is effective as of 2026-08-06.</p>
 
                 <h2>Your Consent</h2>
                 <p>By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by the Service Provider.</p>
