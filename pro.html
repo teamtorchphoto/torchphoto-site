@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06132e">
+    <title>TorchPhoto PRO — Feature Guide</title>
+    <meta name="description" content="See TorchPhoto PRO in the actual app: unlimited servers, Timeline Viewer, automatic backups, expanded thumbnail tools, unlimited uploads, and more.">
+    <link rel="canonical" href="https://torchphoto.com/pro">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TorchPhoto PRO — Feature Guide">
+    <meta property="og:description" content="Explore the actual TorchPhoto PRO experience feature by feature.">
+    <meta property="og:image" content="https://torchphoto.com/pro-actual-timeline.webp">
+    <meta property="og:url" content="https://torchphoto.com/pro">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/webp" href="pro-logo.webp">
+    <style>
+        :root {
+            --ink: #111827;
+            --muted: #667085;
+            --line: rgba(148, 163, 184, .22);
+            --navy-950: #020817;
+            --navy-900: #06132e;
+            --navy-800: #0c2558;
+            --blue: #2878ff;
+            --blue-deep: #0f43d6;
+            --green: #18b976;
+            --radius-xl: 38px;
+            --radius-lg: 28px;
+            --shadow: 0 28px 74px rgba(15, 23, 42, .14);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+        body {
+            min-width: 320px;
+            color: var(--ink);
+            background: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+            line-height: 1.58;
+            -webkit-font-smoothing: antialiased;
+        }
+        body.modal-open { overflow: hidden; }
+        img { display: block; max-width: 100%; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 100;
+            height: 72px;
+            border-bottom: 1px solid rgba(255,255,255,.10);
+            background: rgba(2,8,23,.78);
+            backdrop-filter: blur(20px) saturate(145%);
+            -webkit-backdrop-filter: blur(20px) saturate(145%);
+        }
+        .nav-inner {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            color: #fff;
+            font-size: 17px;
+            font-weight: 780;
+            letter-spacing: -.03em;
+        }
+        .brand img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(96,165,250,.24));
+        }
+        .nav-links { display: flex; align-items: center; gap: 8px; }
+        .nav-links a {
+            padding: 10px 15px;
+            border-radius: 999px;
+            color: rgba(255,255,255,.78);
+            font-size: 14px;
+            font-weight: 680;
+            text-decoration: none;
+            transition: .18s ease;
+        }
+        .nav-links a:hover { color: #fff; background: rgba(255,255,255,.10); }
+        .nav-links .nav-highlight { color: #06132e; background: rgba(255,255,255,.96); }
+        .nav-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 14px;
+            color: #fff;
+            background: rgba(255,255,255,.08);
+            font-size: 20px;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 870px;
+            overflow: hidden;
+            padding: 150px 0 104px;
+            color: #fff;
+            background:
+                radial-gradient(circle at 12% 18%, rgba(40,120,255,.42), transparent 34%),
+                radial-gradient(circle at 86% 24%, rgba(24,185,118,.26), transparent 31%),
+                linear-gradient(145deg, #020817 0%, #06132e 48%, #071e4b 100%);
+        }
+        .hero::before, .hero::after {
+            content: "";
+            position: absolute;
+            width: 570px;
+            height: 570px;
+            border-radius: 50%;
+            filter: blur(76px);
+            opacity: .22;
+            pointer-events: none;
+            animation: drift 15s ease-in-out infinite alternate;
+        }
+        .hero::before {
+            top: -260px;
+            right: 14%;
+            background: conic-gradient(from 120deg, #5eead4, #60a5fa, #c084fc, #5eead4);
+        }
+        .hero::after {
+            bottom: -360px;
+            left: 6%;
+            background: conic-gradient(from 210deg, #f59e0b, #22c55e, #3b82f6, #f59e0b);
+            animation-delay: -6s;
+        }
+        @keyframes drift { to { transform: translate3d(52px,34px,0) scale(1.08); } }
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: minmax(0,.9fr) minmax(430px,1.1fr);
+            align-items: center;
+            gap: 72px;
+        }
+        .eyebrow, .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 820;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .eyebrow {
+            margin-bottom: 24px;
+            padding: 8px 13px;
+            border: 1px solid rgba(255,255,255,.16);
+            background: rgba(255,255,255,.08);
+        }
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #5eead4;
+            box-shadow: 0 0 14px #5eead4;
+        }
+        .hero h1 {
+            max-width: 590px;
+            font-size: clamp(54px,6.5vw,88px);
+            line-height: .97;
+            letter-spacing: -.065em;
+        }
+        .hero h1 span {
+            color: transparent;
+            background: linear-gradient(110deg,#fff 10%,#8cc4ff 48%,#74f1c3 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        .hero-copy > p {
+            max-width: 580px;
+            margin-top: 26px;
+            color: rgba(255,255,255,.70);
+            font-size: 18px;
+        }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 52px;
+            padding: 0 20px;
+            border-radius: 17px;
+            font-size: 15px;
+            font-weight: 760;
+            text-decoration: none;
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+        .button:hover { transform: translateY(-2px); }
+        .button-primary {
+            color: #06132e;
+            background: #fff;
+            box-shadow: 0 16px 36px rgba(0,0,0,.24);
+        }
+        .button-secondary {
+            color: #fff;
+            border: 1px solid rgba(255,255,255,.18);
+            background: rgba(255,255,255,.08);
+        }
+        .hero-note { font-size: 13px !important; color: rgba(255,255,255,.48) !important; }
+
+        .hero-visual { position: relative; min-height: 590px; }
+        .hero-phone {
+            position: absolute;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 38px;
+            background: #fff;
+            box-shadow: 0 36px 80px rgba(0,0,0,.48);
+        }
+        .hero-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .hero-phone-main {
+            z-index: 3;
+            top: 0;
+            left: 50%;
+            width: 292px;
+            height: 585px;
+            transform: translateX(-50%);
+        }
+        .hero-phone-left, .hero-phone-right {
+            z-index: 2;
+            top: 82px;
+            width: 214px;
+            height: 450px;
+            opacity: .84;
+        }
+        .hero-phone-left { left: -8px; transform: rotate(-7deg); }
+        .hero-phone-right { right: -8px; transform: rotate(7deg); }
+        .hero-orbit {
+            position: absolute;
+            z-index: 5;
+            left: 50%;
+            bottom: -16px;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 94%;
+            padding: 11px 16px;
+            border: 1px solid rgba(255,255,255,.17);
+            border-radius: 999px;
+            color: rgba(255,255,255,.82);
+            background: rgba(3,13,32,.70);
+            backdrop-filter: blur(16px);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .section { padding: 102px 0; }
+        .section-heading { max-width: 760px; margin: 0 auto 50px; text-align: center; }
+        .section-kicker {
+            margin-bottom: 15px;
+            padding: 7px 12px;
+            color: var(--blue-deep);
+            background: rgba(40,120,255,.09);
+        }
+        .section-heading h2 {
+            font-size: clamp(38px,5vw,58px);
+            line-height: 1.04;
+            letter-spacing: -.052em;
+        }
+        .section-heading p { margin-top: 17px; color: var(--muted); font-size: 17px; }
+
+        .comparison { background: #f5f7fb; }
+        .comparison-shell {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            background: #fff;
+            box-shadow: var(--shadow);
+        }
+        .comparison-head, .comparison-row {
+            display: grid;
+            grid-template-columns: 1.25fr .85fr .9fr;
+        }
+        .comparison-head { color: #fff; background: var(--navy-900); }
+        .comparison-head > div, .comparison-row > div {
+            display: flex;
+            align-items: center;
+            min-height: 70px;
+            padding: 16px 22px;
+        }
+        .comparison-head > div:not(:last-child),
+        .comparison-row > div:not(:last-child) { border-right: 1px solid var(--line); }
+        .comparison-row:not(:last-child) { border-bottom: 1px solid var(--line); }
+        .comparison-feature { gap: 12px; font-weight: 730; }
+        .comparison-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 34px;
+            width: 34px;
+            height: 34px;
+            border-radius: 11px;
+            color: var(--blue-deep);
+            background: rgba(40,120,255,.09);
+            font-size: 11px;
+            font-weight: 850;
+        }
+        .free-value { color: #7b8494; font-weight: 650; }
+        .pro-value {
+            color: #064e3b;
+            background: linear-gradient(90deg,rgba(236,253,245,.86),rgba(239,246,255,.70));
+            font-weight: 780;
+        }
+        .pro-value::before {
+            content: "✓";
+            display: grid;
+            place-items: center;
+            width: 23px;
+            height: 23px;
+            margin-right: 8px;
+            border-radius: 50%;
+            color: #fff;
+            background: var(--green);
+            font-size: 12px;
+        }
+
+        .features { background: linear-gradient(180deg,#fff 0%,#f5f7fb 100%); }
+        .feature-list { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 980px; margin: 0 auto; }
+        .feature-block {
+            position: relative;
+            display: grid;
+            grid-template-columns: 58px minmax(0,1fr);
+            gap: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(148,163,184,.22);
+            border-radius: 28px;
+            padding: 38px 42px;
+            background: rgba(255,255,255,.94);
+            box-shadow: 0 18px 44px rgba(15,23,42,.08);
+        }
+        .feature-block::after {
+            content: "";
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            right: -92px;
+            bottom: -102px;
+            border-radius: 50%;
+            background: radial-gradient(circle,rgba(59,130,246,.13),transparent 68%);
+            pointer-events: none;
+        }
+        .feature-number {
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 15px;
+            color: #fff;
+            background: linear-gradient(145deg,#3b82f6,#1749cc);
+            box-shadow: 0 14px 30px rgba(37,99,235,.24);
+            font-size: 13px;
+            font-weight: 850;
+        }
+        .feature-copy h3 { font-size: 25px; line-height: 1.16; letter-spacing: -.035em; }
+        .feature-copy p { max-width: 800px; margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.72; }
+        .feature-copy p + p { margin-top: 10px; }
+        .feature-copy strong { color: #172033; font-weight: 780; }
+
+        .purchase { padding: 105px 0; background: #f5f7fb; }
+        .purchase-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 40px;
+            padding: 72px 58px;
+            color: #fff;
+            text-align: center;
+            background:
+                radial-gradient(circle at 10% 0%,rgba(59,130,246,.40),transparent 33%),
+                radial-gradient(circle at 92% 100%,rgba(16,185,129,.26),transparent 34%),
+                linear-gradient(145deg,#020817,#071a3d);
+            box-shadow: 0 36px 88px rgba(2,8,23,.27);
+        }
+        .purchase-logo { width: 70px; height: 70px; margin: 0 auto 22px; object-fit: contain; }
+        .purchase-card h2 { font-size: clamp(36px,5vw,58px); line-height: 1.02; letter-spacing: -.052em; }
+        .purchase-card > p { max-width: 710px; margin: 18px auto 0; color: rgba(255,255,255,.68); font-size: 17px; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 16px;
+            max-width: 850px;
+            margin: 38px auto 0;
+            text-align: left;
+        }
+        .pricing-card {
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 24px;
+            padding: 24px;
+            background: rgba(255,255,255,.08);
+            backdrop-filter: blur(14px);
+        }
+        .pricing-card span {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #8cc4ff;
+            font-size: 11px;
+            font-weight: 850;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+        .pricing-card h3 { font-size: 24px; letter-spacing: -.035em; }
+        .pricing-card p { margin-top: 8px; color: rgba(255,255,255,.64); font-size: 14px; }
+        .price-note { margin-top: 18px !important; font-size: 13px !important; color: rgba(255,255,255,.48) !important; }
+
+        footer { padding: 26px 0 34px; color: #7b8494; background: #f5f7fb; }
+        .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 13px; }
+        .footer-badge {
+            padding: 7px 11px;
+            border-radius: 999px;
+            color: #466079;
+            background: #e7edf5;
+            font-weight: 700;
+        }
+
+        [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .62s ease, transform .62s ease; }
+        [data-reveal].is-visible { opacity: 1; transform: none; }
+
+        @media (max-width: 980px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 46px; }
+            .hero-copy { text-align: center; }
+            .hero-copy > p { margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .hero-visual { width: min(620px,100%); margin: 0 auto; }
+            .feature-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 760px) {
+            .container { width: min(100% - 28px,1160px); }
+            .site-nav { height: 66px; }
+            .nav-toggle { display: grid; place-items: center; }
+            .nav-links {
+                position: absolute;
+                top: 66px;
+                left: 14px;
+                right: 14px;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 10px;
+                border: 1px solid rgba(255,255,255,.12);
+                border-radius: 20px;
+                background: rgba(2,8,23,.97);
+                box-shadow: 0 24px 50px rgba(0,0,0,.34);
+            }
+            .nav-links.is-open { display: flex; }
+            .nav-links a { text-align: center; }
+            .hero { min-height: 0; padding: 122px 0 86px; }
+            .hero h1 { font-size: clamp(46px,13vw,68px); }
+            .hero-copy > p { font-size: 16px; }
+            .hero-actions .button { width: 100%; }
+            .hero-visual { min-height: 500px; }
+            .hero-phone-main { width: 240px; height: 480px; }
+            .hero-phone-left, .hero-phone-right { top: 76px; width: 164px; height: 365px; }
+            .hero-phone-left { left: -48px; }
+            .hero-phone-right { right: -48px; }
+            .hero-orbit { bottom: -8px; font-size: 11px; }
+            .section { padding: 78px 0; }
+            .section-heading { margin-bottom: 38px; }
+            .comparison-shell { border-radius: 24px; }
+            .comparison-head, .comparison-row { grid-template-columns: 1fr 1fr; }
+            .comparison-head > div, .comparison-row > div { min-height: 62px; padding: 13px; }
+            .comparison-head > div:first-child { display: none; }
+            .comparison-row .comparison-feature { grid-column: 1/-1; border-bottom: 1px solid var(--line); background: #f8fafc; }
+            .free-value { border-right: 1px solid var(--line); }
+            .free-value, .pro-value { font-size: 12px; line-height: 1.35; }
+            .feature-list { gap: 24px; }
+            .feature-block { grid-template-columns: 1fr; gap: 18px; min-height: 0; border-radius: 28px; padding: 28px 20px 32px; }
+            .feature-copy h3 { font-size: 23px; }
+            .purchase-card { border-radius: 28px; padding: 54px 20px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .footer-inner { align-items: flex-start; flex-direction: column; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+            [data-reveal] { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav" aria-label="Page navigation">
+        <div class="container nav-inner">
+            <div class="brand">
+                <img src="pro-logo.webp" alt="" width="34" height="34">
+                <span>TorchPhoto</span>
+            </div>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="pro-nav-links" aria-label="Open menu">☰</button>
+            <div class="nav-links" id="pro-nav-links">
+                <a href="#compare">FREE vs PRO</a>
+                <a href="#features">PRO Features</a>
+                <a class="nav-highlight" href="#plans">Purchase Options</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <span class="eyebrow"><span class="eyebrow-dot"></span>TorchPhoto PRO</span>
+                    <h1>See how PRO <span>works.</span></h1>
+                    <p>Browse every registered server, bring generated thumbnails into one timeline, automate backups, and remove the limits around larger photo and video libraries.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#features">Explore PRO Features <span aria-hidden="true">↓</span></a>
+                        <a class="button button-secondary" href="#compare">Compare Plans</a>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-label="Actual TorchPhoto PRO screens">
+                    <div class="hero-phone hero-phone-left" aria-hidden="true">
+                        <img src="pro-actual-servers.webp" alt="" width="942" height="2048">
+                    </div>
+                    <div class="hero-phone hero-phone-main">
+                        <img src="pro-actual-timeline.webp" alt="TorchPhoto Timeline Viewer combining thumbnails from registered servers" width="942" height="2048">
+                    </div>
+                    <div class="hero-phone hero-phone-right" aria-hidden="true">
+                        <img src="pro-actual-directory.webp" alt="" width="942" height="2048">
+                    </div>
+                    <div class="hero-orbit">Actual TorchPhoto app screens</div>
+                </div>
+            </div>
+        </header>
+
+        <section class="section comparison" id="compare">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <span class="section-kicker">At a glance</span>
+                    <h2>FREE keeps it simple. PRO opens the whole library.</h2>
+                    <p>The same TorchPhoto experience, with larger limits and advanced workflows unlocked.</p>
+                </div>
+                <div class="comparison-shell" role="table" aria-label="FREE and PRO comparison" data-reveal>
+                    <div class="comparison-head" role="row">
+                        <div role="columnheader">Feature</div><div role="columnheader">FREE</div><div role="columnheader">PRO</div>
+                    </div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">01</span>Registered servers</div><div class="free-value">1 server</div><div class="pro-value">Unlimited</div></div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">02</span>Shortcut auto backup</div><div class="free-value">Not supported</div><div class="pro-value">Supported</div></div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">03</span>Timeline Viewer</div><div class="free-value">Not supported</div><div class="pro-value">Included</div></div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">04</span>Thumbnail cache</div><div class="free-value">100 MB</div><div class="pro-value">No app-level limit</div></div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">05</span>Server-wide generation</div><div class="free-value">Not supported</div><div class="pro-value">Included</div></div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">06</span>Photo &amp; video pairing</div><div class="free-value">Not supported</div><div class="pro-value">Included</div></div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">07</span>Large video thumbnails</div><div class="free-value">Over 50 MB skipped</div><div class="pro-value">No app-level size limit</div></div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">08</span>Slideshow</div><div class="free-value">10-photo trial</div><div class="pro-value">Unlimited</div></div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">09</span>Upload &amp; backup</div><div class="free-value">50 items per run</div><div class="pro-value">No item limit</div></div>
+                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">10</span>Other extra features</div><div class="free-value">Not supported</div><div class="pro-value">Supported</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section features" id="features">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <span class="section-kicker">PRO in the app</span>
+                    <h2>Ten ways PRO changes the experience.</h2>
+                    <p>See exactly what changes when you move from FREE to PRO.</p>
+                </div>
+                <div class="feature-list">
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">01</span><div class="feature-copy"><h3>Use every registered server.</h3><p>With FREE, only one registered server can be used. If your media is divided between a home NAS, a work server, and an off-site archive, moving between libraries means working around that single-server limit.</p><p><strong>PRO unlocks every registered FTP, SFTP, SMB, and WebDAV connection.</strong> Each server keeps its own protocol and path, so you can open the library you need without removing or replacing another connection. This is especially useful when photos and videos are intentionally stored across several locations.</p></div>
+                    </article>
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">02</span><div class="feature-copy"><h3>Automate backups with Shortcuts.</h3><p>FREE backups are started manually in TorchPhoto. Repeatedly opening the app, choosing the same destination, and preparing the same kind of upload can become tedious when you follow a regular backup routine.</p><p><strong>PRO adds TorchPhoto actions to iOS Shortcuts.</strong> Selected photos and videos can be sent to a chosen server through a shortcut and included in a personal automation under the conditions you choose. It reduces repeated setup for routines such as sending recent camera media to the same NAS destination.</p></div>
+                    </article>
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">03</span><div class="feature-copy"><h3>Browse every server in one timeline.</h3><p>With FREE, you browse one server and its folders at a time. Finding media from a particular month can mean opening several directory trees, especially when different years are stored on different servers.</p><p><strong>PRO's Timeline Viewer brings prepared thumbnails from all registered servers into one chronological view.</strong> Items are arranged by their original media date and can be browsed by year, month, or day without entering each folder first. When an item is opened, TorchPhoto still uses that file's original server and protocol, so separate FTP, SMB, SFTP, and WebDAV libraries feel like one visual collection.</p></div>
+                    </article>
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">04</span><div class="feature-copy"><h3>Keep more thumbnails on the device.</h3><p>FREE keeps the thumbnail cache within 100 MB. That is enough to try the visual browsing workflow, but a large photo library can quickly exceed it, leaving only a limited portion of prepared thumbnails available on the device.</p><p><strong>PRO removes TorchPhoto's app-level thumbnail cache limit.</strong> A much larger set of thumbnails can remain ready, which reduces repeated loading and makes offline browsing more useful when a server cannot be reached. The real boundary is the storage available on your device, and the cache can still be managed or deleted from TorchPhoto when needed.</p></div>
+                    </article>
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">05</span><div class="feature-copy"><h3>Generate thumbnails across a server path.</h3><p>FREE generates thumbnails from the folder currently being viewed. On a server with many years, albums, and nested folders, preparing the whole library means entering folders and starting the same task repeatedly.</p><p><strong>PRO can start one server-wide generation job from the registered path.</strong> TorchPhoto scans supported media below that path and processes the directory tree without requiring you to visit every folder. This turns a deep NAS library from many small manual jobs into one managed operation with visible progress.</p></div>
+                    </article>
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">06</span><div class="feature-copy"><h3>Show matching photo and video files as one item.</h3><p>Live Photos and some camera workflows store one moment as a photo file plus a matching video file. FREE shows those files separately, so the same scene can appear twice and make a directory feel unnecessarily crowded.</p><p><strong>PRO pairs matching photo and video files into one gallery item.</strong> The directory becomes easier to scan while both original files remain unchanged on the server. You keep the complete source media without having to browse a duplicate-looking pair every time.</p></div>
+                    </article>
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">07</span><div class="feature-copy"><h3>Create thumbnails for larger video files.</h3><p>FREE automatically skips video thumbnail generation for files larger than 50 MB. This limits processing during evaluation, but longer or higher-quality videos may remain as generic file icons and become difficult to recognize at a glance.</p><p><strong>PRO removes the automatic 50 MB cutoff.</strong> Larger videos can receive visual thumbnails too, making mixed photo and video folders much easier to browse. If you want to control network traffic or processing time, you can still choose your own video skip limit instead of being locked to the FREE limit.</p></div>
+                    </article>
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">08</span><div class="feature-copy"><h3>Run slideshows without the trial limit.</h3><p>FREE lets you try slideshow playback with up to 10 prepared photos. It demonstrates how a server album can be played, but it stops before a larger album or long-running display can continue.</p><p><strong>PRO removes the 10-photo trial limit.</strong> The slideshow can continue through all available prepared photos, making it suitable for viewing a complete trip, family archive, portfolio, or a screen that stays on display without restarting after every short preview.</p></div>
+                    </article>
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">09</span><div class="feature-copy"><h3>Upload larger selections in one run.</h3><p>FREE uploads up to 50 selected items in each run. Backing up a large camera roll therefore requires several batches, repeated selections, and extra checking to make sure nothing was skipped.</p><p><strong>PRO removes TorchPhoto's item-count limit for an upload run.</strong> A larger selection of photos, videos, RAW files, bursts, screenshots, and Live Photo components can be sent together. Network speed, server capacity, and device conditions still affect the job, but TorchPhoto no longer forces the selection into artificial 50-item batches.</p></div>
+                    </article>
+                    <article class="feature-block" data-reveal>
+                        <span class="feature-number">10</span><div class="feature-copy"><h3>Use additional PRO convenience features.</h3><p>FREE includes TorchPhoto's core browsing and transfer experience, but smaller workflow improvements reserved for PRO are not available. Those missing conveniences can add repeated taps when you use the same servers and actions every day.</p><p><strong>PRO includes additional time-saving features such as Quick Start.</strong> It also provides access to future convenience features released for PRO, so improvements designed to make repeated photo workflows faster and easier are available without changing plans again.</p></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="purchase" id="plans">
+            <div class="container">
+                <div class="purchase-card" data-reveal>
+                    <img class="purchase-logo" src="pro-logo.webp" alt="TorchPhoto" width="70" height="70">
+                    <h2>Choose how you want PRO.</h2>
+                    <p>Purchase directly from TorchPhoto's LogoPage.</p>
+                    <div class="pricing-grid">
+                        <div class="pricing-card"><span>Subscription</span><h3>Monthly plan</h3><p>Billed monthly through your App Store account. Continue PRO access while the subscription remains active.</p></div>
+                        <div class="pricing-card"><span>One-time purchase</span><h3>Lifetime plan</h3><p>Pay once through your App Store account and keep PRO access without a recurring subscription.</p></div>
+                    </div>
+                    <p class="price-note">Your current price is shown in your local currency on LogoPage before purchase. Storefront, currency, and applicable tax may affect the displayed amount.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <span>© 2026 TorchPhoto</span>
+            <span class="footer-badge">Close this page to return to LogoPage</span>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggle.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', String(open));
+        });
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+            navLinks.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }));
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: .12 });
+        document.querySelectorAll('[data-reveal]').forEach(item => observer.observe(item));
+
+    </script>
+</body>
+</html>
