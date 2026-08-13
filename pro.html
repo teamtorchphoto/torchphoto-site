@@ -270,60 +270,6 @@
         }
         .section-heading p { margin-top: 17px; color: var(--muted); font-size: 17px; }
 
-        .comparison { background: #f5f7fb; }
-        .comparison-shell {
-            overflow: hidden;
-            border: 1px solid var(--line);
-            border-radius: 30px;
-            background: #fff;
-            box-shadow: var(--shadow);
-        }
-        .comparison-head, .comparison-row {
-            display: grid;
-            grid-template-columns: 1.25fr .85fr .9fr;
-        }
-        .comparison-head { color: #fff; background: var(--navy-900); }
-        .comparison-head > div, .comparison-row > div {
-            display: flex;
-            align-items: center;
-            min-height: 70px;
-            padding: 16px 22px;
-        }
-        .comparison-head > div:not(:last-child),
-        .comparison-row > div:not(:last-child) { border-right: 1px solid var(--line); }
-        .comparison-row:not(:last-child) { border-bottom: 1px solid var(--line); }
-        .comparison-feature { gap: 12px; font-weight: 730; }
-        .comparison-icon {
-            display: grid;
-            place-items: center;
-            flex: 0 0 34px;
-            width: 34px;
-            height: 34px;
-            border-radius: 11px;
-            color: var(--blue-deep);
-            background: rgba(40,120,255,.09);
-            font-size: 11px;
-            font-weight: 850;
-        }
-        .free-value { color: #7b8494; font-weight: 650; }
-        .pro-value {
-            color: #064e3b;
-            background: linear-gradient(90deg,rgba(236,253,245,.86),rgba(239,246,255,.70));
-            font-weight: 780;
-        }
-        .pro-value::before {
-            content: "✓";
-            display: grid;
-            place-items: center;
-            width: 23px;
-            height: 23px;
-            margin-right: 8px;
-            border-radius: 50%;
-            color: #fff;
-            background: var(--green);
-            font-size: 12px;
-        }
-
         .features { background: linear-gradient(180deg,#fff 0%,#f5f7fb 100%); }
         .feature-list { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 980px; margin: 0 auto; }
         .feature-block {
@@ -365,6 +311,26 @@
         .feature-copy p { max-width: 800px; margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.72; }
         .feature-copy p + p { margin-top: 10px; }
         .feature-copy strong { color: #172033; font-weight: 780; }
+        .feature-availability {
+            display: grid;
+            gap: 7px;
+            max-width: 800px;
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(148,163,184,.24);
+        }
+        .availability-line {
+            display: grid;
+            grid-template-columns: 46px minmax(0,1fr);
+            gap: 10px;
+            color: #5f697a;
+            font-size: 13px;
+            line-height: 1.55;
+        }
+        .availability-line b { padding-top: 1px; font-size: 10px; letter-spacing: .09em; }
+        .availability-free b { color: #7b8494; }
+        .availability-pro { color: #176b51; }
+        .availability-pro b { color: #087653; }
 
         .purchase { padding: 105px 0; background: #f5f7fb; }
         .purchase-card {
@@ -408,19 +374,28 @@
             text-transform: uppercase;
         }
         .pricing-card h3 { font-size: 24px; letter-spacing: -.035em; }
+        .plan-price {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-top: 14px;
+            color: #fff;
+            font-size: clamp(38px,5vw,52px);
+            font-weight: 850;
+            line-height: 1;
+            letter-spacing: -.05em;
+        }
+        .plan-price small {
+            color: rgba(255,255,255,.56);
+            font-size: 14px;
+            font-weight: 650;
+            letter-spacing: 0;
+        }
         .pricing-card p { margin-top: 8px; color: rgba(255,255,255,.64); font-size: 14px; }
         .price-note { margin-top: 18px !important; font-size: 13px !important; color: rgba(255,255,255,.48) !important; }
 
         footer { padding: 26px 0 34px; color: #7b8494; background: #f5f7fb; }
         .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 13px; }
-        .footer-badge {
-            padding: 7px 11px;
-            border-radius: 999px;
-            color: #466079;
-            background: #e7edf5;
-            font-weight: 700;
-        }
-
         [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .62s ease, transform .62s ease; }
         [data-reveal].is-visible { opacity: 1; transform: none; }
 
@@ -456,21 +431,14 @@
             .hero h1 { font-size: clamp(46px,13vw,68px); }
             .hero-copy > p { font-size: 16px; }
             .hero-actions .button { width: 100%; }
-            .hero-visual { min-height: 500px; }
-            .hero-phone-main { width: 240px; height: 480px; }
-            .hero-phone-left, .hero-phone-right { top: 76px; width: 164px; height: 365px; }
-            .hero-phone-left { left: -48px; }
-            .hero-phone-right { right: -48px; }
+            .hero-visual { width: 100%; max-width: 390px; min-height: 500px; margin: 0 auto; }
+            .hero-phone-main { width: clamp(208px,62vw,240px); height: clamp(416px,124vw,480px); }
+            .hero-phone-left, .hero-phone-right { top: 68px; width: clamp(138px,43vw,164px); height: clamp(307px,95vw,365px); }
+            .hero-phone-left { left: 4px; transform: rotate(-5deg); }
+            .hero-phone-right { right: 4px; transform: rotate(5deg); }
             .hero-orbit { bottom: -8px; font-size: 11px; }
             .section { padding: 78px 0; }
             .section-heading { margin-bottom: 38px; }
-            .comparison-shell { border-radius: 24px; }
-            .comparison-head, .comparison-row { grid-template-columns: 1fr 1fr; }
-            .comparison-head > div, .comparison-row > div { min-height: 62px; padding: 13px; }
-            .comparison-head > div:first-child { display: none; }
-            .comparison-row .comparison-feature { grid-column: 1/-1; border-bottom: 1px solid var(--line); background: #f8fafc; }
-            .free-value { border-right: 1px solid var(--line); }
-            .free-value, .pro-value { font-size: 12px; line-height: 1.35; }
             .feature-list { gap: 24px; }
             .feature-block { grid-template-columns: 1fr; gap: 18px; min-height: 0; border-radius: 28px; padding: 28px 20px 32px; }
             .feature-copy h3 { font-size: 23px; }
@@ -494,7 +462,6 @@
             </div>
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="pro-nav-links" aria-label="Open menu">☰</button>
             <div class="nav-links" id="pro-nav-links">
-                <a href="#compare">FREE vs PRO</a>
                 <a href="#features">PRO Features</a>
                 <a class="nav-highlight" href="#plans">Purchase Options</a>
             </div>
@@ -510,7 +477,6 @@
                     <p>Browse every registered server, bring generated thumbnails into one timeline, automate backups, and remove the limits around larger photo and video libraries.</p>
                     <div class="hero-actions">
                         <a class="button button-primary" href="#features">Explore PRO Features <span aria-hidden="true">↓</span></a>
-                        <a class="button button-secondary" href="#compare">Compare Plans</a>
                     </div>
                 </div>
                 <div class="hero-visual" aria-label="Actual TorchPhoto PRO screens">
@@ -528,31 +494,6 @@
             </div>
         </header>
 
-        <section class="section comparison" id="compare">
-            <div class="container">
-                <div class="section-heading" data-reveal>
-                    <span class="section-kicker">At a glance</span>
-                    <h2>FREE keeps it simple. PRO opens the whole library.</h2>
-                    <p>The same TorchPhoto experience, with larger limits and advanced workflows unlocked.</p>
-                </div>
-                <div class="comparison-shell" role="table" aria-label="FREE and PRO comparison" data-reveal>
-                    <div class="comparison-head" role="row">
-                        <div role="columnheader">Feature</div><div role="columnheader">FREE</div><div role="columnheader">PRO</div>
-                    </div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">01</span>Registered servers</div><div class="free-value">1 server</div><div class="pro-value">Unlimited</div></div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">02</span>Shortcut auto backup</div><div class="free-value">Not supported</div><div class="pro-value">Supported</div></div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">03</span>Timeline Viewer</div><div class="free-value">Not supported</div><div class="pro-value">Included</div></div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">04</span>Thumbnail cache</div><div class="free-value">100 MB</div><div class="pro-value">No app-level limit</div></div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">05</span>Server-wide generation</div><div class="free-value">Not supported</div><div class="pro-value">Included</div></div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">06</span>Photo &amp; video pairing</div><div class="free-value">Not supported</div><div class="pro-value">Included</div></div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">07</span>Large video thumbnails</div><div class="free-value">Over 50 MB skipped</div><div class="pro-value">No app-level size limit</div></div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">08</span>Slideshow</div><div class="free-value">10-photo trial</div><div class="pro-value">Unlimited</div></div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">09</span>Upload &amp; backup</div><div class="free-value">50 items per run</div><div class="pro-value">No item limit</div></div>
-                    <div class="comparison-row" role="row"><div class="comparison-feature"><span class="comparison-icon">10</span>Other extra features</div><div class="free-value">Not supported</div><div class="pro-value">Supported</div></div>
-                </div>
-            </div>
-        </section>
-
         <section class="section features" id="features">
             <div class="container">
                 <div class="section-heading" data-reveal>
@@ -562,34 +503,34 @@
                 </div>
                 <div class="feature-list">
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">01</span><div class="feature-copy"><h3>Use every registered server.</h3><p>With FREE, only one registered server can be used. If your media is divided between a home NAS, a work server, and an off-site archive, moving between libraries means working around that single-server limit.</p><p><strong>PRO unlocks every registered FTP, SFTP, SMB, and WebDAV connection.</strong> Each server keeps its own protocol and path, so you can open the library you need without removing or replacing another connection. This is especially useful when photos and videos are intentionally stored across several locations.</p></div>
+                        <span class="feature-number">01</span><div class="feature-copy"><h3>Use every registered server.</h3><p>With FREE, only one registered server can be used. If your media is divided between a home NAS, a work server, and an off-site archive, moving between libraries means working around that single-server limit.</p><p><strong>PRO unlocks every registered FTP, SFTP, SMB, and WebDAV connection.</strong> Each server keeps its own protocol and path, so you can open the library you need without removing or replacing another connection. This is especially useful when photos and videos are intentionally stored across several locations.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Only one registered server can be used.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>All registered servers can be used without replacing a connection.</span></div></div></div>
                     </article>
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">02</span><div class="feature-copy"><h3>Automate backups with Shortcuts.</h3><p>FREE backups are started manually in TorchPhoto. Repeatedly opening the app, choosing the same destination, and preparing the same kind of upload can become tedious when you follow a regular backup routine.</p><p><strong>PRO adds TorchPhoto actions to iOS Shortcuts.</strong> Selected photos and videos can be sent to a chosen server through a shortcut and included in a personal automation under the conditions you choose. It reduces repeated setup for routines such as sending recent camera media to the same NAS destination.</p></div>
+                        <span class="feature-number">02</span><div class="feature-copy"><h3>Automate backups with Shortcuts.</h3><p>FREE backups are started manually in TorchPhoto. Repeatedly opening the app, choosing the same destination, and preparing the same kind of upload can become tedious when you follow a regular backup routine.</p><p><strong>PRO adds TorchPhoto actions to iOS Shortcuts.</strong> Selected photos and videos can be sent to a chosen server through a shortcut and included in a personal automation under the conditions you choose. It reduces repeated setup for routines such as sending recent camera media to the same NAS destination.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Uploading through TorchPhoto's Shortcuts action is not available.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Selected items can be uploaded to a chosen server through an iOS Shortcut.</span></div></div></div>
                     </article>
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">03</span><div class="feature-copy"><h3>Browse every server in one timeline.</h3><p>With FREE, you browse one server and its folders at a time. Finding media from a particular month can mean opening several directory trees, especially when different years are stored on different servers.</p><p><strong>PRO's Timeline Viewer brings prepared thumbnails from all registered servers into one chronological view.</strong> Items are arranged by their original media date and can be browsed by year, month, or day without entering each folder first. When an item is opened, TorchPhoto still uses that file's original server and protocol, so separate FTP, SMB, SFTP, and WebDAV libraries feel like one visual collection.</p></div>
+                        <span class="feature-number">03</span><div class="feature-copy"><h3>Browse every server in one timeline.</h3><p>With FREE, you browse one server and its folders at a time. Finding media from a particular month can mean opening several directory trees, especially when different years are stored on different servers.</p><p><strong>PRO's Timeline Viewer brings prepared thumbnails from all registered servers into one chronological view.</strong> Items are arranged by their original media date and can be browsed by year, month, or day without entering each folder first. When an item is opened, TorchPhoto still uses that file's original server and protocol, so separate FTP, SMB, SFTP, and WebDAV libraries feel like one visual collection.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Media is browsed through each server's folders separately.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Prepared thumbnails from registered servers appear together in one date-based timeline.</span></div></div></div>
                     </article>
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">04</span><div class="feature-copy"><h3>Keep more thumbnails on the device.</h3><p>FREE keeps the thumbnail cache within 100 MB. That is enough to try the visual browsing workflow, but a large photo library can quickly exceed it, leaving only a limited portion of prepared thumbnails available on the device.</p><p><strong>PRO removes TorchPhoto's app-level thumbnail cache limit.</strong> A much larger set of thumbnails can remain ready, which reduces repeated loading and makes offline browsing more useful when a server cannot be reached. The real boundary is the storage available on your device, and the cache can still be managed or deleted from TorchPhoto when needed.</p></div>
+                        <span class="feature-number">04</span><div class="feature-copy"><h3>Keep more thumbnails on the device.</h3><p>FREE keeps the thumbnail cache within 100 MB. That is enough to try the visual browsing workflow, but a large photo library can quickly exceed it, leaving only a limited portion of prepared thumbnails available on the device.</p><p><strong>PRO removes TorchPhoto's app-level thumbnail cache limit.</strong> A much larger set of thumbnails can remain ready, which reduces repeated loading and makes offline browsing more useful when a server cannot be reached. The real boundary is the storage available on your device, and the cache can still be managed or deleted from TorchPhoto when needed.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Thumbnail cache is limited to 100 MB.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>TorchPhoto applies no app-level cache limit; available device storage is the boundary.</span></div></div></div>
                     </article>
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">05</span><div class="feature-copy"><h3>Generate thumbnails across a server path.</h3><p>FREE generates thumbnails from the folder currently being viewed. On a server with many years, albums, and nested folders, preparing the whole library means entering folders and starting the same task repeatedly.</p><p><strong>PRO can start one server-wide generation job from the registered path.</strong> TorchPhoto scans supported media below that path and processes the directory tree without requiring you to visit every folder. This turns a deep NAS library from many small manual jobs into one managed operation with visible progress.</p></div>
+                        <span class="feature-number">05</span><div class="feature-copy"><h3>Generate thumbnails across a server path.</h3><p>FREE generates thumbnails from the folder currently being viewed. On a server with many years, albums, and nested folders, preparing the whole library means entering folders and starting the same task repeatedly.</p><p><strong>PRO can start one server-wide generation job from the registered path.</strong> TorchPhoto scans supported media below that path and processes the directory tree without requiring you to visit every folder. This turns a deep NAS library from many small manual jobs into one managed operation with visible progress.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Thumbnail generation is started for the folder currently open.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>One job can scan and generate thumbnails below the registered server path.</span></div></div></div>
                     </article>
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">06</span><div class="feature-copy"><h3>Show matching photo and video files as one item.</h3><p>Live Photos and some camera workflows store one moment as a photo file plus a matching video file. FREE shows those files separately, so the same scene can appear twice and make a directory feel unnecessarily crowded.</p><p><strong>PRO pairs matching photo and video files into one gallery item.</strong> The directory becomes easier to scan while both original files remain unchanged on the server. You keep the complete source media without having to browse a duplicate-looking pair every time.</p></div>
+                        <span class="feature-number">06</span><div class="feature-copy"><h3>Show matching photo and video files as one item.</h3><p>Live Photos and some camera workflows store one moment as a photo file plus a matching video file. FREE shows those files separately, so the same scene can appear twice and make a directory feel unnecessarily crowded.</p><p><strong>PRO pairs matching photo and video files into one gallery item.</strong> The directory becomes easier to scan while both original files remain unchanged on the server. You keep the complete source media without having to browse a duplicate-looking pair every time.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Matching photo and video files appear as separate items.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Matching files can appear as one gallery item while both originals remain unchanged.</span></div></div></div>
                     </article>
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">07</span><div class="feature-copy"><h3>Create thumbnails for larger video files.</h3><p>FREE automatically skips video thumbnail generation for files larger than 50 MB. This limits processing during evaluation, but longer or higher-quality videos may remain as generic file icons and become difficult to recognize at a glance.</p><p><strong>PRO removes the automatic 50 MB cutoff.</strong> Larger videos can receive visual thumbnails too, making mixed photo and video folders much easier to browse. If you want to control network traffic or processing time, you can still choose your own video skip limit instead of being locked to the FREE limit.</p></div>
+                        <span class="feature-number">07</span><div class="feature-copy"><h3>Create thumbnails for larger video files.</h3><p>FREE automatically skips video thumbnail generation for files larger than 50 MB. This limits processing during evaluation, but longer or higher-quality videos may remain as generic file icons and become difficult to recognize at a glance.</p><p><strong>PRO removes the automatic 50 MB cutoff.</strong> Larger videos can receive visual thumbnails too, making mixed photo and video folders much easier to browse. If you want to control network traffic or processing time, you can still choose your own video skip limit instead of being locked to the FREE limit.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Automatic video thumbnail generation skips files larger than 50 MB.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Larger videos can receive thumbnails, with an optional custom skip limit.</span></div></div></div>
                     </article>
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">08</span><div class="feature-copy"><h3>Run slideshows without the trial limit.</h3><p>FREE lets you try slideshow playback with up to 10 prepared photos. It demonstrates how a server album can be played, but it stops before a larger album or long-running display can continue.</p><p><strong>PRO removes the 10-photo trial limit.</strong> The slideshow can continue through all available prepared photos, making it suitable for viewing a complete trip, family archive, portfolio, or a screen that stays on display without restarting after every short preview.</p></div>
+                        <span class="feature-number">08</span><div class="feature-copy"><h3>Run slideshows without the trial limit.</h3><p>FREE lets you try slideshow playback with up to 10 prepared photos. It demonstrates how a server album can be played, but it stops before a larger album or long-running display can continue.</p><p><strong>PRO removes the 10-photo trial limit.</strong> The slideshow can continue through all available prepared photos, making it suitable for viewing a complete trip, family archive, portfolio, or a screen that stays on display without restarting after every short preview.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Slideshow playback is available as a 10-photo trial.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>All available prepared photos can continue playing without the trial-count limit.</span></div></div></div>
                     </article>
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">09</span><div class="feature-copy"><h3>Upload larger selections in one run.</h3><p>FREE uploads up to 50 selected items in each run. Backing up a large camera roll therefore requires several batches, repeated selections, and extra checking to make sure nothing was skipped.</p><p><strong>PRO removes TorchPhoto's item-count limit for an upload run.</strong> A larger selection of photos, videos, RAW files, bursts, screenshots, and Live Photo components can be sent together. Network speed, server capacity, and device conditions still affect the job, but TorchPhoto no longer forces the selection into artificial 50-item batches.</p></div>
+                        <span class="feature-number">09</span><div class="feature-copy"><h3>Upload larger selections in one run.</h3><p>FREE uploads up to 50 selected items in each run. Backing up a large camera roll therefore requires several batches, repeated selections, and extra checking to make sure nothing was skipped.</p><p><strong>PRO removes TorchPhoto's item-count limit for an upload run.</strong> A larger selection of photos, videos, RAW files, bursts, screenshots, and Live Photo components can be sent together. Network speed, server capacity, and device conditions still affect the job, but TorchPhoto no longer forces the selection into artificial 50-item batches.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Up to 50 selected items can be uploaded in each run.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>TorchPhoto applies no item-count limit to the selection for one upload run.</span></div></div></div>
                     </article>
                     <article class="feature-block" data-reveal>
-                        <span class="feature-number">10</span><div class="feature-copy"><h3>Use additional PRO convenience features.</h3><p>FREE includes TorchPhoto's core browsing and transfer experience, but smaller workflow improvements reserved for PRO are not available. Those missing conveniences can add repeated taps when you use the same servers and actions every day.</p><p><strong>PRO includes additional time-saving features such as Quick Start.</strong> It also provides access to future convenience features released for PRO, so improvements designed to make repeated photo workflows faster and easier are available without changing plans again.</p></div>
+                        <span class="feature-number">10</span><div class="feature-copy"><h3>Use additional PRO convenience features.</h3><p>FREE includes TorchPhoto's core browsing and transfer experience, but smaller workflow improvements reserved for PRO are not available. Those missing conveniences can add repeated taps when you use the same servers and actions every day.</p><p><strong>PRO includes additional time-saving features such as Quick Start.</strong> It also provides access to future convenience features released for PRO, so improvements designed to make repeated photo workflows faster and easier are available without changing plans again.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>PRO-only convenience features are not available.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Quick Start and future convenience features released for PRO can be used.</span></div></div></div>
                     </article>
                 </div>
             </div>
@@ -602,10 +543,10 @@
                     <h2>Choose how you want PRO.</h2>
                     <p>Purchase directly from TorchPhoto's LogoPage.</p>
                     <div class="pricing-grid">
-                        <div class="pricing-card"><span>Subscription</span><h3>Monthly plan</h3><p>Billed monthly through your App Store account. Continue PRO access while the subscription remains active.</p></div>
-                        <div class="pricing-card"><span>One-time purchase</span><h3>Lifetime plan</h3><p>Pay once through your App Store account and keep PRO access without a recurring subscription.</p></div>
+                        <div class="pricing-card"><span>Subscription</span><h3>Monthly plan</h3><div class="plan-price">$1.49 <small>/ month</small></div><p>Billed monthly through your App Store account. Continue PRO access while the subscription remains active.</p></div>
+                        <div class="pricing-card"><span>One-time purchase</span><h3>Lifetime plan</h3><div class="plan-price">$19.99</div><p>Pay once through your App Store account and keep PRO access without a recurring subscription.</p></div>
                     </div>
-                    <p class="price-note">Your current price is shown in your local currency on LogoPage before purchase. Storefront, currency, and applicable tax may affect the displayed amount.</p>
+                    <p class="price-note">Prices shown above are in USD. Your current price is shown in local currency on LogoPage before purchase, and may vary by storefront, currency, or applicable tax.</p>
                 </div>
             </div>
         </section>
@@ -614,7 +555,6 @@
     <footer>
         <div class="container footer-inner">
             <span>© 2026 TorchPhoto</span>
-            <span class="footer-badge">Close this page to return to LogoPage</span>
         </div>
     </footer>
 
