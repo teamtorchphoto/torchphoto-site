@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide - TorchPhoto</title>
+    <meta name="description" content="Learn how to connect servers, generate thumbnails, browse offline, use Live Photos, Wi-Fi Gallery, widgets, backups, and more in TorchPhoto.">
+    <link rel="canonical" href="https://torchphoto.com/guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="TorchPhoto Guide">
+    <meta property="og:description" content="Learn how to connect servers, generate thumbnails, browse offline, use Live Photos, Wi-Fi Gallery, widgets, backups, and more in TorchPhoto.">
+    <meta property="og:image" content="https://torchphoto.com/main.jpg">
+    <meta property="og:url" content="https://torchphoto.com/guide.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TorchPhoto Guide">
+    <meta name="twitter:description" content="Connect servers, generate thumbnails, browse offline, and learn TorchPhoto's gallery features.">
+    <meta name="twitter:image" content="https://torchphoto.com/main.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link rel="icon" type="image/png" href="logo.png">
+</head>
+<body class="subpage-body">
+
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="TorchPhoto Logo">
+                <span class="logo-text">TorchPhoto Support</span>
+            </div>
+            <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="site-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="shortcuts.html">Shortcuts</a></li>
+                <li><a href="update.html">Update</a></li>
+                <li><a href="qa.html">Q&amp;A</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="https://apps.apple.com/app/torchphoto-ftp-album-viewer/id6757838041" class="btn-download-small">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="guide">
+        <div class="container narrow-container">
+            <div class="page-hero">
+                <span class="page-eyebrow">Support</span>
+                <h1>Guide</h1>
+                <p>Tap an item below to expand the guide with images and instructions.</p>
+				<br>
+                <p>For information not covered in the guide, please check the Q&amp;A page.</p>
+                <a class="guide-qa-cta" href="qa.html">
+                    <span class="guide-qa-cta-icon" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
+                    <span class="guide-qa-cta-copy">
+                        <strong>Open Q&amp;A</strong>
+                        <small>Browse answers and troubleshooting tips</small>
+                    </span>
+                    <i class="fas fa-arrow-right guide-qa-cta-arrow" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <div class="guide-list">
+                <details class="guide-item" id="vpn-ftp-security">
+                    <summary>Remote FTP/SMB Access with VPN</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <div class="guide-copy">
+                                <h3>Use a VPN for Remote FTP Access</h3>
+                                <p>FTP can send login information and file data without encryption, depending on the server configuration. If you need to use FTP from outside your home or office, avoid exposing the FTP port directly to the public internet. Connect to your home or NAS network through a <b>VPN</b> first, then add the FTP server in TorchPhoto using its internal LAN address.</p>
+                                <p>SMB is also usually best kept inside a local network. If your NAS supports SMB and your VPN allows access to devices on the home LAN, you can connect through the VPN first and then add the SMB server with its local address instead of opening SMB ports to the internet.</p>
+                                <ul>
+                                    <li><b>FTP remote setup:</b> VPN + local FTP address</li>
+                                    <li><b>Why it helps:</b> the VPN places your device on the local network and reduces direct exposure of plain FTP traffic</li>
+                                    <li><b>SMB remote setup:</b> VPN + local SMB address, when your NAS and VPN routing support LAN access</li>
+                                    <li><b>Modern VPN option:</b> WireGuard is simple, fast, and widely recommended</li>
+                                    <li><b>Avoid when possible:</b> direct public FTP or SMB port forwarding for private photo storage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="instant-thumbnail-generation">
+                    <summary>Instant Thumbnail Generation</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <div class="guide-copy">
+                                <h3>How Instant Thumbnails Work</h3>
+                                <p>Instant thumbnail generation lets TorchPhoto create thumbnails quickly without downloading the full original file from your server. TorchPhoto reads only enough original data to build a preview, so large folders can be prepared faster and with less waiting.</p>
+                                <p>You can choose Low or High for instant thumbnail generation. Low prioritizes speed and is the best choice when you want thumbnails as quickly as possible, but a small number of items may fail to generate. High is slower than Low, but it can slightly improve the success rate for files that need more data to create a thumbnail.</p>
+                                <p>If an instant thumbnail still fails, you can generate it later with TorchPhoto's high-quality thumbnail improvement feature. Thumbnail improvement creates standard high-quality TorchPhoto thumbnails without the instant-thumbnail limitations, so failed instant thumbnails can still be completed reliably.</p>
+                                <ul>
+                                    <li><b>Low:</b> fastest instant thumbnail generation, with a chance that some thumbnails may fail</li>
+                                    <li><b>High:</b> slower than Low, but can slightly increase thumbnail generation success</li>
+                                    <li><b>Recommended flow:</b> start with instant thumbnails, then use thumbnail improvement for failed items or thumbnails that need better detail</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="add-a-server">
+                    <summary><span class="guide-number">1.</span> Add a Server</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide1.jpg" alt="Add a Server">
+                            <div class="guide-copy">
+                                <h3>How to Add a Server</h3>
+                                <p>Open the add server screen and choose the protocol your server actually uses: FTP, SFTP, SMB, or WebDAV. Enter the address, port, login information, and root path, then test the connection before saving. The root path controls the highest folder TorchPhoto can browse, so it must match the server setup; for SMB, it normally begins with the shared folder name.</p>
+                                <p>A successful test confirms that the server accepted the connection. If the server list is still empty, check the root path, folder permissions, and whether the folder contains supported photos or videos. A server on your home network also requires iOS Local Network permission, while access from outside the home requires a reachable server address or a VPN connection.</p>
+                                <ul>
+                                    <li>Select the correct protocol and enter its address and port</li>
+                                    <li>Enter the login information and the server root path</li>
+                                    <li>Test the connection, then save the server</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="qr-code-share-scan">
+                    <summary><span class="guide-number">2.</span> QR Code Share</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide2.jpg" alt="QR Code Share & Scan">
+                            <div class="guide-copy">
+                                <h3>QR Code Sharing and Scanning</h3>
+                                <p>A server QR code packages the connection settings needed by another TorchPhoto installation, reducing manual entry of the protocol, address, port, and folder path. Long-press the server, create the QR code, and scan it on the receiving device to review and register the connection.</p>
+                                <p>The QR code does not make a private server accessible from the internet. The receiving device must still be able to reach the server through the same network, a public address, or a VPN. Because the code contains private connection information, share it only with people and devices you trust.</p>
+                                <ul>
+                                    <li>Long-press a server item and select Share QR</li>
+                                    <li>Scan the code on another device and review the imported settings</li>
+                                    <li>Connect from a network that can reach the server</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="generate-thumbnails">
+                    <summary><span class="guide-number">3.</span> Generate Thumbnails</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide3.jpg" alt="Generate Thumbnails">
+                            <div class="guide-copy">
+                                <h3>Generate Thumbnails</h3>
+                                <p>Thumbnail generation reads supported photos and videos from the current folder—or from the entire registered server when you choose server-wide generation—and creates lightweight previews for gallery browsing. These previews are stored in TorchPhoto's cache and never modify the original files on your server.</p>
+                                <p>TorchPhoto first tries to read only the data needed for a preview. If a server or file format does not support that method, it may request more data or temporarily download the file. Very large or unsupported videos may show a placeholder instead. Opening a photo or video can temporarily pause generation so the item you selected loads first.</p>
+                                <ul>
+                                    <li>Move to a folder containing photos or videos</li>
+                                    <li>Run thumbnail generation for the current folder or the entire server</li>
+                                    <li>Keep the generated cache for faster browsing, Offline Mode, and widgets</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="share-thumbnails">
+                    <summary><span class="guide-number">4.</span> Share Thumbnails</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide4.jpg" alt="Share Thumbnails">
+                            <div class="guide-copy">
+                                <h3>Share Thumbnails</h3>
+                                <p>Thumbnail Share collects generated preview images into one lightweight zip file while preserving the server's folder structure. It is designed for quick selection, review, or sample delivery when sending every full-resolution original would be unnecessarily large.</p>
+                                <p>The archive contains preview images, not the original photos or access to your server. A recipient who needs the final full-resolution files must receive those separately. Unlimited thumbnail sharing is available in PRO.</p>
+                                <ul>
+                                    <li>Long-press a server item and select Share Thumbnails</li>
+                                    <li>Create a single zip file of lightweight previews</li>
+                                    <li>Share samples while keeping the original folder path structure</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="viewer-organization">
+                    <summary><span class="guide-number">5.</span> Folder Tag</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide5.jpg" alt="Viewer & Organization">
+                            <div class="guide-copy">
+                                <h3>Folder Tag Feature</h3>
+                                <p>Folder tags are labels stored by TorchPhoto to help you find important server folders without changing the folders themselves. Tap a folder name, enter one or more tags separated by commas, and later search those tags from the server list screen.</p>
+                                <p>Adding or editing a tag does not rename, move, or write anything into the server folder. It only changes how that folder is organized inside TorchPhoto.</p>
+                                <ul>
+                                    <li>Tap the folder name to assign tags</li>
+                                    <li>Use commas for multiple tags</li>
+                                    <li>Search tags on the server list screen</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="upload-backup">
+                    <summary><span class="guide-number">6.</span> Upload / Backup</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide6.jpg" alt="Upload / Backup">
+                            <div class="guide-copy">
+                                <h3>Upload and Backup</h3>
+                                <p>Upload sends selected photos and videos from your iPhone directly to a folder inside the registered FTP, SFTP, SMB, or WebDAV root. Choose the destination folder before starting; TorchPhoto can create a new folder when the server protocol and account permissions allow it. Successful uploads can also generate thumbnails automatically, so the new items are ready for gallery browsing.</p>
+                                <p>For a date-based backup, long-press the upload button on the server list and choose Today, Yesterday, This Week, This Month, or a custom range. The custom end date is included. Check the upload log for completed and failed items, and keep TorchPhoto in the foreground during a large transfer because iOS can pause long network work in the background.</p>
+                                <ul>
+                                    <li>Select photos and videos to upload</li>
+                                    <li>Choose a destination inside the registered server root</li>
+                                    <li>Use date-based selection for repeat backups and review the upload log</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="play-slideshow">
+                    <summary><span class="guide-number">7.</span> Play Slideshow</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide7.jpg" alt="Play Slideshow">
+                            <div class="guide-copy">
+                                <h3>Play Slideshow</h3>
+                                <p>Slideshow turns the photos stored on a selected server into automatic album-style playback. Long-press the server item to start, then set the playback interval and choose how the images fill the screen. TorchPhoto remembers slideshow settings separately for each server.</p>
+                                <p>You can also set background music and a starting volume, or select multiple songs from the Music app for sequential, repeating playback. Photos are loaded from the server as the slideshow runs, so a stable connection helps when original files have not already been loaded. This feature is available in PRO.</p>
+                                <ul>
+                                    <li>Long-press a server item to start the slideshow</li>
+                                    <li>Adjust the playback interval and screen-fill behavior</li>
+                                    <li>Add one or more Music app songs for repeating playback</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="offline-mode">
+                    <summary><span class="guide-number">8.</span> Offline Mode</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide8.jpg" alt="Offline Mode">
+                            <div class="guide-copy">
+                                <h3>Offline Mode</h3>
+                                <p>Offline Mode uses the generated thumbnail cache and remembered folder structure to let you browse prepared server galleries when the server is powered off or the network is unavailable. Generate thumbnails while connected before traveling or entering an area with an unstable connection.</p>
+                                <p>Offline browsing does not download or duplicate every original file. Opening, saving, or sharing a full-resolution original still requires access to the server unless that file was separately saved on the device. If a server address, port, folder name, or file path changes, TorchPhoto may treat it as a new item and require a new thumbnail.</p>
+                                <ul>
+                                    <li>Generate the folders you need before going offline</li>
+                                    <li>Browse cached previews while preserving the server folder structure</li>
+                                    <li>Reconnect to the server when you need an original file</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="thumbnails-widget">
+                    <summary><span class="guide-number">9.</span> Thumbnails Widget</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide9.jpg" alt="Thumbnails Widget">
+                            <div class="guide-copy">
+                                <h3>Thumbnail Widget</h3>
+                                <p>The widget displays generated photo thumbnails from the server and folder selected in TorchPhoto's widget settings. It reads the local thumbnail cache, so it can continue showing prepared images even when the server or internet connection is unavailable.</p>
+                                <p>Generate thumbnails first, then choose the desired server and folder in Settings. Only generated thumbnails that match that selection are used; placeholder previews and items whose server path has changed are not treated as available widget images.</p>
+                                <ul>
+                                    <li>Generate thumbnails, then go to the settings screen</li>
+                                    <li>Select a folder in widget settings at the bottom</li>
+                                    <li>Keep the cached previews available for offline widget display</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="save-video-frame">
+                    <summary><span class="guide-number">10.</span> Save Video Frame</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <img src="Guide10.jpg" alt="Save Video Frame">
+                            <div class="guide-copy">
+                                <h3>Save Video Frame</h3>
+                                <p>Move to the moment you want in a server video, then long-press the video to open its metadata view. The frame section at the bottom lets you save the selected moment as an image while preserving the source video's resolution. The original video on the server is not changed.</p>
+								<p>This works the same way in the paired video (Live Photo) viewer. Long-press the paired video to display its frames at the bottom, choose the desired frame, and use the same save button.</p>
+                                <ul>
+                                    <li>Play a video from the server</li>
+                                    <li>Long-press the video to view metadata</li>
+                                    <li>Save a frame from the bottom section of the metadata view</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+				
+                <details class="guide-item" id="Quick-Start">
+					<summary><span class="guide-number">11.</span> Quick Start</summary>
+						<div class="guide-content">
+							<div class="guide-body">
+								<img src="Guide11.jpg" alt="Quick Start">
+								<div class="guide-copy">
+									<h3>Quick Start</h3>
+									<p>Quick Start is a PRO-only launch option that skips the logo screen and opens the server list immediately. Enable it in Settings when TorchPhoto is mainly used to reach an existing server as quickly as possible.</p>
+									<p>This changes only the first screen shown at launch. It does not connect to a server automatically, start a backup, or change any saved server settings.</p>
+									<ul>
+										<li>Open Settings in TorchPhoto</li>
+										<li>Enable the Quick Start feature</li>
+										<li>Launch the app and go straight to the server list screen</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>				
+				
+                <details class="guide-item" id="Thumbnail-Cache-Backup-&-Restore">
+					<summary><span class="guide-number">12.</span> Thumbnail Cache Backup & Restore</summary>
+						<div class="guide-content">
+							<div class="guide-body">
+								<img src="Guide12.jpg" alt="Thumbnail Cache Backup & Restore">
+								<div class="guide-copy">
+									<h3>Thumbnail Cache Backup & Restore</h3>
+									<p>Thumbnail Cache Backup &amp; Restore is a PRO-only feature that exports generated previews so they can be restored without reading every photo and video from the server again. It is useful before changing devices, reinstalling TorchPhoto, or preparing another iOS device that connects to the same server.</p>
+									<p>The backup contains thumbnail data only—it is not a backup of your original photos, videos, or server. Restored thumbnails match most reliably when the server identity and folder paths remain the same. Keep TorchPhoto in the foreground during a large backup or restore, then open the matching server to confirm that its gallery cache is available.</p>
+                                	<ul>
+										<li>Open Settings in TorchPhoto</li>
+										<li>Go to Thumbnail Cache Backup &amp; Restore</li>
+										<li>Export the generated cache, then restore it on a matching server setup when needed</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>				
+				
+                <details class="guide-item" id="Live-Photo-Pairing">
+					<summary><span class="guide-number">13.</span> Live Photo Pairing</summary>
+						<div class="guide-content">
+							<div class="guide-body">
+								<img src="Guide13.jpg" alt="Live Photo Pairing">
+								<div class="guide-copy">
+									<h3>Live Photo Pairing</h3>
+									<p>When an iOS Live Photo is stored on a server, it normally appears as two separate files: one photo and one short video. With Video Pairing enabled, TorchPhoto recognizes files in the same folder that have the same base filename—such as <strong>IMG_0001.HEIC</strong> and <strong>IMG_0001.MOV</strong>—and presents them together as one Live Photo-style item. This feature is available in PRO.</p>
+									<p>The paired video may no longer appear as a separate item in the normal file list because it is opened from the pairing control in the photo viewer. Pairing changes only how the two files are displayed in TorchPhoto; it does not merge, rename, or modify the files on the server.</p>
+                                	<ul>
+										<li>Turn on the Video Pairing feature in Settings</li>
+										<li>Keep the matching photo and video in the same folder with the same base filename</li>
+										<li>A short video will play from the icon in the top-left corner of the photo viewer</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>			
+
+                <details class="guide-item" id="Save-Live-Photo">
+					<summary><span class="guide-number">14.</span> Save Live Photo</summary>
+						<div class="guide-content">
+							<div class="guide-body">
+								<img src="Guide14.jpg" alt="Save Live Photo">
+								<div class="guide-copy">
+									<h3>Save Live Photo</h3>
+									<p>Save Live Photo retrieves both parts of a valid paired item—the still photo and its matching short video—and adds them to the iOS Photos app as one Live Photo. The two source files remain separate and unchanged on the server. This feature is available in PRO.</p>
+									<p>Both original files must still be accessible, so connect to the server before saving. Open the pairing video from the photo viewer, long-press it, and use the Save Live Photo button shown at the bottom.</p>
+									<ul>
+										<li>Turn on the Video Pairing feature in Settings</li>
+										<li>Play the Live Photo video for the photo you want to save</li>
+										<li>Long-press the Live Photo and tap the Save Live Photo button at the bottom</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+				
+				<details class="guide-item" id="WiFi-Gallery-Share">
+					<summary><span class="guide-number">15.</span> Wi-Fi Gallery Share</summary>
+						<div class="guide-content">
+							<div class="guide-body">
+								<img src="Guide15.jpg" alt="Wi-Fi Gallery Share">
+								<div class="guide-copy">
+									<h3>Wi-Fi Gallery Share</h3>
+									<p>Wi-Fi Gallery Share starts a temporary gallery web server on your iPhone. Another phone, tablet, or computer can open the address shown by TorchPhoto—or scan its QR code—and browse the shared photos and videos in Chrome, Safari, or another browser. The receiving device does not need TorchPhoto installed.</p>
+									<p>The gallery is delivered over the local network and is not uploaded to a cloud service. Keep TorchPhoto running on the sharing screen, allow Local Network access, and connect both devices to a network where they can reach each other. Guest Wi-Fi or router client-isolation settings can block the connection even when both devices show the same network name. If the displayed port is already in use, choose another port and start sharing again.</p>
+                                	<ul>
+										<li>Start sharing and keep TorchPhoto active</li>
+										<li>Open the displayed address or scan the QR code in a browser</li>
+										<li>Stop sharing when the local gallery no longer needs to be available</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+				
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navIcon = navToggle ? navToggle.querySelector('i') : null;
+
+        if (navToggle && navLinks) {
+            const closeMenu = () => {
+                navLinks.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Open menu');
+                if (navIcon) {
+                    navIcon.classList.remove('fa-xmark');
+                    navIcon.classList.add('fa-bars');
+                }
+            };
+
+            const openMenu = () => {
+                navLinks.classList.add('is-open');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navToggle.setAttribute('aria-label', 'Close menu');
+                if (navIcon) {
+                    navIcon.classList.remove('fa-bars');
+                    navIcon.classList.add('fa-xmark');
+                }
+            };
+
+            navToggle.addEventListener('click', () => {
+                if (navLinks.classList.contains('is-open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            navLinks.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (window.innerWidth > 768) return;
+                if (!navLinks.contains(event.target) && !navToggle.contains(event.target)) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
+
+        function openGuideFromHash() {
+            const hash = window.location.hash;
+            if (!hash) return;
+
+            const target = document.querySelector(hash);
+            if (!target) return;
+
+            if (target.classList.contains('guide-item')) {
+                target.open = true;
+                requestAnimationFrame(() => {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+        }
+
+        window.addEventListener('load', openGuideFromHash);
+        window.addEventListener('hashchange', openGuideFromHash);
+    </script>
+
+</body>
+</html>
