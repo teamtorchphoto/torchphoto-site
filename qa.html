@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q&amp;A - TorchPhoto</title>
-    <meta name="description" content="Find answers about TorchPhoto server connections, thumbnails, offline browsing, uploads, Live Photos, Wi-Fi Gallery, PRO, privacy, and troubleshooting.">
+    <meta name="description" content="Find answers about TorchPhoto server connections, thumbnails, Timeline Viewer, Metadata Scan, diagnostics, offline browsing, uploads, PRO, privacy, and troubleshooting.">
     <link rel="canonical" href="https://torchphoto.com/qa.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="TorchPhoto Q&amp;A">
-    <meta property="og:description" content="Answers about server connections, thumbnails, offline browsing, uploads, Live Photos, Wi-Fi Gallery, PRO, and troubleshooting.">
+    <meta property="og:description" content="Answers about server connections, thumbnails, Timeline Viewer, Metadata Scan, diagnostics, offline browsing, uploads, PRO, and troubleshooting.">
     <meta property="og:image" content="https://torchphoto.com/main.jpg">
     <meta property="og:url" content="https://torchphoto.com/qa.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TorchPhoto Q&amp;A">
-    <meta name="twitter:description" content="Find answers to common TorchPhoto questions.">
+    <meta name="twitter:description" content="Find answers about TorchPhoto timelines, metadata, diagnostics, servers, thumbnails, and more.">
     <meta name="twitter:image" content="https://torchphoto.com/main.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -124,7 +124,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Does TorchPhoto send diagnostic data automatically?</summary>
                     <div class="guide-content">
-                        <p>No. TorchPhoto includes an on-device diagnostic feature to support app operation, updates, optimization, stability, and feature improvements. TorchPhoto does not automatically upload its locally stored diagnostic file. It remains on your device unless you choose to export and send it, such as through a feedback email. Apple’s separate system analytics may still follow your device analytics settings and Apple’s privacy terms.</p>
+                        <p>No. TorchPhoto includes an on-device diagnostic feature to support app operation, updates, optimization, stability, and feature improvements. TorchPhoto does not automatically upload its locally stored diagnostic file. It remains on your device unless you choose to export and send it, such as through a feedback email. If a diagnostic notice appears in Settings, please use <b>Send Error</b> whenever possible so the technical context can help reproduce and improve the problem. Apple’s separate system analytics may still follow your device analytics settings and Apple’s privacy terms.</p>
                     </div>
                 </details>
                 
@@ -188,6 +188,202 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     <summary>Can I check metadata or EXIF info?</summary>
                     <div class="guide-content">
                         <p>Yes. For supported files, you can check metadata such as capture time and location. Files without location data show time information only.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What is Timeline Viewer?</summary>
+                    <div class="guide-content">
+                        <p>Timeline Viewer is a thumbnail-based gallery that brings together generated thumbnails from your registered servers. It lets you browse them by <b>Year</b>, <b>Month</b>, <b>Day</b>, or <b>Location</b> without navigating each server folder separately.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How do I open Timeline Viewer?</summary>
+                    <div class="guide-content">
+                        <p>Tap the Timeline Viewer button on the server list. A normal tap opens the timeline; a long press prepares and opens Metadata Scan instead.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Which date does Timeline Viewer use for sorting?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto prioritizes the capture date stored in the file metadata when it has been verified. If no usable capture date is available, it uses the file modification date. Newer items appear first within the selected Year, Month, or Day view.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How do I jump to a specific date in Timeline Viewer?</summary>
+                    <div class="guide-content">
+                        <p>Tap the date heading at the top of Timeline Viewer. In Year view, choose a year. In Month view, choose a year and then a month. In Day view, choose a year, month, and day in order. Each step is built from dates that actually contain generated thumbnails, so the picker does not offer empty dates.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why did an item move to a different place in the timeline?</summary>
+                    <div class="guide-content">
+                        <p>An older thumbnail may initially be arranged by its file modification date. After thumbnail regeneration or Metadata Scan verifies its original capture date, Timeline Viewer rebuilds the relevant data and places the item at the correct capture date and time.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why are some server items missing from Timeline Viewer?</summary>
+                    <div class="guide-content">
+                        <p>Timeline Viewer works from generated TorchPhoto thumbnails. Generate a thumbnail for an item before expecting it to appear. Unsupported items, folders, and files without a generated thumbnail are not timeline entries.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I browse Timeline Viewer when a server is offline?</summary>
+                    <div class="guide-content">
+                        <p>Generated thumbnails and the local timeline catalog allow the gallery to remain useful when the original server is unavailable. Opening, saving, or sharing a full original still requires access to that server unless the original is already available locally.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How does the Location view group photos and videos?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto groups nearby GPS locations according to the current map zoom. A grouped marker uses a representative thumbnail and shows the full item count. Zoom in to separate it into smaller areas; zoom out to combine nearby areas into a stable regional group.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What opens when I tap a thumbnail on the Location map?</summary>
+                    <div class="guide-content">
+                        <p>Tapping a location marker opens a regional timeline containing the items represented by that marker. You can browse that region by Year, Month, or Day and adjust the thumbnail grid between 3 and 8 columns.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why is an item visible by date but missing from the Location map?</summary>
+                    <div class="guide-content">
+                        <p>The Location view requires usable GPS coordinates in the original metadata. An item without GPS can still appear in Year, Month, and Day views, but TorchPhoto cannot place it on the map.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Is the Location map fully available offline?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto stores the indexed coordinates and generated thumbnails locally, so known location groups can still be prepared without reconnecting to every original. The map imagery itself is supplied by Apple MapKit and depends on the map tiles currently available to iOS; a complete offline map is therefore not guaranteed.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How do I start Metadata Scan?</summary>
+                    <div class="guide-content">
+                        <p>On the server list, long-press the Timeline Viewer button. TorchPhoto displays <b>Metadata Scan Loading</b> while it prepares eligible items, then opens the scan page and starts. You can use Cancel during preparation to stop before entering the scan page.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does Metadata Scan inspect every original file on my servers?</summary>
+                    <div class="guide-content">
+                        <p>No. It scans photo and video entries that already have generated TorchPhoto thumbnails. Originals without thumbnails are not added to the scan just because they exist on a server.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What information does Metadata Scan collect?</summary>
+                    <div class="guide-content">
+                        <p>It looks for the original capture date and GPS coordinates when those fields exist. TorchPhoto stores the result in its local thumbnail metadata index for timeline sorting and the Location map; it does not write the result into the original server file.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Do newly generated thumbnails need a separate Metadata Scan?</summary>
+                    <div class="guide-content">
+                        <p>Normally, no. New and regenerated thumbnails save available capture-date and location information during thumbnail generation. Metadata Scan is mainly useful for older thumbnails or items whose metadata could not previously be confirmed.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does Metadata Scan download the complete original?</summary>
+                    <div class="guide-content">
+                        <p>Not by default. TorchPhoto first reads a limited part of the file. Photos are normally inspected from that partial data. Videos can keep metadata in different parts of the container, so TorchPhoto may also inspect another limited section when the protocol supports it. If required video metadata still cannot be confirmed, it can temporarily download the complete video for one deeper check and remove the temporary copy afterward.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Will the same video be downloaded in full on every Metadata Scan?</summary>
+                    <div class="guide-content">
+                        <p>No. Once a complete video inspection finishes, TorchPhoto records that the deeper check was completed—even when the original genuinely has no capture date or GPS—so it does not repeatedly download that video in full. A communication failure can remain eligible for a later retry.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does Metadata Scan support videos as well as photos?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Both thumbnail-backed photos and videos are included. Some video containers store metadata differently, which is why a video may require a deeper inspection than a photo.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What does “Unable to Verify” mean in Metadata Scan?</summary>
+                    <div class="guide-content">
+                        <p>It means TorchPhoto could not reliably confirm the requested metadata for that item. The original may not contain a usable date or location, its format may store the information in an unsupported way, or a read or connection problem may have interrupted verification. TorchPhoto does not invent missing metadata.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What happens when an original has no capture date or GPS?</summary>
+                    <div class="guide-content">
+                        <p>An item without GPS is skipped only in the Location map. An item without a verified capture date remains sortable by its file modification date. The original file and its metadata remain unchanged.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I stop Metadata Scan safely?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Tap <b>Stop</b>. TorchPhoto finishes stopping the active work safely and keeps results already processed; the button then changes to <b>Close</b> so you can leave the page.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Why does the screen stay awake during Metadata Scan?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto temporarily prevents automatic screen sleep while scanning so iOS is less likely to interrupt the foreground work. Normal screen-sleep behavior returns after the work stops or the scan page closes.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does Metadata Scan work with FTP, SFTP, SMB, and WebDAV?</summary>
+                    <div class="guide-content">
+                        <p>Yes. The scan uses the connection path available for each registered protocol. Partial-read capabilities can differ between servers and protocols, so the internal retrieval method may vary, but the capture-date and GPS results are stored in the same local format.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What maintenance runs when Metadata Scan starts?</summary>
+                    <div class="guide-content">
+                        <p>TorchPhoto reconciles the local metadata index with existing thumbnails, removes metadata entries whose matching thumbnails no longer exist, clears outdated timeline catalog data, and rebuilds the timeline from the current results. This keeps the metadata index and thumbnails on the same lifecycle.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Are timeline and metadata records included in Thumbnail Cache Backup &amp; Restore?</summary>
+                    <div class="guide-content">
+                        <p>Yes. The local metadata associated with the backed-up thumbnails is included so capture-date sorting and known GPS locations can be restored with matching thumbnail data. The backup still does not contain your full-resolution originals.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What should I do when a diagnostic item appears in Settings?</summary>
+                    <div class="guide-content">
+                        <p>Please tap <b>Send Error</b> whenever possible. TorchPhoto prepares a feedback email with the diagnostic report attached. Review it, add what you were doing when the problem occurred, and send it. That context is often the fastest way to reproduce an intermittent issue and improve the app.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What happens if I choose Ignore on a diagnostic notice?</summary>
+                    <div class="guide-content">
+                        <p>Ignore closes the notice without sending a diagnostic report. Choose it only when you do not want to share the report; <b>Send Error</b> is recommended because an unreported issue can be much harder to investigate.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Does tapping Send Error upload a report immediately?</summary>
+                    <div class="guide-content">
+                        <p>No. TorchPhoto prepares a feedback email with the diagnostic attachment for you to review and send. If mail is not available on the device, TorchPhoto displays an alert instead of silently uploading anything.</p>
                     </div>
                 </details>
 
@@ -1120,7 +1316,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>How can I see the default popup guides again?</summary>
                     <div class="guide-content">
-                        <p>Open TorchPhoto Settings and tap <b>Reset Tips</b>. This clears the “Don’t show again” choice for the upload, thumbnail generation, and image preview guides, so each guide appears again the next time you enter its related screen or use the related action.</p>
+                        <p>Open TorchPhoto Settings, scroll to the bottom, and tap <b>Reset Tips</b>. This clears saved “Don’t show again” choices for supported feature tips, including the Timeline Viewer guide, so each related tip can appear again the next time you enter its screen or use its action.</p>
                         <p>Reset Tips does not remove registered servers, photos, captions, thumbnail caches, subscriptions, or your other app settings.</p>
                     </div>
                 </details>

@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guide - TorchPhoto</title>
-    <meta name="description" content="Learn how to connect servers, generate thumbnails, browse offline, use Live Photos, Wi-Fi Gallery, widgets, backups, and more in TorchPhoto.">
+    <meta name="description" content="Learn how to connect servers, generate thumbnails, use Timeline Viewer and Metadata Scan, browse offline, send diagnostics, restore tips, and more in TorchPhoto.">
     <link rel="canonical" href="https://torchphoto.com/guide.html">
     <meta property="og:type" content="article">
     <meta property="og:title" content="TorchPhoto Guide">
-    <meta property="og:description" content="Learn how to connect servers, generate thumbnails, browse offline, use Live Photos, Wi-Fi Gallery, widgets, backups, and more in TorchPhoto.">
+    <meta property="og:description" content="Learn how to connect servers, generate thumbnails, use Timeline Viewer and Metadata Scan, browse offline, send diagnostics, restore tips, and more in TorchPhoto.">
     <meta property="og:image" content="https://torchphoto.com/main.jpg">
     <meta property="og:url" content="https://torchphoto.com/guide.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TorchPhoto Guide">
-    <meta name="twitter:description" content="Connect servers, generate thumbnails, browse offline, and learn TorchPhoto's gallery features.">
+    <meta name="twitter:description" content="Connect servers, generate thumbnails, use Timeline Viewer and Metadata Scan, and learn TorchPhoto's gallery features.">
     <meta name="twitter:image" content="https://torchphoto.com/main.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -145,12 +145,12 @@
                             <img src="Guide3.jpg" alt="Generate Thumbnails">
                             <div class="guide-copy">
                                 <h3>Generate Thumbnails</h3>
-                                <p>Thumbnail generation reads supported photos and videos from the current folder—or from the entire registered server when you choose server-wide generation—and creates lightweight previews for gallery browsing. These previews are stored in TorchPhoto's cache and never modify the original files on your server.</p>
+                                <p>Thumbnail generation reads supported photos and videos from the current folder—or from the entire registered server when you choose server-wide generation—and creates lightweight previews for gallery browsing. These previews are stored locally as TorchPhoto app data and never modify the original files on your server.</p>
                                 <p>TorchPhoto first tries to read only the data needed for a preview. If a server or file format does not support that method, it may request more data or temporarily download the file. Very large or unsupported videos may show a placeholder instead. Opening a photo or video can temporarily pause generation so the item you selected loads first.</p>
                                 <ul>
                                     <li>Move to a folder containing photos or videos</li>
                                     <li>Run thumbnail generation for the current folder or the entire server</li>
-                                    <li>Keep the generated cache for faster browsing, Offline Mode, and widgets</li>
+                                    <li>Keep the generated thumbnails for faster browsing, Offline Mode, Timeline Viewer, and widgets</li>
                                 </ul>
                             </div>
                         </div>
@@ -379,6 +379,84 @@
 										<li>Start sharing and keep TorchPhoto active</li>
 										<li>Open the displayed address or scan the QR code in a browser</li>
 										<li>Stop sharing when the local gallery no longer needs to be available</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="timeline-viewer">
+                    <summary><span class="guide-number">16.</span> Timeline Viewer</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <div class="guide-copy">
+                                <h3>Browse Generated Thumbnails by Date or Location</h3>
+                                <p>Tap the Timeline Viewer button on the server list to browse generated thumbnails across your registered servers. Choose <b>Year</b>, <b>Month</b>, or <b>Day</b> to change the date grouping, or choose <b>Location</b> to explore items that contain GPS metadata on a map.</p>
+                                <p>To jump to another date, tap the date heading at the top of Timeline Viewer. In Year view, select a year. In Month view, select a year and then a month. In Day view, select a year, month, and day in order. The picker shows only dates that actually contain generated thumbnails, so unavailable dates are not presented as empty destinations.</p>
+                                <p>TorchPhoto sorts an item by its embedded capture date when that date has been verified. If no usable capture date is available, it uses the file modification date instead. Recently captured items appear first. Newly generated or regenerated thumbnails save available capture-date and location information immediately; run Metadata Scan to fill this information for older thumbnails.</p>
+                                <p>The Location view groups nearby items according to the map zoom level. A marker shows a representative thumbnail and the total item count; zooming in separates the group into smaller areas, and tapping it opens a regional timeline with Year, Month, and Day views. Items without GPS metadata remain available in the date timeline but do not appear on the map.</p>
+                                <ul>
+                                    <li>Generate thumbnails before using Timeline Viewer</li>
+                                    <li>Use Year, Month, Day, or Location from the timeline controls</li>
+                                    <li>Tap the date heading to jump through the available year, month, and day hierarchy</li>
+                                    <li>Change the grid between 3 and 8 columns when you need a different thumbnail size</li>
+                                    <li>Connect to the server when you need to open, save, or share a full original that is not stored locally</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="metadata-scan">
+                    <summary><span class="guide-number">17.</span> Metadata Scan</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <div class="guide-copy">
+                                <h3>Update Capture Dates and Locations for Existing Thumbnails</h3>
+                                <p>On the server list, <b>long-press the Timeline Viewer button</b>. TorchPhoto first prepares the list of eligible items, then opens Metadata Scan and begins working. You can cancel during preparation. The scan includes photos and videos that already have generated thumbnails; it does not crawl every original file on the server or add items that have no thumbnail.</p>
+                                <p>Metadata Scan records an available capture date and GPS location in TorchPhoto's local thumbnail metadata index. It normally reads only the parts of an original that are needed. For a video whose metadata cannot be confirmed from a partial read, TorchPhoto can temporarily download the complete original once for a deeper check and remove the temporary file afterward. A completed full check is remembered so a video that genuinely has no such metadata is not downloaded in full on every scan.</p>
+                                <p>Keep the scan page open until it finishes. TorchPhoto prevents the screen from sleeping while work is active and shows counts for <b>Capture Date</b>, <b>Location</b>, and <b>Unable to Verify</b>. Tap <b>Stop</b> when necessary; after the current work stops safely, the button changes to <b>Close</b>. Missing metadata is normal—TorchPhoto never invents a date or location that is not present in the original.</p>
+                                <ul>
+                                    <li>Use it after updating from an older version, or when dates and map locations for existing thumbnails look incomplete</li>
+                                    <li>Only thumbnail-backed items are scanned</li>
+                                    <li>Items without a verified capture date use their file modification date for sorting</li>
+                                    <li>The scan also removes stale metadata records whose matching thumbnails no longer exist and rebuilds timeline data</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="reset-tips">
+                    <summary><span class="guide-number">18.</span> Show Tips Again</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <div class="guide-copy">
+                                <h3>Reset Feature Tips</h3>
+                                <p>If you dismissed a TorchPhoto tip and want to see it again, open <b>Settings</b>, scroll to the bottom, and tap <b>Reset Tips</b>. Tips for the related features will appear again the next time you enter their screens or perform their actions.</p>
+                                <p>Reset Tips changes only the saved tip visibility. It does not remove registered servers, thumbnails, captions, media, subscriptions, or other app settings.</p>
+                                <ul>
+                                    <li>Open Settings and scroll to the bottom</li>
+                                    <li>Tap Reset Tips</li>
+                                    <li>Return to the related feature to view its tip again</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="send-diagnostics">
+                    <summary><span class="guide-number">19.</span> Send Diagnostics</summary>
+                    <div class="guide-content">
+                        <div class="guide-body">
+                            <div class="guide-copy">
+                                <h3>Help Improve TorchPhoto When a Diagnostic Notice Appears</h3>
+                                <p>If TorchPhoto detects diagnostic information that may help explain an error, a diagnostic item can appear in <b>Settings</b>. Please tap <b>Send Error</b> whenever possible. TorchPhoto prepares a feedback email with the diagnostic report attached so the problem can be investigated and improved. Review the prepared email, add any helpful details about what you were doing, and send it.</p>
+                                <p>Diagnostic reports are not uploaded automatically. Choosing <b>Ignore</b> closes the notice without sending a report, so use it only when you do not want to report the issue. Sending the report is the most useful option because the technical context can make an intermittent problem possible to reproduce and fix.</p>
+                                <ul>
+                                    <li>Open the diagnostic item shown in Settings</li>
+                                    <li>Tap Send Error and review the prepared feedback email</li>
+                                    <li>Add the steps that led to the problem, then send the email</li>
                                 </ul>
                             </div>
                         </div>
