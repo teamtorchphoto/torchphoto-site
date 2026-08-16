@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guide - TorchPhoto</title>
-    <meta name="description" content="Learn how to connect servers, generate thumbnails, use Timeline Viewer and Metadata Scan, browse offline, send diagnostics, restore tips, and more in TorchPhoto.">
+    <meta name="description" content="Learn how to connect servers, generate thumbnails, use Timeline Viewer, view IPTC and EXIF metadata, configure Custom Popup, browse offline, and more in TorchPhoto.">
     <link rel="canonical" href="https://torchphoto.com/guide.html">
     <meta property="og:type" content="article">
     <meta property="og:title" content="TorchPhoto Guide">
-    <meta property="og:description" content="Learn how to connect servers, generate thumbnails, use Timeline Viewer and Metadata Scan, browse offline, send diagnostics, restore tips, and more in TorchPhoto.">
+    <meta property="og:description" content="Learn how to connect servers, generate thumbnails, use Timeline Viewer, view IPTC and EXIF metadata, configure Custom Popup, browse offline, and more in TorchPhoto.">
     <meta property="og:image" content="https://torchphoto.com/main.jpg">
     <meta property="og:url" content="https://torchphoto.com/guide.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TorchPhoto Guide">
-    <meta name="twitter:description" content="Connect servers, generate thumbnails, use Timeline Viewer and Metadata Scan, and learn TorchPhoto's gallery features.">
+    <meta name="twitter:description" content="Connect servers, view IPTC and EXIF metadata, configure Custom Popup, and learn TorchPhoto's gallery features.">
     <meta name="twitter:image" content="https://torchphoto.com/main.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -475,6 +475,50 @@
                                     <li>Open the diagnostic item shown in Settings</li>
                                     <li>Tap Send Error and review the prepared feedback email</li>
                                     <li>Add the steps that led to the problem, then send the email</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="iptc-metadata">
+                    <summary><span class="guide-number">20.</span> IPTC Metadata</summary>
+                    <div class="guide-content">
+                        <div class="guide-body guide-body--text">
+                            <div class="guide-feature-icon" aria-hidden="true">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <div class="guide-copy">
+                                <h3>View and Organize EXIF and IPTC Information</h3>
+                                <p>Long-press a supported photo or video in the viewer to open its metadata. TorchPhoto displays the information that is actually embedded in the file, including available file details, EXIF camera data, capture date, location information, and IPTC fields such as title, headline, description, keywords, creator, credit, copyright, and location names. EXIF and IPTC labels help identify the source of each field.</p>
+                                <p>An IPTC title is not the same as the media filename, and IPTC information is separate from TorchPhoto's own caption feature. If a file does not contain a particular field, TorchPhoto leaves it out rather than inventing a value. Viewing and organizing metadata in TorchPhoto does not modify the original file on your server.</p>
+                                <p>Use the edit button beside the metadata close button to choose which EXIF, IPTC, file, and location fields are visible. Drag the fields to arrange them in the order you want. These display preferences are saved as app data and are included in TorchPhoto's supported backup and restore process.</p>
+                                <ul>
+                                    <li>Long-press supported media to open the metadata view</li>
+                                    <li>Use the EXIF and IPTC labels to identify each type of information</li>
+                                    <li>Open Edit to show, hide, and reorder metadata fields</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="custom-popup">
+                    <summary><span class="guide-number">21.</span> Custom Popup</summary>
+                    <div class="guide-content">
+                        <div class="guide-body guide-body--text">
+                            <div class="guide-feature-icon" aria-hidden="true">
+                                <i class="fas fa-message"></i>
+                            </div>
+                            <div class="guide-copy">
+                                <h3>Display Selected Metadata Directly in the Viewer</h3>
+                                <p>Open <b>Settings</b> and enable <b>Custom Popup</b>, then open its popup settings. The feature is off by default on a new installation. Choose the metadata fields to display and arrange their order. Each field can use a custom display title and font size. You can also set a temporary display duration or keep the popup visible, adjust its background transparency and text shadow, and decide whether it appears after TimeMapStamp.</p>
+                                <p>Lock Position places the popup at the Top Left or Top Right of the media's actual displayed area and applies the matching text alignment automatically. When Lock Position is off, press and hold only the popup box in the viewer, then drag it to the desired location. TorchPhoto remembers the saved position. Quickly double-tap the popup to hide it.</p>
+                                <p>The popup appears after the original media and its metadata are ready in supported image, video, GIF, APNG, animated WebP, and AVIF viewers. Starting to zoom hides it for the current item so it does not cover the enlarged media. The popup does not replace the full metadata view opened by long-pressing the viewer, and its settings do not modify the original file.</p>
+                                <ul>
+                                    <li>Go to Settings, enable Custom Popup, and open Popup Settings</li>
+                                    <li>Choose fields, titles, sizes, timing, transparency, shadow, and position</li>
+                                    <li>Long-press the popup to move it when unlocked, or double-tap it to hide it</li>
                                 </ul>
                             </div>
                         </div>

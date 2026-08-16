@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q&amp;A - TorchPhoto</title>
-    <meta name="description" content="Find answers about TorchPhoto server connections, thumbnails, Timeline Viewer, Metadata Scan, diagnostics, offline browsing, uploads, PRO, privacy, and troubleshooting.">
+    <meta name="description" content="Find answers about TorchPhoto server connections, thumbnails, Timeline Viewer, IPTC and EXIF metadata, Custom Popup, diagnostics, offline browsing, uploads, PRO, privacy, and troubleshooting.">
     <link rel="canonical" href="https://torchphoto.com/qa.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="TorchPhoto Q&amp;A">
-    <meta property="og:description" content="Answers about server connections, thumbnails, Timeline Viewer, Metadata Scan, diagnostics, offline browsing, uploads, PRO, and troubleshooting.">
+    <meta property="og:description" content="Answers about server connections, thumbnails, Timeline Viewer, IPTC and EXIF metadata, Custom Popup, diagnostics, offline browsing, uploads, PRO, and troubleshooting.">
     <meta property="og:image" content="https://torchphoto.com/main.jpg">
     <meta property="og:url" content="https://torchphoto.com/qa.html">
     <meta name="twitter:card" content="summary_large_image">
@@ -185,9 +185,37 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 </details>
 
                 <details class="guide-item">
-                    <summary>Can I check metadata or EXIF info?</summary>
+                    <summary>Can I check EXIF and IPTC metadata?</summary>
                     <div class="guide-content">
-                        <p>Yes. For supported files, you can check metadata such as capture time and location. Files without location data show time information only.</p>
+                        <p>Yes. Long-press a supported photo or video in the viewer to open its metadata. TorchPhoto can show available file information, EXIF details, location data, and embedded IPTC fields. Only information that actually exists in the media is displayed, so the available fields can differ from one file to another.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What is IPTC metadata, and is an IPTC title the same as a filename or TorchPhoto caption?</summary>
+                    <div class="guide-content">
+                        <p>IPTC is descriptive information embedded in a media file, such as a title, headline, description, keywords, creator, credit, copyright, and location names. An IPTC title is separate from a filename such as <b>IMG_0001.jpg</b>, and it is also separate from TorchPhoto's own caption feature. TorchPhoto reads the IPTC information stored in the original file and does not create missing IPTC values automatically.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I choose which metadata fields appear and change their order?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Open the metadata view by long-pressing the media, then use the edit button beside the close button. You can show or hide individual EXIF, IPTC, file, and location fields and drag them into the order you prefer. These display preferences change only TorchPhoto's metadata view and do not edit the original file.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>What is Custom Popup?</summary>
+                    <div class="guide-content">
+                        <p>Custom Popup displays the metadata fields you select directly over supported image, video, and animated image viewers after the original media and its metadata are ready. In <b>Settings &gt; Custom Popup</b>, you can choose the fields and their order, customize field titles and font sizes, set the display duration, background transparency and text shadow, and choose a fixed or manually saved position. The feature starts turned off on a new installation.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How do I move or hide Custom Popup in the viewer?</summary>
+                    <div class="guide-content">
+                        <p>When Lock Position is off, press and hold the popup itself, then drag it to the desired position. TorchPhoto remembers the saved position. When Lock Position is on, choose Top Left or Top Right and the popup aligns itself to the displayed media. Quickly double-tap the popup to hide it. Starting to zoom the media also hides it for the current item. Normal viewer swipes remain available unless you are actively repositioning the popup.</p>
                     </div>
                 </details>
 
