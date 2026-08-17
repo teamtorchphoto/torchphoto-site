@@ -53,6 +53,22 @@
             <div class="guide-list">
 
                 <details class="guide-item" open>
+                    <summary>v13.1</summary>
+                    <div class="guide-content">
+                        <p>1. Improved Timeline Viewer stability. Fixed blank screens when switching between Year, Month, and Day views in the location timeline, as well as crashes when opening Timeline Viewer.</p>
+                        <p>2. Improved thumbnail generation order. The original file order is maintained while generating folder thumbnails. Capture-date sorting is applied after the task finishes or stops, and folders with thumbnails now appear first.</p>
+                        <p>3. Added database-based performance optimization. Capture dates, locations, the thumbnail cache index, and the timeline catalog now use a more efficient database. Existing data is migrated once from the server list and safely resumes if interrupted. Backup, Restore, and Metadata Scan also use the new database.</p>
+                        <p>4. Improved Metadata Scan. It quickly scans capture dates and locations for photos and videos with thumbnails. If an original file is unavailable, the scan continues with the remaining items.</p>
+                        <p>5. Improved Full Thumbnail Generation. Memory usage during large thumbnail jobs has been optimized, and FTP connections no longer remain idle after completion. Screen brightness handling and the generation screen have also been improved.</p>
+                        <p>6. Added Instant Thumbnail Ultra. Ultra reads more source data to improve thumbnail generation success for difficult files. Low, High, and Ultra use the same final thumbnail dimensions and storage quality.</p>
+                        <p>7. Added support for resuming interrupted uploads. A regular upload can continue with the previously selected items, while files that have since been deleted from the device are skipped automatically.</p>
+                        <p>8. Improved original photo loading reliability when downloading and switching from a thumbnail to the original photo.</p>
+                        <p>9. Improved slideshow information. The current song title briefly appears when the music changes. Capture date, time, and location can also be displayed and moved by dragging.</p>
+                        <p>10. Redesigned Custom Popup settings for Light and Dark Mode, removed unnecessary background decorations, and reorganized the default EXIF and IPTC field order.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" open>
                     <summary>v13.0</summary>
                     <div class="guide-content">
                         <p>1. Added IPTC metadata support with customizable field visibility and ordering alongside EXIF data.</p>
