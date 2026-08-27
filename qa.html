@@ -241,6 +241,20 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 </details>
 
                 <details class="guide-item">
+                    <summary>Can I search Timeline Viewer by filename or metadata?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Open Timeline Viewer and tap the search button. You can search by filename or available metadata values, and add specific conditions for supported file, capture, EXIF, IPTC, location, and video information. Timeline search works with items that have generated TorchPhoto thumbnails and metadata already available to the timeline. If older items are missing searchable details, run Metadata Scan from the server list first.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How do multiple Timeline search conditions and presets work?</summary>
+                    <div class="guide-content">
+                        <p>Choose <b>All Conditions</b> to return only items that match every added condition, or <b>Any Condition</b> to return items that match at least one. Text entered in the main search box must also match when it is used together with conditions. Save frequently used combinations as a preset; the conditions and selected matching method are restored together.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
                     <summary>Which date does Timeline Viewer use for sorting?</summary>
                     <div class="guide-content">
                         <p>TorchPhoto prioritizes the capture date stored in the file metadata when it has been verified. If no usable capture date is available, it uses the file modification date. Newer items appear first within the selected Year, Month, or Day view.</p>
@@ -395,9 +409,9 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 </details>
 
                 <details class="guide-item">
-                    <summary>Are timeline and metadata records included in Thumbnail Cache Backup &amp; Restore?</summary>
+                    <summary>Are timeline search and metadata records included in Backup &amp; Restore?</summary>
                     <div class="guide-content">
-                        <p>Yes. The local metadata associated with the backed-up thumbnails is included so capture-date sorting and known GPS locations can be restored with matching thumbnail data. The backup still does not contain your full-resolution originals.</p>
+                        <p>Yes. Supported metadata associated with the backed-up thumbnails is included so capture-date sorting, known locations, and metadata search can be restored with matching thumbnail data. Saved Timeline search presets are also included. The backup still does not contain your full-resolution originals.</p>
                     </div>
                 </details>
 
@@ -607,9 +621,9 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 </details>
 
                 <details class="guide-item">
-                    <summary>Can I delete cache for only one server?</summary>
+                    <summary>Can I delete cache for only one server or folder?</summary>
                     <div class="guide-content">
-                        <p>Yes. You can delete cache per server, and you can also clear the cache for all servers at once.</p>
+                        <p>Yes. You can clear all cache, delete it for one server, or choose a folder within a server. Folder-based deletion applies to the selected folder and its subfolders and removes their thumbnail cache and favorite items. Original files on the server are not deleted.</p>
                     </div>
                 </details>
 
@@ -721,7 +735,14 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can I organize a long server list?</summary>
                     <div class="guide-content">
-                        <p>Yes. Server search, color tags, ordering, and saved server management help separate personal, work, local, and remote connections.</p>
+                        <p>Yes. Server search, color tags, ordering, and saved server management help separate personal, work, local, and remote connections. Color tags are visual labels for distinguishing servers and folders; they do not rename, move, or modify anything on the server.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>How can a folder tag open the tagged folder quickly?</summary>
+                    <div class="guide-content">
+                        <p>After assigning a color tag to a folder, select that tag from the server list. TorchPhoto shows the server entries that contain a matching tagged folder. While this tag filter is active, opening one of those server entries takes you directly to the tagged folder, even when the saved server entry starts from one of its parent folders. Opening the server normally without the tag filter continues to use its usual saved path.</p>
                     </div>
                 </details>
 
@@ -943,23 +964,24 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 </details>
 
                 <details class="guide-item">
-                    <summary>What is included in a thumbnail backup?</summary>
+                    <summary>What is included in PRO Backup &amp; Restore?</summary>
                     <div class="guide-content">
-                        <p>The backup is for generated TorchPhoto thumbnail data. It is not a backup of the original photos, videos, NAS contents, or the server itself.</p>
+                        <p>A backup can include generated thumbnails for the selected server, captions, timeline and supported metadata records, folder tags, metadata display and Custom Popup preferences, Timeline search presets, recent upload history, supported app settings, and an eligible widget folder selection associated with that server. Supported settings include choices such as app language and theme, original auto-loading, image enhancement, video pairing, HDR display, TimeMapStamp, and Quick Start.</p>
+                        <p>It is not a backup of the original photos, videos, NAS contents, server credentials, or every temporary screen state in the app.</p>
                     </div>
                 </details>
 
                 <details class="guide-item">
-                    <summary>When is thumbnail backup especially useful?</summary>
+                    <summary>When is Backup &amp; Restore especially useful?</summary>
                     <div class="guide-content">
-                        <p>Use it before changing devices, reinstalling the app, or making a subscription change that could affect the available cache limit. Keep the original server identity and paths consistent for the restored previews to match correctly.</p>
+                        <p>Use it before changing devices, reinstalling the app, or making a subscription change that could affect the available cache limit. Keep the original server identity and paths consistent so restored thumbnails and related server data can match correctly.</p>
                     </div>
                 </details>
 
                 <details class="guide-item">
                     <summary>Will thumbnails survive if I delete and reinstall TorchPhoto?</summary>
                     <div class="guide-content">
-                        <p>Do not rely on app deletion to preserve local cache. Create a thumbnail backup first if you want to restore generated previews after reinstalling.</p>
+                        <p>Do not rely on app deletion to preserve local data. Create a PRO backup first if you want to restore generated previews and other supported TorchPhoto data after reinstalling.</p>
                     </div>
                 </details>
 
@@ -1015,7 +1037,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can TimeMapStamp open a date or location timeline?</summary>
                     <div class="guide-content">
-                        <p>Yes. In PRO, long-press the time area to open the daily timeline for that date, or long-press the mini map to open the location-based timeline for that place. In FREE, long-pressing the mini map opens the location in the Maps app instead. A brief tap only hides TimeMapStamp, and these long-press actions provide subtle haptic feedback.</p>
+                        <p>Yes. In PRO, long-press the time area to open the daily timeline for that date, or long-press the mini map to open the location-based timeline for that place. This also works when the viewer was opened from Timeline search results or the Location view, and it follows the date or location of the item currently displayed. In FREE, long-pressing the mini map opens the location in the Maps app instead. A brief tap only hides TimeMapStamp, and these long-press actions provide subtle haptic feedback.</p>
                     </div>
                 </details>
 
@@ -1352,6 +1374,13 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     <summary>What should I do before deleting remote media in TorchPhoto?</summary>
                     <div class="guide-content">
                         <p>Confirm the selected files, server, and folder carefully. A remote delete affects the server copy and may not be recoverable through TorchPhoto; recovery depends on the server's own recycle-bin or backup policy.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item">
+                    <summary>Can I change TorchPhoto's app language?</summary>
+                    <div class="guide-content">
+                        <p>Yes. In TorchPhoto Settings, open <b>Language</b> below Theme and choose the language you want. The default follows the iOS system setting, while a language selected inside TorchPhoto is applied immediately and remembered. TorchPhoto currently supports 32 app languages.</p>
                     </div>
                 </details>
 
