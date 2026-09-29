@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TorchPhoto Backup Shortcut</title>
-    <meta name="description" content="Follow the step-by-step setup for the TorchPhoto PRO backup shortcut on iPhone and iPad.">
+    <title>TorchPhoto Backup Shortcut Setup</title>
+    <meta name="description" content="Add either TorchPhoto PRO shortcut, choose a server and folder, and back up today’s captures or selected items on iPhone and iPad.">
     <link rel="canonical" href="https://torchphoto.com/shortcutsetting.html">
     <meta property="og:type" content="article">
     <meta property="og:title" content="TorchPhoto Backup Shortcut Setup">
-    <meta property="og:description" content="Follow the step-by-step setup for the TorchPhoto PRO backup shortcut.">
+    <meta property="og:description" content="Choose and set up a shortcut for today’s captures or selected items. Requires TorchPhoto PRO.">
     <meta property="og:image" content="https://torchphoto.com/main.jpg">
     <meta property="og:url" content="https://torchphoto.com/shortcutsetting.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TorchPhoto Backup Shortcut Setup">
-    <meta name="twitter:description" content="Follow the step-by-step setup for the TorchPhoto PRO backup shortcut.">
+    <meta name="twitter:description" content="Choose and set up a shortcut for today’s captures or selected items. Requires TorchPhoto PRO.">
     <meta name="twitter:image" content="https://torchphoto.com/main.jpg">
     <link rel="stylesheet" href="style.css?v=shortcuts-responsive-notes-v2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -46,7 +46,7 @@
             margin-bottom: 12px;
         }
 
-        .shortcut-setting-page .shortcut-version-note {
+        .shortcut-setting-page .shortcut-pro-note {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -243,6 +243,61 @@
                 border-radius: 13px;
             }
         }
+
+        .shortcut-choice-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            max-width: 820px;
+            margin: 28px auto 0;
+            text-align: left;
+        }
+        .shortcut-choice-card {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 0;
+            padding: 22px;
+            border: 1px solid #dce6f3;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+        }
+        .shortcut-choice-card h2 {
+            margin: 0;
+            font-size: 1.18rem;
+            line-height: 1.4;
+            color: #172033;
+        }
+        .shortcut-choice-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: #5f6b7c;
+        }
+        .shortcut-choice-card .shortcut-download-button {
+            width: 100%;
+            min-height: 64px;
+            margin-top: auto;
+            padding: 14px;
+            border-radius: 16px;
+            font-size: 0.96rem;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+        }
+        .shortcut-choice-card .shortcut-download-button:focus-visible {
+            outline: 3px solid #172033;
+            outline-offset: 4px;
+        }
+        .shortcut-pro-note {
+            margin-top: 14px;
+            color: #1d4ed8;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        @media (max-width: 640px) {
+            .shortcut-choice-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+            .shortcut-choice-card { padding: 20px; }
+        }
     </style>
 </head>
 <body class="subpage-body shortcut-setting-page">
@@ -272,90 +327,101 @@
         <div class="container narrow-container">
             <div class="shortcut-shell">
                 <div class="page-hero">
-                    <h1>TorchPhoto Backup</h1>
-                    <p class="shortcut-version-note">Shortcut Version 2</p>
-                    <p class="shortcut-intro">This shortcut backs up items captured today to the server locations you choose in TorchPhoto.</p>
-                    <div class="shortcut-download">
-                        <a class="shortcut-download-button" href="https://www.icloud.com/shortcuts/159a9f6ab54e482fb3929ba543ca3a0c">
-                            <i class="fas fa-cloud-arrow-down"></i>
-                            <span>Add TorchPhoto Backup</span>
+                    <h1>Set Up Your Shortcut</h1>
+                    <p class="shortcut-pro-note">Requires TorchPhoto PRO</p>
+                    <p class="shortcut-intro">Choose today’s captures for an automatic backup, or choose the items yourself each time.</p>
+                    <div class="shortcut-choice-grid">
+                    <article class="shortcut-choice-card">
+                        <h2>Back Up Today’s Items</h2>
+                        <p>Automatically back up photos and videos captured today. The date updates each time the shortcut runs.</p>
+                        <a class="shortcut-download-button" href="https://www.icloud.com/shortcuts/b84835b9b366486c8a3797c65c819bc3" aria-label="Get the Back Up Today’s Items shortcut">
+                            <i class="fas fa-calendar-day" aria-hidden="true"></i>
+                            <span>Get Today’s Backup</span>
                         </a>
-                    </div>
+                    </article>
+                    <article class="shortcut-choice-card">
+                        <h2>Back Up Selected Items</h2>
+                        <p>Open the photo picker and back up the items you choose, regardless of when they were captured.</p>
+                        <a class="shortcut-download-button" href="https://www.icloud.com/shortcuts/ec942e301b9b43be9fd17d10a2d84d74" aria-label="Get the Back Up Selected Items shortcut">
+                            <i class="fas fa-images" aria-hidden="true"></i>
+                            <span>Get Selected Items Backup</span>
+                        </a>
+                    </article>
+                </div>
                 </div>
 
                 <section class="info-card">
-                    <h2>How the backup works</h2>
+                    <h2>Get ready in TorchPhoto</h2>
                     <ol class="step-list">
                         <li class="step-item">
                             <span class="step-number">1</span>
                             <div class="step-copy">
-                                <strong>Photos are uploaded first</strong>
-                                <p>The shortcut finds photos captured today and uploads them to the selected destination.</p>
+                                <strong>Add your server</strong>
+                                <p>Use TorchPhoto PRO and save an FTP, SFTP, SMB, or WebDAV connection. Check that your device can reach the server.</p>
                             </div>
                         </li>
                         <li class="step-item">
                             <span class="step-number">2</span>
                             <div class="step-copy">
-                                <strong>Live Photo motion clips are uploaded as MOV files</strong>
-                                <p>Live Photos are detected next, and their motion clips are exported and uploaded as short MOV files.</p>
+                                <strong>Check your Upload options</strong>
+                                <p>Open the Upload page and choose your media options, including Live Photo video upload and JPEG conversion. Both shortcuts use your saved upload options.</p>
                             </div>
                         </li>
                         <li class="step-item">
                             <span class="step-number">3</span>
                             <div class="step-copy">
-                                <strong>Videos are uploaded as MOV files</strong>
-                                <p>Videos captured today are detected last, converted to MOV when needed, and uploaded to the selected video destination.</p>
-                            </div>
-                        </li>
-                    </ol>
-                    <p class="info-note"><strong>Automatic thumbnails:</strong> TorchPhoto generates thumbnails automatically during each shortcut upload.</p>
-                </section>
-
-                <section class="info-card">
-                    <h2>Choose three backup locations</h2>
-                    <p class="shortcut-intro" style="margin: 0 0 20px; text-align: left; max-width: none;">When you add or run the shortcut for the first time, choose each destination from the servers and folders already added in TorchPhoto.</p>
-                    <ol class="step-list">
-                        <li class="step-item">
-                            <span class="step-number">1</span>
-                            <div class="step-copy">
-                                <strong>Photo backup location</strong>
-                                <p>Select the server and folder where regular photos captured today should be uploaded.</p>
-                            </div>
-                        </li>
-                        <li class="step-item">
-                            <span class="step-number">2</span>
-                            <div class="step-copy">
-                                <strong>Live Photo backup location</strong>
-                                <p>Select where Live Photo MOV clips should be uploaded. In most cases, choose the same folder as the photo backup location so matching photo and MOV files stay together.</p>
-                            </div>
-                        </li>
-                        <li class="step-item">
-                            <span class="step-number">3</span>
-                            <div class="step-copy">
-                                <strong>Video backup location</strong>
-                                <p>Select the server and folder where videos captured today should be uploaded.</p>
+                                <strong>Allow photo access</strong>
+                                <p>For today’s automatic backup, allow photo-library access in TorchPhoto first. Limited access uploads only the items you have allowed.</p>
                             </div>
                         </li>
                     </ol>
                 </section>
 
                 <section class="info-card">
-                    <h2>Only new items are uploaded</h2>
-                    <p class="info-note" style="margin-top: 0;"><strong>Duplicate protection:</strong> Items that have already been uploaded are skipped automatically instead of being overwritten. Each run checks the same backup flow again, but uploads only new items that are not already on the server.</p>
-                    <p class="info-note"><strong>Completion notification:</strong> When the shortcut finishes, a Shortcuts notification displays the combined total number of uploaded photos and videos.</p>
+                    <h2>Add a shortcut and choose its destination</h2>
+                    <ol class="step-list">
+                        <li class="step-item">
+                            <span class="step-number">1</span>
+                            <div class="step-copy">
+                                <strong>Choose one of the two shortcuts</strong>
+                                <p>Use the buttons above, or open Settings → Set Up Shortcut in TorchPhoto. Choose either backup in the popup to open its iCloud import link.</p>
+                            </div>
+                        </li>
+                        <li class="step-item">
+                            <span class="step-number">2</span>
+                            <div class="step-copy">
+                                <strong>Select Server and Folder</strong>
+                                <p>During setup, choose a saved TorchPhoto server and the folder to upload to. Each shortcut uses one destination. To change it later, edit the shortcut in the Shortcuts app.</p>
+                            </div>
+                        </li>
+                        <li class="step-item">
+                            <span class="step-number">3</span>
+                            <div class="step-copy">
+                                <strong>Run it once and check the result</strong>
+                                <p>Today’s shortcut finds the current day’s photos and videos automatically. The selected-items shortcut opens the photo picker and uploads your selection without a date filter.</p>
+                            </div>
+                        </li>
+                    </ol>
+                    <p class="info-note"><strong>Upload history:</strong> Check Upload Logs on the Upload page for the result. Thumbnail generation follows your saved Upload option. If a run is interrupted, open the Upload page to check whether it offers a saved upload to resume.</p>
+                    <p class="info-note"><strong>Looking for this guide again?</strong> The Upload page’s Shortcuts suggestion opens this website and then stays hidden. Settings → Reset Tips restores it. The logo page’s Shortcuts link also opens the website guide.</p>
                 </section>
 
                 <section class="info-card">
-                    <h2>Automation trigger tips</h2>
-                    <ul class="trigger-list">
-                        <li><i class="fas fa-circle-dot"></i>Assign the backup shortcut to the Action Button on supported iPhone models to start a photo backup instantly.</li>
-                        <li><i class="fas fa-camera"></i>Create a Personal Automation that runs the backup whenever the Camera app is closed.</li>
-                        <li><i class="fas fa-clock"></i>Run the backup automatically at a specific time each day, such as every evening.</li>
-                        <li><i class="fas fa-battery-half"></i>Start a backup when the iPhone is connected to a charger.</li>
-                        <li><i class="fas fa-wifi"></i>Run the backup when the device connects to a specific Wi-Fi network, such as your home network.</li>
-                        <li><i class="fas fa-location-dot"></i>Use an arrival trigger to start a backup when you reach home or another selected location.</li>
-                        <li><i class="fas fa-tag"></i>Place the shortcut on the Home Screen, Lock Screen, Back Tap, or an NFC tag for quick manual access.</li>
+                    <h2>Make today’s backup automatic</h2>
+                    <p class="shortcut-intro" style="text-align: left;">Create a Personal Automation in the Shortcuts app and have it run the shortcut for today’s items. Its start and end dates both use the current date, so there is no date to update each day.</p>
+                    <ul class="trigger-list" style="margin-top: 18px;">
+                        <li><i class="fas fa-clock" aria-hidden="true"></i>Run at a chosen time, such as each evening.</li>
+                        <li><i class="fas fa-battery-half" aria-hidden="true"></i>Run when your device connects to a charger.</li>
+                        <li><i class="fas fa-wifi" aria-hidden="true"></i>Choose a trigger that fits when your server is reachable, such as connecting to your home Wi-Fi.</li>
                     </ul>
+                    <p class="info-note"><strong>Selected-items shortcut:</strong> You still need to choose items in the photo picker whenever it runs. Use it for uploads you start yourself.</p>
+                    <p class="info-note">Automatic execution depends on the trigger and iOS permissions. Test the shortcut on your network before relying on it for regular backups.</p>
+                </section>
+
+                <section class="info-card">
+                    <h2>Live Photos and more help</h2>
+                    <p class="shortcut-intro" style="text-align: left;">Today’s shortcut uses TorchPhoto’s date-based photo-library upload, including the Live Photo components enabled in your Upload options. The selected-items shortcut uploads the files that Shortcuts supplies.</p>
+                    <p class="info-note"><a href="shortcuts.html">Read the full Shortcuts guide</a> for upload options, logs, and connection tips.</p>
                 </section>
             </div>
         </div>

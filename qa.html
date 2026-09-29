@@ -73,7 +73,7 @@
                 <details class="guide-item">
                     <summary>What can I do with TorchPhoto alone?</summary>
                     <div class="guide-content">
-                        <p>TorchPhoto can work as a server-based viewer for photos and videos captured on iPhone or iPad, and it also lets you upload selected items to the directory you want on your server. With Shortcuts, you can build automatic upload flows using triggers that match your own routine. TorchPhoto also remembers generated thumbnails and directory paths, so you can review your server library in an offline-friendly way after thumbnails have been prepared. Some features are supported more completely in PRO.</p>
+                        <p>TorchPhoto can work as a server-based viewer for photos and videos captured on iPhone or iPad, and it also lets you upload selected items to the directory you want on your server. With TorchPhoto PRO, you can use Shortcuts to back up today’s photos and videos automatically or back up the items you select. TorchPhoto also remembers generated thumbnails and directory paths, so you can review your server library in an offline-friendly way after thumbnails have been prepared. Some features are supported more completely in PRO.</p>
                     </div>
                 </details>
 
@@ -1338,7 +1338,47 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can I upload with Apple Shortcuts?</summary>
                     <div class="guide-content">
-                        <p>Yes. PRO users can use TorchPhoto's Shortcuts actions with a registered server and destination folder, subject to Photos access, server availability, and iOS background limits.</p>
+                        <p>Yes. With <b>TorchPhoto PRO</b>, open <b>Settings → Set Up Shortcut</b>. A popup lets you choose a shortcut for today’s captures or for selected items, then opens its iCloud import link. During setup, choose a saved <b>Server</b> and <b>Folder</b>. Both shortcuts follow the options saved on TorchPhoto’s Upload page.</p>
+                        <p><a href="shortcutsetting.html">Set up a backup shortcut</a> or <a href="shortcuts.html">read the full Shortcuts guide</a>.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="shortcut-backup-choices">
+                    <summary>Which backup shortcut should I choose?</summary>
+                    <div class="guide-content">
+                        <p><b>Back Up Today’s Items</b> finds photos and videos captured on the day it runs. Its start and end dates use the current date, making it suitable for a Personal Automation.</p>
+                        <p><b>Back Up Selected Items</b> opens the photo picker each time and backs up your selection without a capture-date filter. You must choose the items yourself, even when an automation starts it.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="shortcut-pro-access">
+                    <summary>Why can I see TorchPhoto actions in Shortcuts while using FREE?</summary>
+                    <div class="guide-content">
+                        <p>The actions may appear in the Shortcuts app regardless of your plan. <b>Upload by Date</b> and <b>Upload Files</b> require an active TorchPhoto PRO entitlement when they run. FREE cannot upload through either action. <b>Open TorchPhoto</b> remains available in FREE.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="shortcut-date-range">
+                    <summary>Can a shortcut back up another date range or files passed to it?</summary>
+                    <div class="guide-content">
+                        <p>Use <b>Upload by Date</b> and set its start and end dates, Server, and Folder. Both dates are included; choosing the same date covers that whole day. The shared today shortcut uses the current date for both fields.</p>
+                        <p>Use <b>Upload Files</b> to back up files received from earlier shortcut steps, regardless of their capture dates. Both actions use your saved Upload options and require PRO.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="shortcut-live-photo-options">
+                    <summary>Do I still need separate photo, Live Photo, and MOV conversion steps?</summary>
+                    <div class="guide-content">
+                        <p>Not for <b>Upload by Date</b>. It reads the permitted photos and videos from your photo library and uses TorchPhoto’s Upload options for Live Photo video, JPEG conversion, and other supported media settings. Enable Live Photo video upload when you want its photo and video components backed up.</p>
+                        <p><b>Upload Files</b> can upload only the files that Shortcuts passes to it. It cannot add a missing Live Photo component. For a photo-library backup that needs both components, use the date-based action with the matching Upload option enabled.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="upload-shortcut-tip">
+                    <summary>Why did the Shortcuts suggestion disappear from the Upload page?</summary>
+                    <div class="guide-content">
+                        <p>The suggestion above the server section is an informational tip. Tapping its X hides it; tapping <b>Set Up Shortcut</b> opens the website setup guide and also hides it. It stays hidden until you use <b>Settings → Reset Tips</b>.</p>
+                        <p>This does not start a backup or import a shortcut. To choose either shortcut directly, use <b>Set Up Shortcut</b> in Settings. The logo page’s Shortcuts link opens the website guide.</p>
                     </div>
                 </details>
 
@@ -1443,7 +1483,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>How can I see the default popup guides again?</summary>
                     <div class="guide-content">
-                        <p>Open TorchPhoto Settings, scroll to the bottom, and tap <b>Reset Tips</b>. This clears saved “Don’t show again” choices for supported feature tips, including the Timeline Viewer guide, so each related tip can appear again the next time you enter its screen or use its action.</p>
+                        <p>Open TorchPhoto Settings, scroll to the bottom, and tap <b>Reset Tips</b>. This clears saved “Don’t show again” choices for supported feature tips, including the Timeline Viewer guide and Upload page’s Shortcuts suggestion, so each related tip can appear again the next time you enter its screen or use its action.</p>
                         <p>Reset Tips does not remove registered servers, photos, captions, thumbnail caches, subscriptions, or your other app settings.</p>
                     </div>
                 </details>
