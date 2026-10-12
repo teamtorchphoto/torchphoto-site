@@ -5032,3 +5032,340 @@ nav.nav-scrolled {
         transition-duration: 0.01ms !important;
     }
 }
+
+
+/* October 2026: unboxed icons, quiet actions and continuous section color. */
+.home-page-body .feature-card:not(.shortcuts-feature-card) > i {
+    width: 52px;
+    height: 52px;
+    font-size: 2rem;
+    color: #2877d7;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    filter: drop-shadow(0 5px 7px rgba(47, 123, 221, 0.22));
+}
+
+.workflow-icon,
+.live-photo-arrow,
+.wifi-gallery-signal,
+.privacy-inline-icon,
+.home-page-body .workflow-icon,
+.home-page-body .support-email-icon,
+.support-email-icon,
+.guide-qa-cta-icon,
+.guide-feature-icon,
+:is(#metadata-scan, #reset-tips, #send-diagnostics, #vpn-ftp-security, #instant-thumbnail-generation) .guide-feature-icon,
+.shortcut-download-button i,
+body.shortcut-setting-page .shortcut-download-button i,
+.plan-list li i,
+.home-page-body .plan-list li i,
+.home-page-body .plan-card.pro .plan-list li i {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.home-page-body .workflow-icon {
+    font-size: 2rem;
+    color: #2877d7;
+}
+
+/* Keep the connecting line clear of the unboxed workflow symbols. */
+.home-page-body .workflow-steps::before {
+    display: none;
+}
+
+.guide-feature-icon {
+    color: #2877d7;
+    font-size: 1.85rem;
+}
+
+:is(#vpn-ftp-security, #instant-thumbnail-generation, #send-diagnostics) .guide-feature-icon {
+    color: #ffffff;
+}
+
+.home-page-body .support-email-icon {
+    color: #2877d7;
+    font-size: 1.4rem;
+}
+
+.guide-item summary::after,
+.guide-item[open] summary::after {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.home-page-body .plan-value,
+.home-page-body .plan-value.limited,
+.home-page-body .plan-value.neutral,
+.home-page-body .plan-value.unlocked,
+.home-page-body .plan-value.unlocked::before {
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+body.home-page-body .nav-toggle,
+body.subpage-body .nav-toggle,
+body.home-page-body .nav-toggle[aria-expanded="true"],
+body.subpage-body .nav-toggle[aria-expanded="true"] {
+    background: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* The main navigation action uses a neutral, solid finish. */
+.home-page-body .nav-links .btn-download-small {
+    color: #ffffff;
+    background: #252b34;
+    border: 1px solid #252b34;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.home-page-body .nav-links .btn-download-small:hover,
+.home-page-body .nav-links .btn-download-small:active {
+    color: #ffffff;
+    background: #3a424e;
+    border-color: #3a424e;
+    box-shadow: none;
+    transform: none;
+}
+
+/* A larger PRO action, with hierarchy carried by type and spacing. */
+.home-page-body .pro-details-cta {
+    min-height: 148px;
+    margin-top: 32px;
+    padding: 32px 40px;
+    gap: 36px;
+    color: #ffffff;
+    border: 1px solid #2d394b;
+    border-radius: 14px;
+    background: #202b3d;
+    box-shadow: 0 12px 28px rgba(27, 39, 57, 0.12);
+    transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+}
+
+.home-page-body .pro-details-cta > span {
+    min-width: 0;
+}
+
+.home-page-body .pro-details-cta strong {
+    font-size: clamp(1.45rem, 2.65vw, 1.85rem);
+    line-height: 1.25;
+    font-weight: 650;
+    letter-spacing: -0.035em;
+}
+
+.home-page-body .pro-details-cta small {
+    max-width: 570px;
+    margin-top: 10px;
+    color: #c3cbd6;
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.home-page-body .pro-details-cta > i {
+    padding-left: 34px;
+    color: #dce6f4;
+    border-left: 1px solid rgba(220, 230, 244, 0.24);
+    font-size: 1.65rem;
+    line-height: 1.6;
+}
+
+.home-page-body .pro-details-cta:hover {
+    background: #2a384e;
+    box-shadow: 0 16px 32px rgba(27, 39, 57, 0.16);
+    transform: translateY(-2px);
+}
+
+.home-page-body .pro-details-cta:hover > i {
+    transform: translateX(3px);
+}
+
+:is(#vpn-ftp-security, #instant-thumbnail-generation, #send-diagnostics) summary {
+    padding-inline: 58px;
+}
+
+/* Q&A is a simple outlined link, with a standalone symbol. */
+.guide-qa-cta {
+    width: min(100%, 450px);
+    min-height: 88px;
+    margin-top: 28px;
+    padding: 18px 22px;
+    gap: 17px;
+    color: #263244;
+    border: 1px solid #ccd4df;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: none;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.guide-qa-cta-icon {
+    width: 30px;
+    height: 36px;
+    color: #507096;
+    font-size: 1.45rem;
+}
+
+.guide-qa-cta-copy strong {
+    color: #263244;
+    font-size: 1.06rem;
+    font-weight: 650;
+}
+
+.guide-qa-cta-copy small {
+    margin-top: 5px;
+    color: #6c7684;
+    font-size: 0.79rem;
+    line-height: 1.5;
+}
+
+.guide-qa-cta-arrow {
+    color: #596a80;
+    font-size: 0.95rem;
+}
+
+.guide-qa-cta:hover {
+    color: #263244;
+    border-color: #8c9bad;
+    background: #fbfcfe;
+    box-shadow: none;
+    transform: translateY(-1px);
+}
+
+.guide-qa-cta:focus-visible,
+.home-page-body .pro-details-cta:focus-visible,
+.home-page-body .nav-links .btn-download-small:focus-visible {
+    outline: 2px solid #637d9f;
+    outline-offset: 4px;
+}
+
+/* Each light section reaches white at both edges; only the center is tinted. */
+body.home-page-body {
+    background: #ffffff;
+}
+
+.home-page-body .hero {
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0) 48%, #ffffff 100%),
+        radial-gradient(ellipse at 18% 24%, rgba(142,154,222,0.13), transparent 66%),
+        radial-gradient(ellipse at 84% 38%, rgba(107,172,230,0.15), transparent 68%),
+        #f8faff;
+}
+
+.home-page-body .hero::before,
+.home-page-body .hero::after {
+    content: none;
+}
+
+.home-page-body .features,
+.home-page-body .screenshots {
+    background: #ffffff;
+}
+
+.home-page-body :is(.offline-section, .live-photo-section, .wifi-gallery-section, .workflow, .plan-comparison) {
+    --section-wash: 130, 170, 217;
+    background:
+        linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0) 27%, rgba(255,255,255,0) 73%, #ffffff 100%),
+        radial-gradient(ellipse at 28% 48%, rgba(var(--section-wash), 0.14), transparent 75%),
+        #ffffff;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.home-page-body .offline-section,
+.home-page-body .offline-section.is-visible {
+    --section-wash: 223, 166, 157;
+    background:
+        linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0) 27%, rgba(255,255,255,0) 73%, #ffffff 100%),
+        radial-gradient(ellipse at 28% 48%, rgba(var(--section-wash), 0.14), transparent 75%),
+        #ffffff;
+    transition: none;
+}
+
+.home-page-body .live-photo-section { --section-wash: 179, 160, 215; }
+.home-page-body .wifi-gallery-section { --section-wash: 117, 173, 220; }
+.home-page-body .workflow { --section-wash: 152, 184, 159; }
+.home-page-body .plan-comparison { --section-wash: 130, 163, 194; }
+
+.home-page-body .workflow::before,
+.home-page-body .workflow::after,
+.home-page-body .plan-comparison::before {
+    content: none;
+}
+
+/* Keep the dark support panel, within the same light page background. */
+.home-page-body footer#support {
+    background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 45%, #edf1f6 100%);
+}
+
+.home-page-body footer#support::before {
+    content: none;
+}
+
+@media (max-width: 640px) {
+    .home-page-body .pro-details-cta {
+        min-height: 142px;
+        padding: 26px 22px;
+        gap: 20px;
+        border-radius: 12px;
+    }
+
+    .home-page-body .pro-details-cta strong {
+        font-size: 1.45rem;
+    }
+
+    .home-page-body .pro-details-cta small {
+        font-size: 0.85rem;
+    }
+
+    .home-page-body .pro-details-cta > i {
+        padding-left: 18px;
+        font-size: 1.35rem;
+    }
+
+    .guide-qa-cta {
+        min-height: 86px;
+        padding: 17px;
+        gap: 13px;
+        border-radius: 9px;
+    }
+
+    .guide-qa-cta-icon {
+        width: 25px;
+        height: 32px;
+        font-size: 1.3rem;
+    }
+
+    .guide-qa-cta-copy small {
+        font-size: 0.76rem;
+    }
+
+    .guide-feature-icon,
+    :is(#vpn-ftp-security, #instant-thumbnail-generation, #send-diagnostics) .guide-feature-icon {
+        border-radius: 0;
+        font-size: 1.6rem;
+    }
+
+}
+
+@media (max-width: 900px) {
+    /* Preserve the existing FREE / PRO labels on narrow comparisons. */
+    .home-page-body .plan-row .plan-value.limited::before,
+    .home-page-body .plan-row .plan-value.unlocked::before {
+        background: none;
+        color: inherit;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
