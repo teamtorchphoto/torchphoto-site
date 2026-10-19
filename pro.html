@@ -15,527 +15,329 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/webp" href="pro-logo.webp">
     <style>
-        :root {
-            --ink: #111827;
-            --muted: #667085;
-            --line: rgba(148, 163, 184, .22);
-            --navy-950: #020817;
-            --navy-900: #06132e;
-            --navy-800: #0c2558;
-            --blue: #2878ff;
-            --blue-deep: #0f43d6;
-            --green: #18b976;
-            --radius-xl: 38px;
-            --radius-lg: 28px;
-            --shadow: 0 28px 74px rgba(15, 23, 42, .14);
-        }
+:root {
+    --paper: #ffffff;
+    --ink: #111827;
+    --muted: #667085;
+    --line: #dce3ed;
+    --accent: #0f43d6;
+    --screenshot-radius: min(22px, 10%) / min(22px, 4.6%);
+    --ease: cubic-bezier(.22, 1, .36, 1);
+}
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-        body {
-            min-width: 320px;
-            color: var(--ink);
-            background: #fff;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
-            line-height: 1.58;
-            -webkit-font-smoothing: antialiased;
-        }
-        body.modal-open { overflow: hidden; }
-        img { display: block; max-width: 100%; }
-        button, a { -webkit-tap-highlight-color: transparent; }
-        .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 108px; }
+body {
+    min-width: 320px;
+    overflow-x: clip;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+body.lightbox-open { overflow: hidden; }
+::selection { color: var(--paper); background: var(--accent); }
+img { display: block; max-width: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; }
+a { color: inherit; text-underline-offset: .22em; }
+a:focus-visible, button:focus-visible { outline: 2px solid #637d9f; outline-offset: 7px; }
+.container { width: min(1440px, calc(100% - 128px)); margin-inline: auto; }
 
-        .site-nav {
-            position: fixed;
-            inset: 0 0 auto;
-            z-index: 100;
-            height: 72px;
-            border-bottom: 1px solid rgba(255,255,255,.10);
-            background: rgba(2,8,23,.78);
-            backdrop-filter: blur(20px) saturate(145%);
-            -webkit-backdrop-filter: blur(20px) saturate(145%);
-        }
-        .nav-inner {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-        }
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 11px;
-            color: #fff;
-            font-size: 17px;
-            font-weight: 780;
-            letter-spacing: -.03em;
-        }
-        .brand img {
-            width: 34px;
-            height: 34px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(96,165,250,.24));
-        }
-        .nav-links { display: flex; align-items: center; gap: 8px; }
-        .nav-links a {
-            padding: 10px 15px;
-            border-radius: 999px;
-            color: rgba(255,255,255,.78);
-            font-size: 14px;
-            font-weight: 680;
-            text-decoration: none;
-            transition: .18s ease;
-        }
-        .nav-links a:hover { color: #fff; background: rgba(255,255,255,.10); }
-        .nav-links .nav-highlight { color: #06132e; background: rgba(255,255,255,.96); }
-        .nav-toggle {
-            display: none;
-            width: 44px;
-            height: 44px;
-            border: 1px solid rgba(255,255,255,.14);
-            border-radius: 14px;
-            color: #fff;
-            background: rgba(255,255,255,.08);
-            font-size: 20px;
-        }
+/* A continuous gallery wall, rather than a collection of floating cards. */
+.site-nav {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    height: 74px;
+    color: var(--ink);
+    background: #ffffff;
+    border-bottom: 1px solid var(--line);
+}
+.site-nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(var(--page-progress, 0));
+    transform-origin: left;
+}
+.nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 700; letter-spacing: -.04em; }
+.brand img { width: 32px; height: 32px; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a { position: relative; padding-block: 8px; font-size: 15px; font-weight: 500; text-decoration: none; }
+.nav-links a::after { content: ""; position: absolute; inset: auto 0 3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .35s var(--ease); }
+.nav-links a:hover::after, .nav-links a[aria-current="location"]::after { transform: scaleX(1); transform-origin: left; }
+.nav-links .nav-highlight { padding: 10px 18px; border: 1px solid #252b34; border-radius: 8px; color: #fff; background: #252b34; }
+.nav-links .nav-highlight:hover { background: #3a424e; border-color: #3a424e; }
+.nav-links .nav-highlight::after { display: none; }
+.nav-toggle { display: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 0; color: inherit; background: transparent; cursor: pointer; font-size: 25px; }
 
-        .hero {
-            position: relative;
-            min-height: 870px;
-            overflow: hidden;
-            padding: 150px 0 104px;
-            color: #fff;
-            background:
-                radial-gradient(circle at 12% 18%, rgba(40,120,255,.42), transparent 34%),
-                radial-gradient(circle at 86% 24%, rgba(24,185,118,.26), transparent 31%),
-                linear-gradient(145deg, #020817 0%, #06132e 48%, #071e4b 100%);
-        }
-        .hero::before, .hero::after {
-            content: "";
-            position: absolute;
-            width: 570px;
-            height: 570px;
-            border-radius: 50%;
-            filter: blur(76px);
-            opacity: .22;
-            pointer-events: none;
-            animation: drift 15s ease-in-out infinite alternate;
-        }
-        .hero::before {
-            top: -260px;
-            right: 14%;
-            background: conic-gradient(from 120deg, #5eead4, #60a5fa, #c084fc, #5eead4);
-        }
-        .hero::after {
-            bottom: -360px;
-            left: 6%;
-            background: conic-gradient(from 210deg, #f59e0b, #22c55e, #3b82f6, #f59e0b);
-            animation-delay: -6s;
-        }
-        @keyframes drift { to { transform: translate3d(52px,34px,0) scale(1.08); } }
-        .hero-grid {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: minmax(0,.9fr) minmax(430px,1.1fr);
-            align-items: center;
-            gap: 72px;
-        }
-        .eyebrow, .section-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 820;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-        .eyebrow {
-            margin-bottom: 24px;
-            padding: 8px 13px;
-            border: 1px solid rgba(255,255,255,.16);
-            background: rgba(255,255,255,.08);
-        }
-        .eyebrow-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #5eead4;
-            box-shadow: 0 0 14px #5eead4;
-        }
-        .hero h1 {
-            max-width: 590px;
-            font-size: clamp(54px,6.5vw,88px);
-            line-height: .97;
-            letter-spacing: -.065em;
-        }
-        .hero h1 span {
-            color: transparent;
-            background: linear-gradient(110deg,#fff 10%,#8cc4ff 48%,#74f1c3 90%);
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        .hero-copy > p {
-            max-width: 580px;
-            margin-top: 26px;
-            color: rgba(255,255,255,.70);
-            font-size: 18px;
-        }
-        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            min-height: 52px;
-            padding: 0 20px;
-            border-radius: 17px;
-            font-size: 15px;
-            font-weight: 760;
-            text-decoration: none;
-            transition: transform .18s ease, box-shadow .18s ease;
-        }
-        .button:hover { transform: translateY(-2px); }
-        .button-primary {
-            color: #06132e;
-            background: #fff;
-            box-shadow: 0 16px 36px rgba(0,0,0,.24);
-        }
-        .button-secondary {
-            color: #fff;
-            border: 1px solid rgba(255,255,255,.18);
-            background: rgba(255,255,255,.08);
-        }
-        .hero-note { font-size: 13px !important; color: rgba(255,255,255,.48) !important; }
+.hero { position: relative; padding: 152px 0 98px; color: #fff; background: linear-gradient(145deg, #020817 0%, #06132e 52%, #071e4b 100%); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; gap: clamp(40px, 5.5vw, 88px); }
+.hero-copy { position: relative; z-index: 2; min-width: 0; padding-block: 36px; }
+.eyebrow, .section-kicker { display: block; font-size: 13px; font-weight: 600; line-height: 1.4; letter-spacing: .16em; text-transform: uppercase; }
+.eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
+.hero h1 { font-size: clamp(64px, 6.2vw, 100px); font-weight: 700; line-height: 1; letter-spacing: -.065em; }
+.hero-title-line { display: block; white-space: nowrap; }
+.hero-title-finish { display: block; margin-top: 3px; color: #8cc4ff; font-size: 1.4em; font-weight: 700; line-height: 1; letter-spacing: -.065em; }
+.hero-copy > p { max-width: 530px; margin-top: 36px; color: rgba(255, 255, 255, .72); font-size: clamp(19px, 1.5vw, 23px); line-height: 1.65; letter-spacing: -.025em; }
+.hero-actions { margin-top: 38px; }
+.button { display: inline-flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 56px; padding: 12px 22px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; color: #fff; background: rgba(255,255,255,.06); font-size: 16px; font-weight: 600; text-decoration: none; transition: background .3s; }
+.button:hover { background: rgba(255,255,255,.12); }
+.button span { display: inline-block; font-size: 22px; font-weight: 400; transition: transform .4s var(--ease); }
+.button:hover span { transform: translateY(5px); }
+.hero-visual { position: relative; min-width: 0; height: clamp(540px, 46vw, 700px); overflow: visible; background: transparent; }
+.hero-visual::before, .hero-visual::after { content: none; }
+.hero-phone { position: absolute; background: transparent; box-shadow: 0 22px 35px -18px rgba(0,0,0,.6); border: 0; border-radius: var(--screenshot-radius); overflow: visible; will-change: transform; }
+.hero-phone img { width: 100%; height: auto; border-radius: var(--screenshot-radius); }
+.hero-phone-left { top: 21%; left: 0; z-index: 1; width: 29%; transform: translateY(calc(var(--hero-shift, 0px) * -.45)); }
+.hero-phone-main { top: 8%; left: 31%; z-index: 3; width: 38%; transform: translateY(var(--hero-shift, 0px)); }
+.hero-phone-right { top: 29%; right: 0; z-index: 2; width: 29%; transform: translateY(calc(var(--hero-shift, 0px) * -.7)); }
+.hero-orbit { position: absolute; inset: auto 0 27px; z-index: 5; color: rgba(255,255,255,.6); font-size: 11px; line-height: 1.4; letter-spacing: .12em; text-transform: uppercase; }
 
-        .hero-visual { position: relative; min-height: 590px; }
-        .hero-phone {
-            position: absolute;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,.18);
-            border-radius: 38px;
-            background: #fff;
-            box-shadow: 0 36px 80px rgba(0,0,0,.48);
-        }
-        .hero-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-        .hero-phone-main {
-            z-index: 3;
-            top: 0;
-            left: 50%;
-            width: 292px;
-            height: 585px;
-            transform: translateX(-50%);
-        }
-        .hero-phone-left, .hero-phone-right {
-            z-index: 2;
-            top: 82px;
-            width: 214px;
-            height: 450px;
-            opacity: .84;
-        }
-        .hero-phone-left { left: -8px; transform: rotate(-7deg); }
-        .hero-phone-right { right: -8px; transform: rotate(7deg); }
-        .hero-orbit {
-            position: absolute;
-            z-index: 5;
-            left: 50%;
-            bottom: -16px;
-            transform: translateX(-50%);
-            width: max-content;
-            max-width: 94%;
-            padding: 11px 16px;
-            border: 1px solid rgba(255,255,255,.17);
-            border-radius: 999px;
-            color: rgba(255,255,255,.82);
-            background: rgba(3,13,32,.70);
-            backdrop-filter: blur(16px);
-            font-size: 12px;
-            font-weight: 700;
-        }
+.features { padding-top: 70px; }
+.section-heading { display: grid; grid-template-columns: .9fr 1.35fr; column-gap: 80px; padding-block: 46px 110px; border-top: 1px solid var(--ink); }
+.section-kicker { grid-column: 1; align-self: start; padding-top: 10px; }
+.section-heading h2 { grid-column: 2; max-width: 820px; font-size: clamp(46px, 4.8vw, 72px); font-weight: 650; line-height: 1.07; letter-spacing: -.055em; text-wrap: balance; }
+.section-heading p { grid-column: 2; max-width: 590px; margin-top: 24px; color: var(--muted); font-size: 21px; line-height: 1.55; letter-spacing: -.025em; }
+.feature-list { display: block; }
+.feature-block {
+    --section-progress: 0;
+    position: relative;
+    display: grid;
+    grid-template-columns: .9fr 1.35fr;
+    column-gap: 80px;
+    row-gap: 64px;
+    padding-block: 84px 112px;
+    border-top: 1px solid var(--line);
+}
+.feature-block::before { content: ""; position: absolute; inset: -1px 0 auto; height: 1px; background: var(--ink); transform: scaleX(var(--section-progress)); transform-origin: left; }
+.feature-story { grid-column: 1 / -1; display: grid; grid-template-columns: .9fr 1.35fr; column-gap: 80px; align-items: start; }
+.feature-intro { position: sticky; top: 128px; align-self: start; padding-right: 12px; }
+.feature-number { display: block; margin-bottom: 30px; color: var(--accent); font-size: 64px; font-weight: 500; line-height: .95; letter-spacing: -.065em; font-variant-numeric: tabular-nums; }
+.feature-intro h3 { max-width: 530px; font-size: clamp(34px, 3.3vw, 50px); font-weight: 650; line-height: 1.12; letter-spacing: -.05em; text-wrap: balance; }
+.feature-copy { min-width: 0; }
+.feature-copy > p { color: var(--muted); font-size: clamp(19px, 1.48vw, 22px); line-height: 1.72; letter-spacing: -.02em; }
+.feature-copy > p + p { margin-top: 25px; }
+.feature-copy strong { color: var(--ink); font-weight: 600; }
+.feature-copy a { color: var(--ink); text-decoration-thickness: 1px; }
+.feature-copy a:hover { color: var(--accent); }
+.feature-availability { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); }
+.availability-line { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 15px; font-size: 16px; line-height: 1.65; color: var(--muted); }
+.availability-line + .availability-line { margin-top: 14px; }
+.availability-line b { padding-top: 3px; font-size: 11px; font-weight: 650; letter-spacing: .1em; }
+.availability-pro { color: var(--ink); }
+.availability-pro b { color: var(--accent); }
 
-        .section { padding: 102px 0; }
-        .section-heading { max-width: 760px; margin: 0 auto 50px; text-align: center; }
-        .section-kicker {
-            margin-bottom: 15px;
-            padding: 7px 12px;
-            color: var(--blue-deep);
-            background: rgba(40,120,255,.09);
-        }
-        .section-heading h2 {
-            font-size: clamp(38px,5vw,58px);
-            line-height: 1.04;
-            letter-spacing: -.052em;
-        }
-        .section-heading p { margin-top: 17px; color: var(--muted); font-size: 17px; }
+/* Screens are hung in a shared horizontal space, with their full content intact. */
+.feature-media { grid-column: 1 / -1; position: relative; display: flex; align-items: center; justify-content: center; gap: clamp(16px, 2.2vw, 36px); min-width: 0; width: 100%; padding: 66px clamp(28px, 4vw, 64px); border-radius: 24px; background: #f0f4fa; }
+.feature-media--single { min-height: 620px; }
+.feature-image-button { position: relative; flex: 0 1 250px; min-width: 0; max-width: 270px; padding: 0; border: 0; border-radius: var(--screenshot-radius); color: inherit; background: transparent; box-shadow: 0 20px 30px -23px rgba(15,23,42,.4); cursor: zoom-in; transition: box-shadow .5s var(--ease); }
+.feature-image-button img { width: 100%; height: auto; border-radius: var(--screenshot-radius); transition: filter .4s; }
+.feature-image-button:hover { box-shadow: 0 28px 38px -22px rgba(15,23,42,.5); }
+.feature-image-button:hover img { filter: brightness(1.035); }
+.feature-image-button:nth-of-type(even) { translate: 0 calc(20px + var(--gallery-shift, 0px)); }
+.feature-image-button:nth-of-type(odd) { translate: 0 calc(-12px - var(--gallery-shift, 0px)); }
+.feature-media--single .feature-image-button { translate: 0 var(--gallery-shift, 0px); }
+.feature-media-arrow { flex: 0 0 30px; color: var(--accent); }
+.feature-media-arrow svg { display: block; width: 30px; height: 30px; }
+.feature-block--wide .feature-media { padding-inline: 32px; }
+.feature-block--wide .feature-image-button { flex-basis: 0; flex-grow: 1; }
+.feature-block--wide .feature-media { min-height: 560px; }
+.feature-block--single .feature-story { display: contents; }
+.feature-block--single .feature-intro { position: static; grid-column: 1; grid-row: 1; }
+.feature-block--single .feature-copy { grid-column: 2; grid-row: 1 / 3; }
+.feature-block--single .feature-media { grid-column: 1; grid-row: 2; align-self: start; min-height: 0; padding: 45px 38px; }
+.feature-block--single .feature-image-button { max-width: 225px; }
+.feature-block--dark { --ink: #ffffff; --muted: #b6c3d7; --line: rgba(148,163,184,.3); --accent: #8cc4ff; color: var(--ink); background: #06132e; box-shadow: 0 0 0 100vmax #06132e; clip-path: inset(0 -100vmax); border-top-color: transparent; padding-block: 104px 112px; }
+.feature-block--dark .feature-media { background: #0c2558; }
+.feature-block--dark .feature-image-button { box-shadow: 0 23px 35px -20px #020817; }
+.feature-block--dark::before { background: transparent; }
+.feature-block--dark .feature-media-arrow { color: var(--accent); }
+.feature-block--dark + .feature-block { border-top-color: transparent; }
+.feature-block--dark + .feature-block::before { display: none; }
+.feature-block--slideshow .feature-media { align-items: center; min-height: 680px; padding-inline: clamp(28px, 5vw, 84px); }
+.feature-block--slideshow .feature-image-button:first-of-type { flex: 1.25; max-width: 310px; }
 
-        .features { background: linear-gradient(180deg,#fff 0%,#f5f7fb 100%); }
-        .feature-list { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 980px; margin: 0 auto; }
-        .feature-block {
-            position: relative;
-            display: grid;
-            grid-template-columns: 58px minmax(0,1fr);
-            gap: 28px;
-            overflow: hidden;
-            border: 1px solid rgba(148,163,184,.22);
-            border-radius: 28px;
-            padding: 38px 42px;
-            background: rgba(255,255,255,.94);
-            box-shadow: 0 18px 44px rgba(15,23,42,.08);
-        }
-        .feature-block::after {
-            content: "";
-            position: absolute;
-            width: 170px;
-            height: 170px;
-            right: -92px;
-            bottom: -102px;
-            border-radius: 50%;
-            background: radial-gradient(circle,rgba(59,130,246,.13),transparent 68%);
-            pointer-events: none;
-        }
-        .feature-number {
-            display: grid;
-            place-items: center;
-            width: 48px;
-            height: 48px;
-            border-radius: 15px;
-            color: #fff;
-            background: linear-gradient(145deg,#3b82f6,#1749cc);
-            box-shadow: 0 14px 30px rgba(37,99,235,.24);
-            font-size: 13px;
-            font-weight: 850;
-        }
-        .feature-copy h3 { font-size: 25px; line-height: 1.16; letter-spacing: -.035em; }
-        .feature-copy p { max-width: 800px; margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.72; }
-        .feature-copy p + p { margin-top: 10px; }
-        .feature-copy strong { color: #172033; font-weight: 780; }
-        .feature-availability {
-            display: grid;
-            gap: 7px;
-            max-width: 800px;
-            margin-top: 22px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(148,163,184,.24);
-        }
-        .availability-line {
-            display: grid;
-            grid-template-columns: 46px minmax(0,1fr);
-            gap: 10px;
-            color: #5f697a;
-            font-size: 13px;
-            line-height: 1.55;
-        }
-        .availability-line b { padding-top: 1px; font-size: 10px; letter-spacing: .09em; }
-        .availability-free b { color: #7b8494; }
-        .feature-media {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
-            gap: clamp(8px,1.6vw,18px);
-            width: 100%;
-            max-width: 600px;
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(148,163,184,.24);
-        }
-        .feature-media--single { max-width: 180px; }
-        .feature-image-button {
-            flex: 1 1 0;
-            min-width: 0;
-            max-width: 180px;
-            overflow: hidden;
-            padding: 0;
-            border: 1px solid rgba(148,163,184,.28);
-            border-radius: 18px;
-            background: #edf1f7;
-            box-shadow: 0 12px 28px rgba(15,23,42,.12);
-            cursor: zoom-in;
-            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-        }
-        .feature-image-button:hover {
-            transform: translateY(-3px);
-            border-color: rgba(59,130,246,.55);
-            box-shadow: 0 16px 34px rgba(15,23,42,.17);
-        }
-        .feature-image-button:focus-visible { outline: 3px solid rgba(37,99,235,.38); outline-offset: 3px; }
-        .feature-image-button img { display: block; width: 100%; height: auto; }
-        .feature-media-arrow {
-            flex: 0 0 32px;
-            display: grid;
-            place-items: center;
-            color: #2f6ee8;
-        }
-        .feature-media-arrow svg { display: block; width: 28px; height: 28px; }
-        .image-lightbox {
-            position: fixed;
-            inset: 0;
-            z-index: 200;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 28px;
-            background: rgba(2,8,23,.86);
-            backdrop-filter: blur(10px);
-        }
-        .image-lightbox.is-open { display: flex; }
-        .image-lightbox img {
-            display: block;
-            width: auto;
-            max-width: min(92vw,760px);
-            max-height: 90vh;
-            border-radius: 22px;
-            box-shadow: 0 28px 80px rgba(0,0,0,.48);
-        }
-        .image-lightbox-close {
-            position: fixed;
-            top: 18px;
-            right: 18px;
-            display: grid;
-            place-items: center;
-            width: 44px;
-            height: 44px;
-            border: 1px solid rgba(255,255,255,.24);
-            border-radius: 50%;
-            color: #fff;
-            background: rgba(15,23,42,.72);
-            font-size: 28px;
-            line-height: 1;
-            cursor: pointer;
-        }
-        body.lightbox-open { overflow: hidden; }
-        .availability-pro { color: #176b51; }
-        .availability-pro b { color: #087653; }
+.purchase { padding-block: 115px 74px; background: #06132e; color: #fff; }
+.purchase-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); column-gap: 100px; }
+.purchase-logo { grid-column: 1; width: 44px; height: 44px; margin-bottom: 30px; object-fit: contain; }
+.purchase-card h2 { grid-column: 1; max-width: 540px; font-size: clamp(50px, 5.5vw, 78px); font-weight: 650; line-height: 1.04; letter-spacing: -.055em; }
+.purchase-card > p { grid-column: 1; max-width: 470px; margin-top: 25px; color: #b6c3d7; font-size: 20px; }
+.pricing-grid { grid-column: 2; grid-row: 1 / 4; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 44px; align-content: start; padding-top: 10px; }
+.pricing-card { min-width: 0; padding-top: 22px; border-top: 1px solid rgba(148,163,184,.5); }
+.pricing-card > span { display: block; margin-bottom: 30px; color: #8cc4ff; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.pricing-card h3 { font-size: 23px; font-weight: 600; line-height: 1.3; letter-spacing: -.04em; }
+.plan-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin-top: 24px; font-size: clamp(52px, 5.3vw, 84px); font-weight: 650; line-height: 1.1; letter-spacing: -.065em; white-space: nowrap; }
+.plan-price small { color: #b6c3d7; font-size: 14px; font-weight: 400; letter-spacing: -.015em; }
+.pricing-card p { margin-top: 27px; color: #b6c3d7; font-size: 16px; line-height: 1.7; letter-spacing: -.015em; }
+.purchase-card > .price-note { grid-column: 1 / -1; max-width: 930px; margin-top: 74px; padding-top: 28px; border-top: 1px solid rgba(148,163,184,.3); font-size: 14px; line-height: 1.7; color: #a3b3ca; }
+footer { padding-block: 22px 34px; color: #a3b3ca; background: #06132e; }
+.footer-inner { font-size: 13px; letter-spacing: -.01em; }
 
-        .purchase { padding: 105px 0; background: #f5f7fb; }
-        .purchase-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 40px;
-            padding: 72px 58px;
-            color: #fff;
-            text-align: center;
-            background:
-                radial-gradient(circle at 10% 0%,rgba(59,130,246,.40),transparent 33%),
-                radial-gradient(circle at 92% 100%,rgba(16,185,129,.26),transparent 34%),
-                linear-gradient(145deg,#020817,#071a3d);
-            box-shadow: 0 36px 88px rgba(2,8,23,.27);
-        }
-        .purchase-logo { width: 70px; height: 70px; margin: 0 auto 22px; object-fit: contain; }
-        .purchase-card h2 { font-size: clamp(36px,5vw,58px); line-height: 1.02; letter-spacing: -.052em; }
-        .purchase-card > p { max-width: 710px; margin: 18px auto 0; color: rgba(255,255,255,.68); font-size: 17px; }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(2,minmax(0,1fr));
-            gap: 16px;
-            max-width: 850px;
-            margin: 38px auto 0;
-            text-align: left;
-        }
-        .pricing-card {
-            border: 1px solid rgba(255,255,255,.13);
-            border-radius: 24px;
-            padding: 24px;
-            background: rgba(255,255,255,.08);
-            backdrop-filter: blur(14px);
-        }
-        .pricing-card span {
-            display: inline-block;
-            margin-bottom: 10px;
-            color: #8cc4ff;
-            font-size: 11px;
-            font-weight: 850;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-        }
-        .pricing-card h3 { font-size: 24px; letter-spacing: -.035em; }
-        .plan-price {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            margin-top: 14px;
-            color: #fff;
-            font-size: clamp(38px,5vw,52px);
-            font-weight: 850;
-            line-height: 1;
-            letter-spacing: -.05em;
-        }
-        .plan-price small {
-            color: rgba(255,255,255,.56);
-            font-size: 14px;
-            font-weight: 650;
-            letter-spacing: 0;
-        }
-        .pricing-card p { margin-top: 8px; color: rgba(255,255,255,.64); font-size: 14px; }
-        .price-note { margin-top: 18px !important; font-size: 13px !important; color: rgba(255,255,255,.48) !important; }
+.image-lightbox { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(2,8,23,.96); }
+.image-lightbox.is-open { display: flex; }
+.image-lightbox img { display: block; width: auto; max-width: min(90vw, 900px); max-height: 90dvh; object-fit: contain; border-radius: var(--screenshot-radius); }
+.image-lightbox-close { position: fixed; top: 20px; right: 24px; display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid #6c809d; border-radius: 8px; color: #fff; background: #06132e; font-size: 30px; line-height: 1; cursor: pointer; }
+.image-lightbox-nav { position: fixed; top: 50%; display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid #6c809d; border-radius: 8px; color: #fff; background: #06132e; transform: translateY(-50%); cursor: pointer; transition: background .2s; }
+.image-lightbox-nav[hidden] { display: none; }
+.image-lightbox-prev { left: 24px; }
+.image-lightbox-next { right: 24px; }
+.image-lightbox-nav svg { display: block; width: 22px; height: 22px; pointer-events: none; }
+.image-lightbox-nav:hover, .image-lightbox-close:hover { background: #0c2558; }
+.image-lightbox img { touch-action: pan-y pinch-zoom; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
+.image-lightbox.has-gallery img { cursor: grab; }
+.image-lightbox.has-gallery img:active { cursor: grabbing; }
 
-        footer { padding: 26px 0 34px; color: #7b8494; background: #f5f7fb; }
-        .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 13px; }
-        [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .62s ease, transform .62s ease; }
-        [data-reveal].is-visible { opacity: 1; transform: none; }
+/* Motion is progressively enhanced; without JavaScript every section stays readable. */
+.motion-ready [data-reveal] { opacity: 0; transform: translate3d(0, 34px, 0); transition: opacity 1s var(--ease), transform 1.1s var(--ease), clip-path 1.3s var(--ease); }
+.motion-ready .section-heading[data-reveal] { transform: translate3d(0, 40px, 0); }
+.motion-ready .feature-intro[data-reveal] { transform: translate3d(-24px, 24px, 0); }
+.motion-ready .feature-media[data-reveal] { opacity: 0; transform: translate3d(0, 36px, 0) scale(.985); }
+.motion-ready .feature-block--dark .feature-media[data-reveal] { transform: scale(.97); }
+.motion-ready [data-reveal].is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+.motion-ready .feature-block--dark .feature-media.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+.motion-ready .hero-copy { animation: opening-copy 1.2s var(--ease) both; }
+.motion-ready .hero-visual { animation: opening-frame 1.5s var(--ease) both; }
+@keyframes opening-copy { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes opening-frame { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media (max-width: 980px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 46px; }
-            .hero-copy { text-align: center; }
-            .hero-copy > p { margin-left: auto; margin-right: auto; }
-            .hero-actions { justify-content: center; }
-            .hero-visual { width: min(620px,100%); margin: 0 auto; }
-            .feature-list { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 760px) {
-            .container { width: min(100% - 28px,1160px); }
-            .site-nav { height: 66px; }
-            .nav-toggle { display: grid; place-items: center; }
-            .nav-links {
-                position: absolute;
-                top: 66px;
-                left: 14px;
-                right: 14px;
-                display: none;
-                flex-direction: column;
-                align-items: stretch;
-                padding: 10px;
-                border: 1px solid rgba(255,255,255,.12);
-                border-radius: 20px;
-                background: rgba(2,8,23,.97);
-                box-shadow: 0 24px 50px rgba(0,0,0,.34);
-            }
-            .nav-links.is-open { display: flex; }
-            .nav-links a { text-align: center; }
-            .hero { min-height: 0; padding: 122px 0 86px; }
-            .hero h1 { font-size: clamp(46px,13vw,68px); }
-            .hero-copy > p { font-size: 16px; }
-            .hero-actions .button { width: 100%; }
-            .hero-visual { width: 100%; max-width: 390px; min-height: 500px; margin: 0 auto; }
-            .hero-phone-main { width: clamp(208px,62vw,240px); height: clamp(416px,124vw,480px); }
-            .hero-phone-left, .hero-phone-right { top: 68px; width: clamp(138px,43vw,164px); height: clamp(307px,95vw,365px); }
-            .hero-phone-left { left: 4px; transform: rotate(-5deg); }
-            .hero-phone-right { right: 4px; transform: rotate(5deg); }
-            .hero-orbit { bottom: -8px; font-size: 11px; }
-            .section { padding: 78px 0; }
-            .section-heading { margin-bottom: 38px; }
-            .feature-list { gap: 24px; }
-            .feature-block { grid-template-columns: 1fr; gap: 18px; min-height: 0; border-radius: 28px; padding: 28px 20px 32px; }
-            .feature-copy h3 { font-size: 23px; }
-            .feature-media { gap: 6px; margin-top: 20px; padding-top: 16px; }
-            .feature-media--single { width: 42%; min-width: 120px; }
-            .feature-image-button { border-radius: 12px; }
-            .feature-media-arrow { flex-basis: 20px; }
-            .feature-media-arrow svg { width: 18px; height: 18px; }
-            .image-lightbox { padding: 18px; }
-            .image-lightbox img { max-width: 94vw; max-height: 88vh; border-radius: 16px; }
-            .purchase-card { border-radius: 28px; padding: 54px 20px; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .footer-inner { align-items: flex-start; flex-direction: column; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-            [data-reveal] { opacity: 1; transform: none; }
-        }
+@media (min-width: 1700px) {
+    .hero { padding-block: 190px 118px; }
+    .hero h1 { font-size: 100px; }
+    .hero-visual { height: 720px; }
+}
+@media (max-width: 1200px) {
+    .container { width: calc(100% - 88px); }
+    .hero-grid { gap: 32px; }
+    .hero h1 { font-size: 6.2vw; }
+    .hero-visual { height: 560px; }
+    .section-heading, .feature-block, .feature-story { column-gap: 54px; grid-template-columns: .9fr 1.3fr; }
+    .purchase-card { column-gap: 60px; grid-template-columns: .85fr 1.3fr; }
+    .pricing-grid { column-gap: 28px; }
+    .plan-price { font-size: 60px; }
+}
+@media (max-width: 900px) {
+    .container { width: calc(100% - 64px); }
+    .hero { padding-top: 150px; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 56px; }
+    .hero-copy { padding: 0; }
+    .hero h1 { font-size: clamp(56px, 10.5vw, 94px); }
+    .hero-title-line { white-space: normal; }
+    .hero-title-finish { font-size: 1.3em; }
+    .hero-copy > p { max-width: 610px; font-size: 22px; }
+    .hero-visual { width: 100%; height: auto; aspect-ratio: 1 / 1; }
+    .hero-phone-left { top: 17%; left: 0; width: 29%; }
+    .hero-phone-main { top: 8%; left: 31%; width: 38%; }
+    .hero-phone-right { top: 25%; right: 0; width: 29%; }
+    .section-heading { grid-template-columns: 1fr; gap: 24px; padding-bottom: 80px; }
+    .section-heading h2, .section-heading p { grid-column: 1; }
+    .section-heading h2 { max-width: 660px; font-size: clamp(46px, 6.6vw, 64px); }
+    .section-heading p { margin: 0; }
+    .feature-block { column-gap: 36px; row-gap: 44px; padding-block: 65px 80px; }
+    .feature-story { column-gap: 36px; }
+    .feature-number { margin-bottom: 26px; font-size: 66px; }
+    .feature-intro h3 { font-size: 33px; }
+    .feature-copy > p { font-size: 18px; }
+    .availability-line { grid-template-columns: 42px 1fr; gap: 8px; font-size: 14px; }
+    .feature-media { padding: 48px 28px; gap: 18px; }
+    .feature-media--single { min-height: 560px; }
+    .feature-block--wide .feature-media { min-height: 420px; padding-inline: 20px; gap: 14px; }
+    .feature-block--slideshow .feature-media { min-height: 500px; padding-inline: 28px; }
+    .feature-media-arrow, .feature-media-arrow svg { width: 24px; }
+    .feature-media-arrow { flex-basis: 24px; }
+    .purchase-card { grid-template-columns: 1fr; }
+    .purchase-card h2 { max-width: 650px; font-size: 70px; }
+    .pricing-grid { grid-column: 1; grid-row: auto; gap: 40px; margin-top: 56px; }
+    .plan-price { font-size: 80px; }
+    .purchase-card > .price-note { margin-top: 54px; }
+}
+@media (max-width: 600px) {
+    html { scroll-padding-top: 90px; }
+    .container { width: calc(100% - 40px); }
+    .site-nav { height: 70px; }
+    .brand { gap: 9px; font-size: 20px; }
+    .brand img { width: 28px; height: 28px; }
+    .nav-toggle { display: grid; place-items: center; }
+    .nav-links { display: none; position: absolute; top: 69px; left: 0; right: 0; padding: 20px; background: var(--paper); border-bottom: 1px solid var(--line); }
+    .nav-links.is-open { display: flex; justify-content: space-between; gap: 20px; }
+    .nav-links a { font-size: 14px; }
+    .hero { padding: 122px 0 60px; }
+    .hero-grid { gap: 44px; }
+    .eyebrow { margin-bottom: 28px; font-size: 11px; }
+    .hero h1 { font-size: clamp(44px, 12.5vw, 74px); }
+    .hero-title-finish { font-size: 1.4em; margin-top: 5px; }
+    .hero-copy > p { margin-top: 28px; font-size: 19px; line-height: 1.65; }
+    .hero-actions { margin-top: 24px; }
+    .button { width: 100%; font-size: 15px; }
+    .hero-visual { height: clamp(390px, 106vw, 570px); aspect-ratio: auto; }
+    .hero-phone-left { left: 0; top: 20%; width: 29%; }
+    .hero-phone-main { left: 31%; top: 9%; width: 38%; }
+    .hero-phone-right { right: 0; top: 29%; width: 29%; }
+    .hero-orbit { inset: auto 0 21px; font-size: 9px; letter-spacing: .1em; }
+    .features { padding-top: 26px; }
+    .section-heading { padding-block: 30px 60px; gap: 22px; }
+    .section-kicker { font-size: 11px; }
+    .section-heading h2 { font-size: clamp(38px, 9.3vw, 55px); }
+    .section-heading p { font-size: 19px; }
+    .feature-block { display: grid; grid-template-columns: 1fr; row-gap: 30px; padding-block: 46px 58px; }
+    .feature-story { grid-template-columns: 1fr; row-gap: 30px; }
+    .feature-block--single .feature-intro, .feature-block--single .feature-copy, .feature-block--single .feature-media { grid-column: 1; grid-row: auto; }
+    .feature-intro { position: static; padding: 0; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; align-items: baseline; }
+    .feature-number { margin: 0; font-size: 43px; }
+    .feature-intro h3 { max-width: 450px; font-size: clamp(29px, 7.1vw, 40px); line-height: 1.16; }
+    .feature-copy > p { font-size: 18px; line-height: 1.75; }
+    .feature-copy > p + p { margin-top: 22px; }
+    .feature-availability { margin-top: 28px; }
+    .availability-line { grid-template-columns: 42px 1fr; gap: 12px; font-size: 15px; }
+    .availability-line b { font-size: 10px; }
+    .feature-media, .feature-block--wide .feature-media, .feature-block--slideshow .feature-media { flex-wrap: nowrap; justify-content: center; min-height: 0; width: 100%; margin-left: 0; padding: 30px 12px; border-radius: 18px; gap: 6px; overflow: visible; }
+    .feature-image-button, .feature-block--wide .feature-image-button, .feature-block--slideshow .feature-image-button:first-of-type { flex: 1 1 0; max-width: 180px; min-width: 0; }
+    .feature-media--single { justify-content: center; }
+    .feature-media--single .feature-image-button { flex: 0 1 66%; max-width: 220px; }
+    .feature-image-button:nth-of-type(n) { translate: 0; }
+    .feature-media-arrow { flex-basis: 16px; }
+    .feature-media-arrow svg { width: 16px; height: 16px; }
+    .feature-block--dark { padding-block: 58px; }
+    .purchase { padding-block: 68px 48px; }
+    .purchase-logo { width: 38px; height: 38px; margin-bottom: 28px; }
+    .purchase-card h2 { max-width: 390px; font-size: 54px; }
+    .purchase-card > p { margin-top: 20px; font-size: 19px; }
+    .pricing-grid { grid-template-columns: 1fr; margin-top: 42px; gap: 38px; }
+    .pricing-card { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; padding-top: 20px; }
+    .pricing-card > span { grid-column: 1 / -1; margin-bottom: 18px; }
+    .pricing-card h3 { grid-column: 1; font-size: 23px; }
+    .plan-price { grid-column: 2; grid-row: 2; justify-content: flex-end; gap: 4px; margin-top: -4px; font-size: 52px; }
+    .plan-price small { font-size: 12px; }
+    .pricing-card p { grid-column: 1 / -1; max-width: 460px; margin-top: 22px; font-size: 16px; }
+    .purchase-card > .price-note { font-size: 13px; }
+    .image-lightbox { padding: 64px 16px 84px; }
+    .image-lightbox img { max-width: 100%; max-height: calc(100dvh - 148px); }
+    .image-lightbox-close { top: 14px; right: 14px; width: 40px; height: 40px; }
+    .image-lightbox-nav { top: auto; bottom: 18px; transform: none; }
+    .image-lightbox-prev { left: calc(50% - 58px); }
+    .image-lightbox-next { left: calc(50% + 10px); right: auto; }
+    .motion-ready .feature-intro[data-reveal] { transform: translateY(22px); }
+    .motion-ready .feature-intro[data-reveal].is-visible { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .motion-ready [data-reveal] { opacity: 1; transform: none; clip-path: none; }
+    .hero-phone, .feature-image-button:nth-of-type(n) { transform: none; translate: none; }
+}
+@media (max-width: 380px) {
+    .pricing-card { grid-template-columns: 1fr; }
+    .plan-price { grid-column: 1; grid-row: auto; justify-content: flex-start; margin-top: 16px; }
+}
+
     </style>
 </head>
 <body>
@@ -557,8 +359,8 @@
         <header class="hero">
             <div class="container hero-grid">
                 <div class="hero-copy">
-                    <span class="eyebrow"><span class="eyebrow-dot"></span>TorchPhoto PRO</span>
-                    <h1>See how PRO <span>works.</span></h1>
+                    <span class="eyebrow">TorchPhoto PRO</span>
+                    <h1><span class="hero-title-line">See how PRO</span> <span class="hero-title-finish">works.</span></h1>
                     <p>Browse every registered server, bring generated thumbnails into one timeline, automate backups, and remove the limits around larger photo and video libraries.</p>
                     <div class="hero-actions">
                         <a class="button button-primary" href="#features">Explore PRO Features <span aria-hidden="true">↓</span></a>
@@ -587,35 +389,75 @@
                     <p>See exactly what changes when you move from FREE to PRO.</p>
                 </div>
                 <div class="feature-list">
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">01</span><div class="feature-copy"><h3>Use every registered server.</h3><p>With FREE, only one registered server can be used. If your media is divided between a home NAS, a work server, and an off-site archive, moving between libraries means working around that single-server limit.</p><p><strong>PRO unlocks every registered FTP, SFTP, SMB, and WebDAV connection.</strong> Each server keeps its own protocol and path, so you can open the library you need without removing or replacing another connection. This is especially useful when photos and videos are intentionally stored across several locations.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Only one registered server can be used.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>All registered servers can be used without replacing a connection.</span></div></div><div class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/1-1.jpg"><img src="PRO/1-1.jpg" alt="Registered server selection before using PRO" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/1-2.jpg"><img src="PRO/1-2.jpg" alt="All registered servers available with PRO" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block" id="feature-01">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">01</span><h3>Use every registered server.</h3></div>
+                        <div class="feature-copy"><p data-reveal>With FREE, only one registered server can be used. If your media is divided between a home NAS, a work server, and an off-site archive, moving between libraries means working around that single-server limit.</p><p data-reveal><strong>PRO unlocks every registered FTP, SFTP, SMB, and WebDAV connection.</strong> Each server keeps its own protocol and path, so you can open the library you need without removing or replacing another connection. This is especially useful when photos and videos are intentionally stored across several locations.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>Only one registered server can be used.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>All registered servers can be used without replacing a connection.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/1-1.jpg"><img src="PRO/1-1.jpg" width="1179" height="2556" alt="Registered server selection before using PRO" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/1-2.jpg"><img src="PRO/1-2.jpg" width="1179" height="2556" alt="All registered servers available with PRO" loading="lazy" decoding="async"></button></div>
                     </article>
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">02</span><div class="feature-copy"><h3>Automate backups with Shortcuts.</h3><p>FREE backups are started manually in TorchPhoto. Repeatedly opening the app, choosing the same destination, and preparing the same kind of upload can become tedious when you follow a regular backup routine.</p><p><strong>PRO enables backups with Upload by Date and Upload Files.</strong> Open Settings → Set Up Shortcut and choose today’s captures or selected items. Both use a saved server, folder, and your Upload options. Today’s shortcut can run from a Personal Automation; the selected-items shortcut asks you to choose items each time. <a href="shortcutsetting.html">See the setup guide</a>.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>The actions may be visible in Shortcuts, but uploading through them requires PRO.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Back up photos and videos by date, or files supplied to the shortcut, to your chosen server.</span></div></div><div class="feature-media feature-media--single"><button class="feature-image-button" type="button" data-lightbox-src="PRO/2-1.jpg"><img src="PRO/2-1.jpg" alt="TorchPhoto action in iOS Shortcuts" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block feature-block--single" id="feature-02">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">02</span><h3>Automate backups with Shortcuts.</h3></div>
+                        <div class="feature-copy"><p data-reveal>FREE backups are started manually in TorchPhoto. Repeatedly opening the app, choosing the same destination, and preparing the same kind of upload can become tedious when you follow a regular backup routine.</p><p data-reveal><strong>PRO enables backups with Upload by Date and Upload Files.</strong> Open Settings → Set Up Shortcut and choose today’s captures or selected items. Both use a saved server, folder, and your Upload options. Today’s shortcut can run from a Personal Automation; the selected-items shortcut asks you to choose items each time. <a href="shortcutsetting.html">See the setup guide</a>.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>The actions may be visible in Shortcuts, but uploading through them requires PRO.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Back up photos and videos by date, or files supplied to the shortcut, to your chosen server.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media feature-media--single"><button class="feature-image-button" type="button" data-lightbox-src="PRO/2-1.jpg"><img src="PRO/2-1.jpg" width="1179" height="2556" alt="TorchPhoto action in iOS Shortcuts" loading="lazy" decoding="async"></button></div>
                     </article>
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">03</span><div class="feature-copy"><h3>Browse every server in one timeline.</h3><p>With FREE, you browse one server and its folders at a time. Finding media from a particular month can mean opening several directory trees, especially when different years are stored on different servers.</p><p><strong>PRO's Timeline Viewer brings prepared thumbnails from all registered servers into one chronological view.</strong> Items are arranged by their original media date and can be browsed by year, month, or day without entering each folder first. When an item is opened, TorchPhoto still uses that file's original server and protocol, so separate FTP, SMB, SFTP, and WebDAV libraries feel like one visual collection.</p><p><strong>Memories separates your country of residence from the countries you visit.</strong> This simple feature makes it easy to browse your travel photos and videos by country, so you can revisit a trip without searching through everyday memories from home.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Media is browsed through each server's folders separately.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Prepared thumbnails from registered servers appear together in one date-based timeline, with Memories for browsing travel countries separately from your country of residence.</span></div></div><div class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/3-1.jpg"><img src="PRO/3-1.jpg" alt="Timeline Viewer screen 1" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/3-2.jpg"><img src="PRO/3-2.jpg" alt="Timeline Viewer screen 2" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/3-3.jpg"><img src="PRO/3-3.jpg" alt="Timeline Viewer screen 3" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/3-4.jpg"><img src="PRO/3-4.jpg" alt="Memories showing travel photos and videos grouped by country" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block feature-block--dark feature-block--wide" id="feature-03">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">03</span><h3>Browse every server in one timeline.</h3></div>
+                        <div class="feature-copy"><p data-reveal>With FREE, you browse one server and its folders at a time. Finding media from a particular month can mean opening several directory trees, especially when different years are stored on different servers.</p><p data-reveal><strong>PRO's Timeline Viewer brings prepared thumbnails from all registered servers into one chronological view.</strong> Items are arranged by their original media date and can be browsed by year, month, or day without entering each folder first. When an item is opened, TorchPhoto still uses that file's original server and protocol, so separate FTP, SMB, SFTP, and WebDAV libraries feel like one visual collection.</p><p data-reveal><strong>Memories separates your country of residence from the countries you visit.</strong> This simple feature makes it easy to browse your travel photos and videos by country, so you can revisit a trip without searching through everyday memories from home.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>Media is browsed through each server's folders separately.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Prepared thumbnails from registered servers appear together in one date-based timeline, with Memories for browsing travel countries separately from your country of residence.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/3-1.jpg"><img src="PRO/3-1.jpg" width="1179" height="2556" alt="Timeline Viewer screen 1" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/3-2.jpg"><img src="PRO/3-2.jpg" width="1179" height="2556" alt="Timeline Viewer screen 2" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/3-3.jpg"><img src="PRO/3-3.jpg" width="1179" height="2556" alt="Timeline Viewer screen 3" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/3-4.jpg"><img src="PRO/3-4.jpg" width="1179" height="2556" alt="Memories showing travel photos and videos grouped by country" loading="lazy" decoding="async"></button></div>
                     </article>
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">04</span><div class="feature-copy"><h3>Keep more thumbnails on the device.</h3><p>FREE keeps the thumbnail cache within 100 MB. That is enough to try the visual browsing workflow, but a large photo library can quickly exceed it, leaving only a limited portion of prepared thumbnails available on the device.</p><p><strong>PRO removes TorchPhoto's app-level thumbnail cache limit.</strong> A much larger set of thumbnails can remain ready, which reduces repeated loading and makes offline browsing more useful when a server cannot be reached. The real boundary is the storage available on your device, and the cache can still be managed or deleted from TorchPhoto when needed.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Thumbnail cache is limited to 100 MB.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>TorchPhoto applies no app-level cache limit; available device storage is the boundary.</span></div></div><div class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/4-1.jpg"><img src="PRO/4-1.jpg" alt="Thumbnail cache limit before PRO" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/4-2.jpg"><img src="PRO/4-2.jpg" alt="Thumbnail cache settings with PRO" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block" id="feature-04">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">04</span><h3>Keep more thumbnails on the device.</h3></div>
+                        <div class="feature-copy"><p data-reveal>FREE keeps the thumbnail cache within 100 MB. That is enough to try the visual browsing workflow, but a large photo library can quickly exceed it, leaving only a limited portion of prepared thumbnails available on the device.</p><p data-reveal><strong>PRO removes TorchPhoto's app-level thumbnail cache limit.</strong> A much larger set of thumbnails can remain ready, which reduces repeated loading and makes offline browsing more useful when a server cannot be reached. The real boundary is the storage available on your device, and the cache can still be managed or deleted from TorchPhoto when needed.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>Thumbnail cache is limited to 100 MB.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>TorchPhoto applies no app-level cache limit; available device storage is the boundary.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/4-1.jpg"><img src="PRO/4-1.jpg" width="1179" height="2556" alt="Thumbnail cache limit before PRO" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/4-2.jpg"><img src="PRO/4-2.jpg" width="1179" height="2556" alt="Thumbnail cache settings with PRO" loading="lazy" decoding="async"></button></div>
                     </article>
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">05</span><div class="feature-copy"><h3>Generate thumbnails across a server path.</h3><p>FREE generates thumbnails from the folder currently being viewed. On a server with many years, albums, and nested folders, preparing the whole library means entering folders and starting the same task repeatedly.</p><p><strong>PRO can start one server-wide generation job from the registered path.</strong> TorchPhoto scans supported media below that path and processes the directory tree without requiring you to visit every folder. This turns a deep NAS library from many small manual jobs into one managed operation with visible progress.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Thumbnail generation is started for the folder currently open.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>One job can scan and generate thumbnails below the registered server path.</span></div></div><div class="feature-media feature-media--single"><button class="feature-image-button" type="button" data-lightbox-src="PRO/5-1.jpg"><img src="PRO/5-1.jpg" alt="Server-wide thumbnail generation" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block feature-block--single" id="feature-05">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">05</span><h3>Generate thumbnails across a server path.</h3></div>
+                        <div class="feature-copy"><p data-reveal>FREE generates thumbnails from the folder currently being viewed. On a server with many years, albums, and nested folders, preparing the whole library means entering folders and starting the same task repeatedly.</p><p data-reveal><strong>PRO can start one server-wide generation job from the registered path.</strong> TorchPhoto scans supported media below that path and processes the directory tree without requiring you to visit every folder. This turns a deep NAS library from many small manual jobs into one managed operation with visible progress.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>Thumbnail generation is started for the folder currently open.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>One job can scan and generate thumbnails below the registered server path.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media feature-media--single"><button class="feature-image-button" type="button" data-lightbox-src="PRO/5-1.jpg"><img src="PRO/5-1.jpg" width="1179" height="2556" alt="Server-wide thumbnail generation" loading="lazy" decoding="async"></button></div>
                     </article>
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">06</span><div class="feature-copy"><h3>Show matching photo and video files as one item.</h3><p>Live Photos and some camera workflows store one moment as a photo file plus a matching video file. FREE shows those files separately, so the same scene can appear twice and make a directory feel unnecessarily crowded.</p><p><strong>PRO pairs matching photo and video files into one gallery item.</strong> The directory becomes easier to scan while both original files remain unchanged on the server. You keep the complete source media without having to browse a duplicate-looking pair every time.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Matching photo and video files appear as separate items.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Matching files can appear as one gallery item while both originals remain unchanged.</span></div></div><div class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/6-1.jpg"><img src="PRO/6-1.jpg" alt="Matching photo and video shown separately" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/6-2.jpg"><img src="PRO/6-2.jpg" alt="Matching photo and video combined as one item" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/6-3.jpg"><img src="PRO/6-3.jpg" alt="Matching photo and video PRO feature screen 3" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block" id="feature-06">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">06</span><h3>Show matching photo and video files as one item.</h3></div>
+                        <div class="feature-copy"><p data-reveal>Live Photos and some camera workflows store one moment as a photo file plus a matching video file. FREE shows those files separately, so the same scene can appear twice and make a directory feel unnecessarily crowded.</p><p data-reveal><strong>PRO pairs matching photo and video files into one gallery item.</strong> The directory becomes easier to scan while both original files remain unchanged on the server. You keep the complete source media without having to browse a duplicate-looking pair every time.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>Matching photo and video files appear as separate items.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Matching files can appear as one gallery item while both originals remain unchanged.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/6-1.jpg"><img src="PRO/6-1.jpg" width="1179" height="2556" alt="Matching photo and video shown separately" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/6-2.jpg"><img src="PRO/6-2.jpg" width="1179" height="2556" alt="Matching photo and video combined as one item" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/6-3.jpg"><img src="PRO/6-3.jpg" width="1179" height="2556" alt="Matching photo and video PRO feature screen 3" loading="lazy" decoding="async"></button></div>
                     </article>
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">07</span><div class="feature-copy"><h3>Create thumbnails for larger video files.</h3><p>FREE automatically skips video thumbnail generation for files larger than 50 MB. This limits processing during evaluation, but longer or higher-quality videos may remain as generic file icons and become difficult to recognize at a glance.</p><p><strong>PRO removes the automatic 50 MB cutoff.</strong> Larger videos can receive visual thumbnails too, making mixed photo and video folders much easier to browse. If you want to control network traffic or processing time, you can still choose your own video skip limit instead of being locked to the FREE limit.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Automatic video thumbnail generation skips files larger than 50 MB.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Larger videos can receive thumbnails, with an optional custom skip limit.</span></div></div><div class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/7-1.jpg"><img src="PRO/7-1.jpg" alt="Video thumbnail generation with the free size limit" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/7-2.jpg"><img src="PRO/7-2.jpg" alt="Video thumbnail size limit settings with PRO" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block" id="feature-07">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">07</span><h3>Create thumbnails for larger video files.</h3></div>
+                        <div class="feature-copy"><p data-reveal>FREE automatically skips video thumbnail generation for files larger than 50 MB. This limits processing during evaluation, but longer or higher-quality videos may remain as generic file icons and become difficult to recognize at a glance.</p><p data-reveal><strong>PRO removes the automatic 50 MB cutoff.</strong> Larger videos can receive visual thumbnails too, making mixed photo and video folders much easier to browse. If you want to control network traffic or processing time, you can still choose your own video skip limit instead of being locked to the FREE limit.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>Automatic video thumbnail generation skips files larger than 50 MB.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Larger videos can receive thumbnails, with an optional custom skip limit.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/7-1.jpg"><img src="PRO/7-1.jpg" width="1179" height="2556" alt="Video thumbnail generation with the free size limit" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/7-2.jpg"><img src="PRO/7-2.jpg" width="1179" height="2556" alt="Video thumbnail size limit settings with PRO" loading="lazy" decoding="async"></button></div>
                     </article>
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">08</span><div class="feature-copy"><h3>Run slideshows without the trial limit.</h3><p>FREE lets you try slideshow playback with up to 10 prepared photos. It demonstrates how a server album can be played, but it stops before a larger album or long-running display can continue.</p><p><strong>PRO removes the 10-photo trial limit.</strong> The slideshow can continue through all available prepared photos, making it suitable for viewing a complete trip, family archive, portfolio, or a screen that stays on display without restarting after every short preview.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Slideshow playback is available as a 10-photo trial.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>All available prepared photos can continue playing without the trial-count limit.</span></div></div><div class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/8-1.jpg"><img src="PRO/8-1.jpg" alt="Unlimited PRO slideshow playback screen 1" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/8-2.jpg"><img src="PRO/8-2.jpg" alt="Unlimited PRO slideshow playback screen 2" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/8-3.jpg"><img src="PRO/8-3.jpg" alt="Unlimited PRO slideshow playback screen 3" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block feature-block--dark feature-block--slideshow" id="feature-08">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">08</span><h3>Run slideshows without the trial limit.</h3></div>
+                        <div class="feature-copy"><p data-reveal>FREE lets you try slideshow playback with up to 10 prepared photos. It demonstrates how a server album can be played, but it stops before a larger album or long-running display can continue.</p><p data-reveal><strong>PRO removes the 10-photo trial limit.</strong> The slideshow can continue through all available prepared photos, making it suitable for viewing a complete trip, family archive, portfolio, or a screen that stays on display without restarting after every short preview.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>Slideshow playback is available as a 10-photo trial.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>All available prepared photos can continue playing without the trial-count limit.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/8-1.jpg"><img src="PRO/8-1.jpg" width="1179" height="2556" alt="Unlimited PRO slideshow playback screen 1" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/8-2.jpg"><img src="PRO/8-2.jpg" width="1179" height="2556" alt="Unlimited PRO slideshow playback screen 2" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/8-3.jpg"><img src="PRO/8-3.jpg" width="1179" height="2556" alt="Unlimited PRO slideshow playback screen 3" loading="lazy" decoding="async"></button></div>
                     </article>
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">09</span><div class="feature-copy"><h3>Upload larger selections in one run.</h3><p>FREE uploads up to 50 selected items in each run. Backing up a large camera roll therefore requires several batches, repeated selections, and extra checking to make sure nothing was skipped.</p><p><strong>PRO removes TorchPhoto's item-count limit for an upload run.</strong> A larger selection of photos, videos, RAW files, bursts, screenshots, and Live Photo components can be sent together. Network speed, server capacity, and device conditions still affect the job, but TorchPhoto no longer forces the selection into artificial 50-item batches.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>Up to 50 selected items can be uploaded in each run.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>TorchPhoto applies no item-count limit to the selection for one upload run.</span></div></div><div class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/9-1.jpg"><img src="PRO/9-1.jpg" alt="Upload selection limit before PRO" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/9-2.jpg"><img src="PRO/9-2.jpg" alt="Larger upload selection with PRO" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block" id="feature-09">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">09</span><h3>Upload larger selections in one run.</h3></div>
+                        <div class="feature-copy"><p data-reveal>FREE uploads up to 50 selected items in each run. Backing up a large camera roll therefore requires several batches, repeated selections, and extra checking to make sure nothing was skipped.</p><p data-reveal><strong>PRO removes TorchPhoto's item-count limit for an upload run.</strong> A larger selection of photos, videos, RAW files, bursts, screenshots, and Live Photo components can be sent together. Network speed, server capacity, and device conditions still affect the job, but TorchPhoto no longer forces the selection into artificial 50-item batches.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>Up to 50 selected items can be uploaded in each run.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>TorchPhoto applies no item-count limit to the selection for one upload run.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/9-1.jpg"><img src="PRO/9-1.jpg" width="1179" height="2556" alt="Upload selection limit before PRO" loading="lazy" decoding="async"></button><span class="feature-media-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><button class="feature-image-button" type="button" data-lightbox-src="PRO/9-2.jpg"><img src="PRO/9-2.jpg" width="1179" height="2556" alt="Larger upload selection with PRO" loading="lazy" decoding="async"></button></div>
                     </article>
-                    <article class="feature-block" data-reveal>
-                        <span class="feature-number">10</span><div class="feature-copy"><h3>Use additional PRO convenience features.</h3><p>FREE includes TorchPhoto's core browsing and transfer experience, but smaller workflow improvements reserved for PRO are not available. Those missing conveniences can add repeated taps when you use the same servers and actions every day.</p><p><strong>PRO includes additional time-saving features such as Quick Start.</strong> It also provides access to future convenience features released for PRO, so improvements designed to make repeated photo workflows faster and easier are available without changing plans again.</p><div class="feature-availability"><div class="availability-line availability-free"><b>FREE</b><span>PRO-only convenience features are not available.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Quick Start and future convenience features released for PRO can be used.</span></div></div><div class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-1.jpg"><img src="PRO/10-1.jpg" alt="Additional PRO convenience feature screen 1" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-2.jpg"><img src="PRO/10-2.jpg" alt="Additional PRO convenience feature screen 2" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-3.jpg"><img src="PRO/10-3.jpg" alt="Additional PRO convenience feature screen 3" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-4.jpg"><img src="PRO/10-4.jpg" alt="Additional PRO convenience feature screen 4" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-5.jpg"><img src="PRO/10-5.jpg" alt="Timeline Search shortcut from the server search screen" loading="lazy" decoding="async"></button></div></div>
+                    <article class="feature-block feature-block--wide" id="feature-10">
+                        <div class="feature-story">
+                        <div class="feature-intro" data-reveal><span class="feature-number">10</span><h3>Use additional PRO convenience features.</h3></div>
+                        <div class="feature-copy"><p data-reveal>FREE includes TorchPhoto's core browsing and transfer experience, but smaller workflow improvements reserved for PRO are not available. Those missing conveniences can add repeated taps when you use the same servers and actions every day.</p><p data-reveal><strong>PRO includes additional time-saving features such as Quick Start.</strong> It also provides access to future convenience features released for PRO, so improvements designed to make repeated photo workflows faster and easier are available without changing plans again.</p><div class="feature-availability" data-reveal><div class="availability-line availability-free"><b>FREE</b><span>PRO-only convenience features are not available.</span></div><div class="availability-line availability-pro"><b>PRO</b><span>Quick Start and future convenience features released for PRO can be used.</span></div></div></div>
+                        </div>
+                        <div data-reveal class="feature-media"><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-1.jpg"><img src="PRO/10-1.jpg" width="1179" height="2556" alt="Additional PRO convenience feature screen 1" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-2.jpg"><img src="PRO/10-2.jpg" width="1179" height="2556" alt="Additional PRO convenience feature screen 2" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-3.jpg"><img src="PRO/10-3.jpg" width="1179" height="2556" alt="Additional PRO convenience feature screen 3" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-4.jpg"><img src="PRO/10-4.jpg" width="1179" height="2556" alt="Additional PRO convenience feature screen 4" loading="lazy" decoding="async"></button><button class="feature-image-button" type="button" data-lightbox-src="PRO/10-5.jpg"><img src="PRO/10-5.jpg" width="1179" height="2556" alt="Timeline Search shortcut from the server search screen" loading="lazy" decoding="async"></button></div>
                     </article>
                 </div>
             </div>
@@ -645,64 +487,199 @@
 
     <div class="image-lightbox" role="dialog" aria-modal="true" aria-label="Expanded feature image" aria-hidden="true">
         <button class="image-lightbox-close" type="button" aria-label="Close expanded image">&times;</button>
-        <img alt="">
+        <button class="image-lightbox-nav image-lightbox-prev" type="button" aria-label="Previous image" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="image-lightbox-nav image-lightbox-next" type="button" aria-label="Next image" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <img alt="" draggable="false">
     </div>
 
     <script>
-        const toggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        toggle.addEventListener('click', () => {
-            const open = navLinks.classList.toggle('is-open');
-            toggle.setAttribute('aria-expanded', String(open));
-        });
-        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-            navLinks.classList.remove('is-open');
-            toggle.setAttribute('aria-expanded', 'false');
-        }));
+(() => {
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const closeMenu = () => {
+        navLinks.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+    };
+    toggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('click', event => {
+        if (!event.target.closest('.site-nav')) closeMenu();
+    });
 
-        const observer = new IntersectionObserver(entries => {
+    const chapters = [...document.querySelectorAll('.feature-block')];
+    const hero = document.querySelector('.hero');
+    const root = document.documentElement;
+    const navigationLinks = [...navLinks.querySelectorAll('a')];
+    const plans = document.getElementById('plans');
+    const featureSection = document.getElementById('features');
+
+    if ('IntersectionObserver' in window && !reducedMotion.matches) {
+        const revealObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
             });
-        }, { threshold: .12 });
-        document.querySelectorAll('[data-reveal]').forEach(item => observer.observe(item));
+        }, { threshold: .04, rootMargin: '0px 0px -35px 0px' });
 
-        const lightbox = document.querySelector('.image-lightbox');
-        const lightboxImage = lightbox.querySelector('img');
-        const lightboxClose = lightbox.querySelector('.image-lightbox-close');
-        let lightboxTrigger = null;
+        const revealItems = document.querySelectorAll('[data-reveal]');
+        revealItems.forEach(item => revealObserver.observe(item));
+        root.classList.add('motion-ready');
+    }
 
-        const closeLightbox = () => {
-            lightbox.classList.remove('is-open');
-            lightbox.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('lightbox-open');
-            lightboxImage.removeAttribute('src');
-            if (lightboxTrigger) lightboxTrigger.focus();
-        };
+    let scheduled = false;
+    const updateScroll = () => {
+        scheduled = false;
+        const viewport = window.innerHeight;
+        const scrollRange = Math.max(1, root.scrollHeight - viewport);
+        root.style.setProperty('--page-progress', String(Math.min(1, Math.max(0, window.scrollY / scrollRange))));
 
-        document.querySelectorAll('.feature-image-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const preview = button.querySelector('img');
-                lightboxTrigger = button;
-                lightboxImage.src = button.dataset.lightboxSrc;
-                lightboxImage.alt = preview.alt;
-                lightbox.classList.add('is-open');
-                lightbox.setAttribute('aria-hidden', 'false');
-                document.body.classList.add('lightbox-open');
-                lightboxClose.focus();
-            });
+        const plansTop = plans.getBoundingClientRect().top;
+        const featuresTop = featureSection.getBoundingClientRect().top;
+        const currentSection = plansTop < viewport * .6 ? '#plans' : featuresTop < viewport * .6 ? '#features' : '';
+        navigationLinks.forEach(link => {
+            if (link.getAttribute('href') === currentSection) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
         });
 
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', event => {
-            if (event.target === lightbox) closeLightbox();
+        if (reducedMotion.matches) return;
+        const heroRect = hero.getBoundingClientRect();
+        if (heroRect.bottom > 0) hero.style.setProperty('--hero-shift', `${Math.min(50, Math.max(0, -heroRect.top * .075)).toFixed(2)}px`);
+        chapters.forEach(chapter => {
+            const rect = chapter.getBoundingClientRect();
+            if (rect.top > viewport * 1.25 || rect.bottom < -viewport * .25) return;
+            const progress = Math.min(1, Math.max(0, (viewport * .75 - rect.top) / (viewport * .75)));
+            chapter.style.setProperty('--section-progress', progress.toFixed(3));
+            const offset = Math.min(13, Math.max(-13, (viewport * .5 - (rect.top + rect.height * .6)) * .026));
+            chapter.style.setProperty('--gallery-shift', `${offset.toFixed(2)}px`);
         });
-        document.addEventListener('keydown', event => {
-            if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+    };
+    const scheduleScroll = () => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(updateScroll);
+    };
+    window.addEventListener('scroll', scheduleScroll, { passive: true });
+    window.addEventListener('resize', scheduleScroll);
+    reducedMotion.addEventListener('change', () => {
+        root.classList.remove('motion-ready');
+        document.querySelectorAll('[data-reveal]').forEach(item => item.classList.add('is-visible'));
+        scheduleScroll();
+    });
+    updateScroll();
+
+    const lightbox = document.querySelector('.image-lightbox');
+    const lightboxImage = lightbox.querySelector('img');
+    const lightboxClose = lightbox.querySelector('.image-lightbox-close');
+    const lightboxPrevious = lightbox.querySelector('.image-lightbox-prev');
+    const lightboxNext = lightbox.querySelector('.image-lightbox-next');
+    let lightboxTrigger = null;
+    let previousInert = [];
+    let galleryButtons = [];
+    let galleryIndex = 0;
+    let swipeStart = null;
+    let suppressClickUntil = 0;
+    let imageAnimation = null;
+
+    const showGalleryImage = (index, direction = 0) => {
+        if (!galleryButtons.length) return;
+        galleryIndex = (index + galleryButtons.length) % galleryButtons.length;
+        const button = galleryButtons[galleryIndex];
+        lightboxImage.src = button.dataset.lightboxSrc;
+        lightboxImage.alt = button.querySelector('img').alt;
+        lightboxPrevious.hidden = galleryButtons.length < 2;
+        lightboxNext.hidden = galleryButtons.length < 2;
+        lightbox.classList.toggle('has-gallery', galleryButtons.length > 1);
+        imageAnimation?.cancel();
+        if (direction && !reducedMotion.matches) {
+            imageAnimation = lightboxImage.animate([
+                { opacity: .55, transform: `translateX(${direction * 14}px)` },
+                { opacity: 1, transform: 'translateX(0)' }
+            ], { duration: 220, easing: 'cubic-bezier(.22,1,.36,1)' });
+        }
+    };
+
+    const moveGallery = direction => {
+        if (galleryButtons.length > 1) showGalleryImage(galleryIndex + direction, direction);
+    };
+
+    const closeLightbox = () => {
+        if (!lightbox.classList.contains('is-open')) return;
+        lightbox.classList.remove('is-open');
+        lightbox.classList.remove('has-gallery');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+        previousInert.forEach(([element, value]) => { element.inert = value; });
+        previousInert = [];
+        imageAnimation?.cancel();
+        lightboxImage.removeAttribute('src');
+        lightboxImage.alt = '';
+        galleryButtons = [];
+        galleryIndex = 0;
+        swipeStart = null;
+        suppressClickUntil = 0;
+        lightboxPrevious.hidden = true;
+        lightboxNext.hidden = true;
+        if (lightboxTrigger) lightboxTrigger.focus({ preventScroll: true });
+    };
+
+    document.querySelectorAll('.feature-image-button').forEach(button => {
+        button.addEventListener('click', () => {
+            lightboxTrigger = button;
+            galleryButtons = [...button.closest('.feature-media').querySelectorAll('.feature-image-button')];
+            showGalleryImage(galleryButtons.indexOf(button));
+            lightbox.classList.add('is-open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('lightbox-open');
+            previousInert = [...document.querySelectorAll('body > nav, body > main, body > footer')].map(element => [element, element.inert]);
+            previousInert.forEach(([element]) => { element.inert = true; });
+            lightboxClose.focus({ preventScroll: true });
         });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrevious.addEventListener('click', () => moveGallery(-1));
+    lightboxNext.addEventListener('click', () => moveGallery(1));
+    lightbox.addEventListener('click', event => {
+        if (performance.now() < suppressClickUntil) return;
+        if (event.target === lightbox) closeLightbox();
+    });
+    lightbox.addEventListener('pointerdown', event => {
+        if (!event.isPrimary) { swipeStart = null; return; }
+        if ((event.pointerType === 'mouse' && event.button !== 0) || event.target.closest('button') || galleryButtons.length < 2) return;
+        swipeStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
+    });
+    lightbox.addEventListener('pointerup', event => {
+        if (!swipeStart || event.pointerId !== swipeStart.id) return;
+        const deltaX = event.clientX - swipeStart.x;
+        const deltaY = event.clientY - swipeStart.y;
+        swipeStart = null;
+        if (Math.abs(deltaX) >= 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) {
+            suppressClickUntil = performance.now() + 350;
+            moveGallery(deltaX < 0 ? 1 : -1);
+        }
+    });
+    lightbox.addEventListener('pointercancel', () => { swipeStart = null; });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') { closeLightbox(); closeMenu(); }
+        if (!lightbox.classList.contains('is-open')) return;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            moveGallery(event.key === 'ArrowLeft' ? -1 : 1);
+        }
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            const controls = [...lightbox.querySelectorAll('button:not([hidden])')];
+            const current = controls.indexOf(document.activeElement);
+            const next = (current + (event.shiftKey ? -1 : 1) + controls.length) % controls.length;
+            controls[next].focus();
+        }
+    });
+})();
 
     </script>
 </body>
