@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - TorchPhoto</title>
-    <meta name="description" content="Learn how TorchPhoto handles server credentials, media transfers, local diagnostics, thumbnails, cache data, captions, and support information.">
+    <meta name="description" content="Learn how TorchPhoto handles media, local storage, technical diagnostics, privacy controls, and support information.">
     <link rel="canonical" href="https://torchphoto.com/privacy-policy.html">
     <meta property="og:type" content="article">
     <meta property="og:title" content="TorchPhoto Privacy Policy">
-    <meta property="og:description" content="Learn how TorchPhoto handles server credentials, direct media transfers, local diagnostics, thumbnails, cache data, and support information.">
+    <meta property="og:description" content="Learn how TorchPhoto handles media, local storage, technical diagnostics, privacy controls, and support information.">
     <meta property="og:image" content="https://torchphoto.com/main.jpg">
     <meta property="og:url" content="https://torchphoto.com/privacy-policy.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TorchPhoto Privacy Policy">
-    <meta name="twitter:description" content="How TorchPhoto handles your server and media data.">
+    <meta name="twitter:description" content="How TorchPhoto handles your media, diagnostic reports, and privacy choices.">
     <meta name="twitter:image" content="https://torchphoto.com/main.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -46,66 +46,77 @@
             <div class="page-hero">
                 <span class="page-eyebrow">Support</span>
                 <h1>Privacy Policy</h1>
-                <p>Last updated: 2026-08-06</p>
+                <p>Last updated: 2026-11-15</p>
             </div>
 
             <div class="policy-card">
-                <p>This privacy policy applies to the TorchPhoto app (hereby referred to as “Application”) for mobile devices that was created by PixelBrick (hereby referred to as “Service Provider”). This service is intended for use “AS IS”.</p>
+                <p>This Privacy Policy explains how PixelBrick (“we,” “us,” or “our”) handles information in the TorchPhoto app and on torchphoto.com. It covers local media features, diagnostic reporting, support requests, and your privacy choices.</p>
 
-                <h2>Information Collection and Use</h2>
-                <p>TorchPhoto is designed to browse photos and videos from servers configured by the user through FTP, SFTP, SMB, or WebDAV. The Application does not upload, transmit, or store your photos or videos on the Service Provider’s servers.</p>
-                <p>Your media files are accessed directly between your mobile device and the server that you configure. The Service Provider does not have access to your server, connection credentials, photos, videos, folders, or file contents.</p>
-                <p>The Application may store server connection information provided by the user, such as connection method, server address, port, username, authentication method, and selected directory paths, locally on the user’s device for the purpose of connecting to the user’s own server. Passwords and supported SFTP private-key credentials are stored using the device’s protected credential storage.</p>
-                <p>The Application may create and store thumbnails, cache files, favorites data, and related metadata locally on the user’s device to provide the Application’s core browsing features and improve performance. This data remains on the user’s device unless the user deletes it, clears the cache, or removes the Application.</p>
-                <p>The Application does not collect precise location information about your mobile device (such as GPS-level location).</p>
-                <p>The Application does not collect or use your device’s location for geolocation services.</p>
-                <p>For a better experience, while using the Application, the Service Provider may ask you to provide certain information, such as information included in support emails. Any information you voluntarily provide will be used only for the purpose it was provided and handled as described in this privacy policy.</p>
+                <h2>Your Photos and Identity</h2>
+                <p><strong>Your photos, videos, and server login credentials are not uploaded to PixelBrick as diagnostic data.</strong> TorchPhoto connects your device directly to the servers you configure. You do not need to create a PixelBrick account to browse your media.</p>
+                <p>Diagnostic reporting does not ask for your name, email address, phone number, or contacts. It is intended to help us understand technical problems, not to identify you personally or build an advertising profile. Diagnostic reports are designed to exclude your media contents, server addresses, account credentials, passwords, original filenames and folder paths, captions, and embedded GPS coordinates.</p>
+                <p>Technical reports do include an app-installation identifier, and our hosting providers process network connection information. If you email us, we also receive your sender information and anything you choose to include. These details are explained below; we do not describe all information handled by the service as anonymous.</p>
 
-                <h2>Device Permissions and User-Directed Features</h2>
-                <p>TorchPhoto accesses the photo library only when the user chooses photos or videos to upload, saves downloaded media to the photo library, or chooses an image to check for a TorchPhoto server QR code. TorchPhoto uses the camera only when the user opens the QR scanner for adding a server.</p>
-                <p>The Application uses local-network access to connect to servers selected by the user. When the user explicitly starts Wi-Fi Gallery Share, TorchPhoto can temporarily make the selected gallery available to other devices on the same local network. This local sharing is initiated and stopped by the user and does not route the gallery through the Service Provider’s servers.</p>
-                <p>TorchPhoto does not request or use the device’s current location. If a media file already contains capture-location metadata, the Application may use that embedded information to display a map, address, time-zone, elevation, sunrise and sunset, or related capture details. Apple Maps or geocoding services may process coordinates when those features are used, subject to the user’s Apple settings and Apple’s privacy terms.</p>
-                <p>The Application accesses the user’s music library only when the user chooses background music for a slideshow. In-app purchases and subscription status are processed through Apple StoreKit. These Apple platform services are governed by the user’s Apple account settings and Apple’s applicable terms.</p>
+                <h2>Media, Server Connections, and Local Storage</h2>
+                <p>TorchPhoto accesses your chosen servers using FTP, SFTP, SMB, or WebDAV. Browsing, uploading, and downloading media take place between your device and those servers, without routing your media through PixelBrick’s diagnostic service.</p>
+                <p>Server addresses, ports, usernames, connection settings, and selected paths are stored on your device for those connections. Passwords and supported SFTP private-key credentials use the device’s protected credential storage.</p>
+                <p>The app stores thumbnails, downloaded or prefetched media, cached metadata, captions, folder tags, favorites, preferences, and upload history locally to provide its features. Cached metadata can include information already embedded in your files, such as capture dates and locations. Cache controls, storage limits, and feature-specific cleanup determine how long local copies remain.</p>
+                <p>If you choose to export, share, or back up data, the selected information goes to the destination or recipient you choose. Backup files may contain thumbnails, file paths, server details, metadata, settings, and local diagnostic records. Wi-Fi Gallery Share makes the gallery you select available to other devices on the local network while you enable that feature. These user-directed actions are separate from diagnostic reporting.</p>
 
-                <h2>On-Device Diagnostics</h2>
-                <p>TorchPhoto includes an on-device diagnostic feature to help identify crashes, abnormal terminations, performance and resource issues, and failures in app features. The diagnostics are used to support app operation, updates, optimization, stability, and feature improvements.</p>
-                <p>Diagnostic records may include technical error details, app lifecycle and runtime states, app version and build, operating system version, device family, non-identifying feature setting states, and aggregate cache usage amounts. They do not include server addresses, account credentials, passwords, folder names, filenames or paths, user-entered text, photo or video contents, EXIF or GPS data, or media metadata contents.</p>
-                <p>Diagnostic records are stored locally on the user’s device. A diagnostic JSON file can be prepared when the user chooses a feedback or error-reporting action. The Application does not use an external analytics SDK for these records.</p>
-                <p>Apple may separately collect or provide system-level crash and analytics information according to the user’s device analytics settings and Apple’s privacy terms. Apple’s system analytics are separate from TorchPhoto’s locally stored diagnostic JSON and are not an automatic upload performed by TorchPhoto.</p>
-                <p>Routine diagnostic activity records are deleted automatically after 72 hours. Abnormal records are grouped by cause and may be retained without time-based expiration so recurring issues can be identified. Local diagnostic storage is limited to 512 KB, and the user can delete the diagnostic history at any time with the in-app reset control.</p>
+                <h2>Device Permissions and Apple Services</h2>
+                <p>TorchPhoto uses photo-library access for the media actions you request, including selecting or preparing uploads, saving media, and reading a server QR code from an image. It uses the camera for QR scanning, local-network access for server connections and local sharing, and music-library access for selected slideshow music. You can manage these permissions in iOS Settings; denying a permission may prevent the corresponding feature from working.</p>
+                <p>The app does not request your device’s current GPS location. When you use location-related media features, it may use coordinates already embedded in a photo or video. Apple Maps and geocoding services may process those coordinates to provide maps and place information.</p>
+                <p>Apple handles in-app purchases and subscriptions through StoreKit. TorchPhoto uses purchase and entitlement status to enable the features you purchased; PixelBrick does not receive your payment-card details. Apple may also provide system crash and performance diagnostics under its platform services and applicable settings. Apple’s own analytics sharing is separate from TorchPhoto’s diagnostic-reporting setting. See <a href="https://www.apple.com/legal/privacy/">Apple’s privacy information</a>.</p>
 
-                <h2>Third Party Access</h2>
-                <p>The Service Provider does not sell, rent, or share user photos, videos, connection credentials, server information, thumbnails, cache files, favorites data, or folder information with third parties.</p>
-                <p>If the user voluntarily sends a feedback email, the message and its diagnostic attachment are transmitted through the email service configured by the user and delivered to the Service Provider. The Service Provider receives this information only after the user chooses to send it.</p>
-                <p>The Service Provider may disclose User Provided information:</p>
+                <h2>Technical Diagnostics and Troubleshooting</h2>
+                <p>TorchPhoto records technical activity and errors on your device to investigate crashes, interruptions, upload failures, connection problems, and performance or storage issues. Records can include:</p>
                 <ul>
-                    <li>as required by law, such as to comply with a subpoena, or similar legal process;</li>
-                    <li>when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;</li>
-                    <li>with trusted service providers who work on their behalf, do not have an independent use of the information disclosed to them, and have agreed to adhere to the rules set forth in this privacy statement.</li>
+                    <li>App version and build, operating-system version, device model or family, and relevant feature or permission settings.</li>
+                    <li>Error codes and categories, occurrence times and counts, technical stack information, and the operation or stage involved.</li>
+                    <li>Network connection type and protocol, memory and storage measurements, cache usage, transfer progress, and item counts.</li>
+                    <li>Technical media characteristics such as format, file size, dimensions, or duration, and generated reference values used to correlate items or operations without including their original names.</li>
                 </ul>
+                <p>The app limits diagnostic fields and filters technical text to remove recognizable addresses, paths, filenames, and credentials. It does not attach the contents of your photos or videos to diagnostic reports. PixelBrick reviews technical reports remotely to investigate abnormal behavior and crashes that cause the app to close, including issues raised in user feedback. <strong>Diagnostic information is used only to identify the causes of technical problems, develop corrections, and verify those corrections.</strong> Remote review is limited to the diagnostic information received. We do not sell these reports or use them for advertising or tracking you across other companies’ apps and websites.</p>
+                <p><strong>Diagnostic reporting is enabled by default in current app versions.</strong> When enabled, the app sends eligible abnormal-event and crash records to PixelBrick’s diagnostic service hosted on Cloudflare without requiring a separate feedback email or a send action for each report. Enabling reporting can also send eligible records already stored on your device; records awaiting delivery may be retried.</p>
+                <p>The app creates a random credential for its diagnostic installation. The server stores a derived identifier to associate reports from that installation and prevent duplicate processing. This is not your name, Apple ID, server username, or advertising identifier, but it allows reports from the same installation to be linked.</p>
+                <p>Diagnostic uploads use HTTPS. Detailed diagnostic evidence is additionally encrypted on the device for access by PixelBrick. Basic report information, such as error category, app version, timestamps, and occurrence counts, is stored separately so the diagnostic service can organize reports. Cloudflare also processes network information, such as IP addresses and request information, to deliver and protect the service. See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s Privacy Policy</a>.</p>
 
-                <h2>Opt-Out Rights</h2>
-                <p>You can stop use of the Application and remove locally stored Application data by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.</p>
+                <h2>Your Diagnostic Choices</h2>
+                <p>You can turn off <strong>Automatic error reporting</strong> in the app’s <strong>Diagnostics</strong> screen. In current versions, open <strong>Settings</strong>, tap the <strong>Settings</strong> title at the top four times, then tap <strong>Reset Tips</strong> once at the bottom to open Diagnostics. The reporting control is available to both Free and PRO users.</p>
+                <p>Turning reporting off stops further diagnostic uploads; it does not disable photo browsing, uploads to your own server, or other features available with your plan. Local diagnostic recording continues. Turning reporting off does not recall a report already delivered or delete records already held by the service.</p>
+                <p>You can use <strong>Reset Diagnostics</strong> on the same screen to clear local diagnostic history. This does not turn off reporting or delete server copies. If you need help locating the control or want to request deletion of server records, contact us using the email address below.</p>
 
-                <h2>Data Retention Policy</h2>
-                <p>Server connection information, thumbnails, cache files, favorites data, related metadata, and unsent diagnostic records are stored locally on the user’s device and are not retained on the Service Provider’s servers. Local diagnostic retention is described in the On-Device Diagnostics section above. If you voluntarily provide information to the Service Provider, such as by sending a support email and diagnostic attachment, the Service Provider will retain it only for as long as necessary to respond to your request and for a reasonable time thereafter. If you’d like the Service Provider to delete User Provided Data that you have provided via the Application or support contact, please contact the Service Provider at teamtorchphoto@gmail.com and they will respond in a reasonable time.</p>
+                <h2>Feedback and Support</h2>
+                <p>If you send us an email, we receive your email address, any sender name supplied by your email service, your message, and any attachments you include. A diagnostic attachment may include local records, language or locale, relevant settings, cache measurements, and subscription-status information to help us investigate the issue. Email attachments and the app’s diagnostic-reporting feature are separate ways of providing diagnostic information.</p>
+                <p>We use support information to respond to your request and investigate or resolve the reported problem. Only include screenshots, files, or other information you want to share with us. Please do not send server passwords, private keys, or unrelated personal information. Support correspondence is handled through your email provider and our support email service.</p>
 
-                <h2>Children</h2>
-                <p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.</p>
-                <p>The Service Provider does not knowingly collect personally identifiable information from children. The Service Provider encourages all children to never submit any personally identifiable information through the Application and/or Services. The Service Provider encourages parents and legal guardians to monitor their children’s Internet usage and to help enforce this Policy by instructing their children never to provide personally identifiable information through the Application and/or Services without their permission. If you have reason to believe that a child has provided personally identifiable information to the Service Provider through the Application and/or Services, please contact the Service Provider (teamtorchphoto@gmail.com) so that they can take the necessary actions. You must also be at least 16 years of age to consent to the processing of your personal data in your country (in some countries the parent or guardian may consent on your behalf).</p>
+                <h2>Retention and Deletion</h2>
+                <p><strong>On your device:</strong> routine diagnostic activity expires after seven days. Abnormal records are grouped by cause and are not deleted solely because of their age. Local diagnostic storage is bounded to approximately 2 MB, and older detail may be compacted to stay within that limit. Successful reporting does not remove the local record; you can clear local history with Reset Diagnostics.</p>
+                <p><strong>On the diagnostic service:</strong> our retention policy is to keep reports only for investigating the relevant technical problem, developing a correction, and completing necessary verification. Once those tasks are complete and the reports are no longer needed for that purpose, we delete the reports and developer-held working copies without undue delay. This deletion is performed manually following review, not through a preset expiry schedule. Turning off reporting, clearing local history, or uninstalling the app does not itself delete reports already received by the service.</p>
+                <p><strong>Support messages:</strong> correspondence and attachments may be retained for handling your request, related follow-up, and applicable legal obligations. Diagnostic attachments follow the troubleshooting retention policy above. You can request deletion of support information or diagnostic reports by emailing us. Because reports sent through the diagnostic service are not indexed by your name or email address, we may need a report reference, approximate event date, or other limited information to locate your records and verify the request. We will explain any limitation that prevents us from identifying or deleting particular records.</p>
+                <p>Deleting app data does not delete originals on your servers, items saved in Photos, or exported backups. Those copies remain under the controls of their respective locations and providers.</p>
+
+                <h2>Service Providers and Website Visits</h2>
+                <p>We use Cloudflare to receive and store diagnostic reports, GitHub Pages to host this website, and email services to handle support correspondence. Providers process information needed to deliver their services under their applicable terms and privacy protections. Information may also be disclosed where required by law or necessary to address security incidents and protect legal rights.</p>
+                <p>Visiting torchphoto.com sends normal web-request information to its hosting and asset providers. GitHub states that GitHub Pages logs visitors’ IP addresses for security purposes. Pages may also load external assets, such as stylesheets from cdnjs, which creates requests to that provider. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a> and <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s Privacy Policy</a>.</p>
+                <p>Our service providers operate internationally, so support, diagnostic, and website information may be processed in countries other than your own. Their policies describe their processing locations and applicable safeguards. Servers and sharing destinations that you configure are governed by your arrangements with those providers.</p>
 
                 <h2>Security</h2>
-                <p>The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.</p>
+                <p>We use protections appropriate to the data involved, including protected credential storage on the device, HTTPS for diagnostic transfers, additional encryption for detailed diagnostic evidence, and restricted access to diagnostic administration. No storage or transmission method can guarantee absolute security. The security of connections to your own servers depends on the protocol and server configuration you select.</p>
 
-                <h2>Changes</h2>
-                <p>This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</p>
-                <p>This privacy policy is effective as of 2026-08-06.</p>
+                <h2>Your Privacy Rights</h2>
+                <p>Depending on your location and the information involved, you may have rights to request access, correction, deletion, restriction, or portability of your personal information, to object to processing, or to withdraw consent where processing relies on consent. You may also have the right to complain to your local data-protection authority. Contact us to exercise applicable rights; we may request limited information needed to verify and fulfil your request.</p>
+                <p>This policy describes data handling. Reading it or continuing to use the app does not, by itself, replace any consent required by applicable law or platform rules.</p>
 
-                <h2>Your Consent</h2>
-                <p>By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by the Service Provider.</p>
+                <h2>Children</h2>
+                <p>TorchPhoto is not directed at children under 13, and we do not knowingly seek their personal information. If you believe a child has provided personal information to us, contact us so we can investigate and address the request, including deletion where appropriate.</p>
+
+                <h2>Changes to This Policy</h2>
+                <p>We may update this policy to reflect changes to the app, our services, or applicable requirements. We will update the date on this page and provide additional notice or obtain consent where required.</p>
+                <p>This Privacy Policy is effective as of 2026-11-15.</p>
 
                 <h2>Contact Us</h2>
-                <p>If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at <a href="mailto:teamtorchphoto@gmail.com">teamtorchphoto@gmail.com</a>.</p>
+                <p>PixelBrick is responsible for the TorchPhoto information handling described in this policy. For privacy questions, reporting-control assistance, or requests concerning your information, email <a href="mailto:teamtorchphoto@gmail.com">teamtorchphoto@gmail.com</a>.</p>
             </div>
         </div>
     </main>
