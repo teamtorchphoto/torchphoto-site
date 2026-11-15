@@ -219,10 +219,23 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     </div>
                 </details>
 
+                <details class="guide-item" id="show-filename">
+                    <summary>How can I show the filename at the top of the image viewer?</summary>
+                    <div class="guide-content">
+                        <p>Use <b>Custom Popup</b> to display a photo's filename as a title while viewing it. Open <b>Settings &gt; Custom Popup</b>, enable the feature, and open its popup settings.</p>
+                        <ol>
+                            <li>Under <b>Metadata Fields</b>, check <b>File</b>. Uncheck other fields if you only want the filename.</li>
+                            <li>Enable <b>Lock Position</b> and choose <b>Center</b> for the top center, or <b>Top Left</b> or <b>Top Right</b>.</li>
+                            <li>Enable <b>Keep Visible</b> if you want the title to remain visible instead of disappearing after a set time.</li>
+                        </ol>
+                        <p>In the File field's settings, you can adjust the font size and enable <b>Hide Label</b> to show just the filename without the “File” label. The popup appears after the original photo and its metadata are ready. It does not rename the file or change its metadata.</p>
+                    </div>
+                </details>
+
                 <details class="guide-item">
                     <summary>How do I move or hide Custom Popup in the viewer?</summary>
                     <div class="guide-content">
-                        <p>When Lock Position is off, press and hold the popup itself, then drag it to the desired position. TorchPhoto remembers the saved position. When Lock Position is on, choose Top Left or Top Right and the popup aligns itself to the displayed media. Quickly double-tap the popup to hide it. Starting to zoom the media also hides it for the current item. Normal viewer swipes remain available unless you are actively repositioning the popup.</p>
+                        <p>When Lock Position is off, press and hold the popup itself, then drag it to the desired position. TorchPhoto remembers the saved position. When Lock Position is on, choose <b>Top Left</b>, <b>Center</b>, or <b>Top Right</b> to place the popup along the top of the displayed media. Quickly double-tap the popup to hide it. Starting to zoom the media also hides it for the current item. Normal viewer swipes remain available unless you are actively repositioning the popup.</p>
                     </div>
                 </details>
 
@@ -781,10 +794,17 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     </div>
                 </details>
 
-                <details class="guide-item">
-                    <summary>How can a folder tag open the tagged folder quickly?</summary>
+                <details class="guide-item" id="folder-tag-shortcuts">
+                    <summary>Can I use folder tags as shortcuts to frequently used folders?</summary>
                     <div class="guide-content">
-                        <p>After assigning a color tag to a folder, select that tag from the server list. TorchPhoto shows the server entries that contain a matching tagged folder. While this tag filter is active, opening one of those server entries takes you directly to the tagged folder, even when the saved server entry starts from one of its parent folders. Opening the server normally without the tag filter continues to use its usual saved path.</p>
+                        <p>Folder tags can act as quick shortcuts to your favorite server folders, so you do not need to navigate through all their parent folders each time.</p>
+                        <ol>
+                            <li>Open a folder, tap its name at the top, and add a memorable tag. For example, tag <code>/Photos/2026/Travel</code> with <code>Travel2026</code>. Separate multiple tags with commas.</li>
+                            <li>Return to the server list and tap that tag to filter the server entries.</li>
+                            <li>While the tag filter is active, open the matching server entry to go directly to the tagged folder.</li>
+                        </ol>
+                        <p>Use a distinct tag when you want a shortcut to one particular folder. If several folders under the same server entry share a tag, the tag does not uniquely identify just one of them. Opening a server without an active tag filter continues to use its usual saved path.</p>
+                        <p>Tags are stored in TorchPhoto and do not rename or move folders on your server.</p>
                     </div>
                 </details>
 
@@ -813,6 +833,19 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     <summary>Are folders hidden when Media-Only Mode is enabled?</summary>
                     <div class="guide-content">
                         <p>No. Folders remain available so you can continue navigating, while unsupported or unrelated files inside them are filtered from the media list.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="hidden-files">
+                    <summary>How do I hide files and folders with a particular name prefix?</summary>
+                    <div class="guide-content">
+                        <p>Open <b>Settings &gt; Media Settings</b>, enable <b>Hidden files</b>, and enter one prefix in <b>Hide names starting with</b>. This is a PRO feature. It filters files and folders whose names begin with that text.</p>
+                        <ul>
+                            <li>Enter <code>._</code> to hide names such as <code>._IMG_0001.jpg</code>. The regular photo <code>IMG_0001.jpg</code> remains visible.</li>
+                            <li>Enter <code>private_</code> to hide names such as <code>private_photo.jpg</code> and the folder <code>private_family</code>.</li>
+                        </ul>
+                        <p>Matching is case-sensitive: <code>private_</code> does not match <code>Private_</code>. A blank prefix hides nothing. Hidden folders and the media inside them are filtered from server browsing, and matching media are skipped during thumbnail generation and metadata scans.</p>
+                        <p>This does not delete, rename, or move server files, and existing thumbnails are kept. Turn <b>Hidden files</b> off to show the items again.</p>
                     </div>
                 </details>
 
@@ -872,10 +905,31 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     </div>
                 </details>
 
+                <details class="guide-item" id="download-countdown">
+                    <summary>How can Download countdown make photo swiping faster?</summary>
+                    <div class="guide-content">
+                        <p>Open <b>Settings &gt; Media Settings</b>, enable <b>Auto-Load Original</b>, and set <b>Download countdown</b> to a delay between 1 and 5 seconds. This setting is available in both FREE and PRO.</p>
+                        <p>The delay lets you swipe quickly through thumbnails without starting an original download for every photo you briefly pass over. When you stay on a photo for the selected number of seconds, TorchPhoto automatically starts downloading its original. For example, with a 2-second countdown, you can keep swiping through thumbnails and pause on a photo when you want to see its original.</p>
+                        <p>Moving to another photo cancels the previous countdown and starts a new one. This makes browsing more efficient by reducing unnecessary original downloads. Set the countdown to <b>0 seconds</b> if you prefer original downloads to start immediately.</p>
+                        <p>The countdown follows your <b>Allow Mobile Data</b> setting. It does not delay manual downloads or video playback.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="photo-prefetch">
+                    <summary>Can Photo Prefetch preload photos for faster swiping between originals?</summary>
+                    <div class="guide-content">
+                        <p>Yes. <b>Photo Prefetch</b> quietly downloads the original images before and after the photo you are viewing, following your current browsing order. When a neighboring original is ready, swiping to it can show the original immediately instead of first showing its thumbnail and waiting for a download.</p>
+                        <p>Open <b>Settings &gt; Media Settings</b>, enable <b>Auto-Load Original</b>, then turn on <b>Photo Prefetch</b>. It is off by default, requires <b>PRO</b>, and works over <b>Wi-Fi only</b>, even if Allow Mobile Data is enabled. It does not require the server to be on the same local network.</p>
+                        <p>With Photo Prefetch off, TorchPhoto normally shows the thumbnail first and then loads the original when automatic original loading is enabled. With Photo Prefetch on, a fast Wi-Fi connection to your server can let nearby originals finish downloading before you swipe to them, making full-quality viewing faster and smoother. A photo that is not ready yet can still show its thumbnail while the original loads.</p>
+                        <p><b>Download countdown</b> helps you skim thumbnails efficiently; <b>Photo Prefetch</b> helps prepare nearby originals for viewing. They serve different purposes and can be used together.</p>
+                    </div>
+                </details>
+
                 <details class="guide-item">
                     <summary>Why is horizontal swiping briefly unavailable while an image is loading?</summary>
                     <div class="guide-content">
                         <p>TorchPhoto may temporarily hold horizontal navigation while the thumbnail, improved preview, or automatically loaded original is being prepared. This prevents an unfinished result from being applied to the next photo.</p>
+                        <p>For faster thumbnail browsing, use <b>Download countdown</b> to give yourself time to swipe before an original download begins. For faster viewing of nearby originals, PRO users can enable <b>Photo Prefetch</b> on Wi-Fi. Both options are under <b>Settings &gt; Media Settings</b> when <b>Auto-Load Original</b> is enabled.</p>
                     </div>
                 </details>
 
@@ -1037,7 +1091,8 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can the original load automatically after the thumbnail?</summary>
                     <div class="guide-content">
-                        <p>Yes. Original auto-loading can replace the preview after the full image is ready. The Wi-Fi and cellular options let you control when this network-heavy step is allowed.</p>
+                        <p>Yes. Enable <b>Settings &gt; Media Settings &gt; Auto-Load Original</b>. TorchPhoto displays the thumbnail while preparing the original and switches to the full-quality image when it is ready.</p>
+                        <p>Enabling this setting also reveals <b>Allow Mobile Data</b>, <b>Photo Prefetch</b>, and <b>Download countdown</b>. Allow Mobile Data controls automatic original downloads on cellular connections. Download countdown adds a wait before a photo's original download, while PRO Photo Prefetch prepares nearby originals over Wi-Fi.</p>
                     </div>
                 </details>
 
@@ -1051,7 +1106,16 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can I prevent large original downloads over cellular data?</summary>
                     <div class="guide-content">
-                        <p>Yes. Keep automatic original loading restricted to Wi-Fi and do not enable cellular original auto-load. You can still browse cached thumbnails and decide when to request an original.</p>
+                        <p>Yes. In <b>Settings &gt; Media Settings</b>, enable <b>Auto-Load Original</b> and turn <b>Allow Mobile Data</b> off. Automatic original loading is then restricted to Wi-Fi, while cached thumbnails remain available for browsing.</p>
+                        <p>On mobile data, you can still request an original yourself using the download button in the viewer. <b>Photo Prefetch</b> remains Wi-Fi-only regardless of the Allow Mobile Data setting.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="hdr-photos">
+                    <summary>How do I enable HDR photo display?</summary>
+                    <div class="guide-content">
+                        <p>Turn on <b>Settings &gt; Media Settings &gt; HDR</b>. On a supported screen, original photos that contain HDR information can be displayed with a wider range of brightness and contrast.</p>
+                        <p>HDR is available in both FREE and PRO. It does not convert ordinary SDR photos into HDR. When the option is off or HDR display is unavailable, the photo is shown in SDR. The original file is not modified.</p>
                     </div>
                 </details>
 
@@ -1282,7 +1346,15 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>How does photo and video pairing recognize a pair?</summary>
                     <div class="guide-content">
-                        <p>When pairing is enabled, an image and video in the same folder with the same base filename can be treated as one related pair. The video is then opened from the image's pairing viewer instead of appearing as an unrelated item.</p>
+                        <p>Enable <b>Settings &gt; Media Settings &gt; Video Pairing</b> with PRO. An image and video in the same folder with the same base filename, such as <code>IMG_0001.jpg</code> and <code>IMG_0001.mov</code>, can be treated as one related pair. The video is then opened from the image's pairing viewer instead of appearing as an unrelated item.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="pairing-icon">
+                    <summary>What does the Pairing Icon option do?</summary>
+                    <div class="guide-content">
+                        <p>After enabling <b>Video Pairing</b> in <b>Settings &gt; Media Settings</b>, turn on <b>Pairing Icon</b> to show a small, semi-transparent icon at the lower left of paired photos in a folder. This makes photos with a linked video easier to identify.</p>
+                        <p>Turning the icon off only hides the badge; the photo and video remain paired. This option belongs to the PRO Video Pairing feature.</p>
                     </div>
                 </details>
 
