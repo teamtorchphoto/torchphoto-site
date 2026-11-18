@@ -87,15 +87,18 @@
                 <details class="guide-item">
                     <summary>What is the best way to share a TorchPhoto Gallery viewer?</summary>
                     <div class="guide-content">
-                        <p>Use the <b>Wi-Fi Gallery Share</b> feature. Long-press the server you want to share from the server list, then share the gallery. On any device, you can open it in a web browser such as <b>Safari or Chrome</b> and enjoy an efficient gallery viewer that loads thumbnails first, then switches to the original image. 
-Thumbnails are generated on the <b>iOS device</b>, and the original files are downloaded and displayed naturally. If <b>Video Pairing</b> is enabled in TorchPhoto settings, this feature can also provide a Live Photo-like experience even in web browsers on devices that do not support Live Photos.</p>
+                        <p>Long-press a server in the server list and choose <b>Wi-Fi Gallery</b>. Sharing starts when the gallery screen opens. Tap the displayed URL and choose <b>Share</b> to send a gallery link, or <b>QR</b> to let another device scan it.</p>
+                        <p>The other device needs a reachable connection to the same Wi-Fi or Personal Hotspot network. It can open the gallery in a browser such as Safari or Chrome without installing TorchPhoto. Keep TorchPhoto’s gallery sharing screen open while it is in use.</p>
+                        <p>The browser shows available thumbnails first and loads originals when you open them. If <b>Video Pairing</b> is enabled and a matching video is available, the gallery can also show the paired motion.</p>
                     </div>
                 </details>
 
                 <details class="guide-item">
                     <summary>Can I change the port for the Local Wi-Fi Gallery URL?</summary>
                     <div class="guide-content">
-                        <p>Yes. In the Local Wi-Fi Gallery feature, tap the displayed URL to edit the port. This is useful if the default port is already in use or if you want to set a different port for your local sharing environment.</p>
+                        <p>Yes. On the gallery sharing screen, tap the displayed URL, choose <b>Change Port</b>, enter a port number, and tap the checkmark to save.</p>
+                        <p>You can enter a number from <b>1024 to 65535</b>, except for certain ports blocked by web browsers. If a port is unavailable, choose another. The default is <b>8088</b>, and a successfully saved choice is remembered for the next sharing session.</p>
+                        <p>After changing the port, use the newly displayed address and share the updated link or QR code.</p>
                     </div>
                 </details>
 
@@ -121,12 +124,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     </div>
                 </details>
 
-                <details class="guide-item">
-                    <summary>Does TorchPhoto send diagnostic data automatically?</summary>
-                    <div class="guide-content">
-                        <p>No. TorchPhoto includes an on-device diagnostic feature to support app operation, updates, optimization, stability, and feature improvements. TorchPhoto does not automatically upload its locally stored diagnostic file. It remains on your device unless you choose to export and send it, such as through a feedback email. If a diagnostic notice appears in Settings, please use <b>Send Error</b> whenever possible so the technical context can help reproduce and improve the problem. Apple’s separate system analytics may still follow your device analytics settings and Apple’s privacy terms.</p>
-                    </div>
-                </details>
+                
                 
                 <details class="guide-item">
                     <summary>Can user-generated thumbnail cache be deleted automatically?</summary>
@@ -187,7 +185,17 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Are search, sort, and filter available?</summary>
                     <div class="guide-content">
-                        <p>Yes. Search and sorting are supported, making it easier to focus on photos only or videos only when needed.</p>
+                        <p>Yes. Use the directory’s search and filter controls to find items or focus on photos or videos. The sort menu lets you choose <b>Name</b>, <b>Date</b>, or <b>Size</b> and change the ascending or descending order.</p>
+                        <p>Sorting by name puts numbers in natural order. Folders are grouped ahead of media, and media with available thumbnails can be shown before items without thumbnails.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="natural-name-sorting">
+                    <summary>How are numbers in filenames sorted?</summary>
+                    <div class="guide-content">
+                        <p>Choose <b>Name</b> and ascending order in the directory’s sort menu. Numeric parts of names are compared as numbers, so files appear as <code>1.jpg, 2.jpg, 3.jpg, 10.jpg</code> rather than <code>1.jpg, 10.jpg, 2.jpg, 3.jpg</code>.</p>
+                        <p>The same applies to names such as <code>Torch1.jpg, Torch2.jpg, Torch10.jpg</code>. Names with leading zeros, such as <code>Torch01.jpg, Torch02.jpg, Torch03.jpg</code>, also sort naturally. You do not need to rename files just to add leading zeros.</p>
+                        <p>This describes name sorting within the displayed groups. Choosing Date or Size still sorts by that value.</p>
                     </div>
                 </details>
 
@@ -488,6 +496,15 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     <summary>Can I upload directly to the folder I am viewing?</summary>
                     <div class="guide-content">
                         <p>Yes. Inside a folder, tap the menu button in the top-right corner and choose Upload. The photo selection screen opens for the current server and current folder, so the selected photos and videos can be uploaded immediately to that exact location.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="wifi-only-upload">
+                    <summary>How can I upload over Wi-Fi only?</summary>
+                    <div class="guide-content">
+                        <p>On the <b>Upload</b> screen, turn on <b>Upload over Wi-Fi only</b>, below <b>Screenshot Upload</b>. This option is off by default.</p>
+                        <p>When it is enabled, an upload requires Wi-Fi. If Wi-Fi disconnects, the upload stops instead of switching to cellular data. Reconnect to Wi-Fi, then resume the upload from the Upload screen.</p>
+                        <p>This setting applies <b>only to uploads started on the Upload screen</b>. It does not restrict uploads started by Apple Shortcuts, and it is separate from Allow Mobile Data in Media Settings, which controls automatic original downloads in the viewer.</p>
                     </div>
                 </details>
 
@@ -808,6 +825,41 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     </div>
                 </details>
 
+                <details class="guide-item" id="quick-actions">
+                    <summary>How can I open a folder from the TorchPhoto app icon?</summary>
+                    <div class="guide-content">
+                        <p>With <b>TorchPhoto PRO</b>, open <b>Settings &gt; Launch &gt; Quick Actions</b>, below Quick Start. You can save up to <b>three folders</b> from your registered servers.</p>
+                        <ol><li>Tap the add button, choose a registered server, and browse to the folder you want.</li><li>Confirm the folder, then tap the checkmark on the Quick Actions screen to save your choices. The X closes the screen without saving your edits.</li><li>On the iPhone Home Screen, touch and hold the <b>TorchPhoto app icon</b>, then choose a saved folder to open that location in the app.</li></ol>
+                        <p>A <b>Timeline Viewer</b> action is also included. To replace a folder when all three slots are full, remove one from Quick Actions, add the new folder, and save. Removing a Quick Action does not delete the folder or its files on your server.</p>
+                        <p>Quick Actions are separate from Apple’s Shortcuts app and do not require a Shortcuts automation.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="quick-actions-access">
+                    <summary>Which Quick Actions are available in FREE and PRO?</summary>
+                    <div class="guide-content">
+                        <p><b>PRO:</b> You can set up to three folder actions and open Timeline Viewer from the app icon menu.</p>
+                        <p><b>FREE:</b> Folder Quick Actions cannot be configured or used. The menu shows only a locked Timeline Viewer action; choosing it opens TorchPhoto’s logo screen rather than Timeline Viewer.</p>
+                        <p>If PRO access ends, the folder setting becomes unavailable and folder actions are hidden from the app icon menu. Timeline Viewer also returns to its locked state.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="quick-actions-launch">
+                    <summary>Can I use Quick Actions when TorchPhoto is not already open?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Once you have saved your folders, touch and hold the <b>TorchPhoto app icon</b> on the Home Screen and choose an action. TorchPhoto opens and takes you to the selected folder or, with PRO, Timeline Viewer. You do not need to open the app first or turn on Quick Start.</p>
+                        <p>Quick Actions open the same folder and timeline views used inside the app. They do not change your connection settings or make an unavailable server accessible.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="quick-actions-missing">
+                    <summary>Why is a saved folder missing from the Quick Actions menu?</summary>
+                    <div class="guide-content">
+                        <p>Check that PRO is active and that you saved your choices using the checkmark in <b>Settings &gt; Launch &gt; Quick Actions</b>. Closing the settings with X discards your edits.</p>
+                        <p>A folder action is hidden if its registered server has been removed or the folder is no longer within that server’s configured root path. If you replaced the server entry or changed its root, remove the old action and select the folder again from the current server setup.</p>
+                    </div>
+                </details>
+
                 <details class="guide-item">
                     <summary>What happens when I return to TorchPhoto after a long time in the background?</summary>
                     <div class="guide-content">
@@ -880,7 +932,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can I favorite an entire folder?</summary>
                     <div class="guide-content">
-                        <p>No. TorchPhoto favorites are designed for individual media items with thumbnails, not whole folders.</p>
+                        <p>Favorites are for individual media items with thumbnails. To return quickly to a folder, use <a href="#folder-tag-shortcuts">folder tags</a>, or use PRO <a href="#quick-actions">Quick Actions</a> to open a saved folder from the TorchPhoto app icon.</p>
                     </div>
                 </details>
 
@@ -908,9 +960,9 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item" id="download-countdown">
                     <summary>How can Download countdown make photo swiping faster?</summary>
                     <div class="guide-content">
-                        <p>Open <b>Settings &gt; Media Settings</b>, enable <b>Auto-Load Original</b>, and set <b>Download countdown</b> to a delay between 1 and 5 seconds. This setting is available in both FREE and PRO.</p>
-                        <p>The delay lets you swipe quickly through thumbnails without starting an original download for every photo you briefly pass over. When you stay on a photo for the selected number of seconds, TorchPhoto automatically starts downloading its original. For example, with a 2-second countdown, you can keep swiping through thumbnails and pause on a photo when you want to see its original.</p>
-                        <p>Moving to another photo cancels the previous countdown and starts a new one. This makes browsing more efficient by reducing unnecessary original downloads. Set the countdown to <b>0 seconds</b> if you prefer original downloads to start immediately.</p>
+                        <p>Open <b>Settings &gt; Media Settings</b>, enable <b>Auto-Load Original</b>, and set <b>Download countdown</b> to a delay between 1 and 5 seconds. It is available in both FREE and PRO. On a new installation, the countdown starts at <b>2 seconds</b>; existing users keep their current setting.</p>
+                        <p>The delay lets you swipe through thumbnails without starting an original download for every photo you briefly pass over. When you stay on a photo for the selected time, TorchPhoto starts downloading its original. For example, with a 2-second countdown, keep swiping to browse, then pause on a photo to see its original.</p>
+                        <p>Moving to another photo cancels the previous countdown and starts a new one. Set <b>0 seconds</b> to start automatic original downloads without a countdown. An original already available on the device can appear immediately.</p>
                         <p>The countdown follows your <b>Allow Mobile Data</b> setting. It does not delay manual downloads or video playback.</p>
                     </div>
                 </details>
@@ -926,10 +978,14 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 </details>
 
                 <details class="guide-item">
-                    <summary>Why is horizontal swiping briefly unavailable while an image is loading?</summary>
+                    <summary>How do image loading settings affect swiping, and what should I choose?</summary>
                     <div class="guide-content">
-                        <p>TorchPhoto may temporarily hold horizontal navigation while the thumbnail, improved preview, or automatically loaded original is being prepared. This prevents an unfinished result from being applied to the next photo.</p>
-                        <p>For faster thumbnail browsing, use <b>Download countdown</b> to give yourself time to swipe before an original download begins. For faster viewing of nearby originals, PRO users can enable <b>Photo Prefetch</b> on Wi-Fi. Both options are under <b>Settings &gt; Media Settings</b> when <b>Auto-Load Original</b> is enabled.</p>
+                        <p>Once a thumbnail or image is visible, you can normally keep swiping left or right while an original is loading. You do not have to wait for every original download to finish. If you have zoomed in, dragging moves around the enlarged image; zoom back out to change photos. A newly opened item with no preview available yet may need a moment to appear.</p>
+                        <p>The following settings are under <b>Settings &gt; Media Settings</b>:</p>
+                        <ul><li><b>Auto-Load Original off:</b> Browse using the available previews without starting automatic original downloads. Download an original manually when you want more detail. Photo Prefetch does not run while Auto-Load Original is off.</li><li><b>Auto-Load Original on, countdown at 0 seconds:</b> Original loading starts as you view each photo, when your network settings allow it. The available preview remains visible until the original is ready.</li><li><b>Auto-Load Original on, countdown at 2–3 seconds:</b> Swipe through thumbnails, then pause on a photo to start its original download. Passing over a photo before the countdown ends avoids that automatic download.</li><li><b>Photo Prefetch on (PRO):</b> While Auto-Load Original is enabled, nearby originals are prepared over Wi-Fi in your browsing order. An original that is ready can appear immediately when you swipe to it. If it is not ready, the available thumbnail is shown first.</li></ul>
+                        <p><b>Recommended for quickly browsing many photos:</b> Start with Auto-Load Original on and a <b>2–3 second countdown</b>. For thumbnail-only browsing without automatic downloads, turn Auto-Load Original off.</p>
+                        <p><b>Recommended for viewing originals on a fast connection:</b> PRO users can also enable <b>Photo Prefetch</b> on Wi-Fi. It can be used with the countdown, but how quickly originals become available depends on the server, connection, and file size.</p>
+                        <p>Turn <b>Allow Mobile Data</b> off if you do not want automatic originals downloaded over cellular. Photo Prefetch remains Wi-Fi-only even when this option is on. The image enhancement options are optional display features; they do not need to be enabled for these browsing settings.</p>
                     </div>
                 </details>
 
@@ -1062,7 +1118,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>What is included in PRO Backup &amp; Restore?</summary>
                     <div class="guide-content">
-                        <p>A backup can include generated thumbnails for the selected server, captions, timeline and supported metadata records, folder tags, metadata display and Custom Popup preferences, Timeline search presets, recent upload history, supported app settings, and an eligible widget folder selection associated with that server. Supported settings include choices such as app language and theme, original auto-loading, image enhancement, video pairing, HDR display, TimeMapStamp, and Quick Start.</p>
+                        <p>A backup can include generated thumbnails for the selected server, captions, timeline and supported metadata records, folder tags, metadata display and Custom Popup preferences, Timeline search presets, recent upload history, supported app settings, and an eligible widget folder selection associated with that server. Supported settings include app language and theme, Image Background, original auto-loading and mobile data permission, Download countdown, Photo Prefetch, image enhancement, video pairing, HDR display, TimeMapStamp, and Quick Start.</p>
                         <p>It is not a backup of the original photos, videos, NAS contents, server credentials, or every temporary screen state in the app.</p>
                     </div>
                 </details>
@@ -1091,8 +1147,8 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can the original load automatically after the thumbnail?</summary>
                     <div class="guide-content">
-                        <p>Yes. Enable <b>Settings &gt; Media Settings &gt; Auto-Load Original</b>. TorchPhoto displays the thumbnail while preparing the original and switches to the full-quality image when it is ready.</p>
-                        <p>Enabling this setting also reveals <b>Allow Mobile Data</b>, <b>Photo Prefetch</b>, and <b>Download countdown</b>. Allow Mobile Data controls automatic original downloads on cellular connections. Download countdown adds a wait before a photo's original download, while PRO Photo Prefetch prepares nearby originals over Wi-Fi.</p>
+                        <p>Yes. Enable <b>Settings &gt; Media Settings &gt; Auto-Load Original</b>. TorchPhoto shows the available thumbnail, waits for any Download countdown you have set, then loads the original when the network settings allow it. An original already available on the device can appear directly.</p>
+                        <p>Enabling this setting also reveals <b>Allow Mobile Data</b>, <b>Photo Prefetch</b>, and <b>Download countdown</b>. Allow Mobile Data controls automatic original downloads on cellular connections. Download countdown lets you browse before a download starts, while PRO Photo Prefetch prepares nearby originals over Wi-Fi.</p>
                     </div>
                 </details>
 
@@ -1410,7 +1466,8 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can I upload with Apple Shortcuts?</summary>
                     <div class="guide-content">
-                        <p>Yes. With <b>TorchPhoto PRO</b>, open <b>Settings → Set Up Shortcut</b>. A popup lets you choose a shortcut for today’s captures or for selected items, then opens its iCloud import link. During setup, choose a saved <b>Server</b> and <b>Folder</b>. Both shortcuts follow the options saved on TorchPhoto’s Upload page.</p>
+                        <p>Yes. With <b>TorchPhoto PRO</b>, open <b>Settings &gt; Set Up Shortcut</b>. Choose a shortcut for today’s captures or selected items to open its iCloud import link. During setup, choose a saved <b>Server</b> and <b>Folder</b>.</p>
+                        <p>The shortcuts use the supported media and conversion options saved on TorchPhoto’s Upload page. However, <b>Upload over Wi-Fi only does not apply to Shortcuts</b>. Enabling that option in TorchPhoto does not make a Shortcuts upload Wi-Fi-only.</p>
                         <p><a href="shortcutsetting.html">Set up a backup shortcut</a> or <a href="shortcuts.html">read the full Shortcuts guide</a>.</p>
                     </div>
                 </details>
@@ -1434,7 +1491,7 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                     <summary>Can a shortcut back up another date range or files passed to it?</summary>
                     <div class="guide-content">
                         <p>Use <b>Upload by Date</b> and set its start and end dates, Server, and Folder. Both dates are included; choosing the same date covers that whole day. The shared today shortcut uses the current date for both fields.</p>
-                        <p>Use <b>Upload Files</b> to back up files received from earlier shortcut steps, regardless of their capture dates. Both actions use your saved Upload options and require PRO.</p>
+                        <p>Use <b>Upload Files</b> to back up files received from earlier shortcut steps, regardless of their capture dates. Both actions require PRO and use the supported media and conversion options from the Upload page. The Upload page’s <b>Upload over Wi-Fi only</b> restriction does not apply to either action.</p>
                     </div>
                 </details>
 
@@ -1464,14 +1521,60 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Does a browser need TorchPhoto installed to view Local Wi-Fi Gallery Share?</summary>
                     <div class="guide-content">
-                        <p>No. A device on the same reachable local network can open the provided gallery address in a normal web browser.</p>
+                        <p>No. The other device can open the shared link or scan its QR code using a browser such as Safari or Chrome. It needs a reachable connection to the same Wi-Fi or Personal Hotspot network, and TorchPhoto must remain open on the sharing device.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="gallery-menu">
+                    <summary>Can I open Wi-Fi Gallery before connecting to Wi-Fi?</summary>
+                    <div class="guide-content">
+                        <p>Yes. <b>Wi-Fi Gallery</b> remains available in the long-press menu for a server you can use, even when the iPhone is not connected to Wi-Fi. You can open it before setting up a Personal Hotspot connection.</p>
+                        <p>To browse from another device, connect both devices to the same reachable Wi-Fi or Personal Hotspot network and wait for the gallery address to appear. Share the current link or QR code after the connection is ready.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="gallery-hotspot">
+                    <summary>Can I use Wi-Fi Gallery Share through a Personal Hotspot?</summary>
+                    <div class="guide-content">
+                        <p>Yes. You can use a reachable Personal Hotspot network as well as a local Wi-Fi network. If the iPhone running TorchPhoto provides the hotspot, enable Personal Hotspot and connect the viewing device to it. Then open Wi-Fi Gallery Share and use the address shown in TorchPhoto.</p>
+                        <p>The shared photo server must still be reachable from the device running TorchPhoto. A NAS that is available only on your home Wi-Fi does not become reachable just because you switch to a hotspot.</p>
+                        <p>When you change networks, check the displayed address and share a fresh link or QR code. Using a hotspot to reach a remote server may use the hotspot’s mobile data.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="gallery-pin">
+                    <summary>How do I set a PIN for Wi-Fi Gallery Share?</summary>
+                    <div class="guide-content">
+                        <p>PIN protection is off by default. On the gallery sharing screen, open <b>PIN settings</b>, enable <b>Use PIN</b>, and enter a <b>4-digit PIN</b> or choose <b>Generate random PIN</b>. Tap the checkmark to save. Tap X to close without saving changes.</p>
+                        <p>Someone opening the plain gallery address in a browser is asked for the PIN when protection is enabled. Your PIN setting is remembered for future use. To remove the requirement, turn Use PIN off and save.</p>
+                        <p>Links sent through the gallery’s Share action and its QR codes include access, so recipients can connect without typing the PIN. Share them only with people you want to access the gallery. Being on the same Wi-Fi network alone does not bypass the PIN.</p>
+                        <p>Changing the PIN ends existing web sessions. Visitors need the new PIN or an updated shared link or QR code to connect again.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="gallery-qr">
+                    <summary>Where is the gallery QR code, and can I share it?</summary>
+                    <div class="guide-content">
+                        <p>Tap the URL on the gallery sharing screen, then choose <b>QR</b> below Share. A popup shows the QR code. Use its share button to send the QR image to another device.</p>
+                        <p>You can also choose <b>Share</b> from the URL menu to send a link instead. Both include access when PIN protection is enabled, so the recipient does not need to type the PIN.</p>
+                        <p>A shared QR image or link still requires a reachable connection to the same local network and an active gallery sharing session. After changing the network, port, or PIN, share the current link or QR code again.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="gallery-layout">
+                    <summary>Can I change the browser gallery layout?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Use the column control at the top of the browser gallery and choose <b>1 to 8 columns</b>. Fewer columns make previews larger; more columns let you see more items at once.</p>
+                        <p>Open folders to browse their contents and use the back button to return. Tap a media item to open it, then use X to return to the grid. Large folders also offer section controls above and below the grid.</p>
                     </div>
                 </details>
 
                 <details class="guide-item">
                     <summary>Why can another device not open my Local Wi-Fi Gallery?</summary>
                     <div class="guide-content">
-                        <p>Confirm that both devices are on the same network, Local Network access is allowed, the displayed address and port are correct, and the router is not isolating wireless clients from one another.</p>
+                        <p>Check that gallery sharing is running and both devices are on the same reachable Wi-Fi or Personal Hotspot network. Allow <b>Local Network</b> access for TorchPhoto in iOS Settings and keep the gallery sharing screen open.</p>
+                        <p>Use the address and port currently shown in TorchPhoto. If the network or port changed, send a new link or QR code. Guest Wi-Fi, client isolation, or VPN settings may prevent devices on the same network from reaching one another.</p>
+                        <p>If the PIN page appears, the device has reached the gallery: enter the current PIN or use a fresh shared link or QR code. If the gallery opens but media does not load, also check that the original server is reachable from TorchPhoto.</p>
                     </div>
                 </details>
 
@@ -1485,14 +1588,16 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Should I keep the gallery sharing screen active?</summary>
                     <div class="guide-content">
-                        <p>Yes. Keep TorchPhoto running while others browse the local gallery. If iOS suspends the app, the temporary local web session can become unavailable.</p>
+                        <p>Yes. Keep the gallery sharing screen open while others browse. Leaving that screen or putting TorchPhoto in the background ends the sharing session. Return to the server list and open <b>Wi-Fi Gallery</b> again to resume sharing, then use the address currently shown.</p>
+                        <p>The screen stays awake while sharing and dims after a short time to save battery. Dimming does not stop the gallery; the previous brightness is restored when you leave the sharing screen.</p>
                     </div>
                 </details>
 
                 <details class="guide-item">
                     <summary>Why would I change the Local Wi-Fi Gallery port?</summary>
                     <div class="guide-content">
-                        <p>Change it if the default port is already in use or blocked on the local network. After changing it, share the newly displayed URL or QR code because the old address will no longer match.</p>
+                        <p>Change it if the current port is already in use or blocked on the local network. Tap the displayed URL, choose <b>Change Port</b>, enter an allowed port from <b>1024 to 65535</b>, and save with the checkmark. Some browser-blocked ports cannot be used.</p>
+                        <p>A successfully saved port is remembered. Share the updated URL or QR code after changing it; visitors using the old address need to reconnect with the new one.</p>
                     </div>
                 </details>
 
@@ -1534,7 +1639,24 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>Can I change TorchPhoto's app language?</summary>
                     <div class="guide-content">
-                        <p>Yes. In TorchPhoto Settings, open <b>Language</b> below Theme and choose the language you want. The default follows the iOS system setting, while a language selected inside TorchPhoto is applied immediately and remembered. TorchPhoto currently supports 32 app languages.</p>
+                        <p>Yes. In TorchPhoto Settings, open <b>Language</b> in the Launch section and choose the language you want. The default follows the iOS system setting, while a language selected inside TorchPhoto is applied immediately and remembered. TorchPhoto currently supports 32 app languages.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="app-theme">
+                    <summary>Can I choose a light or dark theme independently of iOS?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Open <b>Settings &gt; Theme</b> and choose <b>Light</b> or <b>Dark</b> to keep that appearance regardless of the iOS setting. Choose <b>System</b> to follow your device’s appearance. System is the default.</p>
+                        <p>To choose the background behind photos separately, use <b>Image Background</b> below Theme.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="image-background">
+                    <summary>Can I use a solid white or black image viewer background?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Open <b>Settings &gt; Image Background</b>, below Theme. This setting is available in both <b>FREE and PRO</b>.</p>
+                        <ul><li><b>Blur:</b> Uses TorchPhoto’s usual blurred image background. This is the default.</li><li><b>White:</b> Uses a solid white background, regardless of the app theme.</li><li><b>Black:</b> Uses a solid black background, regardless of the app theme.</li></ul>
+                        <p>The choice applies behind the image while viewing a thumbnail or its original. It changes the viewer background, not the photo itself or the theme used elsewhere in the app.</p>
                     </div>
                 </details>
 
@@ -1548,7 +1670,9 @@ Thumbnails are generated on the <b>iOS device</b>, and the original files are do
                 <details class="guide-item">
                     <summary>What are the main default settings on a new installation?</summary>
                     <div class="guide-content">
-                        <p>Media-Only Mode, Instant Thumbnail, Wi-Fi-only original auto-load, TimeMapStamp, and Sunrise &amp; Sunset start enabled. Instant Thumbnail starts at Low quality. Preview quality options and Moon Phase start disabled. Existing user choices are not replaced by new-install defaults.</p>
+                        <p>These are the initial choices when you install TorchPhoto for the first time. They do not replace settings already saved by an existing user.</p>
+                        <ul><li><b>Theme and Language:</b> System. <b>Image Background:</b> Blur.</li><li><b>Media-Only Mode and Auto-Load Original:</b> On.</li><li><b>Allow Mobile Data:</b> On. Turn it off in Media Settings if you want to prevent automatic original downloads over cellular.</li><li><b>Download countdown:</b> 2 seconds.</li><li><b>Photo Prefetch:</b> Off. Enabling it requires PRO, Auto-Load Original, and Wi-Fi.</li><li><b>Instant Thumbnail:</b> Off. Its selected quality is Ultra, which applies if you enable the feature.</li><li><b>Preview quality enhancement options:</b> Off.</li><li><b>TimeMapStamp and Sunrise &amp; Sunset:</b> On. <b>Moon Phase:</b> Off.</li><li><b>Upload over Wi-Fi only:</b> Off. Enable it on the Upload screen if needed.</li></ul>
+                        <p>Automatic original downloads, Photo Prefetch, and Wi-Fi-only uploads have separate controls. Setting a Wi-Fi restriction for one does not change the others.</p>
                     </div>
                 </details>
 
