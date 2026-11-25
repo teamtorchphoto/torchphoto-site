@@ -261,6 +261,32 @@
                     </div>
                 </details>
 
+                <details class="guide-item" id="timeline-multiple-selection">
+                    <summary>How do I select multiple items in Timeline Viewer?</summary>
+                    <div class="guide-content">
+                        <p>Touch and hold a photo to enter selection mode. Tap other items to select or deselect them, or drag across the thumbnails to select several at once. You can select <b>up to 100 items</b> at a time.</p>
+                        <p>This works in the photo lists for <b>Year, Month, Day, Location, Search, and Memories</b>. In Location view, open a location group first to see its photo list.</p>
+                        <p>The bottom bar shows the selected count, followed by <b>Share</b>, <b>Delete</b>, and <b>X</b>. Tap X to leave selection mode without sharing or deleting anything.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="timeline-multiple-sharing">
+                    <summary>Can I share several timeline photos together, including when offline?</summary>
+                    <div class="guide-content">
+                        <p>Yes. Select up to <b>100 items</b> and tap <b>Share</b> in the bottom bar. For items on reachable servers, TorchPhoto downloads the originals and prepares them together for the iOS share sheet. A progress counter shows how many items are ready; tap X during preparation if you want to cancel.</p>
+                        <p>If any selected items are offline, a popup explains that <b>those items will be shared as thumbnails instead of originals</b>. Confirm to continue. When the selection includes both online and offline items, reachable items use their originals and offline items use their saved thumbnails.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="timeline-multiple-deletion">
+                    <summary>What happens when I delete selected items in Timeline Viewer?</summary>
+                    <div class="guide-content">
+                        <p>Tap <b>Delete</b> in the selection bar. A confirmation popup shows how many items you have selected. <b>Confirming deletes their original files from the server</b>, along with their thumbnails and related data stored in TorchPhoto. This is not just removal from the timeline, and TorchPhoto cannot undo it.</p>
+                        <p>Deletion requires the selected items’ servers to be reachable. If PRO Video Pairing is enabled, eligible paired videos are also included.</p>
+                        <p>Successfully deleted items disappear from the list and the timeline refreshes. Items that could not be deleted remain available, so a failed deletion does not make them disappear from the app.</p>
+                    </div>
+                </details>
+
                 <details class="guide-item">
                     <summary>Can I search Timeline Viewer by filename or metadata?</summary>
                     <div class="guide-content">
@@ -314,6 +340,7 @@
                     <summary>Can I browse Timeline Viewer when a server is offline?</summary>
                     <div class="guide-content">
                         <p>Generated thumbnails and the local timeline catalog allow the gallery to remain useful when the original server is unavailable. Opening, saving, or sharing a full original still requires access to that server unless the original is already available locally.</p>
+                        <p>You can also select multiple items and share their saved thumbnails while offline. TorchPhoto shows a notice before proceeding; see <a href="#timeline-multiple-sharing">sharing selected timeline photos</a>.</p>
                     </div>
                 </details>
 
@@ -679,9 +706,18 @@
                 <details class="guide-item" id="duplicate-photo-cleanup-deletion">
                     <summary>How do I review the results, and what gets deleted?</summary>
                     <div class="guide-content">
-                        <p>Tap a photo to open a larger preview. Use the selection circle to mark only the photos you want to delete, then tap <b>Delete Selected</b> and confirm in the popup.</p>
+                        <p>Tap a photo to open a larger preview. Use the selection circle to mark only the photos you want to delete, or use <a href="#duplicate-photo-auto-select"><b>Auto Select</b></a> to prepare a selection across the groups. Review your choices, then tap <b>Delete Selected</b> and confirm in the popup.</p>
                         <p><b>Confirming deletion removes the selected photos’ original files from the server</b>, together with their saved thumbnails and related data in TorchPhoto. This is not just a thumbnail or cache cleanup, and TorchPhoto cannot undo the deletion.</p>
-                        <p>If you use PRO with <b>Video Pairing</b> enabled, paired videos are also deleted. With Video Pairing off, they are kept.</p>
+                        <p>If you use PRO with <b>Video Pairing</b> enabled, eligible paired videos are also deleted. A paired video shared with a photo you are keeping is preserved. With Video Pairing off, paired videos are kept.</p>
+                        <p>The cleanup screen stays open after deletion. Successfully deleted photos are removed, and groups with fewer than two remaining photos disappear from the results. You can continue reviewing the other groups; photos that could not be deleted remain in the results.</p>
+                    </div>
+                </details>
+
+                <details class="guide-item" id="duplicate-photo-auto-select">
+                    <summary>How does Auto Select work in Duplicate Photo Cleanup?</summary>
+                    <div class="guide-content">
+                        <p>After searching, tap <b>Auto Select</b> above <b>Delete Selected</b>. TorchPhoto leaves <b>one photo unselected in each group</b> and selects the rest for deletion, whether the group contains two photos or many more.</p>
+                        <p>Use this as a starting point, then quickly review the selections and change any checkmarks you want. Similar photos may be different shots, and automatic selection does not guarantee that the photo you personally prefer is the one kept. Nothing is deleted until you tap <b>Delete Selected</b> and confirm.</p>
                     </div>
                 </details>
 
